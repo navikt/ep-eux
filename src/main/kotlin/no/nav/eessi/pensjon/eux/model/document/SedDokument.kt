@@ -1,16 +1,13 @@
 package no.nav.eessi.pensjon.eux.model.document
 
 import com.fasterxml.jackson.annotation.JsonCreator
-import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 
-class SedDokument(
+data class SedDokument(
     val sed: EuxDokument,
     val vedlegg: List<EuxDokument>?
-) {
-    fun toJson(): String = jacksonObjectMapper().writeValueAsString(this)
-}
+)
 
-class EuxDokument(
+data class EuxDokument(
     val filnavn: String?,
     val mimeType: MimeType?,
     val innhold: String
