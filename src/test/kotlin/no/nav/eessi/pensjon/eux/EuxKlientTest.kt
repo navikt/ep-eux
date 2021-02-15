@@ -4,7 +4,7 @@ import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
-import no.nav.eessi.pensjon.eux.model.document.SedDokument
+import no.nav.eessi.pensjon.eux.model.document.SedDokumentfiler
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertNull
@@ -37,8 +37,8 @@ internal class EuxKlientTest {
             val fileContent = javaClass.getResource("/pdf/pdfResponseUtenVedlegg.json").readText()
 
             every {
-                mockRestTemplate.getForObject("/buc/$RINA_ID/sed/$DOK_ID/filer", SedDokument::class.java)
-            } returns mapJsonToAny(fileContent, SedDokument::class)
+                mockRestTemplate.getForObject("/buc/$RINA_ID/sed/$DOK_ID/filer", SedDokumentfiler::class.java)
+            } returns mapJsonToAny(fileContent, SedDokumentfiler::class)
 
             val sedDokument = klient.hentAlleDokumentfiler(RINA_ID, DOK_ID)!!
 
@@ -48,7 +48,7 @@ internal class EuxKlientTest {
             verify(exactly = 1) {
                 mockRestTemplate.getForObject(
                     "/buc/$RINA_ID/sed/$DOK_ID/filer",
-                    SedDokument::class.java
+                    SedDokumentfiler::class.java
                 )
             }
         }
@@ -57,8 +57,8 @@ internal class EuxKlientTest {
         fun `Dokument uten MimeType paa vedlegg`() {
             val fileContent = javaClass.getResource("/pdf/pdfResponseMedManglendeMimeType.json").readText()
             every {
-                mockRestTemplate.getForObject("/buc/$RINA_ID/sed/$DOK_ID/filer", SedDokument::class.java)
-            } returns mapJsonToAny(fileContent, SedDokument::class)
+                mockRestTemplate.getForObject("/buc/$RINA_ID/sed/$DOK_ID/filer", SedDokumentfiler::class.java)
+            } returns mapJsonToAny(fileContent, SedDokumentfiler::class)
 
             val sedDokument = klient.hentAlleDokumentfiler(RINA_ID, DOK_ID)!!
 
@@ -70,7 +70,7 @@ internal class EuxKlientTest {
             verify(exactly = 1) {
                 mockRestTemplate.getForObject(
                     "/buc/$RINA_ID/sed/$DOK_ID/filer",
-                    SedDokument::class.java
+                    SedDokumentfiler::class.java
                 )
             }
         }
@@ -78,7 +78,7 @@ internal class EuxKlientTest {
         @Test
         fun `Dokument ikke funnet kaster 404 NOT FOUND og returnerer NULL`() {
             every {
-                mockRestTemplate.getForObject("/buc/$RINA_ID/sed/$DOK_ID/filer", SedDokument::class.java)
+                mockRestTemplate.getForObject("/buc/$RINA_ID/sed/$DOK_ID/filer", SedDokumentfiler::class.java)
             } throws HttpClientErrorException(HttpStatus.NOT_FOUND)
 
             Assertions.assertNull(klient.hentAlleDokumentfiler(RINA_ID, DOK_ID))
@@ -86,7 +86,7 @@ internal class EuxKlientTest {
             verify(exactly = 1) {
                 mockRestTemplate.getForObject(
                     "/buc/$RINA_ID/sed/$DOK_ID/filer",
-                    SedDokument::class.java
+                    SedDokumentfiler::class.java
                 )
             }
         }
@@ -94,7 +94,7 @@ internal class EuxKlientTest {
         @Test
         fun `Ukjent HttpClientErrorException kastes videre`() {
             every {
-                mockRestTemplate.getForObject("/buc/$RINA_ID/sed/$DOK_ID/filer", SedDokument::class.java)
+                mockRestTemplate.getForObject("/buc/$RINA_ID/sed/$DOK_ID/filer", SedDokumentfiler::class.java)
             } throws HttpClientErrorException(HttpStatus.UNAUTHORIZED)
 
             assertThrows<HttpClientErrorException> {
@@ -104,7 +104,7 @@ internal class EuxKlientTest {
             verify(exactly = 1) {
                 mockRestTemplate.getForObject(
                     "/buc/$RINA_ID/sed/$DOK_ID/filer",
-                    SedDokument::class.java
+                    SedDokumentfiler::class.java
                 )
             }
         }
@@ -112,7 +112,7 @@ internal class EuxKlientTest {
         @Test
         fun `Ukjent exception kastes videre`() {
             every {
-                mockRestTemplate.getForObject("/buc/$RINA_ID/sed/$DOK_ID/filer", SedDokument::class.java)
+                mockRestTemplate.getForObject("/buc/$RINA_ID/sed/$DOK_ID/filer", SedDokumentfiler::class.java)
             } throws Exception("Noe gikk galt")
 
             assertThrows<Exception> {
@@ -122,7 +122,7 @@ internal class EuxKlientTest {
             verify(exactly = 1) {
                 mockRestTemplate.getForObject(
                     "/buc/$RINA_ID/sed/$DOK_ID/filer",
-                    SedDokument::class.java
+                    SedDokumentfiler::class.java
                 )
             }
         }

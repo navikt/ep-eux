@@ -4,8 +4,11 @@ import com.fasterxml.jackson.core.type.TypeReference
 import com.fasterxml.jackson.databind.DeserializationFeature
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import io.micrometer.core.instrument.simple.SimpleMeterRegistry
+import no.nav.eessi.pensjon.eux.model.buc.Buc
 import no.nav.eessi.pensjon.eux.model.buc.ParticipantsItem
-import no.nav.eessi.pensjon.eux.model.document.SedDokument
+import no.nav.eessi.pensjon.eux.model.document.ForenkletSED
+import no.nav.eessi.pensjon.eux.model.document.SedDokumentfiler
+import no.nav.eessi.pensjon.eux.model.document.SedStatus
 import no.nav.eessi.pensjon.metrics.MetricsHelper
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
@@ -55,12 +58,40 @@ class EuxService(
      * @param rinaSakId: Hvilken Rina-sak filene skal hentes fra.
      * @param dokumentId: SED-dokumentet man vil hente vedleggene til.
      *
-     * @return [SedDokument] som inneholder hovedfil, samt vedlegg.
+     * @return [SedDokumentfiler] som inneholder hovedfil, samt vedlegg.
      */
-    fun hentAlleDokumentfiler(rinaSakId: String, dokumentId: String): SedDokument? {
+    fun hentAlleDokumentfiler(rinaSakId: String, dokumentId: String): SedDokumentfiler? {
         return hentPdf.measure {
             klient.hentAlleDokumentfiler(rinaSakId, dokumentId)
         }
+    }
+
+    /**
+     * Henter Buc fra Rina.
+     *
+     * @param rinaSakId: Hvilken Rina-sak (buc) som skal hentes.
+     *
+     * @return [Buc]
+     */
+    fun hentBuc(rinaSakId: String): Buc? {
+        return hentBuc.measure {
+            klient.hentBuc(rinaSakId)
+        }
+    }
+
+    /**
+     * Henter alle dokumenter (SEDer) i en Buc.
+     *
+     * @param rinaSakId: Hvilken Rina-sak (buc) dokumentene skal hentes fra.
+     *
+     * @return Liste med [ForenkletSED]
+     */
+    fun hentBucDokumenter(rinaSakId: String): List<ForenkletSED>? {
+        val buc = hentBuc(rinaSakId)
+        
+        return buc?.documents
+            ?.filter { it.id != null }
+            ?.map { ForenkletSED(it.id!!, it.type, SedStatus.fra(it.status)) }
     }
 
     /**

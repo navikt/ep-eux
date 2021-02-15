@@ -2,12 +2,12 @@ package no.nav.eessi.pensjon.eux.model.document
 
 import com.fasterxml.jackson.annotation.JsonCreator
 
-data class SedDokument(
-    val sed: EuxDokument,
-    val vedlegg: List<EuxDokument>?
+data class SedDokumentfiler(
+    val sed: SedVedlegg,
+    val vedlegg: List<SedVedlegg>?
 )
 
-data class EuxDokument(
+data class SedVedlegg(
     val filnavn: String?,
     val mimeType: MimeType?,
     val innhold: String

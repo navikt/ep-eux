@@ -1,7 +1,8 @@
 package no.nav.eessi.pensjon.eux
 
+import no.nav.eessi.pensjon.eux.model.buc.Buc
 import no.nav.eessi.pensjon.eux.model.buc.ParticipantsItem
-import no.nav.eessi.pensjon.eux.model.document.SedDokument
+import no.nav.eessi.pensjon.eux.model.document.SedDokumentfiler
 import no.nav.eessi.pensjon.security.sts.typeRef
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
@@ -24,13 +25,13 @@ class EuxKlient(private val euxOidcRestTemplate: RestTemplate) {
         exclude = [HttpClientErrorException.NotFound::class],
         backoff = Backoff(delay = 30000L, maxDelay = 3600000L, multiplier = 3.0)
     )
-    internal fun hentAlleDokumentfiler(rinaSakId: String, dokumentId: String): SedDokument? {
+    internal fun hentAlleDokumentfiler(rinaSakId: String, dokumentId: String): SedDokumentfiler? {
         logger.info("Henter PDF for SED og tilhørende vedlegg for rinaSakId: $rinaSakId , dokumentId: $dokumentId")
 
         return execute {
             euxOidcRestTemplate.getForObject(
                 "/buc/$rinaSakId/sed/$dokumentId/filer",
-                SedDokument::class.java
+                SedDokumentfiler::class.java
             )
         }
     }
@@ -53,6 +54,17 @@ class EuxKlient(private val euxOidcRestTemplate: RestTemplate) {
         }
 
         return response?.body
+    }
+
+    internal fun hentBuc(rinaSakId: String): Buc? {
+        logger.info("Henter BUC (RinaSakId: $rinaSakId)")
+
+        return execute {
+            euxOidcRestTemplate.getForObject(
+                "/buc/$rinaSakId",
+                Buc::class.java
+            )
+        }
     }
 
     internal fun settSensitivSak(rinaSakId: String): Boolean {
