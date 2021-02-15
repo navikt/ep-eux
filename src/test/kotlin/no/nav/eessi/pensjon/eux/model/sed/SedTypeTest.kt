@@ -22,7 +22,7 @@ internal class SedTypeTest {
     @EnumSource(SedType::class)
     fun `Beskrivelse inneholder SedType`(type: SedType) {
         assertTrue(
-            type.beskrivelse().startsWith(type.name),
+            type.typeMedBeskrivelse().startsWith(type.name),
             "Beskrivelse skal begynne med SedType"
         )
     }

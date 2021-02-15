@@ -6,10 +6,9 @@ package no.nav.eessi.pensjon.eux.model.sed
  *
  * SED = "Structured Electronic Document"
  *
- * @param kanInneholdeIdent: Forteller om SED av valgt type kan inneholde en person-ident (fnr, dnr, osv.)
  * @param beskrivelse: Beskrivelse av SedTypen. Kan eksempelvis brukes ved logging, e.l.
  */
-enum class SedType(private val beskrivelse: String) {
+enum class SedType(val beskrivelse: String) {
     P1000("Anmodning om perioder med omsorg for barn"),
     P1100("Svar på anmodning om perioder med omsorg for barn"),
     P2000("Krav om alderspensjon"),
@@ -91,5 +90,5 @@ enum class SedType(private val beskrivelse: String) {
     R005("Anmodning om motregning i etterbetalinger (foreløpig eller endelig)"),
     R006("Svar på anmodning om informasjon");
 
-    fun beskrivelse(): String = "${this.name} – $beskrivelse"
+    fun typeMedBeskrivelse(): String = "${this.name} - $beskrivelse"
 }
