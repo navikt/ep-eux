@@ -1,6 +1,7 @@
 package no.nav.eessi.pensjon.eux
 
 import com.fasterxml.jackson.core.type.TypeReference
+import io.mockk.clearAllMocks
 import io.mockk.confirmVerified
 import io.mockk.every
 import io.mockk.mockk
@@ -40,6 +41,7 @@ internal class EuxServiceTest {
     @AfterEach
     fun afterEach() {
         confirmVerified(mockKlient)
+        clearAllMocks()
     }
 
     @Test
@@ -106,11 +108,22 @@ internal class EuxServiceTest {
 
         every { mockKlient.hentBuc(any()) } returns Buc(documents = documents)
 
-        val result = euxService.hentBucDokumenter(rinaSakId)!!
+        val result = euxService.hentBucDokumenter(rinaSakId)
 
         assertEquals(5, result.size)
 
         verify(exactly = 1) { mockKlient.hentBuc(rinaSakId) }
+    }
+
+    @Test
+    fun hentBucDokumenter_manglerInnhold() {
+        every { mockKlient.hentBuc(any()) } returns null
+        assertTrue(euxService.hentBucDokumenter(rinaSakId).isEmpty())
+
+        every { mockKlient.hentBuc(any()) } returns Buc(documents = null)
+        assertTrue(euxService.hentBucDokumenter(rinaSakId).isEmpty())
+
+        verify(exactly = 2) { mockKlient.hentBuc(rinaSakId) }
     }
 
 }

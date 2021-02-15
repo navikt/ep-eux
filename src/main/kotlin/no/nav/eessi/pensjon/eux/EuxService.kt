@@ -86,12 +86,12 @@ class EuxService(
      *
      * @return Liste med [ForenkletSED]
      */
-    fun hentBucDokumenter(rinaSakId: String): List<ForenkletSED>? {
-        val buc = hentBuc(rinaSakId)
-        
-        return buc?.documents
-            ?.filter { it.id != null }
-            ?.map { ForenkletSED(it.id!!, it.type, SedStatus.fra(it.status)) }
+    fun hentBucDokumenter(rinaSakId: String): List<ForenkletSED> {
+        val documents = hentBuc(rinaSakId)?.documents ?: return emptyList()
+
+        return documents
+            .filter { it.id != null }
+            .map { ForenkletSED(it.id!!, it.type, SedStatus.fra(it.status)) }
     }
 
     /**
