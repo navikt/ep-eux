@@ -1,5 +1,6 @@
 package no.nav.eessi.pensjon.eux.model.buc
 
+import com.fasterxml.jackson.annotation.JsonProperty
 import no.nav.eessi.pensjon.eux.model.sed.SedType
 
 class ActionsItem(
@@ -31,4 +32,16 @@ class ActionsItem(
     val operation: String? = null,
     val parentDocumentId: Any? = null,
     val status: Any? = null
+)
+
+class ActionGroup(
+    @JsonProperty("DMProcessId") val dMProcessId: String? = null,
+    @JsonProperty("DocumentId") val documentId: String? = null,
+    @JsonProperty("Operation") val operation: String? = null,
+    @JsonProperty("ParentDocId") val parentDocId: Any? = null,
+    @JsonProperty("ParentType") val parentType: String? = null,
+    @JsonProperty("Type") val type: String? = null,
+
+    val activityInstanceId: String? = null,
+    val hasLocalClose: Boolean? = null
 )

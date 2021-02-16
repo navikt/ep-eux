@@ -1,12 +1,12 @@
 package no.nav.eessi.pensjon.eux.model.buc
 
-import com.fasterxml.jackson.annotation.JsonIgnore
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties
+import com.fasterxml.jackson.annotation.JsonProperty
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 class Tags(
-    val DMProcessId: String? = null,
-    val operation: Any? = null,
-    val category: String? = null,
-    val type: String? = null,
-    @JsonIgnore
-    val dmprocessId: Any? = null
+    @JsonProperty("DMProcessId") val processId: Int? = null,
+    @JsonProperty("Operation") val operation: Any? = null,
+    @JsonProperty("category") val category: String? = null,
+    @JsonProperty("type") val type: String? = null
 )

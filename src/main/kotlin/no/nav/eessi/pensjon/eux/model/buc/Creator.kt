@@ -1,7 +1,6 @@
 package no.nav.eessi.pensjon.eux.model.buc
 
 class Creator(
-
     val address: Any? = null,
     val contactMethods: Any? = null,
     val name: String? = null,

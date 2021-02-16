@@ -1,5 +1,7 @@
 package no.nav.eessi.pensjon.eux.model.sed
 
+import com.fasterxml.jackson.annotation.JsonCreator
+
 /**
  * SED-typer som brukes av EP (EESSI Pensjon).
  * Typen forteller hvilken type en SED er.
@@ -90,5 +92,21 @@ enum class SedType(val beskrivelse: String) {
     R005("Anmodning om motregning i etterbetalinger (foreløpig eller endelig)"),
     R006("Svar på anmodning om informasjon");
 
+    /**
+     * Lager beskrivelse med SedType som prefiks.
+     * Eks: "P8000 - Tekst som beskriver typen"
+     *
+     * @return [String] beskrivelse med sedtype.
+     */
     fun typeMedBeskrivelse(): String = "${this.name} - $beskrivelse"
+
+    companion object {
+        @JvmStatic
+        @JsonCreator
+        fun fra(value: String?): SedType? {
+            return value?.let {
+                values().firstOrNull { type ->  type.name == it }
+            }
+        }
+    }
 }

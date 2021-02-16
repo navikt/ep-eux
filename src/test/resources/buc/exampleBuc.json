@@ -1,0 +1,740 @@
+{
+  "actions": [
+    {
+      "actionGroup": {
+        "DMProcessId": "string",
+        "DocumentId": "string",
+        "Operation": "string",
+        "ParentDocId": "string",
+        "ParentType": "string",
+        "Type": "string",
+        "activityInstanceId": "string",
+        "hasLocalClose": true
+      },
+      "actor": "string",
+      "bulk": true,
+      "canClose": true,
+      "caseId": "string",
+      "caseRelated": true,
+      "displayName": "string",
+      "documentId": "string",
+      "documentRelated": true,
+      "documentType": "string",
+      "hasBusinessValidation": true,
+      "hasSendValidationOnBulk": true,
+      "id": "string",
+      "isBulk": true,
+      "isCaseRelated": true,
+      "isDocumentRelated": true,
+      "name": "string",
+      "operation": "Create",
+      "parentDocumentId": "string",
+      "poolGroup": {
+        "DMProcessId": "string",
+        "DocumentId": "string",
+        "Operation": "string",
+        "ParentDocId": "string",
+        "ParentType": "string",
+        "Type": "string",
+        "activityInstanceId": "string",
+        "hasLocalClose": true
+      },
+      "requiresValidDocument": true,
+      "status": "ACTIVE",
+      "subdocumentId": "string",
+      "tags": {
+        "DMProcessId": 0,
+        "Operation": "Create",
+        "category": "Case Actions",
+        "dmprocessId": 0,
+        "type": "admin"
+      },
+      "tempDocumentId": "string",
+      "template": "string",
+      "type": "string",
+      "typeVersion": "string"
+    }
+  ],
+  "applicationRoleId": "string",
+  "attachments": [
+    {
+      "caseId": "string",
+      "creationDate": "2021-02-16T14:07:06.849Z",
+      "creator": {
+        "address": {
+          "country": "string",
+          "postalCode": "string",
+          "region": "string",
+          "street": "string",
+          "town": "string"
+        },
+        "contactMethods": [
+          {
+            "type": "string",
+            "value": "string"
+          }
+        ],
+        "id": "string",
+        "name": "string",
+        "organisation": {
+          "address": {
+            "country": "string",
+            "postalCode": "string",
+            "region": "string",
+            "street": "string",
+            "town": "string"
+          },
+          "contactMethods": [
+            {
+              "type": "string",
+              "value": "string"
+            }
+          ],
+          "id": "string"
+        },
+        "type": "string"
+      },
+      "documentId": "string",
+      "fileName": "string",
+      "hasMultipleVersions": true,
+      "id": "string",
+      "internalId": "string",
+      "lastUpdate": "2021-02-16T14:07:06.849Z",
+      "medical": true,
+      "mimeType": "string",
+      "name": "string",
+      "parentDocumentId": "string",
+      "versions": [
+        {
+          "date": "2021-02-16T14:07:06.849Z",
+          "id": "string",
+          "user": {
+            "address": {
+              "country": "string",
+              "postalCode": "string",
+              "region": "string",
+              "street": "string",
+              "town": "string"
+            },
+            "contactMethods": [
+              {
+                "type": "string",
+                "value": "string"
+              }
+            ],
+            "id": "string",
+            "name": "string",
+            "organisation": {
+              "address": {
+                "country": "string",
+                "postalCode": "string",
+                "region": "string",
+                "street": "string",
+                "town": "string"
+              },
+              "contactMethods": [
+                {
+                  "type": "string",
+                  "value": "string"
+                }
+              ],
+              "id": "string"
+            },
+            "type": "string"
+          }
+        }
+      ]
+    }
+  ],
+  "businessId": "string",
+  "comments": [
+    {
+      "caseId": "string",
+      "comment": "string",
+      "creator": {
+        "address": {
+          "country": "string",
+          "postalCode": "string",
+          "region": "string",
+          "street": "string",
+          "town": "string"
+        },
+        "contactMethods": [
+          {
+            "type": "string",
+            "value": "string"
+          }
+        ],
+        "id": "string",
+        "name": "string",
+        "organisation": {
+          "address": {
+            "country": "string",
+            "postalCode": "string",
+            "region": "string",
+            "street": "string",
+            "town": "string"
+          },
+          "contactMethods": [
+            {
+              "type": "string",
+              "value": "string"
+            }
+          ],
+          "id": "string"
+        },
+        "type": "string"
+      },
+      "date": "2021-02-16T14:07:06.850Z",
+      "documentId": "string",
+      "id": "string"
+    }
+  ],
+  "creator": {
+    "address": {
+      "country": "string",
+      "postalCode": "string",
+      "region": "string",
+      "street": "string",
+      "town": "string"
+    },
+    "contactMethods": [
+      {
+        "type": "string",
+        "value": "string"
+      }
+    ],
+    "id": "string",
+    "name": "string",
+    "organisation": {
+      "address": {
+        "country": "string",
+        "postalCode": "string",
+        "region": "string",
+        "street": "string",
+        "town": "string"
+      },
+      "contactMethods": [
+        {
+          "type": "string",
+          "value": "string"
+        }
+      ],
+      "id": "string"
+    },
+    "type": "string"
+  },
+  "documents": [
+    {
+      "DMProcessId": 0,
+      "ParentType": "string",
+      "admin": true,
+      "allowsAttachments": true,
+      "attachments": [
+        {
+          "caseId": "string",
+          "creationDate": "2021-02-16T14:07:06.850Z",
+          "creator": {
+            "address": {
+              "country": "string",
+              "postalCode": "string",
+              "region": "string",
+              "street": "string",
+              "town": "string"
+            },
+            "contactMethods": [
+              {
+                "type": "string",
+                "value": "string"
+              }
+            ],
+            "id": "string",
+            "name": "string",
+            "organisation": {
+              "address": {
+                "country": "string",
+                "postalCode": "string",
+                "region": "string",
+                "street": "string",
+                "town": "string"
+              },
+              "contactMethods": [
+                {
+                  "type": "string",
+                  "value": "string"
+                }
+              ],
+              "id": "string"
+            },
+            "type": "string"
+          },
+          "documentId": "string",
+          "fileName": "string",
+          "hasMultipleVersions": true,
+          "id": "string",
+          "internalId": "string",
+          "lastUpdate": "2021-02-16T14:07:06.850Z",
+          "medical": true,
+          "mimeType": "string",
+          "name": "string",
+          "parentDocumentId": "string",
+          "versions": [
+            {
+              "date": "2021-02-16T14:07:06.850Z",
+              "id": "string",
+              "user": {
+                "address": {
+                  "country": "string",
+                  "postalCode": "string",
+                  "region": "string",
+                  "street": "string",
+                  "town": "string"
+                },
+                "contactMethods": [
+                  {
+                    "type": "string",
+                    "value": "string"
+                  }
+                ],
+                "id": "string",
+                "name": "string",
+                "organisation": {
+                  "address": {
+                    "country": "string",
+                    "postalCode": "string",
+                    "region": "string",
+                    "street": "string",
+                    "town": "string"
+                  },
+                  "contactMethods": [
+                    {
+                      "type": "string",
+                      "value": "string"
+                    }
+                  ],
+                  "id": "string"
+                },
+                "type": "string"
+              }
+            }
+          ]
+        }
+      ],
+      "bulk": true,
+      "canBeSentWithoutChild": true,
+      "comments": [
+        {
+          "caseId": "string",
+          "comment": "string",
+          "creator": {
+            "address": {
+              "country": "string",
+              "postalCode": "string",
+              "region": "string",
+              "street": "string",
+              "town": "string"
+            },
+            "contactMethods": [
+              {
+                "type": "string",
+                "value": "string"
+              }
+            ],
+            "id": "string",
+            "name": "string",
+            "organisation": {
+              "address": {
+                "country": "string",
+                "postalCode": "string",
+                "region": "string",
+                "street": "string",
+                "town": "string"
+              },
+              "contactMethods": [
+                {
+                  "type": "string",
+                  "value": "string"
+                }
+              ],
+              "id": "string"
+            },
+            "type": "string"
+          },
+          "date": "2021-02-16T14:07:06.850Z",
+          "documentId": "string",
+          "id": "string"
+        }
+      ],
+      "conversations": [
+        {
+          "date": "2021-02-16T14:07:06.850Z",
+          "id": "string",
+          "participants": [
+            {
+              "organisation": {
+                "address": {
+                  "country": "string",
+                  "postalCode": "string",
+                  "region": "string",
+                  "street": "string",
+                  "town": "string"
+                },
+                "contactMethods": [
+                  {
+                    "type": "string",
+                    "value": "string"
+                  }
+                ],
+                "id": "string"
+              },
+              "role": "string",
+              "selected": true
+            }
+          ],
+          "receiveDate": "2021-02-16T14:07:06.850Z",
+          "userMessages": [
+            {
+              "ack": {
+                "date": "2021-02-16T14:07:06.850Z",
+                "id": "string",
+                "receiver": {
+                  "address": {
+                    "country": "string",
+                    "postalCode": "string",
+                    "region": "string",
+                    "street": "string",
+                    "town": "string"
+                  },
+                  "contactMethods": [
+                    {
+                      "type": "string",
+                      "value": "string"
+                    }
+                  ],
+                  "id": "string"
+                },
+                "sender": {
+                  "address": {
+                    "country": "string",
+                    "postalCode": "string",
+                    "region": "string",
+                    "street": "string",
+                    "town": "string"
+                  },
+                  "contactMethods": [
+                    {
+                      "type": "string",
+                      "value": "string"
+                    }
+                  ],
+                  "id": "string"
+                }
+              },
+              "action": "START",
+              "error": {
+                "date": "2021-02-16T14:07:06.850Z",
+                "description": "string",
+                "id": "string",
+                "receiver": {
+                  "address": {
+                    "country": "string",
+                    "postalCode": "string",
+                    "region": "string",
+                    "street": "string",
+                    "town": "string"
+                  },
+                  "contactMethods": [
+                    {
+                      "type": "string",
+                      "value": "string"
+                    }
+                  ],
+                  "id": "string"
+                },
+                "sender": {
+                  "address": {
+                    "country": "string",
+                    "postalCode": "string",
+                    "region": "string",
+                    "street": "string",
+                    "town": "string"
+                  },
+                  "contactMethods": [
+                    {
+                      "type": "string",
+                      "value": "string"
+                    }
+                  ],
+                  "id": "string"
+                }
+              },
+              "id": "string",
+              "isSent": true,
+              "receiver": {
+                "address": {
+                  "country": "string",
+                  "postalCode": "string",
+                  "region": "string",
+                  "street": "string",
+                  "town": "string"
+                },
+                "contactMethods": [
+                  {
+                    "type": "string",
+                    "value": "string"
+                  }
+                ],
+                "id": "string"
+              },
+              "sbdh": {
+                "attachments": [
+                  {
+                    "contentLocation": "string",
+                    "fileName": "string",
+                    "id": "string",
+                    "identifier": "string",
+                    "internetMediaTypeCode": "string",
+                    "medical": true,
+                    "mimeType": "string",
+                    "sectionReference": "string"
+                  }
+                ],
+                "caseIdentification": {
+                  "identifier": "string",
+                  "isProtectedPerson": true,
+                  "protectedPerson": true,
+                  "type": "string",
+                  "version": "string"
+                },
+                "documentIdentification": {
+                  "action": "START",
+                  "contentLocation": "string",
+                  "creationDate": "2021-02-16T14:07:06.850Z",
+                  "id": "string",
+                  "identifier": "string",
+                  "relatedDocumentId": "string",
+                  "relatedSetIdentifier": "string",
+                  "schemaVersion": "string",
+                  "setIdentifier": "string",
+                  "type": "string",
+                  "version": "string"
+                },
+                "headerVersion": "string",
+                "receivers": [
+                  {
+                    "authority": "string",
+                    "contactTypeIdentifier": "CaseOwner",
+                    "identifier": "string"
+                  }
+                ],
+                "sender": {
+                  "authority": "string",
+                  "contactTypeIdentifier": "CaseOwner",
+                  "identifier": "string"
+                }
+              },
+              "sender": {
+                "address": {
+                  "country": "string",
+                  "postalCode": "string",
+                  "region": "string",
+                  "street": "string",
+                  "town": "string"
+                },
+                "contactMethods": [
+                  {
+                    "type": "string",
+                    "value": "string"
+                  }
+                ],
+                "id": "string"
+              },
+              "sent": true,
+              "status": "string"
+            }
+          ],
+          "versionId": "string"
+        }
+      ],
+      "createTemplate": "string",
+      "creationDate": "2021-02-16T14:07:06.850Z",
+      "creator": {
+        "address": {
+          "country": "string",
+          "postalCode": "string",
+          "region": "string",
+          "street": "string",
+          "town": "string"
+        },
+        "contactMethods": [
+          {
+            "type": "string",
+            "value": "string"
+          }
+        ],
+        "id": "string",
+        "name": "string",
+        "organisation": {
+          "address": {
+            "country": "string",
+            "postalCode": "string",
+            "region": "string",
+            "street": "string",
+            "town": "string"
+          },
+          "contactMethods": [
+            {
+              "type": "string",
+              "value": "string"
+            }
+          ],
+          "id": "string"
+        },
+        "type": "string"
+      },
+      "direction": "string",
+      "displayName": "string",
+      "dmprocessId": 0,
+      "dummyDocument": true,
+      "firstDocument": true,
+      "hasBusinessValidation": true,
+      "hasCancel": true,
+      "hasClarify": true,
+      "hasLetter": true,
+      "hasMultipleVersions": true,
+      "hasReject": true,
+      "hasReplyClarify": true,
+      "id": "string",
+      "isAdmin": true,
+      "isDummyDocument": true,
+      "isFirstDocument": true,
+      "isMLC": true,
+      "isSendExecuted": true,
+      "lastUpdate": "2021-02-16T14:07:06.850Z",
+      "mimeType": "string",
+      "mlc": true,
+      "name": "string",
+      "order": 0,
+      "parendDocumentId": "string",
+      "parentDocumentId": "string",
+      "receiveDate": "2021-02-16T14:07:06.850Z",
+      "selectParticipants": true,
+      "sendExecuted": true,
+      "starter": true,
+      "status": "string",
+      "subProcessId": 0,
+      "tags": {
+        "additionalProp1": "string",
+        "additionalProp2": "string",
+        "additionalProp3": "string"
+      },
+      "toSenderOnly": true,
+      "type": "string",
+      "typeVersion": "string",
+      "validation": {
+        "messages": [
+          {}
+        ],
+        "status": "string"
+      },
+      "versions": [
+        {
+          "date": "2021-02-16T14:07:06.850Z",
+          "id": "string",
+          "user": {
+            "address": {
+              "country": "string",
+              "postalCode": "string",
+              "region": "string",
+              "street": "string",
+              "town": "string"
+            },
+            "contactMethods": [
+              {
+                "type": "string",
+                "value": "string"
+              }
+            ],
+            "id": "string",
+            "name": "string",
+            "organisation": {
+              "address": {
+                "country": "string",
+                "postalCode": "string",
+                "region": "string",
+                "street": "string",
+                "town": "string"
+              },
+              "contactMethods": [
+                {
+                  "type": "string",
+                  "value": "string"
+                }
+              ],
+              "id": "string"
+            },
+            "type": "string"
+          }
+        }
+      ]
+    }
+  ],
+  "hashCode": 0,
+  "id": "string",
+  "initialVariables": {
+    "additionalProp1": "string",
+    "additionalProp2": "string",
+    "additionalProp3": "string"
+  },
+  "internationalId": "string",
+  "lastUpdate": "2021-02-16T14:07:06.850Z",
+  "participants": [
+    {
+      "organisation": {
+        "address": {
+          "country": "string",
+          "postalCode": "string",
+          "region": "string",
+          "street": "string",
+          "town": "string"
+        },
+        "contactMethods": [
+          {
+            "type": "string",
+            "value": "string"
+          }
+        ],
+        "id": "string"
+      },
+      "role": "string",
+      "selected": true
+    }
+  ],
+  "processDefinitionName": "string",
+  "processDefinitionVersion": "string",
+  "properties": {
+    "additionalProp1": "string",
+    "additionalProp2": "string",
+    "additionalProp3": "string"
+  },
+  "sensitive": true,
+  "sensitiveCommitted": true,
+  "startDate": "2021-02-16T14:07:06.850Z",
+  "status": "string",
+  "subject": {
+    "address": {
+      "country": "string",
+      "postalCode": "string",
+      "region": "string",
+      "street": "string",
+      "town": "string"
+    },
+    "contactMethods": [
+      {
+        "type": "string",
+        "value": "string"
+      }
+    ],
+    "id": "string"
+  }
+}
