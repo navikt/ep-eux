@@ -53,6 +53,20 @@ class EuxService(
     }
 
     /**
+     * Henter SED som JSON fra Rina EUX API.
+     *
+     * @param rinaSakId: Hvilken Rina-sak SED skal hentes fra.
+     * @param dokumentId: Hvilket SED-dokument som skal hentes fra spesifisert sak.
+     *
+     * @return [String] SED JSON
+     */
+    fun hentSedJson(rinaSakId: String, dokumentId: String): String? {
+        return hentSed.measure {
+            klient.hentSedJson(rinaSakId, dokumentId)
+        }
+    }
+
+    /**
      * Henter alle filer/vedlegg tilknyttet en SED fra Rina EUX API.
      *
      * @param rinaSakId: Hvilken Rina-sak filene skal hentes fra.

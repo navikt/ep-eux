@@ -58,6 +58,19 @@ internal class EuxServiceTest {
     }
 
     @Test
+    fun hentSedJson() {
+        val expected = SED(SedType.P2000).toJson()
+
+        every { mockKlient.hentSedJson(any(), any()) } returns expected
+
+        val result = euxService.hentSedJson(rinaSakId, dokumentId)
+
+        assertEquals(expected, result)
+
+        verify(exactly = 1) { mockKlient.hentSedJson(rinaSakId, dokumentId) }
+    }
+
+    @Test
     fun hentAlleDokumentfiler() {
         val expected = SedDokumentfiler(SedVedlegg("filnavn", MimeType.PDF, "innhold"), emptyList())
 
