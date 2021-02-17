@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.DeserializationFeature
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import io.micrometer.core.instrument.simple.SimpleMeterRegistry
 import no.nav.eessi.pensjon.eux.model.buc.Buc
-import no.nav.eessi.pensjon.eux.model.buc.ParticipantsItem
+import no.nav.eessi.pensjon.eux.model.buc.Participant
 import no.nav.eessi.pensjon.eux.model.document.ForenkletSED
 import no.nav.eessi.pensjon.eux.model.document.SedDokumentfiler
 import no.nav.eessi.pensjon.eux.model.document.SedStatus
@@ -126,9 +126,9 @@ class EuxService(
      *
      * @param rinaSakId: Saken man vil hente deltakere fra.
      *
-     * @return Liste over alle deltakere [ParticipantsItem]
+     * @return Liste over alle deltakere [Participant]
      */
-    fun hentBucDeltakere(rinaSakId: String): List<ParticipantsItem> {
+    fun hentBucDeltakere(rinaSakId: String): List<Participant> {
         return hentBucDeltakere.measure {
             klient.hentBucDeltakere(rinaSakId)
         }

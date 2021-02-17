@@ -50,7 +50,7 @@ dependencies {
     implementation("no.nav.eessi.pensjon:ep-logging:0.0.16")
 
     //Jackson json
-    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.10.1")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.12.1")
 
     // Apache CXF
     implementation("org.apache.cxf:cxf-spring-boot-starter-jaxws:${cxfVersion}")

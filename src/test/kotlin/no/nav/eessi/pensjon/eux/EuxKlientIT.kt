@@ -80,11 +80,17 @@ internal class EuxKlientIT {
 
     @Test
     fun hentBucDeltakere() {
-        val deltakere = klient.hentBucDeltakere("1213513")
+        val deltakere = klient.hentBucDeltakere("1270228")
 
         assertFalse(deltakere.isEmpty())
     }
 
+    @Test
+    fun hentBuc() {
+        val buc = klient.hentBuc("1198662")
+
+        assertNotNull(buc)
+    }
 
     @Test
     fun hentBucDokumenter() {

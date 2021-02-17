@@ -7,9 +7,9 @@ import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
 import no.nav.eessi.pensjon.eux.model.buc.Buc
-import no.nav.eessi.pensjon.eux.model.buc.DocumentsItem
+import no.nav.eessi.pensjon.eux.model.buc.Document
 import no.nav.eessi.pensjon.eux.model.buc.Organisation
-import no.nav.eessi.pensjon.eux.model.buc.ParticipantsItem
+import no.nav.eessi.pensjon.eux.model.buc.Participant
 import no.nav.eessi.pensjon.eux.model.document.MimeType
 import no.nav.eessi.pensjon.eux.model.document.SedDokumentfiler
 import no.nav.eessi.pensjon.eux.model.document.SedVedlegg
@@ -97,7 +97,7 @@ internal class EuxServiceTest {
 
     @Test
     fun hentBucDeltakere() {
-        val participants = listOf(ParticipantsItem("role", Organisation(), true))
+        val participants = listOf(Participant("role", Organisation()))
 
         every { mockKlient.hentBucDeltakere(any()) } returns participants
 
@@ -111,12 +111,12 @@ internal class EuxServiceTest {
     @Test
     fun hentBucDokumenter() {
         val documents = listOf(
-            DocumentsItem(id = "1", type = SedType.P1000, status = "empty"),
-            DocumentsItem(id = "2", type = SedType.X001, status = "empty"),
-            DocumentsItem(id = "3", type = SedType.R004, status = "sent"),
-            DocumentsItem(id = "4", type = SedType.P8000, status = "empty"),
-            DocumentsItem(id = "5", type = SedType.P3000_BG, status = "received"),
-            DocumentsItem(id = null, type = SedType.X005, status = "received") // skal ignoreres pga id=null
+            Document(id = "1", type = SedType.P1000, status = "empty"),
+            Document(id = "2", type = SedType.X001, status = "empty"),
+            Document(id = "3", type = SedType.R004, status = "sent"),
+            Document(id = "4", type = SedType.P8000, status = "empty"),
+            Document(id = "5", type = SedType.P3000_BG, status = "received"),
+            Document(id = null, type = SedType.X005, status = "received") // skal ignoreres pga id=null
         )
 
         every { mockKlient.hentBuc(any()) } returns Buc(documents = documents)

@@ -1,7 +1,7 @@
 package no.nav.eessi.pensjon.eux
 
 import no.nav.eessi.pensjon.eux.model.buc.Buc
-import no.nav.eessi.pensjon.eux.model.buc.ParticipantsItem
+import no.nav.eessi.pensjon.eux.model.buc.Participant
 import no.nav.eessi.pensjon.eux.model.document.SedDokumentfiler
 import no.nav.eessi.pensjon.security.sts.typeRef
 import org.slf4j.Logger
@@ -87,7 +87,7 @@ class EuxKlient(private val euxOidcRestTemplate: RestTemplate) {
         exclude = [HttpClientErrorException.NotFound::class],
         backoff = Backoff(delay = 30000L, maxDelay = 3600000L, multiplier = 3.0)
     )
-    internal fun hentBucDeltakere(rinaSakId: String): List<ParticipantsItem> {
+    internal fun hentBucDeltakere(rinaSakId: String): List<Participant> {
         logger.info("Henter liste over deltakere i Buc (RinaSakId: $rinaSakId)")
 
         val response = execute {
@@ -95,7 +95,7 @@ class EuxKlient(private val euxOidcRestTemplate: RestTemplate) {
                 "/buc/${rinaSakId}/bucdeltakere",
                 HttpMethod.GET,
                 null,
-                typeRef<List<ParticipantsItem>>()
+                typeRef<List<Participant>>()
             )
         }
 
