@@ -1,4 +1,7 @@
-# ep-eux
+# ep-eux 
+
+![Release new version](https://github.com/navikt/ep-eux/workflows/Release%20new%20version/badge.svg)
+
 
 ## Beskrivelse
 Enkelt bibliotek for å forenkle påkobling mot Rina EUX API, samt redusere duplikatkode.
