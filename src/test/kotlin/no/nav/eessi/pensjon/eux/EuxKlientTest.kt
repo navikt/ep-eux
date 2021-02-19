@@ -5,8 +5,8 @@ import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
 import no.nav.eessi.pensjon.eux.model.document.SedDokumentfiler
-import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.Assertions.assertNull
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
@@ -42,8 +42,8 @@ internal class EuxKlientTest {
 
             val sedDokument = klient.hentAlleDokumentfiler(RINA_ID, DOK_ID)!!
 
-            Assertions.assertNotNull(sedDokument)
-            Assertions.assertNull(sedDokument.vedlegg)
+            assertNotNull(sedDokument)
+            assertNull(sedDokument.vedlegg)
 
             verify(exactly = 1) {
                 mockRestTemplate.getForObject(
@@ -63,9 +63,9 @@ internal class EuxKlientTest {
             val sedDokument = klient.hentAlleDokumentfiler(RINA_ID, DOK_ID)!!
 
             val vedlegg = sedDokument.vedlegg!!.single()
-            Assertions.assertEquals("ManglendeMimeType.png", vedlegg.filnavn)
-            Assertions.assertNull(vedlegg.mimeType)
-            Assertions.assertNotNull(vedlegg.innhold)
+            assertEquals("ManglendeMimeType.png", vedlegg.filnavn)
+            assertNull(vedlegg.mimeType)
+            assertNotNull(vedlegg.innhold)
 
             verify(exactly = 1) {
                 mockRestTemplate.getForObject(
@@ -81,7 +81,7 @@ internal class EuxKlientTest {
                 mockRestTemplate.getForObject("/buc/$RINA_ID/sed/$DOK_ID/filer", SedDokumentfiler::class.java)
             } throws HttpClientErrorException(HttpStatus.NOT_FOUND)
 
-            Assertions.assertNull(klient.hentAlleDokumentfiler(RINA_ID, DOK_ID))
+            assertNull(klient.hentAlleDokumentfiler(RINA_ID, DOK_ID))
 
             verify(exactly = 1) {
                 mockRestTemplate.getForObject(
@@ -167,6 +167,31 @@ internal class EuxKlientTest {
                     String::class.java
                 )
             } throws HttpClientErrorException(HttpStatus.NOT_FOUND)
+
+            val result = klient.hentSedJson(RINA_ID, DOK_ID)
+
+            assertNull(result)
+
+            verify(exactly = 1) {
+                mockRestTemplate.exchange(
+                    "/buc/$RINA_ID/sed/$DOK_ID",
+                    HttpMethod.GET,
+                    null,
+                    String::class.java
+                )
+            }
+        }
+
+        @Test
+        fun `Henting av SED gir 412 PRECONDITION FAILED, skal returnere null`() {
+            every {
+                mockRestTemplate.exchange(
+                    "/buc/$RINA_ID/sed/$DOK_ID",
+                    HttpMethod.GET,
+                    null,
+                    String::class.java
+                )
+            } throws HttpClientErrorException(HttpStatus.PRECONDITION_FAILED)
 
             val result = klient.hentSedJson(RINA_ID, DOK_ID)
 

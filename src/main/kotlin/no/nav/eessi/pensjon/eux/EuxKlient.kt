@@ -105,12 +105,18 @@ class EuxKlient(private val euxOidcRestTemplate: RestTemplate) {
     }
 
     private fun <T> execute(block: () -> T): T? {
-        try {
-            return block.invoke()
+        return try {
+            block.invoke()
+        } catch (ex: HttpStatusCodeException) {
+            when (ex.statusCode) {
+                HttpStatus.NOT_FOUND,
+                HttpStatus.PRECONDITION_FAILED -> run {
+                    logger.warn("412 Precondition Failed: Feil fra Rina EUX API. Returnerer null.", ex)
+                    null
+                }
+                else -> throw ex
+            }
         } catch (ex: Exception) {
-            if (ex is HttpStatusCodeException && ex.statusCode == HttpStatus.NOT_FOUND)
-                return null
-
             logger.error("Ukjent feil oppsto: ", ex)
             throw ex
         }
