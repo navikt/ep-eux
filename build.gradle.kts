@@ -2,14 +2,12 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 
 plugins {
-    id("org.jetbrains.kotlin.jvm") version "1.3.72"
+    id("org.jetbrains.kotlin.jvm") version "1.4.30"
     `java-library`
     id("net.researchgate.release") version "2.8.1"
     `maven-publish`
-    id("org.sonarqube") version "2.8"
-    id("jacoco")
     id("com.adarshr.test-logger") version "2.0.0"
-    id("org.jetbrains.kotlin.plugin.spring") version "1.3.72"
+    id("org.jetbrains.kotlin.plugin.spring") version "1.4.30"
     id("com.github.ben-manes.versions") version "0.28.0"
     id("se.patrikerdes.use-latest-versions") version "0.2.13"
     id("org.owasp.dependencycheck") version "5.3.2.1"
@@ -36,7 +34,7 @@ val cxfVersion by extra("3.3.6")
 
 dependencies {
     implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
-    implementation(kotlin("stdlib", "1.3.72"))
+    implementation(kotlin("stdlib", "1.4.30"))
 
     implementation("io.micrometer:micrometer-registry-prometheus:1.4.2")
     implementation("no.nav.eessi.pensjon:ep-security-sts:0.0.8")
@@ -100,21 +98,6 @@ repositories {
             password = token as String
         }
     }
-}
-
-// https://docs.gradle.org/current/userguide/jacoco_plugin.html
-jacoco {
-    toolVersion = "0.8.5"
-}
-
-tasks.jacocoTestReport {
-    reports {
-        xml.isEnabled = true
-    }
-}
-
-tasks.named("sonarqube") {
-    dependsOn("jacocoTestReport")
 }
 
 /* https://github.com/ben-manes/gradle-versions-plugin */
