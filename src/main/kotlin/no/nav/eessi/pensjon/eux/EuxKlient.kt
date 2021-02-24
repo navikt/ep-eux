@@ -1,6 +1,8 @@
 package no.nav.eessi.pensjon.eux
 
 import no.nav.eessi.pensjon.eux.model.buc.Buc
+import no.nav.eessi.pensjon.eux.model.buc.BucType
+import no.nav.eessi.pensjon.eux.model.buc.Institusjon
 import no.nav.eessi.pensjon.eux.model.buc.Participant
 import no.nav.eessi.pensjon.eux.model.document.SedDokumentfiler
 import no.nav.eessi.pensjon.security.sts.typeRef
@@ -34,6 +36,21 @@ class EuxKlient(private val euxOidcRestTemplate: RestTemplate) {
                 SedDokumentfiler::class.java
             )
         }
+    }
+
+    internal fun sendDokument(rinaSakId: String, dokumentId: String): Boolean {
+        logger.info("Sender SED (rinaSakId: $rinaSakId, dokumentId: $dokumentId)")
+
+        val response = execute {
+            euxOidcRestTemplate.exchange(
+                "/buc/$rinaSakId/sed/$dokumentId/send",
+                HttpMethod.POST,
+                null,
+                String::class.java
+            )
+        }
+
+        return response?.statusCode == HttpStatus.OK
     }
 
     @Retryable(
@@ -103,6 +120,22 @@ class EuxKlient(private val euxOidcRestTemplate: RestTemplate) {
         return response?.body
             ?: throw RuntimeException("Feil ved henting av BucDeltakere: Ingen data på rinaSakId $rinaSakId")
     }
+
+    internal fun hentInstitusjoner(bucType: BucType, landkode: String = ""): List<Institusjon> {
+        logger.info("Henter intstitusjoner (BucType: $bucType, Landkode: $landkode")
+
+        val response = execute {
+            euxOidcRestTemplate.exchange(
+                "/institusjoner?BuCType=$bucType&LandKode=$landkode",
+                HttpMethod.GET,
+                null,
+                typeRef<List<Institusjon>>()
+            )
+        }
+
+        return response?.body ?: emptyList()
+    }
+
 
     private fun <T> execute(block: () -> T): T? {
         try {

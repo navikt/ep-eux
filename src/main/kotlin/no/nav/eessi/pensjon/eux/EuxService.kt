@@ -5,6 +5,8 @@ import com.fasterxml.jackson.databind.DeserializationFeature
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import io.micrometer.core.instrument.simple.SimpleMeterRegistry
 import no.nav.eessi.pensjon.eux.model.buc.Buc
+import no.nav.eessi.pensjon.eux.model.buc.BucType
+import no.nav.eessi.pensjon.eux.model.buc.Institusjon
 import no.nav.eessi.pensjon.eux.model.buc.Participant
 import no.nav.eessi.pensjon.eux.model.document.ForenkletSED
 import no.nav.eessi.pensjon.eux.model.document.SedDokumentfiler
@@ -21,18 +23,22 @@ class EuxService(
 ) {
 
     private lateinit var hentSed: MetricsHelper.Metric
+    private lateinit var sendSed: MetricsHelper.Metric
     private lateinit var hentBuc: MetricsHelper.Metric
     private lateinit var hentPdf: MetricsHelper.Metric
     private lateinit var settSensitiv: MetricsHelper.Metric
     private lateinit var hentBucDeltakere: MetricsHelper.Metric
+    private lateinit var hentInstitusjoner: MetricsHelper.Metric
 
     @PostConstruct
     fun initMetrics() {
         hentSed = metricsHelper.init("hentSed", alert = MetricsHelper.Toggle.OFF)
+        sendSed = metricsHelper.init("hentSed", alert = MetricsHelper.Toggle.OFF)
         hentBuc = metricsHelper.init("hentBuc", alert = MetricsHelper.Toggle.OFF)
         hentPdf = metricsHelper.init("hentpdf", alert = MetricsHelper.Toggle.OFF)
         settSensitiv = metricsHelper.init("settSensitiv", alert = MetricsHelper.Toggle.OFF)
         hentBucDeltakere = metricsHelper.init("hentBucDeltakere", alert = MetricsHelper.Toggle.OFF)
+        hentInstitusjoner = metricsHelper.init("hentInstitusjoner", alert = MetricsHelper.Toggle.OFF)
     }
 
     /**
@@ -77,6 +83,20 @@ class EuxService(
     fun hentAlleDokumentfiler(rinaSakId: String, dokumentId: String): SedDokumentfiler? {
         return hentPdf.measure {
             klient.hentAlleDokumentfiler(rinaSakId, dokumentId)
+        }
+    }
+
+    /**
+     * Sender en SED til registrerte mottakere.
+     *
+     * @param rinaSakId: Hvilken Rina-sak dokumentes tilhører.
+     * @param dokumentId: SED-dokumentet man vil sende.
+     *
+     * @return [Boolean] true hvis sending av SED gikk bra.
+     */
+    fun sendDokument(rinaSakId: String, dokumentId: String): Boolean {
+        return sendSed.measure {
+            klient.sendDokument(rinaSakId, dokumentId)
         }
     }
 
@@ -131,6 +151,20 @@ class EuxService(
     fun hentBucDeltakere(rinaSakId: String): List<Participant> {
         return hentBucDeltakere.measure {
             klient.hentBucDeltakere(rinaSakId)
+        }
+    }
+
+    /**
+     * Henter alle institusjoner på BUC
+     *
+     * @param bucType: BucTypen man vil hente tilhørende institusjoner fra.
+     * @param landkode: Hvilket land institusjonene tilhører.
+     *
+     * @return Liste over institusjoner [Institusjon]
+     */
+    fun hentInstitusjoner(bucType: BucType, landkode: String = ""): List<Institusjon> {
+        return hentInstitusjoner.measure {
+            klient.hentInstitusjoner(bucType, landkode)
         }
     }
 

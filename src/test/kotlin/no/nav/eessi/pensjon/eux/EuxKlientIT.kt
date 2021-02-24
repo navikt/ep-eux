@@ -2,6 +2,7 @@ package no.nav.eessi.pensjon.eux
 
 import io.mockk.every
 import io.mockk.mockk
+import no.nav.eessi.pensjon.eux.model.buc.BucType
 import no.nav.eessi.pensjon.eux.model.document.ForenkletSED
 import no.nav.eessi.pensjon.eux.model.document.SedStatus
 import no.nav.eessi.pensjon.security.sts.STSService
@@ -103,6 +104,21 @@ internal class EuxKlientIT {
         assertNotNull(buc)
     }
 
+    @Test
+    fun hentInstitusjoner() {
+        val result = klient.hentInstitusjoner(BucType.P_BUC_05)
+
+        println(result)
+    }
+
+
+    @Test
+    fun sendDokument() {
+        val result = klient.sendDokument("1213513", "2629c179253a4eb1ba005be00b7b6ecd")
+
+        println(result)
+    }
+
 
     private fun createToken(): String {
         val rt = RestTemplate()
@@ -126,7 +142,7 @@ internal class EuxKlientIT {
     }
 
     private fun getPassword(): String {
-        val pwd = System.getenv("PASSWORD")?.trim()
+        val pwd = System.getenv("SRV_PWD")?.trim()
 
         return pwd.takeUnless { it.isNullOrBlank() }
             ?: throw RuntimeException("Mangler passord! Legg til som miljøvariabel (eks. PASSWORD=passord123)")
