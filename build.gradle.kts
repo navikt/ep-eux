@@ -37,15 +37,15 @@ dependencies {
     implementation(kotlin("stdlib", "1.4.30"))
 
     implementation("io.micrometer:micrometer-registry-prometheus:1.4.2")
-    implementation("no.nav.eessi.pensjon:ep-security-sts:0.0.14")
-    implementation("no.nav.eessi.pensjon:ep-metrics:0.4.2")
+    implementation("no.nav.eessi.pensjon:ep-security-sts:0.0.16")
+    implementation("no.nav.eessi.pensjon:ep-metrics:0.4.6")
 
     // Spring
     implementation("org.springframework:spring-web:$springVersion")
     implementation("org.springframework.retry:spring-retry:1.3.0")
 
     implementation("javax.servlet:javax.servlet-api:4.0.1")
-    implementation("no.nav.eessi.pensjon:ep-logging:0.0.16")
+    implementation("no.nav.eessi.pensjon:ep-logging:1.0.9")
 
     //Jackson json
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.12.1")
