@@ -13,7 +13,7 @@ internal class ForenkletSEDTest {
         val json = javaClass.getResource("/buc/alldocumentsids.json").readText()
         val documents = jacksonObjectMapper().readValue(json, object : TypeReference<List<ForenkletSED>>() {})
 
-        assertEquals(3, documents.size)
+        assertEquals(5, documents.size)
 
         documents.forEach {
             assertNotNull(it.id)

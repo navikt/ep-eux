@@ -13,7 +13,7 @@ data class ForenkletSED(
 ) {
     fun harGyldigStatus(): Boolean = (status == SedStatus.SENT || status == SedStatus.RECEIVED)
 
-    fun erKansellert(): Boolean = status == SedStatus.CANCELLED
+    fun erKansellert(): Boolean = (status == SedStatus.CANCELLED || status == SedStatus.ACTIVE)
 
     override fun toString(): String = "ForenkletSED(id=$id, type=$type, status=$status)"
 }
@@ -24,7 +24,8 @@ enum class SedStatus(@JsonValue private val value: String) {
     SENT("sent"),
     EMPTY("empty"),
     RECEIVED("received"),
-    CANCELLED("cancelled");
+    CANCELLED("cancelled"),
+    ACTIVE("active");
 
     companion object {
         @JvmStatic
