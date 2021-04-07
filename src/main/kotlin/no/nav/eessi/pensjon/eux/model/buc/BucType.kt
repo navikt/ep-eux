@@ -35,7 +35,9 @@ enum class BucType {
     H_BUC_09, // Notification of Medical Information
 
     R_BUC_02, // Offsetting of overpayment with arrears
-    ;
+    M_BUC_02,
+    M_BUC_03a,
+    M_BUC_03b;
 
     companion object {
         @JvmStatic
