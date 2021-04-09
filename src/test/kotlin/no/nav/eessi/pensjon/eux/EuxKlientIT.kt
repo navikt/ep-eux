@@ -3,13 +3,9 @@ package no.nav.eessi.pensjon.eux
 import io.mockk.every
 import io.mockk.mockk
 import no.nav.eessi.pensjon.eux.model.buc.BucType
-import no.nav.eessi.pensjon.eux.model.document.ForenkletSED
-import no.nav.eessi.pensjon.eux.model.document.SedStatus
 import no.nav.eessi.pensjon.security.sts.STSService
 import org.apache.commons.codec.binary.Base64
-import org.junit.jupiter.api.Assertions.assertFalse
-import org.junit.jupiter.api.Assertions.assertNotNull
-import org.junit.jupiter.api.Assertions.assertTrue
+import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
@@ -96,11 +92,6 @@ internal class EuxKlientIT {
     @Test
     fun hentBucDokumenter() {
         val buc = klient.hentBuc("1213513")
-
-        val result = buc?.documents
-            ?.filter { it.id != null }
-            ?.map { ForenkletSED(it.id!!, it.type, SedStatus.fra(it.status)) }
-
         assertNotNull(buc)
     }
 

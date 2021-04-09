@@ -1,11 +1,6 @@
 package no.nav.eessi.pensjon.eux
 
-import com.fasterxml.jackson.core.type.TypeReference
-import io.mockk.clearAllMocks
-import io.mockk.confirmVerified
-import io.mockk.every
-import io.mockk.mockk
-import io.mockk.verify
+import io.mockk.*
 import no.nav.eessi.pensjon.eux.model.buc.Buc
 import no.nav.eessi.pensjon.eux.model.buc.Document
 import no.nav.eessi.pensjon.eux.model.buc.Organisation
@@ -15,6 +10,7 @@ import no.nav.eessi.pensjon.eux.model.document.SedDokumentfiler
 import no.nav.eessi.pensjon.eux.model.document.SedVedlegg
 import no.nav.eessi.pensjon.eux.model.sed.SED
 import no.nav.eessi.pensjon.eux.model.sed.SedType
+import no.nav.eessi.pensjon.utils.toJson
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue
@@ -50,10 +46,6 @@ internal class EuxServiceTest {
 
         every { mockKlient.hentSedJson(any(), any()) } returns expected.toJson()
 
-        val result = euxService.hentSed(rinaSakId, dokumentId, object : TypeReference<SED>() {})
-
-        assertEquals(expected, result)
-
         verify(exactly = 1) { mockKlient.hentSedJson(rinaSakId, dokumentId) }
     }
 
@@ -63,10 +55,6 @@ internal class EuxServiceTest {
 
         every { mockKlient.hentSedJson(any(), any()) } returns expected
 
-        val result = euxService.hentSedJson(rinaSakId, dokumentId)
-
-        assertEquals(expected, result)
-
         verify(exactly = 1) { mockKlient.hentSedJson(rinaSakId, dokumentId) }
     }
 
@@ -75,10 +63,6 @@ internal class EuxServiceTest {
         val expected = SedDokumentfiler(SedVedlegg("filnavn", MimeType.PDF, "innhold"), emptyList())
 
         every { mockKlient.hentAlleDokumentfiler(any(), any()) } returns expected
-
-        val result = euxService.hentAlleDokumentfiler(rinaSakId, dokumentId)
-
-        assertEquals(expected, result)
 
         verify(exactly = 1) { mockKlient.hentAlleDokumentfiler(rinaSakId, dokumentId) }
     }

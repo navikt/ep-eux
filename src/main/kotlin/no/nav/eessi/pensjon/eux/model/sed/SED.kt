@@ -1,28 +1,31 @@
 package no.nav.eessi.pensjon.eux.model.sed
 
+import com.fasterxml.jackson.annotation.JsonIgnore
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
-import com.fasterxml.jackson.annotation.JsonInclude.Include
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
+import no.nav.eessi.pensjon.utils.mapJsonToAny
+import no.nav.eessi.pensjon.utils.toJson
+import no.nav.eessi.pensjon.utils.typeRefs
 
-/**
- * SED: Structured Electronic Document
- */
+// SED class main request class to basis
+// Strukturerte Elektroniske Dokumenter
 @JsonIgnoreProperties(ignoreUnknown = true)
-data class SED(
+open class SED(
     @JsonProperty("sed")
-    val type: SedType,
-
-    val sedGVer: String? = "4",
-    val sedVer: String? = "1",
-    val nav: Nav? = null,
-    val pensjon: Pensjon? = null,
-    val trygdetid: PersonArbeidogOppholdUtland? = null, //P4000
-    val ignore: Ignore? = null,
-    val horisontal: Horisontal? = null,                 //H120
-    val tilbakekreving: Tilbakekreving? = null          //R005
+    open val type: SedType,
+    open val sedGVer: String? = "4",
+    open var sedVer: String? = "1",
+    open var nav: Nav? = null, // TODO Mutable
+    open var pensjon: Pensjon? = null, // TODO Mutable
 ) {
-    fun toJson(): String = jacksonObjectMapper()
-        .setSerializationInclusion(Include.NON_NULL)
-        .writeValueAsString(this)
+    companion object {
+        @JvmStatic
+        fun fromJson(sed: String): SED {
+            return mapJsonToAny(sed, typeRefs(), true)
+        }
+    }
+
+    @JsonIgnore
+    override fun toString() : String = this.toJson()
+
 }
