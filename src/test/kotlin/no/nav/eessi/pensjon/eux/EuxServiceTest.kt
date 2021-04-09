@@ -1,5 +1,6 @@
 package no.nav.eessi.pensjon.eux
 
+import com.fasterxml.jackson.core.type.TypeReference
 import io.mockk.*
 import no.nav.eessi.pensjon.eux.model.buc.Buc
 import no.nav.eessi.pensjon.eux.model.buc.Document
@@ -46,6 +47,8 @@ internal class EuxServiceTest {
 
         every { mockKlient.hentSedJson(any(), any()) } returns expected.toJson()
 
+        euxService.hentSed(rinaSakId, dokumentId, object : TypeReference<SED>() {})
+
         verify(exactly = 1) { mockKlient.hentSedJson(rinaSakId, dokumentId) }
     }
 
@@ -55,6 +58,8 @@ internal class EuxServiceTest {
 
         every { mockKlient.hentSedJson(any(), any()) } returns expected
 
+        euxService.hentSedJson(rinaSakId, dokumentId)
+
         verify(exactly = 1) { mockKlient.hentSedJson(rinaSakId, dokumentId) }
     }
 
@@ -63,6 +68,8 @@ internal class EuxServiceTest {
         val expected = SedDokumentfiler(SedVedlegg("filnavn", MimeType.PDF, "innhold"), emptyList())
 
         every { mockKlient.hentAlleDokumentfiler(any(), any()) } returns expected
+
+        euxService.hentAlleDokumentfiler(rinaSakId, dokumentId)
 
         verify(exactly = 1) { mockKlient.hentAlleDokumentfiler(rinaSakId, dokumentId) }
     }
