@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonCreator
  * @param beskrivelse: Beskrivelse av SedTypen. Kan eksempelvis brukes ved logging, e.l.
  */
 enum class SedType(val beskrivelse: String) {
+    DummyChooseParts(""), // I særtilfeller hvor SedType ikke er valgt (P_BUC_06)
     P1000("Anmodning om perioder med omsorg for barn"),
     P1100("Svar på anmodning om perioder med omsorg for barn"),
     P2000("Krav om alderspensjon"),
