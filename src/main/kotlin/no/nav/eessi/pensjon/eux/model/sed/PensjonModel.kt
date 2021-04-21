@@ -13,6 +13,7 @@ data class Pensjon(
 
 		//P2000
 	val angitidligstdato: String? = null,
+	val utsettelse: List<Utsettelse>? = null,
 
 		//P2XXX
 	val ytelser: List<YtelserItem>? = null,
@@ -21,6 +22,15 @@ data class Pensjon(
 
 		//P3000
 	val landspesifikk: Landspesifikk? = null
+)
+
+//P2000
+data class Utsettelse(
+	val institusjonsnavn: String? = null,
+	val institusjonsid: String? = null,
+	val land: String? = null,
+	val institusjon: Institusjon? = null,
+	val tildato: String? = null
 )
 
 //Institusjon
