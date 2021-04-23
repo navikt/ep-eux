@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty
 
 class R005(
     @JsonProperty("sed")
-    override var type: SedType = SedType.P2200,
+    override var type: SedType = SedType.R005,
     override val sedGVer: String? = "4",
     override var sedVer: String? = "1",
     override var nav: Nav? = null,
