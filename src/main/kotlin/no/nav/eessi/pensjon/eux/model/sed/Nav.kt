@@ -55,8 +55,19 @@ data class Bruker(
         val person: Person? = null,
         val adresse: Adresse? = null,
         val arbeidsforhold: List<ArbeidsforholdItem>? = null,
-        val bank: Bank? = null
+        val bank: Bank? = null,
+        val tilbakekreving: Tilbakekreving? = null // Kun brukt av R005
 )
+
+data class Tilbakekreving(
+        val feilutbetaling: Feilutbetaling? = null,
+        val status: Status? = null
+)
+
+data class Feilutbetaling(val ytelse: Ytelse?)
+
+data class Ytelse(val type: String?)
+data class Status(val type: String?)
 
 data class Bank(
         val navn: String? = null,
