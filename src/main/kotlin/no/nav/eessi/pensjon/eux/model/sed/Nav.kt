@@ -8,7 +8,7 @@ import com.fasterxml.jackson.annotation.JsonValue
 data class Nav(
         val eessisak: List<EessisakItem>? = null,
         @JsonFormat(with = [JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY])
-        val bruker: Bruker? = null,
+        val bruker: List<Bruker>? = null,
         val ektefelle: Ektefelle? = null,
         val barn: List<BarnItem>? = null, //pkt 6 og 8
         val verge: Verge? = null,
