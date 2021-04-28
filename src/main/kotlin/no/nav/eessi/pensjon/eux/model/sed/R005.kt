@@ -9,7 +9,7 @@ class R005(
     override var sedVer: String? = "1",
     override var nav: Nav? = null,
     @JsonProperty("pensjon")
-    val r005Pensjon: R005Pensjon,
+    val r005Pensjon: R005Pensjon?,
     val tilbakekreving: Tilbakekreving? = null
 
 ) : SED(type, sedGVer, sedVer, nav)
