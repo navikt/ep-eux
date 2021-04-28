@@ -7,9 +7,9 @@ class R005(
     override var type: SedType = SedType.R005,
     override val sedGVer: String? = "4",
     override var sedVer: String? = "1",
-    override var nav: Nav? = null,
+    override var nav: R005Nav? = null,
     @JsonProperty("pensjon")
     val r005Pensjon: R005Pensjon?,
     val tilbakekreving: Tilbakekreving? = null
 
-) : SED(type, sedGVer, sedVer, nav)
+) : R005SED(type, sedGVer, sedVer, nav)
