@@ -2,6 +2,7 @@ package no.nav.eessi.pensjon.eux.model.sed
 
 import com.fasterxml.jackson.annotation.JsonFormat
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
+import com.fasterxml.jackson.annotation.JsonValue
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 data class Nav(
@@ -139,6 +140,25 @@ data class PinLandItem(
 data class RelasjonAvdodItem(
         val relasjon: String? = null,  //5.2.5  P2100
 )
+
+// TODO bytt denne med RelasjonAvdodItem
+@Suppress("unused")
+enum class RelasjonTilAvdod(@JsonValue private val kode: String?) {
+        EKTEFELLE("01"),
+        PART_I_ET_REGISTRERT_PARTNERSKAP("02"),
+        SAMBOER("03"),
+        TIDLIGERE_EKTEFELLE("04"),
+        TIDLIGERE_PARTNER_I_ET_REGISTRERT_PARTNERSKAP("05"),
+        EGET_BARN("06"),
+        ADOPTIVBARN("07"),
+        FOSTERBARN("08"),
+        STEBARN("09"),
+        BARNEBARN("10"),
+        SØSKEN("11"),
+        ANNEN_SLEKTNING("12");
+
+        fun erGjenlevendeBarn(): Boolean = this in listOf(EGET_BARN, ADOPTIVBARN, FOSTERBARN, STEBARN)
+}
 
 data class SivilstandItem(
         val fradato: String? = null,
