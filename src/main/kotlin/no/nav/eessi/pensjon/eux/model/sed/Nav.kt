@@ -46,8 +46,15 @@ data class InstitusjonX005(
 data class Krav(
         var dato: String? = null,
         //P15000
-        val type: String? = null
+        val type: KravType? = null
 )
+
+@Suppress("unused") // val kode (jsonvalue) brukes av jackson
+enum class KravType(@JsonValue val kode: String?) {
+        ALDER("01"),
+        ETTERLATTE("02"),
+        UFORE("03")
+}
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 data class Bruker(
