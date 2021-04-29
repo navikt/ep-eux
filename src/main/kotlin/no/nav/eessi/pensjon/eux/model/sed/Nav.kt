@@ -61,7 +61,8 @@ data class Bruker(
         val mor: Foreldre? = null,
         val far: Foreldre? = null,
         val person: Person? = null,
-        val adresse: Adresse? = null,
+        @JsonFormat(with = [JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY]) // i R005 kan det være flere adresser pr person
+        val adresse: List<Adresse>? = null,
         val arbeidsforhold: List<ArbeidsforholdItem>? = null,
         val bank: Bank? = null,
         val tilbakekreving: Tilbakekreving? = null // Kun brukt av R005
