@@ -9,5 +9,5 @@ class P7000(
     override var sedVer: String? = "1",
     override var nav: Nav? = null,
     @JsonProperty("pensjon")
-    val p7000Pensjon: P7000Pensjon
+    val p7000Pensjon: P7000Pensjon?
 ) : SED(type, sedGVer, sedVer, nav)
