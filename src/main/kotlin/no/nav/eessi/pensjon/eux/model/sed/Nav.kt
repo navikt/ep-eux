@@ -205,6 +205,7 @@ data class PinItem(
         val institusjon: Institusjon? = null
 )
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 data class Adresse(
         val gate: String? = null,
         val bygning: String? = null,
