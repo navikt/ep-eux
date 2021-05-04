@@ -133,6 +133,7 @@ data class Person(
         val kjoenn: String? = null,
         val foedested: Foedested? = null,
         val foedselsdato: String? = null,
+        @JsonFormat(with = [JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY])
         val sivilstand: List<SivilstandItem>? = null,   //familiestatus
         val relasjontilavdod: RelasjonAvdodItem? = null, //5.2.5 P2100
         //noe enkel måte å få denne til å forbli val?
