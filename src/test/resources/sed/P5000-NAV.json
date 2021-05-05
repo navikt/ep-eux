@@ -1,0 +1,91 @@
+{
+  "pensjon": {
+    "medlemskapboarbeid" : {
+      "enkeltkrav": {
+        "krav": "10"
+      },
+      "gyldigperiode": "231",
+      "medlemskap": [
+        {
+          "sum": {
+            "dager": {
+              "nr": "0",
+              "type": "7"
+            },
+            "aar": "2",
+            "maaneder": "0"
+          },
+          "relevans": "111",
+          "ordning": "00",
+          "beregning": "111",
+          "type": "11",
+          "land": "NO",
+          "periode": {
+            "tom": "1997-12-31",
+            "fom": "1996-01-01"
+          }
+        },
+        {
+          "beregning": "111",
+          "sum": {
+            "aar": "2",
+            "maaneder": "0",
+            "dager": {
+              "type": "7",
+              "nr": "0"
+            }
+          },
+          "periode": {
+            "tom": "1999-12-31",
+            "fom": "1998-01-01"
+          },
+          "relevans": "111",
+          "type": "11",
+          "ordning": "00",
+          "land": "NO"
+        }
+      ]
+    },
+    "medlemskapTotal": [
+      {
+        "type": "10",
+        "sum": {
+          "aar": "4"
+        }
+      }
+    ]
+  },
+  "sedGVer": "4",
+  "nav": {
+    "bruker": {
+      "person": {
+        "pin": [
+          {
+            "sektor": "alle",
+            "land": "NO",
+            "identifikator": "20066521894 "
+          }
+        ],
+        "fornavn": "Smidig",
+        "kjoenn": "K",
+        "etternavn": "PENN",
+        "foedselsdato": "1965-06-20",
+        "statsborgerskap": [
+          {
+            "land": "NO"
+          }
+        ]
+      }
+    },
+    "eessisak": [
+      {
+        "institusjonsnavn": "NAV ACCEPTANCE TEST 07",
+        "saksnummer": "22935783",
+        "institusjonsid": "NO:NAVAT07",
+        "land": "NO"
+      }
+    ]
+  },
+  "sedVer": "2",
+  "sed": "P5000"
+}

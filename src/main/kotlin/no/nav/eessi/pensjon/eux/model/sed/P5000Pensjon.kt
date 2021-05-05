@@ -10,6 +10,14 @@ class P5000Pensjon(
     val medlemskapTotal: List<MedlemskapItem>? = null,
 
     // Benyttes for visning av "Se oversikt" siden for 5000 i frontend
+    @Deprecated("se medlemskapboarbeid", ReplaceWith("medlemskapboarbeid"))
+    val medlemskap: List<MedlemskapItem>? = null,
+    val medlemskapboarbeid: Medlemskapboarbeid? = null
+)
+
+data class Medlemskapboarbeid(
+    val enkeltkrav: KravtypeItem? = null,
+    val gyldigperiode: String? = null,
     val medlemskap: List<MedlemskapItem>? = null
 )
 
