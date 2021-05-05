@@ -46,7 +46,7 @@ data class InstitusjonX005(
 data class Krav(
         var dato: String? = null,
         //P15000
-        val type: KravType? = null
+        val type: String? = null
 )
 
 @Suppress("unused") // val kode (jsonvalue) brukes av jackson
