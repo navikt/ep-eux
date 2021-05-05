@@ -8,7 +8,7 @@ import com.fasterxml.jackson.annotation.JsonValue
 data class Nav(
         val eessisak: List<EessisakItem>? = null,
         val bruker: Bruker? = null,
-        val brukere: List<Bruker>? = null, //brukere benyttes kun av Rseder, se R005
+        val brukere: List<Brukere>? = null, //brukere benyttes kun av Rseder, se R005
         val ektefelle: Ektefelle? = null,
         val barn: List<BarnItem>? = null, //pkt 6 og 8
         val verge: Verge? = null,
@@ -58,6 +58,17 @@ enum class KravType(@JsonValue val kode: String?) {
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 data class Bruker(
+        val mor: Foreldre? = null,
+        val far: Foreldre? = null,
+        val person: Person? = null,
+        val adresse: Adresse? = null,
+        val arbeidsforhold: List<ArbeidsforholdItem>? = null,
+        val bank: Bank? = null,
+)
+
+//kun for R005
+@JsonIgnoreProperties(ignoreUnknown = true)
+data class Brukere(
         val mor: Foreldre? = null,
         val far: Foreldre? = null,
         val person: Person? = null,
