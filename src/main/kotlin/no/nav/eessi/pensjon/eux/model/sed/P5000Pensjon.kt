@@ -3,7 +3,7 @@ package no.nav.eessi.pensjon.eux.model.sed
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 
 
-class P5000Pensjon(
+data class P5000Pensjon(
     val trygdetid: List<MedlemskapItem>? = null,
     // Benyttes for visning av "Se annen" siden for P5000 i fontend
     val medlemskapAnnen: List<MedlemskapItem>? = null,
