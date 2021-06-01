@@ -21,9 +21,9 @@ data class P5000(
         val pensjon = this.p5000Pensjon
         val medlemskapboarbeid = pensjon?.medlemskapboarbeid
         val gyldigperiode = medlemskapboarbeid?.gyldigperiode
-        val erTom = medlemskapboarbeid?.medlemskap.let { it?.isEmpty() == true }
+        val erTom = medlemskapboarbeid?.medlemskap.let { it == null || it.isEmpty() }
         if (gyldigperiode == "0" && erTom) {
-            logger.debug("gyldigperiode = $gyldigperiode setter totalaar til 0")
+            logger.info("P5000 setter 5.2.1.3.1 til 0 ")
             val newPensjon = P5000Pensjon(
                 trygdetid = listOf(MedlemskapItem(
                     sum = TotalSum(aar = "0")
