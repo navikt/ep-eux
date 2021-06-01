@@ -163,7 +163,7 @@ data class RelasjonAvdodItem(
 
 // TODO bytt denne med RelasjonAvdodItem
 @Suppress("unused")
-enum class RelasjonTilAvdod(@JsonValue private val kode: String?) {
+enum class RelasjonTilAvdod(@JsonValue val kode: String?) {
         EKTEFELLE("01"),
         PART_I_ET_REGISTRERT_PARTNERSKAP("02"),
         SAMBOER("03"),
