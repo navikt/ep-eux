@@ -8,7 +8,9 @@ class P4000(
     override val sedGVer: String? = "4",
     override var sedVer: String? = "1",
     override var nav: Nav? = null,
-    var trygdetid: PersonArbeidogOppholdUtland? = null
+    var trygdetid: PersonArbeidogOppholdUtland? = null,
+    @JsonProperty("pensjon")
+    val p4000Pensjon: P4000Pensjon? = null
 ) : SED(type, sedGVer, sedVer, nav)
 
 

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 
 
 data class P5000Pensjon(
+    val gjenlevende: Bruker? = null,
     val trygdetid: List<MedlemskapItem>? = null,
     // Benyttes for visning av "Se annen" siden for P5000 i fontend
     val medlemskapAnnen: List<MedlemskapItem>? = null,
