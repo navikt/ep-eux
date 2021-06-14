@@ -4,13 +4,13 @@ import com.fasterxml.jackson.annotation.JsonProperty
 
 class P4000(
     @JsonProperty("sed")
-    override var type: SedType = SedType.P4000,
-    override val sedGVer: String? = "4",
-    override var sedVer: String? = "1",
-    override var nav: Nav? = null,
-    var trygdetid: PersonArbeidogOppholdUtland? = null
-) : SED(type, sedGVer, sedVer, nav)
-
+    override val type: SedType = SedType.P4000,
+    override val sedGVer: String,
+    override val sedVer: String,
+    override val nav: Nav? = null,
+    override val pensjon: Pensjon?,
+    val trygdetid: PersonArbeidogOppholdUtland? = null
+) : SED
 
 data class PersonArbeidogOppholdUtland(
     val andrePerioder: List<StandardItem>? = null,

@@ -2,12 +2,13 @@ package no.nav.eessi.pensjon.eux.model.sed
 
 import com.fasterxml.jackson.annotation.JsonProperty
 
-class R005(
+// SED class main request class to basis
+// Strukturerte Elektroniske Dokumenter
+open class GenericSED(
     @JsonProperty("sed")
-    override var type: SedType = SedType.R005,
+    override val type: SedType,
     override val sedGVer: String,
     override val sedVer: String,
     override val nav: Nav? = null,
-    override val pensjon: R005Pensjon? = null,
-    val tilbakekreving: Tilbakekreving? = null
-) : SED
+    override val pensjon: Pensjon? = null
+    ): SED

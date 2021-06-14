@@ -8,18 +8,17 @@ private val logger = LoggerFactory.getLogger(P5000::class.java)
 
 data class P5000(
     @JsonProperty("sed")
-    override var type: SedType = SedType.P5000,
-    override val sedGVer: String? = "4",
-    override var sedVer: String? = "1",
-    override var nav: Nav? = null,
-    @JsonProperty("pensjon")
-    val p5000Pensjon: P5000Pensjon? = null
-) : SED(type, sedGVer, sedVer, nav) {
+    override val type: SedType = SedType.P5000,
+    override val sedGVer: String,
+    override val sedVer: String,
+    override val nav: Nav? = null,
+    override val pensjon: P5000Pensjon? = null
+) : SED {
 
     //punkt 5.2.1.3.1 i settes til "0" når gyldigperiode == "0"
     fun updateFromUI(): P5000 {
-        val pensjon = this.p5000Pensjon
-        val medlemskapboarbeid = pensjon?.medlemskapboarbeid
+        val p5000 = this
+        val medlemskapboarbeid = p5000.pensjon?.medlemskapboarbeid
         val gyldigperiode = medlemskapboarbeid?.gyldigperiode
         val erTom = medlemskapboarbeid?.medlemskap.let { it == null || it.isEmpty() }
         if (gyldigperiode == "0" && erTom) {
@@ -30,9 +29,9 @@ data class P5000(
                 )),
                 medlemskapboarbeid = medlemskapboarbeid,
             )
-            return this.copy(p5000Pensjon = newPensjon)
+            return p5000.copy(pensjon = newPensjon)
         }
-        return this
+        return p5000
     }
 
 }

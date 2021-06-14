@@ -13,7 +13,7 @@ internal class P5000test {
         val file = javaClass.getResource("/sed/P5000-NAV.json").readText()
         try {
             val p5000 = mapJsonToAny(file, typeRefs<P5000>(), true)
-            val pensjon = p5000.p5000Pensjon
+            val pensjon = p5000.pensjon
             assertEquals(pensjon?.medlemskapboarbeid?.medlemskap?.size, 2)
 
         } catch (e: Exception) {
@@ -28,8 +28,8 @@ internal class P5000test {
             val p5000 = mapJsonToAny(file, typeRefs<P5000>(), true)
             val newP5000 = p5000.updateFromUI()
 
-            assertEquals(newP5000.p5000Pensjon?.trygdetid?.first()?.sum?.aar, "0")
-            assertEquals(newP5000.p5000Pensjon?.medlemskapboarbeid?.medlemskap?.size, 0)
+            assertEquals(newP5000.pensjon?.trygdetid?.first()?.sum?.aar, "0")
+            assertEquals(newP5000.pensjon?.medlemskapboarbeid?.medlemskap?.size, 0)
 
         } catch (e: Exception) {
             fail("skal ikke komme hit")
@@ -45,8 +45,8 @@ internal class P5000test {
             print(p5000 is P5000)
             val newP5000 = p5000.updateFromUI()
 
-            assertEquals(newP5000.p5000Pensjon?.trygdetid?.first()?.sum?.aar, "0")
-            assertEquals(newP5000.p5000Pensjon?.medlemskapboarbeid?.medlemskap, null)
+            assertEquals(newP5000.pensjon?.trygdetid?.first()?.sum?.aar, "0")
+            assertEquals(newP5000.pensjon?.medlemskapboarbeid?.medlemskap, null)
 
         } catch (e: Exception) {
             fail("skal ikke komme hit")

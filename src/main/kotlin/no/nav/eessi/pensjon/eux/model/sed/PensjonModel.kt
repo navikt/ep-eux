@@ -7,6 +7,10 @@ class MeldingOmPensjon(
 		val pensjon: Pensjon
 )
 
+interface IPensjon {
+
+}
+
 @JsonIgnoreProperties(ignoreUnknown = true)
 data class Pensjon(
 	val gjenlevende: Bruker? = null, // Brukes fleres steder
@@ -22,7 +26,7 @@ data class Pensjon(
 
 		//P3000
 	val landspesifikk: Landspesifikk? = null
-)
+): IPensjon
 
 //P2000
 data class Utsettelse(

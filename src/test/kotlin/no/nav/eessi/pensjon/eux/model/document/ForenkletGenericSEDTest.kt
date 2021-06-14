@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.Test
 
-internal class ForenkletSEDTest {
+internal class ForenkletGenericSEDTest {
 
     @Test
     fun `Deserialisering av dokumenter`() {

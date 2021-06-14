@@ -8,4 +8,4 @@ class P6000Pensjon(
     val tilleggsinformasjon: Tilleggsinformasjon? = null,
     val ytterligeinformasjon: String? = null,
     val kravDato: Krav? = null
-)
+): IPensjon

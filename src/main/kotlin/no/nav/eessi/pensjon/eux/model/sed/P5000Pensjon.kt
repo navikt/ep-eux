@@ -13,7 +13,7 @@ data class P5000Pensjon(
     @Deprecated("se medlemskapboarbeid", ReplaceWith("medlemskapboarbeid"))
     val medlemskap: List<MedlemskapItem>? = null,
     val medlemskapboarbeid: Medlemskapboarbeid? = null
-)
+): IPensjon
 
 data class Medlemskapboarbeid(
     val enkeltkrav: KravtypeItem? = null,
