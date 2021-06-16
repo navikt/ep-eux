@@ -11,10 +11,7 @@ class P2000(
     override var pensjon: Pensjon?
 ) : SED(type, sedGVer, sedVer, nav, pensjon) {
 
-    fun validerForKravinit() {
-        if(nav?.bruker?.person?.sivilstand != null && nav?.bruker?.person?.statsborgerskap != null) return true
-        else false
-    }
+    fun validerForKravinit() = (nav?.bruker?.person?.sivilstand != null && nav?.bruker?.person?.statsborgerskap != null)
 }
 
 
