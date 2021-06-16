@@ -9,9 +9,5 @@ class P2000(
     override var sedVer: String? = "1",
     override var nav: Nav? = null,
     override var pensjon: Pensjon?
-) : SED(type, sedGVer, sedVer, nav, pensjon) {
-
-    fun validerForKravinit() = (nav?.bruker?.person?.sivilstand != null && nav?.bruker?.person?.statsborgerskap != null)
-}
-
+) : SED(type, sedGVer, sedVer, nav, pensjon)
 
