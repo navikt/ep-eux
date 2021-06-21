@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 
 data class P5000Pensjon(
     val gjenlevende: Bruker? = null,
+    val separatP5000sendes: String? = "0",  //Kap 7 denne verdien settes default til nei  = "0"
     val trygdetid: List<MedlemskapItem>? = null,
     // Benyttes for visning av "Se annen" siden for P5000 i fontend
     val medlemskapAnnen: List<MedlemskapItem>? = null,
