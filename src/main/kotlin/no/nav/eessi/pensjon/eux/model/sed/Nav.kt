@@ -14,13 +14,13 @@ data class Nav(
         val verge: Verge? = null,
         val krav: Krav? = null,
 
-        //X005
+        //X005 - X010
         val sak: Navsak? = null,
         //P10000 hvordan få denne til å bli val?
         var annenperson: Bruker? = null,
 )
 
-//X005
+//X005, X010
 data class Navsak (
         val kontekst: Kontekst? = null,
         val leggtilinstitusjon: Leggtilinstitusjon? = null
