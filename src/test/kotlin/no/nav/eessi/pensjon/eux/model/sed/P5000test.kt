@@ -21,36 +21,4 @@ internal class P5000test {
         }
     }
 
-    @Test
-    fun `validating that a P5000 no periods is copy correctt`() {
-        val file = javaClass.getResource("/sed/P5000-tomperioder-NAV.json").readText()
-        try {
-            val p5000 = mapJsonToAny(file, typeRefs<P5000>(), true)
-            val newP5000 = p5000.updateFromUI()
-
-            assertEquals(newP5000.p5000Pensjon?.trygdetid?.first()?.sum?.aar, "0")
-            assertEquals(newP5000.p5000Pensjon?.medlemskapboarbeid?.medlemskap?.size, 0)
-
-        } catch (e: Exception) {
-            fail("skal ikke komme hit")
-        }
-    }
-
-    @Test
-    fun `validating that a P5000 no periods is copy correctt2`() {
-        val file = javaClass.getResource("/sed/P5000-tomperioder2-NAV.json").readText()
-        try {
-            val p5000 = mapJsonToAny(file, typeRefs<P5000>(), true)
-
-            print(p5000 is P5000)
-            val newP5000 = p5000.updateFromUI()
-
-            assertEquals(newP5000.p5000Pensjon?.trygdetid?.first()?.sum?.aar, "0")
-            assertEquals(newP5000.p5000Pensjon?.medlemskapboarbeid?.medlemskap, null)
-
-        } catch (e: Exception) {
-            fail("skal ikke komme hit")
-        }
-    }
-
 }
