@@ -10,7 +10,7 @@ data class SedDokumentfiler(
 data class SedVedlegg(
     val filnavn: String?,
     val mimeType: MimeType?,
-    val innhold: String
+    val innhold: String?
 )
 
 enum class MimeType(val type: String) {
