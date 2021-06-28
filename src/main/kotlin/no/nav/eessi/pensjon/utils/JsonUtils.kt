@@ -1,5 +1,6 @@
 package no.nav.eessi.pensjon.utils
 
+import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.core.JsonParseException
 import com.fasterxml.jackson.core.type.TypeReference
 import com.fasterxml.jackson.databind.DeserializationFeature
@@ -10,7 +11,6 @@ import org.springframework.web.bind.annotation.ResponseStatus
 
 
 inline fun <reified T : Any> typeRefs(): TypeReference<T> = object : TypeReference<T>() {}
-
 
 inline fun <reified T : Any> mapJsonToAny(json: String, typeRef: TypeReference<T>, failonunknown: Boolean = false): T {
     return try {
@@ -29,12 +29,18 @@ inline fun <reified T : Any> mapJsonToAny(json: String, typeRef: TypeReference<T
         }
 }
 
-fun mapAnyToJson(data: Any): String {
-    return jacksonObjectMapper()
+fun mapAnyToJson(data: Any, nonempty: Boolean = false): String {
+    return if (nonempty) {
+        jacksonObjectMapper()
+            .setDefaultPropertyInclusion(JsonInclude.Include.NON_EMPTY)
             .writerWithDefaultPrettyPrinter()
             .writeValueAsString(data)
+    } else {
+        mapAnyToJson(data)
+    }
 }
 
+fun Any.toJsonSkipEmpty() = mapAnyToJson(this, true)
 fun Any.toJson() = mapAnyToJson(this)
 
 

@@ -3,6 +3,7 @@ package no.nav.eessi.pensjon.eux.model.sed
 import com.fasterxml.jackson.annotation.JsonIgnore
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonProperty
+import no.nav.eessi.pensjon.utils.mapAnyToJson
 import no.nav.eessi.pensjon.utils.mapJsonToAny
 import no.nav.eessi.pensjon.utils.toJson
 import no.nav.eessi.pensjon.utils.typeRefs
@@ -24,25 +25,32 @@ open class SED(
             return mapJsonToAny(sed, typeRefs(), true)
         }
 
-        fun fromJsonToConcrete(json: String): SED {
-            val sed =  mapJsonToAny(json, typeRefs<SED>())
+        fun listSupportetConcreteClass(): List<SedType> = listOf(
+            SedType.P2000, SedType.P2200, SedType.P4000, SedType.P5000, SedType.P6000,
+            SedType.P7000,  SedType.P8000, SedType.P10000, SedType.P15000, SedType.X005, SedType.R005
+        )
 
-            return when(sed.type) {
-                SedType.P2000 -> mapJsonToAny(json, typeRefs<P2000>())
-                SedType.P2200 -> mapJsonToAny(json, typeRefs<P2200>())
-                SedType.P4000 -> mapJsonToAny(json, typeRefs<P4000>())
-                SedType.P5000 -> mapJsonToAny(json, typeRefs<P5000>())
-                SedType.P6000 -> mapJsonToAny(json, typeRefs<P6000>())
-                SedType.P7000 -> mapJsonToAny(json, typeRefs<P7000>())
-                SedType.P8000 -> mapJsonToAny(json, typeRefs<P8000>())
-                SedType.P10000 -> mapJsonToAny(json, typeRefs<P10000>())
-                SedType.P15000 -> mapJsonToAny(json, typeRefs<P15000>())
-                SedType.X005 -> mapJsonToAny(json, typeRefs<X005>())
-                SedType.R005 -> mapJsonToAny(json, typeRefs<R005>())
+        inline fun <reified T : SED> generateSedToClass(sed: SED): T = mapJsonToAny(mapAnyToJson(sed), typeRefs<T>())
+        inline fun <reified T : SED> generateJsonToClass(json: String): T = mapJsonToAny(json, typeRefs<T>())
+
+        fun fromJsonToConcrete(json: String?): SED {
+            val sed =  json?.let { fromJson(json) }
+
+            return when(sed!!.type) {
+                SedType.P2000 -> generateJsonToClass<P2000>(json)
+                SedType.P2200 -> generateJsonToClass<P2200>(json)
+                SedType.P4000 -> generateJsonToClass<P4000>(json)
+                SedType.P5000 -> generateJsonToClass<P5000>(json)
+                SedType.P6000 -> generateJsonToClass<P6000>(json)
+                SedType.P7000 -> generateJsonToClass<P7000>(json)
+                SedType.P8000 -> generateJsonToClass<P8000>(json)
+                SedType.P10000 -> generateJsonToClass<P10000>(json)
+                SedType.P15000 -> generateJsonToClass<P15000>(json)
+                SedType.X005 -> generateJsonToClass<X005>(json)
+                SedType.R005 -> generateJsonToClass<R005>(json)
                 else -> sed
             }
         }
-
     }
 
     @JsonIgnore

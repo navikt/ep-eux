@@ -55,6 +55,7 @@ dependencies {
     implementation("org.apache.cxf:cxf-rt-ws-security:${cxfVersion}")
 
     // Test
+    testImplementation("org.skyscreamer:jsonassert:1.5.0")
     testImplementation("org.springframework:spring-test:$springVersion")
     testImplementation("org.junit.jupiter:junit-jupiter:5.6.2")
     testImplementation("io.mockk:mockk:1.10.0")

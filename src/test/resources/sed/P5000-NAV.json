@@ -1,5 +1,6 @@
 {
   "pensjon": {
+    "separatP5000sendes": "0",
     "medlemskapboarbeid" : {
       "enkeltkrav": {
         "krav": "10"
