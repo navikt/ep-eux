@@ -36,13 +36,14 @@ fun mapAnyToJson(data: Any, nonempty: Boolean = false): String {
             .writerWithDefaultPrettyPrinter()
             .writeValueAsString(data)
     } else {
-        mapAnyToJson(data)
+        return jacksonObjectMapper()
+            .writerWithDefaultPrettyPrinter()
+            .writeValueAsString(data)
     }
 }
 
 fun Any.toJsonSkipEmpty() = mapAnyToJson(this, true)
 fun Any.toJson() = mapAnyToJson(this)
-
 
 @ResponseStatus(value = HttpStatus.UNPROCESSABLE_ENTITY)
 class JsonException(message: String?, cause: Throwable?) : RuntimeException(message, cause)

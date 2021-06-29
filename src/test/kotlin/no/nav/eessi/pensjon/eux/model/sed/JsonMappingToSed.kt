@@ -35,9 +35,7 @@ internal class JsonMappingToSed {
 
         assertPensjon(sed)
 
-
-        val fromsedtojson = sed.toJsonSkipEmpty()
-        JSONAssert.assertEquals(fromsedtojson, json, false)
+        JSONAssert.assertEquals( sed.toJsonSkipEmpty(), json, false)
 
     }
 
