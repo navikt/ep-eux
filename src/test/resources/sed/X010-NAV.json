@@ -1,0 +1,52 @@
+{
+  "sed" : "X010",
+  "sedGVer" : "4",
+  "sedVer" : "1",
+  "nav" : {
+    "eessisak" : null,
+    "bruker" : null,
+    "brukere" : null,
+    "ektefelle" : null,
+    "barn" : null,
+    "verge" : null,
+    "krav" : null,
+    "sak" : {
+      "kontekst" : {
+        "bruker" : {
+          "mor" : null,
+          "far" : null,
+          "person" : {
+            "pin" : null,
+            "pinland" : null,
+            "statsborgerskap" : null,
+            "etternavn" : "BJELLEKLANGEN",
+            "fornavn" : "OLA",
+            "kjoenn" : "M",
+            "foedested" : null,
+            "foedselsdato" : "2001-02-04",
+            "sivilstand" : null,
+            "relasjontilavdod" : null,
+            "rolle" : null
+          },
+          "adresse" : null,
+          "arbeidsforhold" : null,
+          "bank" : null
+        }
+      },
+      "leggtilinstitusjon" : null,
+      "paaminnelse" : {
+        "svar" : {
+          "informasjon" : {
+            "kommersenere" : [ {
+              "type" : "P5000",
+              "opplysninger" : "Opplysningenenenenen",
+              "forventetdato" : "2020-20-10"
+            } ]
+          }
+        }
+      }
+    },
+    "annenperson" : null
+  },
+  "pensjon" : null
+}

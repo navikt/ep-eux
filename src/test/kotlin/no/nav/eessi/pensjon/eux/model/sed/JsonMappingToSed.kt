@@ -54,12 +54,34 @@ internal class JsonMappingToSed {
                 assertNotNull(r005.nav?.brukere)
                 assertEquals("TRANE", r005.nav?.brukere?.first()?.person?.etternavn)
             }
+            is X005 -> {
+                val x005 = sed
+                assertEquals(X005::class.java.name, x005.javaClass.name)
+                assertNotNull(x005.nav?.sak)
+                assertEquals("Duck", x005.nav?.sak?.kontekst?.bruker?.person?.etternavn)
+                assertEquals("Dummy", x005.nav?.sak?.kontekst?.bruker?.person?.fornavn)
+            }
+            is X010 -> {
+                val x010 = sed
+                assertEquals(X010::class.java.name, x010.javaClass.name)
+                assertNotNull(x010.nav?.sak)
+                assertEquals("BJELLEKLANGEN", x010.nav?.sak?.kontekst?.bruker?.person?.etternavn)
+                assertEquals("Opplysningenenenenen", x010.nav?.sak?.paaminnelse?.svar?.informasjon?.kommersenere?.first()?.opplysninger)
+            }
             is P6000 -> {
                 val p6000 = sed
                 assertEquals(P6000::class.java.name, p6000.javaClass.name)
                 assertNotNull(p6000.p6000Pensjon)
                 assertEquals("asdffsdaf", p6000.p6000Pensjon?.gjenlevende?.person?.etternavn)
                 assertEquals("sdafsdf", p6000.p6000Pensjon?.gjenlevende?.person?.fornavn)
+            }
+            is P8000 -> {
+                val p8000 = sed
+                assertEquals(P8000::class.java.name, p8000.javaClass.name)
+                assertNotNull(p8000.p8000Pensjon)
+                assertNotNull(p8000.nav?.annenperson)
+                assertEquals("02", p8000.p8000Pensjon?.anmodning?.referanseTilPerson)
+                assertEquals("Gjenlev", p8000.nav?.annenperson?.person?.etternavn)
             }
             is P15000 -> {
                 val p15000 = sed
