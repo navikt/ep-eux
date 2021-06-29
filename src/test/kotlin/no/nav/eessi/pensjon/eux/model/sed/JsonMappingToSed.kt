@@ -52,7 +52,7 @@ internal class JsonMappingToSed {
                 val r005 = sed
                 assertEquals(R005::class.java.name, r005.javaClass.name)
                 assertNotNull(r005.nav?.brukere)
-                assertNotNull("TRANE", r005.nav?.brukere?.first()?.person?.etternavn)
+                assertEquals("TRANE", r005.nav?.brukere?.first()?.person?.etternavn)
             }
             is P6000 -> {
                 val p6000 = sed
@@ -68,7 +68,7 @@ internal class JsonMappingToSed {
                 assertEquals("322", p15000.p15000Pensjon?.gjenlevende?.person?.fornavn)
                 assertEquals("321", p15000.p15000Pensjon?.gjenlevende?.person?.etternavn)
             }
-            else -> print("Ikke noe detaljert assert på ${sed.type}") //
+            else -> println("Ikke noe detaljert assert på ${sed.type}") //
         }
     }
 
