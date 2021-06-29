@@ -3,7 +3,6 @@ package no.nav.eessi.pensjon.eux.model.sed
 import com.fasterxml.jackson.annotation.JsonIgnore
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonProperty
-import no.nav.eessi.pensjon.utils.mapAnyToJson
 import no.nav.eessi.pensjon.utils.mapJsonToAny
 import no.nav.eessi.pensjon.utils.toJson
 import no.nav.eessi.pensjon.utils.typeRefs
@@ -30,12 +29,11 @@ open class SED(
             SedType.P8000, SedType.P10000, SedType.P15000, SedType.X005, SedType.X010, SedType.R005
         )
 
-        inline fun <reified T : SED> generateSedToClass(sed: SED): T = mapJsonToAny(mapAnyToJson(sed), typeRefs<T>())
+        inline fun <reified T : SED> generateSedToClass(sed: SED): T = mapJsonToAny(sed.toJson(), typeRefs<T>())
         inline fun <reified T : SED> generateJsonToClass(json: String): T = mapJsonToAny(json, typeRefs<T>())
 
         fun fromJsonToConcrete(json: String?): SED {
             val sed =  json?.let { fromJson(json) }
-
             return when(sed!!.type) {
                 SedType.P2000 -> generateJsonToClass<P2000>(json)
                 SedType.P2200 -> generateJsonToClass<P2200>(json)
