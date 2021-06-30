@@ -111,6 +111,7 @@ data class Feilutbetaling(val ytelse: Ytelse?)
 data class Ytelse(val type: String?)
 data class Status(val type: String?)
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 data class Bank(
         val navn: String? = null,
         val konto: Konto? = null,
@@ -120,7 +121,8 @@ data class Bank(
 @JsonIgnoreProperties(ignoreUnknown = true)
 data class Konto(
         val sepa: Sepa? = null,
-        val innehaver: Innehaver? = null,
+        val kontonr: String? = null,
+        val innehaver: Innehaver? = null
 )
 
 data class Sepa(
