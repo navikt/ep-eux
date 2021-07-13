@@ -1,6 +1,8 @@
 package no.nav.eessi.pensjon.eux.model.buc
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
+import no.nav.eessi.pensjon.utils.mapJsonToAny
+import no.nav.eessi.pensjon.utils.typeRefs
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 class Buc(
@@ -16,4 +18,12 @@ class Buc(
     val applicationRoleId: String? = null,
     val businessId: String? = null,
     val internationalId: String? = null
-)
+) {
+
+    companion object {
+        fun from(json: String): Buc = mapJsonToAny(json, typeRefs())
+    }
+
+    fun toJson(): String = this.toJson()
+
+}

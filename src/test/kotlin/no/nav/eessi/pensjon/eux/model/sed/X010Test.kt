@@ -3,6 +3,7 @@ package no.nav.eessi.pensjon.eux.model.sed
 import no.nav.eessi.pensjon.utils.toJson
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
+import org.skyscreamer.jsonassert.JSONAssert
 
 class X010Test {
 
@@ -10,7 +11,7 @@ class X010Test {
     fun `test for utfylling av X010`() {
 
         val x010 = X010(
-            nav = Nav(
+            xnav = XNav(
                 sak = Navsak(
                     kontekst = Kontekst(
                         bruker = Bruker(
@@ -40,8 +41,10 @@ class X010Test {
         )
 
         val json = x010.toJson()
+        println(json)
 
         assertEquals(expectedJson(), json)
+        JSONAssert.assertEquals( json, expectedJson(), false)
 
 
     }
@@ -51,16 +54,7 @@ class X010Test {
         return """
 {
   "sed" : "X010",
-  "sedGVer" : "4",
-  "sedVer" : "1",
   "nav" : {
-    "eessisak" : null,
-    "bruker" : null,
-    "brukere" : null,
-    "ektefelle" : null,
-    "barn" : null,
-    "verge" : null,
-    "krav" : null,
     "sak" : {
       "kontekst" : {
         "bruker" : {
@@ -96,9 +90,10 @@ class X010Test {
           }
         }
       }
-    },
-    "annenperson" : null
+    }
   },
+  "sedGVer" : "4",
+  "sedVer" : "2",
   "pensjon" : null
 }
         """.trimIndent()

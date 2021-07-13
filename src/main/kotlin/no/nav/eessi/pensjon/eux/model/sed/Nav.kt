@@ -8,61 +8,13 @@ import com.fasterxml.jackson.annotation.JsonValue
 data class Nav(
         val eessisak: List<EessisakItem>? = null,
         val bruker: Bruker? = null,
-        val brukere: List<Brukere>? = null, //brukere benyttes kun av Rseder, se R005
         val ektefelle: Ektefelle? = null,
         val barn: List<BarnItem>? = null, //pkt 6 og 8
         val verge: Verge? = null,
         val krav: Krav? = null,
 
-        //X005 - X010
-        val sak: Navsak? = null,
         //P10000 hvordan få denne til å bli val?
-        var annenperson: Bruker? = null,
-)
-
-//X005, X010
-data class Navsak (
-        val kontekst: Kontekst? = null,
-        val leggtilinstitusjon: Leggtilinstitusjon? = null,
-        val paaminnelse: Paaminnelse? = null
-)
-
-//X010
-data class Paaminnelse(
-        val svar: Svar? = null
-)
-
-data class Svar(
-        val informasjon: Informasjon? = null
-)
-
-//X010
-data class Informasjon(
-        val kommersenere: List<KommersenereItem>? = null
-)
-
-//X010
-data class KommersenereItem(
-        val type: String? = null,
-        val opplysninger: String? = null,
-        val forventetdato: String? = null
-)
-
-//X005
-data class Kontekst(
-        val bruker: Bruker? = null
-)
-
-//X005
-@JsonIgnoreProperties(ignoreUnknown = true)
-data class Leggtilinstitusjon(
-        val institusjon: InstitusjonX005? = null,
-)
-
-//X005
-data class InstitusjonX005(
-        val id: String,
-        val navn: String
+        val annenperson: Bruker? = null,
 )
 
 data class Krav(
@@ -86,24 +38,6 @@ data class Bruker(
         val adresse: Adresse? = null,
         val arbeidsforhold: List<ArbeidsforholdItem>? = null,
         val bank: Bank? = null,
-)
-
-//kun for R005
-@JsonIgnoreProperties(ignoreUnknown = true)
-data class Brukere(
-        val mor: Foreldre? = null,
-        val far: Foreldre? = null,
-        val person: Person? = null,
-        @JsonFormat(with = [JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY]) // i R005 kan det være flere adresser pr person
-        val adresse: List<Adresse>? = null,
-        val arbeidsforhold: List<ArbeidsforholdItem>? = null,
-        val bank: Bank? = null,
-        val tilbakekreving: Tilbakekreving? = null // Kun brukt av R005
-)
-
-data class Tilbakekreving(
-        val feilutbetaling: Feilutbetaling? = null,
-        val status: Status? = null
 )
 
 data class Feilutbetaling(val ytelse: Ytelse?)
