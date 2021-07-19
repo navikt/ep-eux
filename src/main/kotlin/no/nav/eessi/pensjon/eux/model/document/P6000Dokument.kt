@@ -7,5 +7,6 @@ data class P6000Dokument(
     val bucid: String,
     val documentID: String,
     val fraLand: String?,
-    val sisteVersjon: String?
+    val sisteVersjon: String?,
+    val pdfUrl: String?
 )
