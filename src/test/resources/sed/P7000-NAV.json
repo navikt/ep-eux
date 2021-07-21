@@ -59,67 +59,75 @@
       }
     },
     "samletVedtak" : {
-      "tildeltepensjoner" : {
+      "tildeltepensjoner" : [ {
+        "addressatForRevurdering" : "4.1.8.2 revjrflkasdfjasdf asdfasd fadfg",
+        "dato" : "2021-07-20",
+        "pensjonType" : "01",
+        "ytelser" : [ {
+          "beloep" : [ {
+            "valuta" : "NOK",
+            "betalingshyppighetytelse" : "03",
+            "beloepBrutto" : "123123123123"
+          } ],
+          "annenbetalingshyppighetytelse" : "4.1.6.6.1 annen",
+          "startdatoutbetaling" : "2021-07-20",
+          "sluttdatoretttilytelse" : "2021-07-20"
+        } ],
+        "startdatoPensjonsRettighet" : "2020-05-01",
+        "reduksjonsGrunn" : "02",
         "institusjon" : {
-          "land" : "DK",
-          "institusjonsnavn" : "WUP11, Voivodship Labour Office in Gdansk, PL",
-          "institusjonsid" : "PL:PL222000MP",
-          "personNr" : "41212",
-          "saksnummer" : "Saksnummer4122"
+          "saksnummer" : "23123",
+          "sektor" : "alle",
+          "personNr" : "29065325959",
+          "land" : "NO",
+          "institusjonsid" : "NO:NAVAT01",
+          "institusjonsnavn" : "NAV ACCEPTANCE TEST 01"
         },
-        "pensjonType" : "04",
+        "vedtakPensjonType" : "01"
+      }, {
+        "institusjon" : {
+          "institusjonsid" : "SE:ACC2001",
+          "sektor" : "alle",
+          "institusjonsnavn" : "The Swedish Pensions Agency",
+          "personNr" : "21317212",
+          "saksnummer" : "32142342134234234234234",
+          "land" : "SE"
+        },
         "vedtakPensjonType" : "01",
-        "addressatForRevurdering" : "Adressat for revurderingen 4.1.8.2.1. repetativ"
-      },
-      "startdatoPensjonsRettighet" : "2018-08-16",
+        "ytelser" : [ {
+          "annenbetalingshyppighetytelse" : "4.1.6.6.1",
+          "startdatoutbetaling" : "2021-07-20",
+          "beloep" : [ {
+            "beloepBrutto" : "41",
+            "betalingshyppighetytelse" : "03",
+            "valuta" : "SEK"
+          } ],
+          "sluttdatoretttilytelse" : "2021-07-20"
+        } ],
+        "dato" : "2021-07-20",
+        "pensjonType" : "01",
+        "addressatForRevurdering" : "4.1.8.2.1",
+        "startdatoPensjonsRettighet" : "2021-07-20",
+        "reduksjonsGrunn" : "01"
+      } ],
       "avslag" : [ {
         "pin" : {
-          "identifikator" : "51212",
+          "identifikator" : "34234'1234",
           "land" : "DK",
           "institusjon" : {
-            "institusjonsnavn" : "U?sienio i?mokos, Foreign benefits office, LT",
-            "institusjonsid" : "LT:188735972",
-            "saksnummer" : "5122Saksnummer"
+            "institusjonsnavn" : "ACC_The Danish Debt Collection Agency",
+            "institusjonsid" : "DK:10429",
+            "saksnummer" : "2342341234513452456"
           },
-          "sektor" : "pensjoner"
+          "sektor" : "alle"
         },
-        "dato" : "1987-08-07",
-        "adresse" : "5.1.5.2.1. Adressat for revurderingen Repetetive",
-        "begrunnelse" : "99",
-        "datoFrist" : "tidsfrist5151",
+        "dato" : "2021-07-20",
+        "adresse" : "5.1.5.2.1 adressa revud",
+        "begrunnelse" : "06",
+        "datoFrist" : "5.1.5.1 tid",
         "pensjonType" : "01"
       } ],
-      "reduksjonsGrunn" : "02",
-      "vedtaksammendrag" : "1995-05-23"
-    },
-    "sak" : {
-      "kravtype" : [ {
-        "datoFrist" : "eight weeks 4181"
-      } ]
-    },
-    "ytelser" : [ {
-      "startdatoutbetaling" : "1942-12-19",
-      "beloep" : [ {
-        "annenbetalingshyppighetytelse" : "daglig4166",
-        "valuta" : "NOK",
-        "betalingshyppighetytelse" : "99"
-      } ],
-      "sluttdatoretttilytelse" : "1959-09-18"
-    } ],
-    "vedtak" : [ {
-      "beregning" : [ {
-        "beloepBrutto" : {
-          "beloep" : "4163"
-        }
-      } ]
-    } ],
-    "tilleggsinformasjon" : {
-      "dato" : "1961-08-10"
-    },
-    "bruker" : {
-      "person" : {
-        "kjoenn" : "u"
-      }
+      "vedtaksammendrag" : "2021-07-20"
     }
   },
   "sedVer" : "0",

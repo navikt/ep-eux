@@ -8,21 +8,26 @@ class P7000Pensjon(
 )
 
 data class SamletMeldingVedtak(
-    val avslag: List<PensjonAvslagItem>? = null,
     val vedtaksammendrag: String? = null,
-    val tildeltepensjoner: TildeltePensjoner? = null,
-    val startdatoPensjonsRettighet: String? = null,  // 4.1.5
-    val reduksjonsGrunn: String? = null    // 4.1.7
+
+   val avslag: List<PensjonAvslagItem>? = null,
+
+   val tildeltepensjoner: List<TildeltePensjoneItem>? = null
 )
 
 //kap 4.?Tildelte pensjoner
-data class TildeltePensjoner(
+data class TildeltePensjoneItem(
     val pensjonType: String? = null, //4.1.2
+    val ytelser: List<YtelserItem>? = null, //4
     val vedtakPensjonType: String? = null, //4.1.1
     val tildeltePensjonerLand: String? = null,   //4.1.2.1.1.
     val addressatForRevurdering: String? = null,   //4.1.8.2.1.
     val institusjonPensjon: PensjonsInstitusjon? = null,
-    val institusjon: Institusjon? = null
+    val institusjon: Institusjon? = null,
+    val reduksjonsGrunn: String? = null,    // 4.1.7
+    val startdatoPensjonsRettighet: String? = null,  // 4.1.5
+    val datoFrist: String? = null, // timeLimitsForReview
+    val dato: String? = null // dateWhenDecisionIssuedStatedDecision
 )
 
 data class PensjonsInstitusjon(

@@ -47,7 +47,7 @@ data class Institusjon(
         val startdatoPensjonsRettighet: String? = null  //4.1.5
 )
 
-//P2000 - P2200
+//P2000 - P2200 - P7000
 @JsonIgnoreProperties(ignoreUnknown = true)
 data class YtelserItem(
 	val totalbruttobeloeparbeidsbasert: String? = null,
@@ -57,8 +57,10 @@ data class YtelserItem(
 	val mottasbasertpaa: String? = null,
 	val ytelse: String? = null,
 	val startdatoretttilytelse: String? = null,
+	val sluttdatoretttilytelse: String? = null,
 	val beloep: List<BeloepItem>? = null,
 	val status: String? = null,
+	val annenbetalingshyppighetytelse: String? = null
 )
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -66,6 +68,7 @@ data class BeloepItem(
         val betalingshyppighetytelse: String? = null,
         val valuta: String? = null,
         val beloep: String? = null,
+		val beloepBrutto: String? = null,
         val gjeldendesiden: String? = null
 )
 
