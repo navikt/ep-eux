@@ -5,6 +5,7 @@ import com.fasterxml.jackson.core.JsonParseException
 import com.fasterxml.jackson.core.type.TypeReference
 import com.fasterxml.jackson.databind.DeserializationFeature
 import com.fasterxml.jackson.databind.JsonMappingException
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.ResponseStatus
@@ -15,6 +16,7 @@ inline fun <reified T : Any> typeRefs(): TypeReference<T> = object : TypeReferen
 inline fun <reified T : Any> mapJsonToAny(json: String, typeRef: TypeReference<T>, failonunknown: Boolean = false): T {
     return try {
          jacksonObjectMapper()
+            .registerModule(JavaTimeModule())
             .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, failonunknown)
             .readValue(json, typeRef)
         } catch (jpe: JsonParseException) {
@@ -32,11 +34,13 @@ inline fun <reified T : Any> mapJsonToAny(json: String, typeRef: TypeReference<T
 fun mapAnyToJson(data: Any, nonempty: Boolean = false): String {
     return if (nonempty) {
         jacksonObjectMapper()
+            .registerModule(JavaTimeModule())
             .setDefaultPropertyInclusion(JsonInclude.Include.NON_EMPTY)
             .writerWithDefaultPrettyPrinter()
             .writeValueAsString(data)
     } else {
         return jacksonObjectMapper()
+            .registerModule(JavaTimeModule())
             .writerWithDefaultPrettyPrinter()
             .writeValueAsString(data)
     }

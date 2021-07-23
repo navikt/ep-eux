@@ -40,8 +40,8 @@ data class Institusjon(
         val saksnummer: String? = null,
         val sektor: String? = null,
         val land: String? = null,
-        val pin: String? = null,
-        val personNr: String? = null,
+        val pin: String? = null, //samme som personNr?
+        val personNr: String? = null, //samme son pin?
         val innvilgetPensjon: String? = null,  // 4.1.3.
         val utstedelsesDato: String? = null,  //4.1.4.
         val startdatoPensjonsRettighet: String? = null  //4.1.5

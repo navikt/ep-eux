@@ -69,7 +69,8 @@ class P7000Test {
                       "institusjonsid" : "NO:NAVAT01",
                       "institusjonsnavn" : "NAV ACCEPTANCE TEST 01"
                     },
-                    "vedtakPensjonType" : "01"
+                    "vedtakPensjonType" : "01",
+                    "datoFrist" : "4.1.8.1"
                   }, {
                     "institusjon" : {
                       "institusjonsid" : "SE:ACC2001",
@@ -93,6 +94,7 @@ class P7000Test {
                     "dato" : "2021-07-20",
                     "pensjonType" : "01",
                     "addressatForRevurdering" : "4.1.8.2.1",
+                    "datoFrist" : "4.1.8.1 tid",
                     "startdatoPensjonsRettighet" : "2021-07-20",
                     "reduksjonsGrunn" : "01"
                   } ],
@@ -129,19 +131,12 @@ class P7000Test {
                 }
               },
               "sedVer" : "1",
-              "samletVedtak" : {
-                "tildeltepensjoner" : [ {
-                  "datoFrist" : "4.1.8.1"
-                }, {
-                  "datoFrist" : "4.1.8.1 tid"
-                } ]
-              },
               "nav" : {
                 "bruker" : {
                   "person" : {
-                    "fornavn" : "TUNGSINDIG",
+                    "fornavn" : "æøå",
                     "kjoenn" : "K",
-                    "etternavn" : "KAKKERLAKK",
+                    "etternavn" : "æøå",
                     "etternavnvedfoedsel" : "Avdød",
                     "foedselsdato" : "1952-12-07",
                     "pin" : [ {

@@ -57,6 +57,11 @@ open class SED(
     }
 
     @JsonIgnore
+    open fun korrektPerson(): Person? {
+        return this.pensjon?.gjenlevende?.person ?: this.nav?.bruker?.person
+    }
+
+    @JsonIgnore
     fun toSkipEmptyString() : String = mapAnyToJson(this, true)
 
     @JsonIgnore

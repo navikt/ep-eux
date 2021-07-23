@@ -31,6 +31,7 @@ data class Brukere(
 )
 
 //R005
+@JsonIgnoreProperties(ignoreUnknown = true)
 data class Tilbakekreving(
     val feilutbetaling: Feilutbetaling? = null,
     val status: Status? = null
