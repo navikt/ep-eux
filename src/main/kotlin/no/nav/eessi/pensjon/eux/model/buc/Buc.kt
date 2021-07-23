@@ -24,6 +24,4 @@ class Buc(
         fun from(json: String): Buc = mapJsonToAny(json, typeRefs())
     }
 
-    fun toJson(): String = this.toJson()
-
 }
