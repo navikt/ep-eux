@@ -2,12 +2,12 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 
 plugins {
-    id("org.jetbrains.kotlin.jvm") version "1.4.30"
+    id("org.jetbrains.kotlin.jvm") version "1.5.21"
     `java-library`
     id("net.researchgate.release") version "2.8.1"
     `maven-publish`
     id("com.adarshr.test-logger") version "2.0.0"
-    id("org.jetbrains.kotlin.plugin.spring") version "1.4.30"
+    id("org.jetbrains.kotlin.plugin.spring") version "1.5.21"
     id("com.github.ben-manes.versions") version "0.28.0"
     id("se.patrikerdes.use-latest-versions") version "0.2.13"
     id("org.owasp.dependencycheck") version "5.3.2.1"
@@ -30,30 +30,26 @@ tasks.withType<Test> {
 }
 
 val springVersion by extra("5.2.5.RELEASE")
-val cxfVersion by extra("3.3.6")
+//val cxfVersion by extra("3.3.6")
 
 dependencies {
     implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
-    implementation(kotlin("stdlib", "1.4.30"))
+    implementation(kotlin("stdlib", "1.5.21"))
 
     implementation("io.micrometer:micrometer-registry-prometheus:1.4.2")
-    implementation("no.nav.eessi.pensjon:ep-security-sts:0.0.16")
-    implementation("no.nav.eessi.pensjon:ep-metrics:0.4.6")
+    implementation("no.nav.eessi.pensjon:ep-security-sts:0.0.19")
+    implementation("no.nav.eessi.pensjon:ep-metrics:0.4.9")
 
     // Spring
     implementation("org.springframework:spring-web:$springVersion")
     implementation("org.springframework.retry:spring-retry:1.3.0")
 
     implementation("javax.servlet:javax.servlet-api:4.0.1")
-    implementation("no.nav.eessi.pensjon:ep-logging:1.0.9")
+    implementation("no.nav.eessi.pensjon:ep-logging:1.0.12")
 
     //Jackson json
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.12.1")
     implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.12.1")
-
-    // Apache CXF
-    implementation("org.apache.cxf:cxf-spring-boot-starter-jaxws:${cxfVersion}")
-    implementation("org.apache.cxf:cxf-rt-ws-security:${cxfVersion}")
 
     // Test
     testImplementation("org.skyscreamer:jsonassert:1.5.0")
