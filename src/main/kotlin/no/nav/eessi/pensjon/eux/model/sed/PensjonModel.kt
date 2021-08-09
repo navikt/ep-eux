@@ -101,6 +101,7 @@ data class Tilleggsinformasjon(
 	val andreinstitusjoner: List<AndreinstitusjonerItem>? = null,
 	val artikkel48: String? = null,
 	val opphoer: Opphoer? = null,
+	val revurderingtidsfrist: String? = null
 )
 
 data class AndreinstitusjonerItem(
