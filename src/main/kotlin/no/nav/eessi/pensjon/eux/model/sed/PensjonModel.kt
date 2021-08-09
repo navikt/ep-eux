@@ -104,14 +104,14 @@ data class Tilleggsinformasjon(
 )
 
 data class AndreinstitusjonerItem(
-        val institusjonsid: String? = null,
-        val institusjonsnavn: String? = null,
-        val institusjonsadresse: String? = null,
-        val postnummer: String? = null,
-        val bygningsnr: String? = null,
-        val land: String? = null,
-        val region: String? = null,
-        val poststed: String? = null
+	val institusjonsid: String? = null,
+	val institusjonsnavn: String? = null,
+	val institusjonsadresse: String? = null,
+	val postnummer: String? = null,
+	val bygningsnavn: String? = null,
+	val land: String? = null,
+	val region: String? = null,
+	val poststed: String? = null
 )
 
 data class Ukjent(
