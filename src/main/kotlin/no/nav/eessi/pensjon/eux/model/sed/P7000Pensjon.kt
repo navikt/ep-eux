@@ -21,13 +21,17 @@ data class TildeltPensjonItem(
     val ytelser: List<YtelserItem>? = null, //4
     val vedtakPensjonType: String? = null, //4.1.1
     val tildeltePensjonerLand: String? = null,   //4.1.2.1.1.
-    val adressatForRevurdering: List<String>? = null,   //4.1.8.2.1.
+    val adressatForRevurdering: List<AdressatForRevurderingItem>? = null,   //4.1.8.2.1.
     val institusjonPensjon: PensjonsInstitusjon? = null,
     val institusjon: Institusjon? = null,
     val reduksjonsGrunn: String? = null,    // 4.1.7
     val startdatoPensjonsRettighet: String? = null,  // 4.1.5
     val datoFrist: String? = null, // timeLimitsForReview
     val revurderingtidsfrist: String? = null //dateWhenDecisionIssuedStatedDecision
+)
+
+data class AdressatForRevurderingItem(
+    val adressatforrevurdering: String? = null
 )
 
 data class PensjonsInstitusjon(
