@@ -19,12 +19,12 @@ class P7000Test {
         val seTildelt = p7000.p7000Pensjon?.samletVedtak?.tildeltepensjoner?.firstOrNull { it.institusjon?.land == "SE" }
         val dkAvslag = p7000.p7000Pensjon?.samletVedtak?.avslag?.firstOrNull { it.pin?.land == "DK" }
 
-        Assertions.assertEquals("2021-07-20", noTildelt?.dato)
+        Assertions.assertEquals("2021-07-20", noTildelt?.revurderingtidsfrist)
         Assertions.assertEquals("123123123123", noTildelt?.ytelser?.first()?.beloep?.first()?.beloepBrutto)
         Assertions.assertEquals("4.1.8.2 revjrflkasdfjasdf asdfasd fadfg", noTildelt?.addressatForRevurdering)
         Assertions.assertEquals("01", noTildelt?.vedtakPensjonType)
 
-        Assertions.assertEquals("2021-07-20", seTildelt?.dato)
+        Assertions.assertEquals("2021-07-20", seTildelt?.revurderingtidsfrist)
         Assertions.assertEquals("41", seTildelt?.ytelser?.first()?.beloep?.first()?.beloepBrutto)
         Assertions.assertEquals("4.1.8.2.1", seTildelt?.addressatForRevurdering)
         Assertions.assertEquals("01", seTildelt?.vedtakPensjonType)
@@ -47,7 +47,7 @@ class P7000Test {
                 "samletVedtak" : {
                   "tildeltepensjoner" : [ {
                     "addressatForRevurdering" : "4.1.8.2 revjrflkasdfjasdf asdfasd fadfg",
-                    "dato" : "2021-07-20",
+                    "revurderingtidsfrist" : "2021-07-20",
                     "pensjonType" : "01",
                     "ytelser" : [ {
                       "beloep" : [ {
@@ -91,7 +91,7 @@ class P7000Test {
                       } ],
                       "sluttdatoretttilytelse" : "2021-07-20"
                     } ],
-                    "dato" : "2021-07-20",
+                    "revurderingtidsfrist" : "2021-07-20",
                     "pensjonType" : "01",
                     "addressatForRevurdering" : "4.1.8.2.1",
                     "datoFrist" : "4.1.8.1 tid",
