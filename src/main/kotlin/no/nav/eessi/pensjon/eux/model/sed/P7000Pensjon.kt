@@ -27,8 +27,7 @@ data class TildeltPensjonItem(
     val reduksjonsGrunn: String? = null,    // 4.1.7
     val startdatoPensjonsRettighet: String? = null,  // 4.1.5
     val datoFrist: String? = null, // timeLimitsForReview
-    val dato: String? = null, // dateWhenDecisionIssuedStatedDecision
-    val revurderingtidsfrist: String? = null
+    val revurderingtidsfrist: String? = null //dateWhenDecisionIssuedStatedDecision
 )
 
 data class PensjonsInstitusjon(
