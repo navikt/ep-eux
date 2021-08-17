@@ -22,12 +22,12 @@ class P7000Test {
         Assertions.assertEquals("2021-07-20", noTildelt?.revurderingtidsfrist)
         Assertions.assertEquals("123123123123", noTildelt?.ytelser?.first()?.beloep?.first()?.beloepBrutto)
         Assertions.assertEquals("4.1.8.2 revjrflkasdfjasdf asdfasd fadfg", noTildelt?.adressatForRevurdering?.first()?.adressatforrevurdering)
-        Assertions.assertEquals("01", noTildelt?.vedtakPensjonType)
+        Assertions.assertEquals("01", noTildelt?.pensjonType)
 
         Assertions.assertEquals("2021-07-20", seTildelt?.revurderingtidsfrist)
         Assertions.assertEquals("41", seTildelt?.ytelser?.first()?.beloep?.first()?.beloepBrutto)
         Assertions.assertEquals("4.1.8.2.1", seTildelt?.adressatForRevurdering?.first()?.adressatforrevurdering)
-        Assertions.assertEquals("01", seTildelt?.vedtakPensjonType)
+        Assertions.assertEquals("01", seTildelt?.pensjonType)
 
         Assertions.assertEquals("2021-07-20", dkAvslag?.dato)
         Assertions.assertEquals("5.1.5.1 tid", dkAvslag?.datoFrist)

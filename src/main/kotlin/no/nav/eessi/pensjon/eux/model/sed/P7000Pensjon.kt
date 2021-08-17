@@ -17,9 +17,8 @@ data class SamletMeldingVedtak(
 
 //kap 4.?Tildelte pensjoner
 data class TildeltPensjonItem(
-    val pensjonType: String? = null, //4.1.2
     val ytelser: List<YtelserItem>? = null, //4
-    val vedtakPensjonType: String? = null, //4.1.1
+    val pensjonType: String? = null, //4.1.1
     val tildeltePensjonerLand: String? = null,   //4.1.2.1.1.
     val adressatForRevurdering: List<AdressatForRevurderingItem>? = null,   //4.1.8.2.1.
     val institusjonPensjon: PensjonsInstitusjon? = null,
@@ -27,8 +26,8 @@ data class TildeltPensjonItem(
     val reduksjonsGrunn: String? = null,    // 4.1.7
     val startdatoPensjonsRettighet: String? = null,  // 4.1.5
     val revurderingtidsfrist: String? = null, // timeLimitsForReview
-    val dato: String? = null, // dateWhenDecisionIssuedStatedDecision
-    val innvilgetPensjon: String? = null
+    val vedtaksDato: String? = null, // dateWhenDecisionIssuedStatedDecision
+    val innvilgetPensjon: String? = null // 4.1.3
 )
 
 data class AdressatForRevurderingItem(
