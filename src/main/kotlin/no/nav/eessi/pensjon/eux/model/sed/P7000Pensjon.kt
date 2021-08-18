@@ -8,7 +8,7 @@ class P7000Pensjon(
 )
 
 data class SamletMeldingVedtak(
-    val vedtaksammendrag: String? = null,
+    val utsendtDato: String? = null,
 
    val avslag: List<PensjonAvslagItem>? = null,
 
