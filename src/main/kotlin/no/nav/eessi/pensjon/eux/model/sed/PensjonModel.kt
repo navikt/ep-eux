@@ -92,6 +92,7 @@ data class VedtakItem(
 	val beregning: List<BeregningItem>? = null,
 	val avslagbegrunnelse: List<AvslagbegrunnelseItem>? = null,
 	val basertPaa: String? = null,
+	val artikkel: String? = null,
 	val basertPaaAnnen: String? = null
 )
 
@@ -159,7 +160,8 @@ data class BeregningItem(
 	val valuta: String? = null,
 	val beloepBrutto: BeloepBrutto? = null,
 	val periode: Periode? = null,
-	val utbetalingshyppighet: String? = null
+	val utbetalingshyppighet: String? = null,
+	val utbetalingshyppighetAnnen: String? = null
 )
 
 data class BeloepBrutto(
