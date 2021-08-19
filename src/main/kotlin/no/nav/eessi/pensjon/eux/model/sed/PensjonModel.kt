@@ -56,7 +56,7 @@ data class YtelserItem(
 	val mottasbasertpaa: String? = null,
 	val ytelse: String? = null,
 	val startdatoretttilytelse: String? = null,
-	val sluttdatoretttilytelse: String? = null,
+	val sluttdatoUtbetaling: String? = null,
 	val beloep: List<BeloepItem>? = null,
 	val status: String? = null,
 	val annenbetalingshyppighetytelse: String? = null
@@ -173,6 +173,5 @@ data class BeloepBrutto(
 
 data class Periode(
         val fom: String? = null,
-        val tom: String? = null,
-        val extra: String? = null
+        val tom: String? = null
 )
