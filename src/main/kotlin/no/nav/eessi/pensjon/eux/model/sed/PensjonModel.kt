@@ -173,5 +173,5 @@ data class BeloepBrutto(
 
 data class Periode(
         val fom: String? = null,
-        val tom: String? = null
+        val tom: String? = null,
 )

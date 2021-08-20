@@ -26,7 +26,11 @@ data class PersonArbeidogOppholdUtland(
 
 data class TrygdeTidPeriode(
     val lukketPeriode: Periode? = null,
-    val openPeriode: Periode? = null
+    val openPeriode: Periode? = null,
+    val periodebeskrivelse: PeriodeBeskrivelse? = null
+)
+data class PeriodeBeskrivelse(
+    val typeDato: String? = null
 )
 
 data class AnsattSelvstendigItem(

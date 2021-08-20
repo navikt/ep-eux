@@ -15,7 +15,7 @@ data class SamletMeldingVedtak(
    val tildeltepensjoner: List<TildeltPensjonItem>? = null
 )
 
-//kap 4.?Tildelte pensjoner
+//kap 4 Tildelte pensjoner
 data class TildeltPensjonItem(
     val ytelser: List<YtelserItem>? = null, //4
     val pensjonType: String? = null, //4.1.1
@@ -38,12 +38,12 @@ data class PensjonsInstitusjon(
     val sektor: String? = null
 )
 
-//kap.5??
+//kap.5
 data class PensjonAvslagItem(
     val pensjonType: String? = null,
     val begrunnelse: String? = null, //5.1
     val dato: String? = null,   //5.2
     val datoFrist: String? = null,
     val pin : PinItem? = null,
-    val adresse: String? = null
+    val adressatforRevurderingAvslag: List<AdressatForRevurderingItem>? = null
 )
