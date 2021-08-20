@@ -43,7 +43,7 @@ data class PensjonAvslagItem(
     val pensjonType: String? = null,
     val begrunnelse: String? = null, //5.1
     val dato: String? = null,   //5.2
-    val datoFrist: String? = null,
+    val tidsfristForRevurdering: String? = null,
     val pin : PinItem? = null,
     val adressatforRevurderingAvslag: List<AdressatForRevurderingItem>? = null
 )

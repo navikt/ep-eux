@@ -30,7 +30,7 @@ class P7000Test {
         Assertions.assertEquals("01", seTildelt?.pensjonType)
 
         Assertions.assertEquals("2021-07-20", dkAvslag?.dato)
-        Assertions.assertEquals("5.1.5.1 tid", dkAvslag?.datoFrist)
+        Assertions.assertEquals("5.1.5.1 tid", dkAvslag?.tidsfristForRevurdering)
         Assertions.assertEquals("06", dkAvslag?.begrunnelse)
         Assertions.assertEquals("01", dkAvslag?.pensjonType)
 
@@ -116,7 +116,7 @@ class P7000Test {
                     "dato" : "2021-07-20",
                     "adresse" : "5.1.5.2.1 adressa revud",
                     "begrunnelse" : "06",
-                    "datoFrist" : "5.1.5.1 tid",
+                    "tidsfristForRevurdering" : "5.1.5.1 tid",
                     "pensjonType" : "01"
                   } ],
                   "vedtaksammendrag" : "2021-07-20"
