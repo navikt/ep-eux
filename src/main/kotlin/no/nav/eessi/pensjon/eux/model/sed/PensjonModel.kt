@@ -68,7 +68,8 @@ data class BeloepItem(
         val valuta: String? = null,
         val beloep: String? = null,
 		val beloepBrutto: String? = null,
-        val gjeldendesiden: String? = null
+        val gjeldendesiden: String? = null,
+        val utbetalingshyppighetAnnen: String? = null
 )
 
 data class Sak(
