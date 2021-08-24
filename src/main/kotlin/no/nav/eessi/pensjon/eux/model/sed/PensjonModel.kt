@@ -41,7 +41,6 @@ data class Institusjon(
         val sektor: String? = null,
         val land: String? = null,
 		val personNr: String? = null,
-		val innvilgetPensjon: String? = null,  // 4.1.3.
         val utstedelsesDato: String? = null,  //4.1.4.
         val startdatoPensjonsRettighet: String? = null  //4.1.5
 )
