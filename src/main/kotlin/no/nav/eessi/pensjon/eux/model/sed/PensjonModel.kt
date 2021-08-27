@@ -34,6 +34,7 @@ data class Utsettelse(
 )
 
 //Institusjon
+@JsonIgnoreProperties(ignoreUnknown = true)
 data class Institusjon(
         val institusjonsid: String? = null,
         val institusjonsnavn: String? = null,
