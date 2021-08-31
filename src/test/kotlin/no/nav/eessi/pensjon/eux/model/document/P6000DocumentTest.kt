@@ -33,7 +33,8 @@ class P6000DocumentTest {
             fraLand = "NO",
             sisteVersjon = "1",
             pdfUrl = "url",
-            sistMottatt = LocalDate.of(2020, 10, 12)
+            sistMottatt = LocalDate.of(2020, 10, 12),
+            retning = Retning.IN
         )
 
     }
@@ -47,7 +48,8 @@ class P6000DocumentTest {
               "fraLand" : "NO",
               "sisteVersjon" : "1",
               "pdfUrl" : "url",
-              "sistMottatt" : "2020-10-12"
+              "sistMottatt" : "2020-10-12",
+              "retning" : "IN"
             }
         """.trimIndent()
     }

@@ -12,5 +12,8 @@ data class P6000Dokument(
     val sisteVersjon: String,
     val pdfUrl: String,
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", locale = "no_NO")
-    val sistMottatt: LocalDate
+    val sistMottatt: LocalDate,
+    val retning: Retning
 )
+
+enum class Retning { IN, OUT }
