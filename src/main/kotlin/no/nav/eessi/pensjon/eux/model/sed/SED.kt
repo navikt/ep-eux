@@ -3,10 +3,6 @@ package no.nav.eessi.pensjon.eux.model.sed
 import com.fasterxml.jackson.annotation.JsonIgnore
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.core.JsonParseException
-import com.fasterxml.jackson.databind.JsonMappingException
-import no.nav.eessi.pensjon.utils.JsonException
-import no.nav.eessi.pensjon.utils.JsonIllegalArgumentException
 import no.nav.eessi.pensjon.utils.mapAnyToJson
 import no.nav.eessi.pensjon.utils.mapJsonToAny
 import no.nav.eessi.pensjon.utils.toJson
@@ -14,7 +10,6 @@ import no.nav.eessi.pensjon.utils.typeRefs
 
 // SED class main request class to basis
 // Strukturerte Elektroniske Dokumenter
-@JsonIgnoreProperties(ignoreUnknown = true)
 open class SED(
     @JsonProperty("sed")
     open val type: SedType,
@@ -24,7 +19,9 @@ open class SED(
     open val pensjon: Pensjon? = null
 ) {
     companion object {
-        @JvmStatic
+        private fun fromSimpleJson(sed: String): SedType {
+            return mapJsonToAny(sed, typeRefs<SimpleSED>(), true).type
+        }
         fun fromJson(sed: String): SED {
             return mapJsonToAny(sed, typeRefs(), true)
         }
@@ -37,10 +34,15 @@ open class SED(
         inline fun <reified T : SED> generateSedToClass(sed: SED): T = mapJsonToAny(sed.toJson(), typeRefs<T>())
         inline fun <reified T : SED> generateJsonToClass(json: String): T = mapJsonToAny(json, typeRefs<T>())
 
+        @JsonIgnoreProperties(ignoreUnknown = true)
+        private class SimpleSED(
+            @JsonProperty("sed")
+            val type: SedType
+        )
+
         fun fromJsonToConcrete(json: String?): SED {
             try {
-                val sed =  json?.let { fromJson(json) }
-                return when(sed!!.type) {
+                return when(json?.let { fromSimpleJson(json) }) {
                     SedType.P2000 -> generateJsonToClass<P2000>(json)
                     SedType.P2100 -> generateJsonToClass<P2100>(json)
                     SedType.P2200 -> generateJsonToClass<P2200>(json)
@@ -55,8 +57,7 @@ open class SED(
                     SedType.R005 -> generateJsonToClass<R005>(json)
                     SedType.X005 -> generateJsonToClass<X005>(json)
                     SedType.X010 -> generateJsonToClass<X010>(json)
-                    else -> sed
-                }
+                    else -> fromJson(json!!)                }
             } catch (ex: Exception) {
                 throw Exception("Feilet med en ukjent feil ved jsonformat")
             }
