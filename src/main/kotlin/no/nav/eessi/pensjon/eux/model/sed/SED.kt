@@ -3,6 +3,10 @@ package no.nav.eessi.pensjon.eux.model.sed
 import com.fasterxml.jackson.annotation.JsonIgnore
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonProperty
+import com.fasterxml.jackson.core.JsonParseException
+import com.fasterxml.jackson.databind.JsonMappingException
+import no.nav.eessi.pensjon.utils.JsonException
+import no.nav.eessi.pensjon.utils.JsonIllegalArgumentException
 import no.nav.eessi.pensjon.utils.mapAnyToJson
 import no.nav.eessi.pensjon.utils.mapJsonToAny
 import no.nav.eessi.pensjon.utils.toJson
@@ -10,6 +14,7 @@ import no.nav.eessi.pensjon.utils.typeRefs
 
 // SED class main request class to basis
 // Strukturerte Elektroniske Dokumenter
+
 open class SED(
     @JsonProperty("sed")
     open val type: SedType,
@@ -18,6 +23,7 @@ open class SED(
     open val nav: Nav? = null,
     open val pensjon: Pensjon? = null
 ) {
+
     companion object {
         private fun fromSimpleJson(sed: String): SedType {
             return mapJsonToAny(sed, typeRefs<SimpleSED>(), true).type
@@ -57,7 +63,15 @@ open class SED(
                     SedType.R005 -> generateJsonToClass<R005>(json)
                     SedType.X005 -> generateJsonToClass<X005>(json)
                     SedType.X010 -> generateJsonToClass<X010>(json)
-                    else -> fromJson(json!!)                }
+                    else -> fromJson(json!!)
+                }
+            } catch (jpe: JsonParseException) {
+                val exception = jpe.message?.substringBefore("nav", "{")
+                throw JsonException("Feilet ved konvertering av jsonformat: $exception", Throwable(exception))
+            } catch (jme: JsonMappingException) {
+                val exception = jme.message?.substringBefore("nav", "{")
+                println(exception)
+                throw JsonIllegalArgumentException("Feilet ved mapping av jsonformat $exception", Throwable(exception))
             } catch (ex: Exception) {
                 throw Exception("Feilet med en ukjent feil ved jsonformat")
             }

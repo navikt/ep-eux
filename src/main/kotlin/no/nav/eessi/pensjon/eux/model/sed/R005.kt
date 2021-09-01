@@ -18,7 +18,6 @@ data class RNav(
 )
 
 //kun for R005
-@JsonIgnoreProperties(ignoreUnknown = true)
 data class Brukere(
     val mor: Foreldre? = null,
     val far: Foreldre? = null,

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ResponseStatus
 
 inline fun <reified T : Any> typeRefs(): TypeReference<T> = object : TypeReference<T>() {}
 
-inline fun <reified T : Any> mapJsonToAny(json: String, typeRef: TypeReference<T>, failonunknown: Boolean = false): T {
+inline fun <reified T : Any> mapJsonToAny(json: String, typeRef: TypeReference<T>, failonunknown: Boolean = true): T {
     return jacksonObjectMapper()
         .registerModule(JavaTimeModule())
         .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, failonunknown)

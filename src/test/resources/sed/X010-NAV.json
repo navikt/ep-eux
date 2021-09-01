@@ -3,13 +3,6 @@
   "sedGVer" : "4",
   "sedVer" : "1",
   "nav" : {
-    "eessisak" : null,
-    "bruker" : null,
-    "brukere" : null,
-    "ektefelle" : null,
-    "barn" : null,
-    "verge" : null,
-    "krav" : null,
     "sak" : {
       "kontekst" : {
         "bruker" : {
@@ -45,8 +38,7 @@
           }
         }
       }
-    },
-    "annenperson" : null
+    }
   },
   "pensjon" : null
 }

@@ -60,8 +60,6 @@
     },
     "samletVedtak" : {
       "tildeltepensjoner" : [ {
-        "addressatForRevurdering" : "4.1.8.2 revjrflkasdfjasdf asdfasd fadfg",
-        "dato" : "2021-07-20",
         "pensjonType" : "01",
         "ytelser" : [ {
           "beloep" : [ {
@@ -82,8 +80,7 @@
           "land" : "NO",
           "institusjonsid" : "NO:NAVAT01",
           "institusjonsnavn" : "NAV ACCEPTANCE TEST 01"
-        },
-        "vedtakPensjonType" : "01"
+        }
       }, {
         "institusjon" : {
           "institusjonsid" : "SE:ACC2001",
@@ -93,7 +90,6 @@
           "saksnummer" : "32142342134234234234234",
           "land" : "SE"
         },
-        "vedtakPensjonType" : "01",
         "ytelser" : [ {
           "annenbetalingshyppighetytelse" : "4.1.6.6.1",
           "startdatoutbetaling" : "2021-07-20",
@@ -104,9 +100,7 @@
           } ],
           "sluttdatoretttilytelse" : "2021-07-20"
         } ],
-        "dato" : "2021-07-20",
         "pensjonType" : "01",
-        "addressatForRevurdering" : "4.1.8.2.1",
         "startdatoPensjonsRettighet" : "2021-07-20",
         "reduksjonsGrunn" : "01"
       } ],
@@ -122,12 +116,9 @@
           "sektor" : "alle"
         },
         "dato" : "2021-07-20",
-        "adresse" : "5.1.5.2.1 adressa revud",
         "begrunnelse" : "06",
-        "datoFrist" : "5.1.5.1 tid",
         "pensjonType" : "01"
-      } ],
-      "vedtaksammendrag" : "2021-07-20"
+      } ]
     }
   },
   "sedVer" : "0",

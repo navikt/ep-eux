@@ -354,7 +354,6 @@
     "medlemskapAnnen": null,
     "medlemskapTotal": null,
     "medlemskap": null,
-    "trygdetid": null,
     "institusjonennaaikkesoektompensjon": null,
     "utsettelse": null,
     "vedlegg": null,
@@ -366,7 +365,5 @@
     "antallSokereKjent": null,
     "anmodning": null,
     "samletVedtak": null
-  },
-  "trygdetid": null,
-  "ignore": null
+  }
 }

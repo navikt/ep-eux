@@ -70,9 +70,7 @@ class P7000Test {
                       "land" : "NO",
                       "institusjonsid" : "NO:NAVAT01",
                       "institusjonsnavn" : "NAV ACCEPTANCE TEST 01"
-                    },
-                    "vedtakPensjonType" : "01",
-                    "datoFrist" : "4.1.8.1"
+                    }
                   }, {
                     "institusjon" : {
                       "institusjonsid" : "SE:ACC2001",
@@ -82,7 +80,6 @@ class P7000Test {
                       "saksnummer" : "32142342134234234234234",
                       "land" : "SE"
                     },
-                    "vedtakPensjonType" : "01",
                     "ytelser" : [ {
                       "annenbetalingshyppighetytelse" : "4.1.6.6.1",
                       "startdatoutbetaling" : "2021-07-20",
@@ -98,7 +95,6 @@ class P7000Test {
                     "adressatForRevurdering" : [ {
                       "adressatforrevurdering" : "4.1.8.2.1"
                     } ],
-                    "datoFrist" : "4.1.8.1 tid",
                     "startdatoPensjonsRettighet" : "2021-07-20",
                     "reduksjonsGrunn" : "01"
                   } ],
@@ -114,12 +110,10 @@ class P7000Test {
                       "sektor" : "alle"
                     },
                     "dato" : "2021-07-20",
-                    "adresse" : "5.1.5.2.1 adressa revud",
                     "begrunnelse" : "06",
                     "tidsfristForRevurdering" : "5.1.5.1 tid",
                     "pensjonType" : "01"
-                  } ],
-                  "vedtaksammendrag" : "2021-07-20"
+                  } ]
                 },
                 "gjenlevende" : {
                   "person" : {
