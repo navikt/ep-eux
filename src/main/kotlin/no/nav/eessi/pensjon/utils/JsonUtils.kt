@@ -14,21 +14,10 @@ import org.springframework.web.bind.annotation.ResponseStatus
 inline fun <reified T : Any> typeRefs(): TypeReference<T> = object : TypeReference<T>() {}
 
 inline fun <reified T : Any> mapJsonToAny(json: String, typeRef: TypeReference<T>, failonunknown: Boolean = false): T {
-    return try {
-         jacksonObjectMapper()
-            .registerModule(JavaTimeModule())
-            .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, failonunknown)
-            .readValue(json, typeRef)
-        } catch (jpe: JsonParseException) {
-            jpe.printStackTrace()
-            throw JsonException("Feilet ved konvertering av jsonformat, ${jpe.message}", jpe)
-        } catch (jme: JsonMappingException) {
-            jme.printStackTrace()
-            throw JsonIllegalArgumentException("Feilet ved mapping av jsonformat, ${jme.message}", jme)
-        } catch (ex: Exception) {
-            ex.printStackTrace()
-            throw JsonException("Feilet med en ukjent feil ved jsonformat, ${ex.message}", ex)
-        }
+    return jacksonObjectMapper()
+        .registerModule(JavaTimeModule())
+        .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, failonunknown)
+        .readValue(json, typeRef)
 }
 
 fun mapAnyToJson(data: Any, nonempty: Boolean = false): String {
