@@ -46,7 +46,7 @@ dependencies {
 
     implementation("javax.servlet:javax.servlet-api:4.0.1")
     implementation("no.nav.eessi.pensjon:ep-logging:1.0.12")
-
+    implementation("org.slf4j:slf4j-api:1.7.32")
     //Jackson json
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.12.1")
     implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.12.1")

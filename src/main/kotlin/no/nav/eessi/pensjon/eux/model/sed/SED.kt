@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.core.JsonParseException
 import com.fasterxml.jackson.databind.JsonMappingException
-import no.nav.eessi.pensjon.utils.JsonException
+import org.slf4j.LoggerFactory
 import no.nav.eessi.pensjon.utils.JsonIllegalArgumentException
 import no.nav.eessi.pensjon.utils.mapAnyToJson
 import no.nav.eessi.pensjon.utils.mapJsonToAny
@@ -25,6 +25,8 @@ open class SED(
 ) {
 
     companion object {
+        private val logger = LoggerFactory.getLogger(SED::class.java)
+
         private fun fromSimpleJson(sed: String): SedType {
             return mapJsonToAny(sed, typeRefs<SimpleSED>(), true).type
         }
@@ -67,12 +69,14 @@ open class SED(
                 }
             } catch (jpe: JsonParseException) {
                 val exception = jpe.message?.substringBefore("nav", "{")
-                throw JsonException("Feilet ved konvertering av jsonformat: $exception", Throwable(exception))
+                throw JsonIllegalArgumentException("Feilet ved konvertering av jsonformat $exception", Throwable(exception))
+                    .also { logger.error(it.message) }
             } catch (jme: JsonMappingException) {
                 val exception = jme.message?.substringBefore("nav", "{")
                 throw JsonIllegalArgumentException("Feilet ved mapping av jsonformat $exception", Throwable(exception))
+                    .also { logger.error(it.message) }
             } catch (ex: Exception) {
-                throw Exception("Feilet med en ukjent feil ved jsonformat")
+                throw Exception("Feilet med en ukjent feil ved jsonformat").also { logger.error(it.message) }
             }
         }
     }

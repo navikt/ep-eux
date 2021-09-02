@@ -14,7 +14,7 @@ internal class SedTest {
             SED.fromJsonToConcrete(json)
         }
         assertEquals(
-            "Feilet ved konvertering av jsonformat: Unexpected character ('\"' (code 34)): was expecting comma to separate Object entries\n" +
+            "Feilet ved konvertering av jsonformat Unexpected character ('\"' (code 34)): was expecting comma to separate Object entries\n" +
                     " at [Source: (String)\"{\n" +
                     "  \"sed\": \"P2000\",\n" +
                     "  \"sedGVer\": \"4\",\n" +
