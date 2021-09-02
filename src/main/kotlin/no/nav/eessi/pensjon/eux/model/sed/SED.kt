@@ -70,7 +70,6 @@ open class SED(
                 throw JsonException("Feilet ved konvertering av jsonformat: $exception", Throwable(exception))
             } catch (jme: JsonMappingException) {
                 val exception = jme.message?.substringBefore("nav", "{")
-                println(exception)
                 throw JsonIllegalArgumentException("Feilet ved mapping av jsonformat $exception", Throwable(exception))
             } catch (ex: Exception) {
                 throw Exception("Feilet med en ukjent feil ved jsonformat")
