@@ -160,6 +160,7 @@ data class AvslagbegrunnelseItem(
 data class BeregningItem(
 	val valuta: String? = null,
 	val beloepBrutto: BeloepBrutto? = null,
+	val beloepNetto: BeloepBrutto? = null,
 	val periode: Periode? = null,
 	val utbetalingshyppighet: String? = null,
 	val utbetalingshyppighetAnnen: String? = null
