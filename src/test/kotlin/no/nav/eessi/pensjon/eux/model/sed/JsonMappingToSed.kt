@@ -88,6 +88,8 @@ internal class JsonMappingToSed {
                 assertNotNull(p6000.p6000Pensjon)
                 assertEquals("asdffsdaf", p6000.p6000Pensjon?.gjenlevende?.person?.etternavn)
                 assertEquals("sdafsdf", p6000.p6000Pensjon?.gjenlevende?.person?.fornavn)
+                assertEquals("234", p6000.p6000Pensjon?.vedtak?.firstOrNull()?.delvisstans?.utbetaling?.beloepBrutto)
+
             }
             is P7000 -> {
                 val p7000 = sed

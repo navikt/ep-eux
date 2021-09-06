@@ -72,13 +72,6 @@ data class BeloepItem(
         val utbetalingshyppighetAnnen: String? = null
 )
 
-data class Sak(
-	val artikkel54: String? = null,
-	val reduksjon: List<ReduksjonItem>? = null,
-	val kravtype: List<KravtypeItem>? = null,
-	val enkeltkrav: KravtypeItem? = null
-)
-
 data class KravtypeItem(
         val datoFrist: String? = null,
         val krav: String? = null
@@ -94,26 +87,8 @@ data class VedtakItem(
 	val avslagbegrunnelse: List<AvslagbegrunnelseItem>? = null,
 	val basertPaa: String? = null,
 	val artikkel: String? = null,
-	val basertPaaAnnen: String? = null
-)
-
-data class Tilleggsinformasjon(
-	val dato: String? = null,
-	val andreinstitusjoner: List<AndreinstitusjonerItem>? = null,
-	val artikkel48: String? = null,
-	val opphoer: Opphoer? = null,
-	val revurderingtidsfrist: String? = null
-)
-
-data class AndreinstitusjonerItem(
-	val institusjonsid: String? = null,
-	val institusjonsnavn: String? = null,
-	val institusjonsadresse: String? = null,
-	val postnummer: String? = null,
-	val bygningsnavn: String? = null,
-	val land: String? = null,
-	val region: String? = null,
-	val poststed: String? = null
+	val basertPaaAnnen: String? = null,
+	val delvisstans: DelvisstansItem?=null //2021.09.06, lagt inn grunnet mapping
 )
 
 data class Ukjent(
@@ -135,11 +110,6 @@ data class VirkningsdatoItem(
 data class Arsak(
         val inntektAnnen: String? = null,
         val annenytelseellerinntekt: String? = null
-)
-
-data class Opphoer(
-        val dato: String? = null,
-        val annulleringdato: String? = null
 )
 
 data class Grunnlag(
@@ -177,3 +147,4 @@ data class Periode(
         val fom: String? = null,
         val tom: String? = null,
 )
+
