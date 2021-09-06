@@ -1,7 +1,5 @@
 package no.nav.eessi.pensjon.eux.model.sed
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties
-
 class P6000Pensjon(
     val gjenlevende: Bruker? = null,
     val reduksjon: List<ReduksjonItem>? = null,

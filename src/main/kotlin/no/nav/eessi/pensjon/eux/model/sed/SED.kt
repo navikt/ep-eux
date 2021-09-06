@@ -39,7 +39,7 @@ open class SED(
             SedType.P9000, SedType.P10000, SedType.P15000, SedType.X005, SedType.X010, SedType.R005
         )
 
-        inline fun <reified T : SED> generateSedToClass(sed: SED): T = mapJsonToAny(sed.toJson(), typeRefs<T>())
+        inline fun <reified T : SED> generateSedToClass(sed: SED): T = mapJsonToAny(sed.toSkipEmptyString(), typeRefs<T>())
         inline fun <reified T : SED> generateJsonToClass(json: String): T = mapJsonToAny(json, typeRefs<T>())
 
         @JsonIgnoreProperties(ignoreUnknown = true)

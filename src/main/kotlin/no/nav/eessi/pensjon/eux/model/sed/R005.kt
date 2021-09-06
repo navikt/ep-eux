@@ -14,7 +14,8 @@ class R005(
 
 //R005 nav
 data class RNav(
-    val brukere: List<Brukere>? = null
+    val brukere: List<Brukere>? = null,
+    val eessisak: List<EessisakItem>? = null
 )
 
 //kun for R005
