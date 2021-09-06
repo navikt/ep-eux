@@ -2,9 +2,11 @@ package no.nav.eessi.pensjon.eux.model.sed
 
 import no.nav.eessi.pensjon.utils.JsonIllegalArgumentException
 import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
+@Disabled
 internal class SedTest {
 
     @Test

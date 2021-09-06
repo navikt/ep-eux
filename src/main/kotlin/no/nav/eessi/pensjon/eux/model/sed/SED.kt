@@ -68,12 +68,12 @@ open class SED(
                     else -> fromJson(json!!)
                 }
             } catch (jpe: JsonParseException) {
-                val exception = jpe.message?.substringBefore("nav", "{")
-                throw JsonIllegalArgumentException("Feilet ved konvertering av jsonformat $exception", Throwable(exception))
+                //val exception = jpe.message?.substringBefore("nav", "{")
+                throw JsonIllegalArgumentException("Feilet ved konvertering av jsonformat ${jpe.message}", Throwable(jpe.message))
                     .also { logger.error(it.message) }
             } catch (jme: JsonMappingException) {
-                val exception = jme.message?.substringBefore("nav", "{")
-                throw JsonIllegalArgumentException("Feilet ved mapping av jsonformat $exception", Throwable(exception))
+                //val exception = jme.message?.substringBefore("nav", "{")
+                throw JsonIllegalArgumentException("Feilet ved mapping av jsonformat $${jme.message}", Throwable(jme.message))
                     .also { logger.error(it.message) }
             } catch (ex: Exception) {
                 throw Exception("Feilet med en ukjent feil ved jsonformat").also { logger.error(it.message) }

@@ -27,7 +27,19 @@ data class Tilleggsinformasjon(
     val artikkel48: String? = null,
     val opphoer: Opphoer? = null,
     val revurderingtidsfrist: String? = null,
-    val annen: AnnenItem? = null //2021.09.06 Legger inn grunnet mapping feil fra RINA
+
+    //2021.09.06 Legger inn grunnet mapping feil fra RINA
+    val annen: AnnenItem? = null,
+    val person: PersonAnnen? = null
+)
+
+data class PersonAnnen(
+    val pinannen: PinAnnen?  = null
+)
+
+data class PinAnnen(
+    val identifikator: String? = null,
+    val sektor: String? = null
 )
 
 data class DelvisstansItem(
