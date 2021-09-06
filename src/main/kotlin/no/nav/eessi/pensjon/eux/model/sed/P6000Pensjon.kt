@@ -30,7 +30,10 @@ data class Tilleggsinformasjon(
 
     //2021.09.06 Legger inn grunnet mapping feil fra RINA
     val annen: AnnenItem? = null,
-    val person: PersonAnnen? = null
+    val person: PersonAnnen? = null,
+    val anneninformation: String? = null,
+    val saksnummerAnnen: String ? = null,
+    val saksnummer: String? = null
 )
 
 data class PersonAnnen(

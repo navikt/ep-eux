@@ -13,20 +13,7 @@ internal class JsonMappingToSed {
     @MethodSource("listSedType")
     fun `Beskrivelse inneholder SedType`(pair: Pair<SedType, String>) {
         val type = pair.first
-        val filename = pair.second
-
-        val json = try {
-            readFile(filename)
-        } catch (ex: Exception) {
-            println("Feil readFile :${ex.message}")
-            """ {
-              "sed": "$type",
-              "sedGVer": "4",
-              "sedVer": "2",
-              "nav": null 
-              }
-            """.trimIndent()
-        }
+        val json = jsonString(pair)
         val sed = SED.fromJsonToConcrete(json)
         println("*** ${sed.type} ***")
 
@@ -37,6 +24,34 @@ internal class JsonMappingToSed {
         JSONAssert.assertEquals( sed.toJsonSkipEmpty(), json, false)
 
     }
+
+    @ParameterizedTest
+    @MethodSource("listSedTypeFromRina")
+    fun `Se at alle json fra RINA mapper korrekt`(pair: Pair<SedType, String>) {
+        val json = jsonString(pair)
+        val sed = SED.fromJsonToConcrete(json)
+        JSONAssert.assertEquals( sed.toJsonSkipEmpty(), json, false)
+    }
+
+    private fun jsonString(pair: Pair<SedType, String>): String {
+        val type = pair.first
+        val filename = pair.second
+
+        val json = try {
+            readFile(filename)
+        } catch (ex: Exception) {
+            println("Feil readFile :${ex.message}")
+            """ {
+                  "sed": "$type",
+                  "sedGVer": "4",
+                  "sedVer": "2",
+                  "nav": null 
+                  }
+                """.trimIndent()
+        }
+        return json
+    }
+
 
     fun assertPensjon(sed: SED) {
         println("*** detaljert assert på nav og pensjon type: ${sed.type} ***")
@@ -124,6 +139,11 @@ internal class JsonMappingToSed {
                 .filterNot { it == SedType.P4000 }
                 .map { Pair(it, "/sed/$it-NAV.json") }
         }
+        @JvmStatic
+        fun listSedTypeFromRina(): List<Pair<SedType,String>> {
+            return SED.listSupportetConcreteClass()
+                .filterNot { it == SedType.P4000 }
+                .map { Pair(it, "/sed/$it-RINA.json") }
+        }
     }
-
 }

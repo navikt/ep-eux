@@ -4,7 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 
 class P8000Pensjon(
     val anmodning: AnmodningOmTilleggsInfo? = null,
-    val ytterligeinformasjon: String? = null
+    val ytterligeinformasjon: String? = null,
+    val vedlegg: List<String> ? = null
 )
 
 @JsonIgnoreProperties(ignoreUnknown = true)
