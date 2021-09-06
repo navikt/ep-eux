@@ -43,12 +43,15 @@ data class UtbetalingItem(
     val valuta: String? = null
 )
 
+//2021.09.06 Legger inn grunnet mapping feil fra RINA
 data class AnnenItem(
-    val institusjonsadresse: InstitusjonsadresseItem
+    val institusjonsadresse: InstitusjonsadresseItem,
+    val institusjonsid: String? = null,
+    val institusjonsnavn: String? = null
 )
 
 data class InstitusjonsadresseItem(
-    val land: String? = null
+    val land: String? = null,
 )
 
 data class Opphoer(
