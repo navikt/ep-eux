@@ -142,7 +142,6 @@ internal class JsonMappingToSed {
         @JvmStatic
         fun listSedTypeFromRina(): List<Pair<SedType,String>> {
             return SED.listSupportetConcreteClass()
-                .filterNot { it == SedType.P4000 }
                 .map { Pair(it, "/sed/$it-RINA.json") }
         }
     }

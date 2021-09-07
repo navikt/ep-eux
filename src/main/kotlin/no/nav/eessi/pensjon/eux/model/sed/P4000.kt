@@ -1,6 +1,8 @@
 package no.nav.eessi.pensjon.eux.model.sed
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonProperty
+
 
 class P4000(
     @JsonProperty("sed")
@@ -24,6 +26,7 @@ data class PersonArbeidogOppholdUtland(
     val frivilligPerioder: List<StandardItem>? = null
 )
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 data class TrygdeTidPeriode(
     val lukketPeriode: Periode? = null,
     val openPeriode: Periode? = null,
