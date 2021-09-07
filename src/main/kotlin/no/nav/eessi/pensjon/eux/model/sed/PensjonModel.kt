@@ -88,11 +88,9 @@ data class VedtakItem(
 	val basertPaa: String? = null,
 	val artikkel: String? = null,
 	val basertPaaAnnen: String? = null,
-
-	//2021.09.06, lagt inn grunnet feil i mapping mot RINA
-	val delvisstans: DelvisstansItem?=null,
+	val delvisstans: DelvisstansItem? = null, //2021.09.06, lagt inn grunnet mapping
 	val kjoeringsdato: String? = null,
-	val begrunnelseAnnen: String?= null
+	val begrunnelseAnnen: String ? = null
 )
 
 data class Ukjent(
