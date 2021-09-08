@@ -22,12 +22,34 @@ data class RNav(
 data class Brukere(
     val mor: Foreldre? = null,
     val far: Foreldre? = null,
-    val person: Person? = null,
+    val person: PersonR005? = null,
     @JsonFormat(with = [JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY]) // i R005 kan det være flere adresser pr person
     val adresse: List<Adresse>? = null,
     val arbeidsforhold: List<ArbeidsforholdItem>? = null,
     val bank: Bank? = null,
     val tilbakekreving: TilbakekrevingBrukere? = null // Kun brukt av R005
+)
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+data class PersonR005(
+    val pin: List<PinItem>? = null,
+    var pinland: PinLandItem? = null, //for H020 og H021
+    val statsborgerskap: List<StatsborgerskapItem>? = null, //nasjonalitet
+    val etternavn: String? = null,
+    val fornavn: String? = null,
+    val tilbakekrevingtidligereetternavn: List<TidligereNavn>? = null,
+    val tilbakekrevingtidligerefornavn: List<TidligereNavn>? = null,
+    val kjoenn: String? = null,
+    val foedested: Foedested? = null,
+    val foedselsdato: String? = null,
+    val sivilstand: SivilstandItem? = null,   //familiestatus
+    val relasjontilavdod: RelasjonAvdodItem? = null, //5.2.5 P2100
+    var rolle: String? = null  //3.1 i P10000
+)
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+data class TidligereNavn(
+    val navn: String? = null
 )
 
 //R005
@@ -47,7 +69,9 @@ data class AnmodningMotregningItem(
     val bank: Bank?
 )
 
-data class AnmodningItem( val type: String? = null)
+data class AnmodningItem(
+    val type: String? = null
+)
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 data class Status(

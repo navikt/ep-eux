@@ -48,7 +48,7 @@ data class Ytelse(val type: String?)
 data class Bank(
         val navn: String? = null,
         val konto: Konto? = null,
-        val adresse: Adresse? = null,
+        val adresse: Adresse? = null
 )
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -56,7 +56,7 @@ data class Konto(
         val sepa: Sepa? = null,
         val kontonr: String? = null,
         val innehaver: Innehaver? = null,
-        val betalingsreferanse: Innehaver? = null
+        val betalingsreferanse: String? = null
 )
 
 data class Sepa(
@@ -103,21 +103,13 @@ data class Person(
         val fornavnvedfoedsel: String? = null,
         val tidligerefornavn: String? = null,
         val tidligereetternavn: String? = null,
-        val tilbakekrevingtidligereetternavn: List<TidligereNavn>? = null,
-        val tilbakekrevingtidligerefornavn: List<TidligereNavn>? = null,
         val kjoenn: String? = null,
         val foedested: Foedested? = null,
         val foedselsdato: String? = null,
-        @JsonFormat(with = [JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY])
         val sivilstand: List<SivilstandItem>? = null,   //familiestatus
         val relasjontilavdod: RelasjonAvdodItem? = null, //5.2.5 P2100
         //noe enkel måte å få denne til å forbli val?
         var rolle: String? = null  //3.1 i P10000
-)
-
-@JsonIgnoreProperties(ignoreUnknown = true)
-data class TidligereNavn(
-        val navn: String? = null
 )
 
 data class PinLandItem(
@@ -187,7 +179,7 @@ data class PinItem(
 )
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-class Adresse(
+data class Adresse(
         val gate: String? = null,
         val bygning: String? = null,
         val by: String? = null,

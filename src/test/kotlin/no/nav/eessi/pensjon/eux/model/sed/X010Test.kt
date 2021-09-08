@@ -43,8 +43,7 @@ class X010Test {
         val json = x010.toJson()
         println(json)
 
-        assertEquals(expectedJson(), json)
-        JSONAssert.assertEquals( json, expectedJson(), false)
+        JSONAssert.assertEquals(expectedJson(), json, false)
 
 
     }
@@ -52,50 +51,50 @@ class X010Test {
 
     private fun expectedJson(): String {
         return """
-{
-  "sed" : "X010",
-  "nav" : {
-    "sak" : {
-      "kontekst" : {
-        "bruker" : {
-          "mor" : null,
-          "far" : null,
-          "person" : {
-            "pin" : null,
-            "pinland" : null,
-            "statsborgerskap" : null,
-            "etternavn" : "BJELLEKLANGEN",
-            "fornavn" : "OLA",
-            "kjoenn" : "M",
-            "foedested" : null,
-            "foedselsdato" : "2001-02-04",
-            "sivilstand" : null,
-            "relasjontilavdod" : null,
-            "rolle" : null
+        {
+          "sed" : "X010",
+          "nav" : {
+            "sak" : {
+              "kontekst" : {
+                "bruker" : {
+                  "mor" : null,
+                  "far" : null,
+                  "person" : {
+                    "pin" : null,
+                    "pinland" : null,
+                    "statsborgerskap" : null,
+                    "etternavn" : "BJELLEKLANGEN",
+                    "fornavn" : "OLA",
+                    "kjoenn" : "M",
+                    "foedested" : null,
+                    "foedselsdato" : "2001-02-04",
+                    "sivilstand" : null,
+                    "relasjontilavdod" : null,
+                    "rolle" : null
+                  },
+                  "adresse" : null,
+                  "arbeidsforhold" : null,
+                  "bank" : null
+                }
+              },
+              "leggtilinstitusjon" : null,
+              "paaminnelse" : {
+                "svar" : {
+                  "informasjon" : {
+                    "kommersenere" : [ {
+                      "type" : "P5000",
+                      "opplysninger" : "Opplysningenenenenen",
+                      "forventetdato" : "2020-20-10"
+                    } ]
+                  }
+                }
+              }
+            }
           },
-          "adresse" : null,
-          "arbeidsforhold" : null,
-          "bank" : null
+          "sedGVer" : "4",
+          "sedVer" : "2",
+          "pensjon" : null
         }
-      },
-      "leggtilinstitusjon" : null,
-      "paaminnelse" : {
-        "svar" : {
-          "informasjon" : {
-            "kommersenere" : [ {
-              "type" : "P5000",
-              "opplysninger" : "Opplysningenenenenen",
-              "forventetdato" : "2020-20-10"
-            } ]
-          }
-        }
-      }
-    }
-  },
-  "sedGVer" : "4",
-  "sedVer" : "2",
-  "pensjon" : null
-}
         """.trimIndent()
     }
 
