@@ -34,17 +34,22 @@ data class Brukere(
 @JsonIgnoreProperties(ignoreUnknown = true)
 data class Tilbakekreving(
     val feilutbetaling: Feilutbetaling? = null,
-    val status: Status? = null
+    val anmodning: AnmodningItem? = null,
+    val anmodningommotregning: AnmodningMotregningItem? = null,
 )
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 data class TilbakekrevingBrukere(
-    val feilutbetaling: Feilutbetaling? = null,
-    val status: Status? = null
+    val status: Status? = null,
 )
 
-@JsonIgnoreProperties(ignoreUnknown = true)
+data class AnmodningMotregningItem(
+    val bank: Bank?
+)
 
+data class AnmodningItem( val type: String? = null)
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 data class Status(
     val type: String? = null,
     val annen: String? = null

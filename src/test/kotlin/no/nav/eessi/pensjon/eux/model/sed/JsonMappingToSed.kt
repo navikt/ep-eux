@@ -30,6 +30,14 @@ internal class JsonMappingToSed {
     fun `Se at alle json fra RINA mapper korrekt`(pair: Pair<SedType, String>) {
         val json = jsonString(pair)
         val sed = SED.fromJsonToConcrete(json)
+
+        println(sed.toJsonSkipEmpty())
+
+        println("*".repeat(100))
+
+        println(json)
+
+
         JSONAssert.assertEquals( sed.toJsonSkipEmpty(), json, false)
     }
 
@@ -136,7 +144,6 @@ internal class JsonMappingToSed {
         @JvmStatic
         fun listSedType(): List<Pair<SedType,String>> {
             return SED.listSupportetConcreteClass()
-                .filterNot { it == SedType.P4000 }
                 .map { Pair(it, "/sed/$it-NAV.json") }
         }
         @JvmStatic

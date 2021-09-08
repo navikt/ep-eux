@@ -1,7 +1,9 @@
 package no.nav.eessi.pensjon.eux.model.sed
 
+import com.fasterxml.jackson.annotation.JsonAlias
 import com.fasterxml.jackson.annotation.JsonFormat
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
+import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -46,14 +48,15 @@ data class Ytelse(val type: String?)
 data class Bank(
         val navn: String? = null,
         val konto: Konto? = null,
-        val adresse: Adresse? = null
+        val adresse: Adresse? = null,
 )
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 data class Konto(
         val sepa: Sepa? = null,
         val kontonr: String? = null,
-        val innehaver: Innehaver? = null
+        val innehaver: Innehaver? = null,
+        val betalingsreferanse: Innehaver? = null
 )
 
 data class Sepa(
@@ -95,7 +98,13 @@ data class Person(
         var pinland: PinLandItem? = null, //for H020 og H021
         val statsborgerskap: List<StatsborgerskapItem>? = null, //nasjonalitet
         val etternavn: String? = null,
+        val etternavnvedfoedsel: String? = null,
         val fornavn: String? = null,
+        val fornavnvedfoedsel: String? = null,
+        val tidligerefornavn: String? = null,
+        val tidligereetternavn: String? = null,
+        val tilbakekrevingtidligereetternavn: List<TidligereNavn>? = null,
+        val tilbakekrevingtidligerefornavn: List<TidligereNavn>? = null,
         val kjoenn: String? = null,
         val foedested: Foedested? = null,
         val foedselsdato: String? = null,
@@ -104,6 +113,11 @@ data class Person(
         val relasjontilavdod: RelasjonAvdodItem? = null, //5.2.5 P2100
         //noe enkel måte å få denne til å forbli val?
         var rolle: String? = null  //3.1 i P10000
+)
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+data class TidligereNavn(
+        val navn: String? = null
 )
 
 data class PinLandItem(
@@ -173,17 +187,20 @@ data class PinItem(
 )
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-data class Adresse(
+class Adresse(
         val gate: String? = null,
         val bygning: String? = null,
         val by: String? = null,
         val postnummer: String? = null,
+        val postkode: String? = null,
         val region: String? = null,
         val land: String? = null,
         val kontaktpersonadresse: String? = null,
         val datoforadresseendring: String? = null,
         val postadresse: String? = null,
-        val startdato: String? = null
+        val startdato: String? = null,
+        val type: String? = null,
+        val annen: String? = null
 )
 
 data class Foedested(

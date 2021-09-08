@@ -73,6 +73,7 @@ open class SED(
                     .also { logger.error(it.message) }
             } catch (jme: JsonMappingException) {
                 val exception = jme.message?.substringBefore("ignorable", "pensjon")
+                println(jme)
                 throw JsonIllegalArgumentException("Feilet ved mapping av jsonformat $exception", Throwable(exception))
                     .also { logger.error(it.message) }
             } catch (ex: Exception) {
