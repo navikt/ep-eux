@@ -40,10 +40,7 @@ data class Bruker(
         val bank: Bank? = null,
 )
 
-data class Feilutbetaling(val ytelse: Ytelse?)
-
 data class Ytelse(val type: String?)
-data class Status(val type: String?)
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 data class Bank(

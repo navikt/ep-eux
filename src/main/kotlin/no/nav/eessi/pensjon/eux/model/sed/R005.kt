@@ -27,7 +27,7 @@ data class Brukere(
     val adresse: List<Adresse>? = null,
     val arbeidsforhold: List<ArbeidsforholdItem>? = null,
     val bank: Bank? = null,
-    val tilbakekreving: Tilbakekreving? = null // Kun brukt av R005
+    val tilbakekreving: TilbakekrevingBrukere? = null // Kun brukt av R005
 )
 
 //R005
@@ -35,4 +35,29 @@ data class Brukere(
 data class Tilbakekreving(
     val feilutbetaling: Feilutbetaling? = null,
     val status: Status? = null
+)
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+data class TilbakekrevingBrukere(
+    val feilutbetaling: Feilutbetaling? = null,
+    val status: Status? = null
+)
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+
+data class Status(
+    val type: String? = null,
+    val annen: String? = null
+)
+
+data class Feilutbetaling(
+    val ytelse: Ytelse? = null,
+    val valuta: String? = null,
+    val beloep: String? = null,
+    val periode: TilbakekrevingsPeriode? = null
+)
+
+data class TilbakekrevingsPeriode(
+    val sluttdato: String? = null,
+    val startdato: String? = null
 )
