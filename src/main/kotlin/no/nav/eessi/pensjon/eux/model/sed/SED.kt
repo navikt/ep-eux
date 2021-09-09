@@ -5,12 +5,12 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.core.JsonParseException
 import com.fasterxml.jackson.databind.JsonMappingException
-import org.slf4j.LoggerFactory
 import no.nav.eessi.pensjon.utils.JsonIllegalArgumentException
 import no.nav.eessi.pensjon.utils.mapAnyToJson
 import no.nav.eessi.pensjon.utils.mapJsonToAny
 import no.nav.eessi.pensjon.utils.toJson
 import no.nav.eessi.pensjon.utils.typeRefs
+import org.slf4j.LoggerFactory
 
 // SED class main request class to basis
 // Strukturerte Elektroniske Dokumenter
@@ -64,6 +64,7 @@ open class SED(
                     SedType.P15000 -> generateJsonToClass<P15000>(json)
                     SedType.R005 -> generateJsonToClass<R005>(json)
                     SedType.X005 -> generateJsonToClass<X005>(json)
+                    SedType.X008 -> generateJsonToClass<X008>(json)
                     SedType.X010 -> generateJsonToClass<X010>(json)
                     else -> fromJson(json!!)
                 }
