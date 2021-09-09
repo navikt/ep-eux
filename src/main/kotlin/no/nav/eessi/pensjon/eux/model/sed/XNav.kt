@@ -8,6 +8,7 @@ data class XNav(
 )
 
 //X005, X010
+@JsonIgnoreProperties(ignoreUnknown = true)
 data class Navsak (
     val kontekst: Kontekst? = null,
     val leggtilinstitusjon: Leggtilinstitusjon? = null,
@@ -36,6 +37,7 @@ data class KommersenereItem(
 )
 
 //X005
+@JsonIgnoreProperties(ignoreUnknown = true)
 data class Kontekst(
     val bruker: Bruker? = null
 )
