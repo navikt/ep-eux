@@ -26,6 +26,7 @@ data class Svar(
 
 //X010
 data class Informasjon(
+    val ikketilgjengelig: List<IkkeTilgjengelig>? = null,
     val kommersenere: List<KommersenereItem>? = null
 )
 
@@ -52,4 +53,15 @@ data class Leggtilinstitusjon(
 data class InstitusjonX005(
     val id: String,
     val navn: String
+)
+
+data class IkkeTilgjengelig(
+    val type: String,
+    val opplysninger: String? = null,
+    val grunn: Grunn? = null
+)
+
+data class Grunn (
+    val type: String,
+    val annet: String? = null
 )
