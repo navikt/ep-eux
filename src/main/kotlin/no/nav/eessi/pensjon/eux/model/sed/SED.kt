@@ -51,7 +51,7 @@ open class SED(
 
         fun fromJsonToConcrete(json: String?): SED {
             try {
-                return when(json?.let { fromSimpleJson(json) }) {
+                return when(json?.let { fromSimpleJson(json)}) {
                     SedType.P2000 -> generateJsonToClass<P2000>(json)
                     SedType.P2100 -> generateJsonToClass<P2100>(json)
                     SedType.P2200 -> generateJsonToClass<P2200>(json)
@@ -70,12 +70,10 @@ open class SED(
                     else -> fromJson(json!!)
                 }
             } catch (jpe: JsonParseException) {
-                val exception = jpe.message?.substringBefore("ignorable", "sed")
-                throw JsonIllegalArgumentException("Feilet ved konvertering av jsonformat $exception", Throwable(exception))
+                throw JsonIllegalArgumentException("Feilet ved konvertering av jsonformat $jpe", Throwable(jpe))
                     .also { logger.error(it.message) }
             } catch (jme: JsonMappingException) {
-                val exception = jme.message?.substringBefore("ignorable", "sed")
-                throw JsonIllegalArgumentException("Feilet ved mapping av jsonformat $exception", Throwable(exception))
+                throw JsonIllegalArgumentException("Feilet ved mapping av jsonformat $jme", Throwable(jme))
                     .also { logger.error(it.message) }
             } catch (ex: Exception) {
                 throw JsonException("Feilet med en ukjent feil ved jsonformat", ex).also { logger.error(it.message) }

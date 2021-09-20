@@ -51,17 +51,17 @@ data class Leggtilinstitusjon(
 
 //X005
 data class InstitusjonX005(
-    val id: String,
-    val navn: String
+    val id: String? = null,
+    val navn: String? = null
 )
 
 data class IkkeTilgjengelig(
-    val type: String,
+    val type: String? = null,
     val opplysninger: String? = null,
     val grunn: Grunn? = null
 )
 
 data class Grunn (
-    val type: String,
+    val type: String? = null,
     val annet: String? = null
 )
