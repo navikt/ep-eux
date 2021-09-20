@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.core.JsonParseException
 import com.fasterxml.jackson.databind.JsonMappingException
+import no.nav.eessi.pensjon.utils.JsonException
 import no.nav.eessi.pensjon.utils.JsonIllegalArgumentException
 import no.nav.eessi.pensjon.utils.mapAnyToJson
 import no.nav.eessi.pensjon.utils.mapJsonToAny
@@ -74,11 +75,10 @@ open class SED(
                     .also { logger.error(it.message) }
             } catch (jme: JsonMappingException) {
                 val exception = jme.message?.substringBefore("ignorable", "pensjon")
-                println(jme)
                 throw JsonIllegalArgumentException("Feilet ved mapping av jsonformat $exception", Throwable(exception))
                     .also { logger.error(it.message) }
             } catch (ex: Exception) {
-                throw Exception("Feilet med en ukjent feil ved jsonformat").also { logger.error(it.message) }
+                throw JsonException("Feilet med en ukjent feil ved jsonformat", ex).also { logger.error(it.message) }
             }
         }
     }
