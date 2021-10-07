@@ -3,6 +3,7 @@ package no.nav.eessi.pensjon.eux.model.sed
 import com.fasterxml.jackson.annotation.JsonFormat
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonProperty
+import no.nav.eessi.pensjon.eux.model.SedType
 
 class R005(
     @JsonProperty("sed")

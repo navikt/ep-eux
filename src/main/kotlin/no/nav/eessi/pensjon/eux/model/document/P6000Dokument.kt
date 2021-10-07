@@ -1,7 +1,7 @@
 package no.nav.eessi.pensjon.eux.model.document
 
 import com.fasterxml.jackson.annotation.JsonFormat
-import no.nav.eessi.pensjon.eux.model.sed.SedType
+import no.nav.eessi.pensjon.eux.model.SedType
 import java.time.LocalDate
 
 data class P6000Dokument(

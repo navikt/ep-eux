@@ -1,5 +1,6 @@
 package no.nav.eessi.pensjon.eux.model.sed
 
+import no.nav.eessi.pensjon.eux.model.SedType
 import no.nav.eessi.pensjon.utils.toJsonSkipEmpty
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertNotNull
