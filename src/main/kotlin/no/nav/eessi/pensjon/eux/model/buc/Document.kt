@@ -1,7 +1,7 @@
 package no.nav.eessi.pensjon.eux.model.buc
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
-import no.nav.eessi.pensjon.eux.model.sed.SedType
+import no.nav.eessi.pensjon.eux.model.SedType
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 class Document(

@@ -1,6 +1,7 @@
 package no.nav.eessi.pensjon.eux.model.sed
 
 import com.fasterxml.jackson.annotation.JsonProperty
+import no.nav.eessi.pensjon.eux.model.SedType
 
 data class P5000(
     @JsonProperty("sed")

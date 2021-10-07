@@ -3,7 +3,7 @@ package no.nav.eessi.pensjon.eux.model.document
 import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonValue
-import no.nav.eessi.pensjon.eux.model.sed.SedType
+import no.nav.eessi.pensjon.eux.model.SedType
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 data class ForenkletSED(
