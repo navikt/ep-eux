@@ -1,5 +1,6 @@
 package no.nav.eessi.pensjon.eux.model.sed
 
+import no.nav.eessi.pensjon.eux.model.SedType
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.EnumSource

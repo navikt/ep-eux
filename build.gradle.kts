@@ -56,6 +56,9 @@ dependencies {
     testImplementation("org.springframework:spring-test:$springVersion")
     testImplementation("org.junit.jupiter:junit-jupiter:5.6.2")
     testImplementation("io.mockk:mockk:1.10.0")
+
+    // Architecture tests
+    testImplementation ("com.tngtech.archunit:archunit:0.21.0")
 }
 
 // https://github.com/researchgate/gradle-release

@@ -1,4 +1,4 @@
-package no.nav.eessi.pensjon.eux.model.sed
+package no.nav.eessi.pensjon.eux.model
 
 import com.fasterxml.jackson.annotation.JsonCreator
 
