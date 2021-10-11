@@ -38,7 +38,7 @@ open class SED(
 
         fun listSupportetConcreteClass(): List<SedType> = listOf(
             SedType.P2000, SedType.P2100, SedType.P2200, SedType.P4000, SedType.P5000, SedType.P6000, SedType.P7000, SedType.P8000,
-            SedType.P9000, SedType.P10000, SedType.P15000, SedType.X005, SedType.X010, SedType.R005
+            SedType.P9000, SedType.P10000, SedType.P15000, SedType.X005, SedType.X009, SedType.X010, SedType.R005
         )
 
         inline fun <reified T : SED> generateSedToClass(sed: SED): T = mapJsonToAny(sed.toSkipEmptyString(), typeRefs<T>())
@@ -67,6 +67,7 @@ open class SED(
                     SedType.R005 -> generateJsonToClass<R005>(json)
                     SedType.X005 -> generateJsonToClass<X005>(json)
                     SedType.X008 -> generateJsonToClass<X008>(json)
+                    SedType.X009 -> generateJsonToClass<X009>(json)
                     SedType.X010 -> generateJsonToClass<X010>(json)
                     else -> fromJson(json!!)
                 }

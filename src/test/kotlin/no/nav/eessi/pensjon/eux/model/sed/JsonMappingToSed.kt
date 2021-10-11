@@ -100,6 +100,21 @@ internal class JsonMappingToSed {
                 assertEquals("Duck", x005.xnav?.sak?.kontekst?.bruker?.person?.etternavn)
                 assertEquals("Dummy", x005.xnav?.sak?.kontekst?.bruker?.person?.fornavn)
             }
+            is X009 -> {
+                assertEquals(X009::class.java.name, sed.javaClass.name)
+                assertNotNull(sed.xnav?.sak)
+                val x009: X009 = sed
+                assertEquals("æøå", x009.xnav?.sak?.kontekst?.arbeidsgiver?.navn)
+
+                assertEquals("æøå", x009.xnav?.sak?.kontekst?.refusjonskrav?.id)
+                assertEquals("æøå", x009.xnav?.sak?.kontekst?.refusjonskrav?.antallkrav)
+
+                assertEquals("dokument", x009.xnav?.sak?.paaminnelse?.sende?.firstOrNull()?.type)
+                assertEquals("æøå", x009.xnav?.sak?.paaminnelse?.sende?.firstOrNull()?.detaljer)
+
+
+
+            }
             is X010 -> {
                 assertEquals(X010::class.java.name, sed.javaClass.name)
                 assertNotNull(sed.xnav?.sak)

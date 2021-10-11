@@ -17,7 +17,14 @@ data class Navsak (
 
 //X010
 data class Paaminnelse(
-    val svar: Svar? = null
+    val svar: Svar? = null,
+    val sende: List<SendeItem?>? = null
+)
+
+//X009
+data class SendeItem(
+    val type: String? = null,
+    val detaljer: String? = null
 )
 
 data class Svar(
@@ -37,16 +44,37 @@ data class KommersenereItem(
     val forventetdato: String? = null
 )
 
-//X005
+//X005, X009, X010
 @JsonIgnoreProperties(ignoreUnknown = true)
 data class Kontekst(
-    val bruker: Bruker? = null
+    val bruker: Bruker? = null,
+    val refusjonskrav: Refusjonskrav? = null,
+    val arbeidsgiver: XArbeidsgiver? = null,
 )
+
+//X009
+data class XArbeidsgiver(
+    val identifikator: List<IdentifikatorItem?>? = null,
+    val adresse: Adresse? = null,
+    val navn: String? = null
+)
+
+//X009
+data class IdentifikatorItem(
+    val id: String? = null,
+    val type: String? = null
+)
+
+data class Refusjonskrav(
+   val antallkrav: String? = null,
+   val id: String? = null
+)
+
 
 //X005
 @JsonIgnoreProperties(ignoreUnknown = true)
 data class Leggtilinstitusjon(
-    val institusjon: InstitusjonX005? = null,
+    val institusjon: InstitusjonX005? = null
 )
 
 //X005
