@@ -1,44 +1,63 @@
 {
-  "sed" : "X010",
-  "sedGVer" : "4",
-  "sedVer" : "1",
-  "nav" : {
-    "sak" : {
-      "kontekst" : {
-        "bruker" : {
-          "mor" : null,
-          "far" : null,
-          "person" : {
-            "pin" : null,
-            "pinland" : null,
-            "statsborgerskap" : null,
-            "etternavn" : "BJELLEKLANGEN",
-            "fornavn" : "OLA",
-            "kjoenn" : "M",
-            "foedested" : null,
-            "foedselsdato" : "2001-02-04",
-            "sivilstand" : null,
-            "relasjontilavdod" : null,
-            "rolle" : null
+  "nav": {
+    "sak": {
+      "kontekst": {
+        "refusjonskrav": {
+          "antallkrav": "æøå",
+          "id": "æøå"
+        },
+        "arbeidsgiver": {
+          "adresse": {
+            "bygning": "æøå",
+            "region": "æøå",
+            "land": "NO",
+            "gate": "æøå",
+            "by": "æøå",
+            "postnummer": "æøå"
           },
-          "adresse" : null,
-          "arbeidsforhold" : null,
-          "bank" : null
+          "identifikator": [
+            {
+              "type": "registrering",
+              "id": "æøå"
+            }
+          ],
+          "navn": "æøå"
+        },
+        "bruker": {
+          "person": {
+            "fornavn": "æøå",
+            "foedselsdato": "æøå",
+            "etternavn": "æøå",
+            "kjoenn": "M"
+          }
         }
       },
-      "leggtilinstitusjon" : null,
-      "paaminnelse" : {
-        "svar" : {
-          "informasjon" : {
-            "kommersenere" : [ {
-              "type" : "P5000",
-              "opplysninger" : "Opplysningenenenenen",
-              "forventetdato" : "2020-20-10"
-            } ]
+      "paaminnelse": {
+        "svar": {
+          "informasjon": {
+            "ikketilgjengelig": [
+              {
+                "type": "dokument",
+                "opplysninger": "æøå",
+                "grunn": {
+                  "type": "kan_ikke_fremlegge_etterspurt_informasjon",
+                  "annet": "æøå"
+                }
+              }
+            ],
+            "kommersenere": [
+              {
+                "opplysninger": "æøå",
+                "type": "dokument",
+                "forventetdato": "æøå"
+              }
+            ]
           }
         }
       }
     }
   },
-  "pensjon" : null
+  "sedGVer": "4",
+  "sedVer": "2",
+  "sed": "X010"
 }

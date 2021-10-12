@@ -99,6 +99,10 @@ internal class JsonMappingToSed {
                 assertNotNull(x005.xnav?.sak)
                 assertEquals("Duck", x005.xnav?.sak?.kontekst?.bruker?.person?.etternavn)
                 assertEquals("Dummy", x005.xnav?.sak?.kontekst?.bruker?.person?.fornavn)
+
+                assertEquals("NO:NAVT002", x005.xnav?.sak?.leggtilinstitusjon?.institusjon?.id)
+                assertEquals("joijo joijo", x005.xnav?.sak?.leggtilinstitusjon?.grunn?.annet)
+
             }
             is X009 -> {
                 assertEquals(X009::class.java.name, sed.javaClass.name)
@@ -118,8 +122,16 @@ internal class JsonMappingToSed {
             is X010 -> {
                 assertEquals(X010::class.java.name, sed.javaClass.name)
                 assertNotNull(sed.xnav?.sak)
-                assertEquals("BJELLEKLANGEN", sed.xnav?.sak?.kontekst?.bruker?.person?.etternavn)
-                assertEquals("Opplysningenenenenen", sed.xnav?.sak?.paaminnelse?.svar?.informasjon?.kommersenere?.first()?.opplysninger)
+                assertEquals("æøå", sed.xnav?.sak?.kontekst?.bruker?.person?.etternavn)
+                assertEquals("dokument", sed.xnav?.sak?.paaminnelse?.svar?.informasjon?.ikketilgjengelig?.first()?.type)
+                assertEquals("æøå", sed.xnav?.sak?.paaminnelse?.svar?.informasjon?.ikketilgjengelig?.first()?.opplysninger)
+                assertEquals("kan_ikke_fremlegge_etterspurt_informasjon", sed.xnav?.sak?.paaminnelse?.svar?.informasjon?.ikketilgjengelig?.first()?.grunn?.type)
+
+
+                assertEquals("æøå", sed.xnav?.sak?.paaminnelse?.svar?.informasjon?.kommersenere?.first()?.opplysninger)
+                assertEquals("dokument", sed.xnav?.sak?.paaminnelse?.svar?.informasjon?.kommersenere?.first()?.type)
+                assertEquals("æøå", sed.xnav?.sak?.paaminnelse?.svar?.informasjon?.kommersenere?.first()?.forventetdato)
+
             }
             is P6000 -> {
                 val p6000: P6000 = sed

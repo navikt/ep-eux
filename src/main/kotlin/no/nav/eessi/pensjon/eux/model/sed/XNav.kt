@@ -7,7 +7,7 @@ data class XNav(
     val sak: Navsak? = null,
 )
 
-//X005, X010
+//X005, X009, X010
 @JsonIgnoreProperties(ignoreUnknown = true)
 data class Navsak (
     val kontekst: Kontekst? = null,
@@ -15,9 +15,11 @@ data class Navsak (
     val paaminnelse: Paaminnelse? = null
 )
 
-//X010
+//X009-X010
 data class Paaminnelse(
+    //X010
     val svar: Svar? = null,
+    //X009
     val sende: List<SendeItem?>? = null
 )
 
@@ -27,6 +29,7 @@ data class SendeItem(
     val detaljer: String? = null
 )
 
+//X010
 data class Svar(
     val informasjon: Informasjon? = null
 )
@@ -74,7 +77,8 @@ data class Refusjonskrav(
 //X005
 @JsonIgnoreProperties(ignoreUnknown = true)
 data class Leggtilinstitusjon(
-    val institusjon: InstitusjonX005? = null
+    val institusjon: InstitusjonX005? = null,
+    val grunn: Grunn? = null
 )
 
 //X005
