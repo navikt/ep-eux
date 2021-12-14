@@ -41,7 +41,7 @@ class ArchitectureTest {
                     .withImportOption(ImportOption.DoNotIncludeJars())
                     .importPackages(root)
             println("Validating size of productionClass, currently: ${productionClasses.size}")
-            assertTrue(productionClasses.size > 100, "Sanity check on no. of classes to analyze")
+            assertTrue(productionClasses.size > 150, "Sanity check on no. of classes to analyze")
             assertTrue(productionClasses.size < 500, "Sanity check on no. of classes to analyze")
 
             testClasses = ClassFileImporter()

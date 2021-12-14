@@ -2,14 +2,14 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 
 plugins {
-    id("org.jetbrains.kotlin.jvm") version "1.5.21"
+    id("org.jetbrains.kotlin.jvm") version "1.6.10"
     `java-library`
     id("net.researchgate.release") version "2.8.1"
     `maven-publish`
-    id("com.adarshr.test-logger") version "2.0.0"
-    id("org.jetbrains.kotlin.plugin.spring") version "1.5.21"
-    id("com.github.ben-manes.versions") version "0.28.0"
-    id("se.patrikerdes.use-latest-versions") version "0.2.13"
+    id("com.adarshr.test-logger") version "3.1.0"
+    id("org.jetbrains.kotlin.plugin.spring") version "1.6.10"
+    id("com.github.ben-manes.versions") version "0.39.0"
+    id("se.patrikerdes.use-latest-versions") version "0.2.18"
     id("org.owasp.dependencycheck") version "6.5.0.1"
 }
 
@@ -29,36 +29,36 @@ tasks.withType<Test> {
     useJUnitPlatform()
 }
 
-val springVersion by extra("5.2.5.RELEASE")
+val springVersion by extra("5.3.13")
 //val cxfVersion by extra("3.3.6")
 
 dependencies {
     implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
-    implementation(kotlin("stdlib", "1.5.21"))
+    implementation(kotlin("stdlib", "1.6.10"))
 
-    implementation("io.micrometer:micrometer-registry-prometheus:1.4.2")
-    implementation("no.nav.eessi.pensjon:ep-security-sts:0.0.19")
-    implementation("no.nav.eessi.pensjon:ep-metrics:0.4.9")
+    implementation("io.micrometer:micrometer-registry-prometheus:1.8.1")
+    implementation("no.nav.eessi.pensjon:ep-security-sts:0.0.20")
+    implementation("no.nav.eessi.pensjon:ep-metrics:0.4.10")
 
     // Spring
     implementation("org.springframework:spring-web:$springVersion")
-    implementation("org.springframework.retry:spring-retry:1.3.0")
+    implementation("org.springframework.retry:spring-retry:1.3.1")
 
     implementation("javax.servlet:javax.servlet-api:4.0.1")
-    implementation("no.nav.eessi.pensjon:ep-logging:1.0.12")
+    implementation("no.nav.eessi.pensjon:ep-logging:1.0.14")
     implementation("org.slf4j:slf4j-api:1.7.32")
     //Jackson json
-    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.12.1")
-    implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.12.1")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.13.0")
+    implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.13.0")
 
     // Test
     testImplementation("org.skyscreamer:jsonassert:1.5.0")
     testImplementation("org.springframework:spring-test:$springVersion")
-    testImplementation("org.junit.jupiter:junit-jupiter:5.6.2")
-    testImplementation("io.mockk:mockk:1.10.0")
+    testImplementation("org.junit.jupiter:junit-jupiter:5.8.2")
+    testImplementation("io.mockk:mockk:1.12.1")
 
     // Architecture tests
-    testImplementation ("com.tngtech.archunit:archunit:0.21.0")
+    testImplementation ("com.tngtech.archunit:archunit:0.22.0")
 }
 
 // https://github.com/researchgate/gradle-release
