@@ -160,7 +160,12 @@ internal class JsonMappingToSed {
                 assertEquals("322", sed.p15000Pensjon?.gjenlevende?.person?.fornavn)
                 assertEquals("321", sed.p15000Pensjon?.gjenlevende?.person?.etternavn)
             }
-            else -> println("Ikke noe detaljert assert på ${sed.type}") //
+            else -> {
+                if(sed.type == SedType.H121) {
+                    assertEquals("The Norwegian Labour and Welfare Administration", sed.nav?.bruker?.person?.pin?.first()?.institusjonsnavn)
+                }
+                println("Ikke noe detaljert assert på ${sed.type}")
+            } //
         }
     }
 

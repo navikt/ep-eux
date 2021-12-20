@@ -17,6 +17,7 @@ import org.slf4j.LoggerFactory
 // SED class main request class to basis
 // Strukturerte Elektroniske Dokumenter
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 open class SED(
     @JsonProperty("sed")
     open val type: SedType,

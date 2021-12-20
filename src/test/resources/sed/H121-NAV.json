@@ -1,0 +1,39 @@
+
+{
+  "nav": {
+    "ytterligereinformasjon": "Her kommer ytterligere informasjon",
+    "bruker": {
+      "person": {
+        "kjoenn": "M",
+        "foedested": {
+          "by": "Oslo",
+          "land": "NO"
+        },
+        "etternavn": "xxx",
+        "fornavn": "xxx",
+        "foedselsdato": "1965-10-01",
+        "pin": [
+          {
+            "land": "NO",
+            "institusjonsid": "NO:889640782",
+            "institusjonsnavn": "The Norwegian Labour and Welfare Administration",
+            "identifikator": "xxx"
+          }
+        ]
+      }
+    }
+  },
+  "sedGVer": "4",
+  "sedVer": "2",
+  "horisontal": {
+    "anmodningmedisinskinformasjon": {
+      "svar": {
+        "dokumentasjonikkevedlagt": {
+          "grunn": "Grunn."
+        },
+        "erdokumentasjonsvedlagt": "nei"
+      }
+    }
+  },
+  "sed": "H121"
+}
