@@ -5,7 +5,6 @@ import com.fasterxml.jackson.databind.DeserializationFeature
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertNotNull
-import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 
 internal class BucTest {
@@ -55,5 +54,15 @@ internal class BucTest {
         assertEquals("NAV ACCT 07", organisation.acronym)
         assertEquals("NO", organisation.address!!.country)
         assertEquals("NO", organisation.countryCode)
+    }
+
+
+    @Test
+    fun `check for missing buc one id return true (missing) other (false)`() {
+
+        assertEquals(true, MissingBuc.checkForMissingBuc("106127"))
+
+        assertEquals(false, MissingBuc.checkForMissingBuc("24524500345"))
+
     }
 }
