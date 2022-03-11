@@ -10,6 +10,7 @@ object MissingBuc {
 
     //Teams documents - "Savnete saker i RINA2020.xls" - ikke migrert
     private val missingBuclist = listOf(
+        "10002113",
         "6006777",
         "100885",
         "1035386",
