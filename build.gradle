@@ -30,7 +30,7 @@ plugins {
     id 'jacoco'
 }
 
-//assert JavaVersion.current().isCompatibleWith(JavaVersion.VERSION_17): "Java 17 or newer is required"
+assert JavaVersion.current().isCompatibleWith(JavaVersion.VERSION_17): "Java 17 or newer is required"
 
 group = "no.nav.eessi.pensjon"
 
