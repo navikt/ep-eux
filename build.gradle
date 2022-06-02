@@ -2,12 +2,12 @@ buildscript {
     ext {
         springVersion = '5.3.20'
         junitVersion = '5.8.2'
-        prometheusVersion = '1.9+'
+        prometheusVersion = '1.8.1'
         kotlinVersion = '1.6.10'
         mockkVersion = '1.12.4'
         jacksonVersion = '2.13.3'
-        epMetricsVersion = '0.4.21'
-        epLoggingVersion = '1.0.19'
+        epMetricsVersion = '0.4.23'
+        epLoggingVersion = '1.0.20'
     }
 
     repositories {
@@ -75,7 +75,7 @@ jacocoTestReport {
 tasks.sonarqube.dependsOn tasks["jacocoTestReport"]
 
 dependencies {
-    implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
+    implementation(platform("org.jetbrains.kotlin:kotlin-bom:1.6.21"))
     implementation("no.nav.eessi.pensjon:ep-metrics:$epMetricsVersion")
     implementation("no.nav.eessi.pensjon:ep-logging:$epLoggingVersion")
 
