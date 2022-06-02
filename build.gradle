@@ -3,7 +3,7 @@ buildscript {
         springVersion = '5.3.20'
         junitVersion = '5.8.2'
         prometheusVersion = '1.9+'
-        kotlinVersion = '1.6.10'
+        kotlinVersion = '1.6.21'
         mockkVersion = '1.12.4'
         jacksonVersion = '2.13.3'
         epMetricsVersion = '0.4.21'
