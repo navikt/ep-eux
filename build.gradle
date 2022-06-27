@@ -7,7 +7,7 @@ buildscript {
         mockkVersion = '1.12.3'
         jacksonVersion = '2.13.2'
         epMetricsVersion = '0.4.17'
-        epLoggingVersion = '1.0.17'
+        epLoggingVersion = '1.0.22'
     }
 
     repositories {
