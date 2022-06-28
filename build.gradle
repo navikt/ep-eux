@@ -4,7 +4,7 @@ buildscript {
         junitVersion = '5.8.2'
         prometheusVersion = '1.8+'
         kotlinVersion = '1.6.10'
-        mockkVersion = '1.12.3'
+        mockkVersion = '1.12.4'
         jacksonVersion = '2.13.2'
         epMetricsVersion = '0.4.25'
         epLoggingVersion = '1.0.22'
