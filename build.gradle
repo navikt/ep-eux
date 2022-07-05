@@ -6,8 +6,8 @@ buildscript {
         kotlinVersion = '1.6.10'
         mockkVersion = '1.12.4'
         jacksonVersion = '2.13.2'
-        epMetricsVersion = '0.4.25'
-        epLoggingVersion = '1.0.22'
+        epMetricsVersion = '0.4.29'
+        epLoggingVersion = '1.0.24'
     }
 
     repositories {
