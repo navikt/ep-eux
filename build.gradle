@@ -1,11 +1,7 @@
 buildscript {
     ext {
-        springVersion = '5.3.18'
-        prometheusVersion = '1.8.4'
         mockkVersion = '1.12.4'
         jacksonVersion = '2.13.3'
-        epMetricsVersion = '0.4.29'
-        epLoggingVersion = '1.0.24'
     }
 
     repositories {
@@ -74,20 +70,20 @@ tasks.sonarqube.dependsOn tasks["jacocoTestReport"]
 
 dependencies {
     implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
-    implementation("no.nav.eessi.pensjon:ep-metrics:$epMetricsVersion")
-    implementation("no.nav.eessi.pensjon:ep-logging:$epLoggingVersion")
 
-    implementation("io.micrometer:micrometer-registry-prometheus:$prometheusVersion")
-    // Spring
-    implementation("org.springframework:spring-web:$springVersion")
+    // Spring Framework BOM-fil overstyrer så vi får siste patch-versjon av Spring Framework
+    implementation(platform("org.springframework:spring-framework-bom:5.3.21"))
+    implementation("org.springframework:spring-web")
+
     implementation("org.slf4j:slf4j-api:1.7.36")
+
     //Jackson json
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:$jacksonVersion")
     implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$jacksonVersion")
 
     // Test
     testImplementation("org.skyscreamer:jsonassert:1.5.1")
-    testImplementation("org.springframework:spring-test:$springVersion")
+    testImplementation("org.springframework:spring-test")
     testImplementation(platform("org.junit:junit-bom:5.8.2"))
     testImplementation("org.junit.jupiter:junit-jupiter")
     testImplementation("io.mockk:mockk:$mockkVersion")
@@ -128,7 +124,7 @@ publishing {
 repositories {
     mavenCentral()
 
-    ["maven-release","ep-logging","ep-metrics"].each { repo ->
+    ["maven-release"].each { repo ->
         String token = System.getenv("GITHUB_TOKEN") ?: project.findProperty("gpr.key")
         if (!token) throw new NullPointerException("Missing token, you have to set GITHUB_TOKEN or gpr.key, see README")
         maven {
