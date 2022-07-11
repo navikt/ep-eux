@@ -95,4 +95,24 @@ open class SED(
     @JsonIgnore
     override fun toString() : String = this.toJson()
 
+    fun allePersoner(): List<Person> =
+        listOf(
+            nav?.bruker?.person,
+            nav?.annenperson?.person,
+            nav?.ektefelle?.person,
+            nav?.verge?.person,
+            nav?.ektefelle?.person,
+            pensjon?.gjenlevende?.person
+        ).plus((nav?.barn?.map { it.person } ?: emptyList())
+        ).plus(
+            when (type) {
+                SedType.P4000 -> (this as P4000).p4000Pensjon?.gjenlevende?.person
+                SedType.P5000 -> (this as P5000).p5000Pensjon?.gjenlevende?.person
+                SedType.P6000 -> (this as P6000).p6000Pensjon?.gjenlevende?.person
+                SedType.P7000 -> (this as P7000).p7000Pensjon?.gjenlevende?.person
+                SedType.P15000 -> (this as P15000).p15000Pensjon?.gjenlevende?.person
+                else -> null
+            }
+        ).filterNotNull().filter { it.pin != null }
+
 }

@@ -1,5 +1,6 @@
 package no.nav.eessi.pensjon.eux.model.sed
 
+import no.nav.eessi.pensjon.eux.model.SedType
 import no.nav.eessi.pensjon.utils.JsonIllegalArgumentException
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
@@ -45,5 +46,47 @@ Feilet ved mapping av jsonformat com.fasterxml.jackson.databind.exc.Unrecognized
         """.trimIndent()
 
         assertEquals(expected, exception.message)
+    }
+
+    @Test
+    fun `Gitt at vi skal hente alle personer fra en sed så returnerer vi en liste over personer`() {
+        val sed = SED.fromJsonToConcrete(javaClass.getResource("/sed/P2100-PinDK-NAV.json")!!.readText())
+        assertEquals(3, sed.allePersoner().size)
+    }
+
+    @Test
+    fun `Gitt at vi skal hente alle personer fra en tom sed så returnerer vi en tom liste`() {
+        assertEquals(0, SED(SedType.P2100).allePersoner().size)
+    }
+
+    @Test
+    fun `Gitt en P7000 med personer når vi henter personer fra sed så returneres alle spesifikke personer med pin`() {
+        val p7000 = SED.fromJsonToConcrete(javaClass.getResource("/sed/P7000-NAV-personer.json")!!.readText())
+        assertEquals(2, p7000.allePersoner().size)
+    }
+
+
+    @Test
+    fun `Gitt en P5000 med personer når vi henter personer fra sed så returneres alle spesifikke personer med pin`() {
+        val p5000 = SED.fromJsonToConcrete(javaClass.getResource("/sed/P5000-NAV-personer.json")!!.readText())
+        assertEquals(1, p5000.allePersoner().size)
+    }
+
+    @Test
+    fun `Gitt en P15000 med personer når vi henter personer fra sed så returneres alle spesifikke personer med pin`() {
+        val p15000 = SED.fromJsonToConcrete(javaClass.getResource("/sed/P15000-NAV-personer.json")!!.readText())
+        assertEquals(2, p15000.allePersoner().size)
+    }
+
+    @Test
+    fun `Gitt en P15000 med personer uten pin når vi henter personer fra sed så returneres tom liste`() {
+        val p15000 = SED.fromJsonToConcrete(javaClass.getResource("/sed/P15000-UtenPin-NAV.json")!!.readText())
+        assertEquals(0, p15000.allePersoner().size)
+    }
+
+    @Test
+    fun `Gitt en P2200 med personer inklusive barn når vi henter personer fra sed så returneres alle spesifikke personer med pin`() {
+        val p2200 = SED.fromJsonToConcrete(javaClass.getResource("/sed/P2200-MedFamilie-NAV.json")!!.readText())
+        assertEquals(5, p2200.allePersoner().size)
     }
 }
