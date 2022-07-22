@@ -143,9 +143,8 @@ internal class JsonMappingToSed {
 
             }
             is P7000 -> {
-                val p7000 = sed
-                assertEquals(2, p7000.p7000Pensjon?.samletVedtak?.tildeltepensjoner?.size)
-                assertEquals(1, p7000.p7000Pensjon?.samletVedtak?.avslag?.size)
+                assertEquals(2, sed.p7000Pensjon?.samletVedtak?.tildeltepensjoner?.size)
+                assertEquals(1, sed.p7000Pensjon?.samletVedtak?.avslag?.size)
             }
             is P8000 -> {
                 assertEquals(P8000::class.java.name, sed.javaClass.name)
