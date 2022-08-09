@@ -5,5 +5,6 @@ class Address(
     val town: String? = null,
     val street: String? = null,
     val postalCode: String? = null,
-    val region: String? = null
+    val region: String? = null,
+    val buildingName: String? = null
 )
