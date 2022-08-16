@@ -184,7 +184,7 @@ data class Adresse(
         val bygning: String? = null,
         val by: String? = null,
         val postnummer: String? = null,
-        val postkode: String? = null,
+        val postkode: String? = null, // TODO dette er ikke postnummer - men "postkode" brukt i bankadresser (som R005)
         val region: String? = null,
         val land: String? = null,
         val kontaktpersonadresse: String? = null,
