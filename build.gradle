@@ -46,6 +46,7 @@ compileKotlin {
     kotlinOptions {
         freeCompilerArgs = ["-Xjsr305=strict"]
         jvmTarget = "17"
+        allWarningsAsErrors = true
     }
 }
 
@@ -53,6 +54,7 @@ compileTestKotlin {
     kotlinOptions {
         freeCompilerArgs = ["-Xjsr305=strict"]
         jvmTarget = "17"
+        allWarningsAsErrors = true
     }
 }
 
