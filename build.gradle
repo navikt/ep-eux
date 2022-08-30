@@ -78,6 +78,8 @@ dependencies {
     implementation(platform("org.springframework:spring-framework-bom:5.3.22"))
     implementation("org.springframework:spring-web")
 
+    implementation("org.slf4j:slf4j-api:1.7.36")
+
     //Jackson json
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:$jacksonVersion")
     implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$jacksonVersion")
