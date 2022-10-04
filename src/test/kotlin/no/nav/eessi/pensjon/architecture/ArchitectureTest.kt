@@ -1,14 +1,14 @@
-package no.nav.eessi.pensjon.eux
+package no.nav.eessi.pensjon.architecture
 
 import com.tngtech.archunit.base.DescribedPredicate
 import com.tngtech.archunit.core.domain.JavaClass
 import com.tngtech.archunit.core.domain.JavaClasses
 import com.tngtech.archunit.core.importer.ClassFileImporter
 import com.tngtech.archunit.core.importer.ImportOption
-import com.tngtech.archunit.lang.syntax.ArchRuleDefinition.noClasses
-import com.tngtech.archunit.library.Architectures.layeredArchitecture
-import com.tngtech.archunit.library.dependencies.SlicesRuleDefinition.slices
-import org.junit.jupiter.api.Assertions.assertTrue
+import com.tngtech.archunit.lang.syntax.ArchRuleDefinition
+import com.tngtech.archunit.library.Architectures
+import com.tngtech.archunit.library.dependencies.SlicesRuleDefinition
+import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
 
@@ -28,29 +28,30 @@ class ArchitectureTest {
         @JvmStatic
         lateinit var testClasses: JavaClasses
 
-        @BeforeAll @JvmStatic
+        @BeforeAll
+        @JvmStatic
         fun `extract classes`() {
             allClasses = ClassFileImporter().importPackages(root)
 
             println("Validating size of allClasses, currently: ${allClasses.size}")
-            assertTrue(allClasses.size > 200, "Sanity check on no. of classes to analyze")
-            assertTrue(allClasses.size < 500, "Sanity check on no. of classes to analyze")
+            Assertions.assertTrue(allClasses.size > 200, "Sanity check on no. of classes to analyze")
+            Assertions.assertTrue(allClasses.size < 500, "Sanity check on no. of classes to analyze")
 
             productionClasses = ClassFileImporter()
                     .withImportOption(ImportOption.DoNotIncludeTests())
                     .withImportOption(ImportOption.DoNotIncludeJars())
                     .importPackages(root)
             println("Validating size of productionClass, currently: ${productionClasses.size}")
-            assertTrue(productionClasses.size > 150, "Sanity check on no. of classes to analyze")
-            assertTrue(productionClasses.size < 500, "Sanity check on no. of classes to analyze")
+            Assertions.assertTrue(productionClasses.size > 150, "Sanity check on no. of classes to analyze")
+            Assertions.assertTrue(productionClasses.size < 500, "Sanity check on no. of classes to analyze")
 
             testClasses = ClassFileImporter()
                     .withImportOption{ !ImportOption.DoNotIncludeTests().includes(it) }
                     .importPackages(root)
 
             println("Validating size of testClasses, currently: ${testClasses.size}")
-            assertTrue(testClasses.size > 10, "Sanity check on no. of classes to analyze")
-            assertTrue(testClasses.size < 500, "Sanity check on no. of classes to analyze")
+            Assertions.assertTrue(testClasses.size > 10, "Sanity check on no. of classes to analyze")
+            Assertions.assertTrue(testClasses.size < 500, "Sanity check on no. of classes to analyze")
         }
     }
 
@@ -73,7 +74,8 @@ class ArchitectureTest {
         fun packagesFor(layer: String) = packages.entries.filter { it.value == layer }.map { it.key }.toTypedArray()
 
         // mentally replace the word "layer" with "component":
-        layeredArchitecture()
+        Architectures.layeredArchitecture()
+            .consideringOnlyDependenciesInAnyPackage(root)
                 .layer(buc).definedBy(*packagesFor(buc))
                 .layer(document).definedBy(*packagesFor(document))
                 .layer(sed).definedBy(*packagesFor(sed))
@@ -90,7 +92,8 @@ class ArchitectureTest {
         val buc = "BUC"
         val sed = "SED"
         val document = "Dcoument"
-        layeredArchitecture()
+        Architectures.layeredArchitecture()
+            .consideringOnlyDependenciesInAnyPackage(root)
                 .layer(buc).definedBy("$root.buc..")
                 .layer(sed).definedBy("$root.sed..")
                 .layer(document).definedBy("$root.document..")
@@ -102,7 +105,7 @@ class ArchitectureTest {
 
     @Test
     fun `no cycles on top level`() {
-        slices()
+        SlicesRuleDefinition.slices()
                 .matching("$root.(*)..")
                 .should().beFreeOfCycles()
                 .check(allClasses)
@@ -110,7 +113,7 @@ class ArchitectureTest {
 
     @Test
     fun `no cycles on any level for production classes`() {
-        slices()
+        SlicesRuleDefinition.slices()
                 .matching("$root..(*)")
                 .should().beFreeOfCycles()
                 .check(productionClasses)
@@ -118,7 +121,7 @@ class ArchitectureTest {
 
     @Test
     fun `tests should assert, not log`() {
-        noClasses().that().haveNameNotMatching(".*\\.logging\\..*") // we allow using slf4j in the logging-package
+        ArchRuleDefinition.noClasses().that().haveNameNotMatching(".*\\.logging\\..*") // we allow using slf4j in the logging-package
                 .should().dependOnClassesThat().resideInAPackage("org.slf4j..")
                 .because("Test should assert, not log; after you made your test the logs will not be checked")
                 .check(testClasses)
@@ -127,14 +130,14 @@ class ArchitectureTest {
 
     @Test
     fun `No test classes should use inheritance`() {
-        class TestSupportClasses:DescribedPredicate<JavaClass>("test support classes") {
-            override fun apply(input: JavaClass?) = input != null &&
+        class TestSupportClasses: DescribedPredicate<JavaClass>("test support classes") {
+            override fun test(input: JavaClass?) = input != null &&
                     (!input.simpleName.endsWith("Test") &&
                             (!input.simpleName.endsWith("Tests")
                                     && input.name != "java.lang.Object"))
         }
 
-        noClasses().that().haveSimpleNameEndingWith("Test").or().haveSimpleNameEndingWith("Tests")
+        ArchRuleDefinition.noClasses().that().haveSimpleNameEndingWith("Test").or().haveSimpleNameEndingWith("Tests")
                 .should().beAssignableTo(TestSupportClasses())
                 .because("it is hard to understand the logic of tests that inherit from other classes.")
                 .check(testClasses)
