@@ -35,10 +35,3 @@ dependencies {
     // Architecture tests
     testImplementation ("com.tngtech.archunit:archunit:1.0.0")
 }
-
-// https://github.com/researchgate/gradle-release
-release {
-    git {
-        requireBranch.set('main')
-    }
-}
