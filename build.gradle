@@ -33,5 +33,5 @@ dependencies {
     testImplementation("io.mockk:mockk:$mockkVersion")
 
     // Architecture tests
-    testImplementation ("com.tngtech.archunit:archunit:1.0.0")
+    testImplementation ("com.tngtech.archunit:archunit:1.0.1")
 }
