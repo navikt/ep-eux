@@ -13,7 +13,7 @@ class EuxKlient(private val euxOAuthRestTemplate: RestTemplate) {
 
     private val logger: Logger by lazy { LoggerFactory.getLogger(EuxKlient::class.java) }
 
-    internal fun hentSedJson(rinaSakId: String, dokumentId: String): String? {
+    fun hentSedJson(rinaSakId: String, dokumentId: String): String? {
         logger.info("Henter SED for rinaSakId: $rinaSakId , dokumentId: $dokumentId")
 
         val exchange: ResponseEntity<String> = euxOAuthRestTemplate.exchange(
@@ -26,7 +26,7 @@ class EuxKlient(private val euxOAuthRestTemplate: RestTemplate) {
     return exchange.body
     }
 
-    internal fun hentBuc(rinaSakId: String): Buc? {
+    fun hentBuc(rinaSakId: String): Buc? {
         logger.info("Henter BUC (RinaSakId: $rinaSakId)")
 
         return euxOAuthRestTemplate.getForObject(
