@@ -9,9 +9,9 @@ import org.springframework.stereotype.Component
 import org.springframework.web.client.RestTemplate
 
 @Component
-class EuxKlient(private val euxOAuthRestTemplate: RestTemplate) {
+class EuxKlientLib(private val euxOAuthRestTemplate: RestTemplate) {
 
-    private val logger: Logger by lazy { LoggerFactory.getLogger(EuxKlient::class.java) }
+    private val logger: Logger by lazy { LoggerFactory.getLogger(EuxKlientLib::class.java) }
 
     fun hentSedJson(rinaSakId: String, dokumentId: String): String? {
         logger.info("Henter SED for rinaSakId: $rinaSakId , dokumentId: $dokumentId")
