@@ -2,7 +2,6 @@ package no.nav.eessi.pensjon.eux.model.buc
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import no.nav.eessi.pensjon.utils.mapJsonToAny
-import no.nav.eessi.pensjon.utils.typeRefs
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 class Buc(
@@ -21,7 +20,7 @@ class Buc(
 ) {
 
     companion object {
-        fun from(json: String): Buc = mapJsonToAny(json, typeRefs())
+        fun from(json: String): Buc = mapJsonToAny(json)
     }
 
 }
