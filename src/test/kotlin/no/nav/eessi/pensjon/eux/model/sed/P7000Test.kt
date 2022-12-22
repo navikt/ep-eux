@@ -1,5 +1,6 @@
 package no.nav.eessi.pensjon.eux.model.sed
 
+import no.nav.eessi.pensjon.utils.mapJsonToAny
 import no.nav.eessi.pensjon.utils.toJsonSkipEmpty
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
@@ -10,18 +11,23 @@ class P7000Test {
     @Test
     fun mapJsonToP7000() {
 
-        val p7000 = SED.generateJsonToClass<P7000>(validNavjson())
+        val p7000 = mapJsonToAny<P7000>(validNavjson())
 
         Assertions.assertEquals(2, p7000.p7000Pensjon?.samletVedtak?.tildeltepensjoner?.size)
         Assertions.assertEquals(1, p7000.p7000Pensjon?.samletVedtak?.avslag?.size)
 
-        val noTildelt = p7000.p7000Pensjon?.samletVedtak?.tildeltepensjoner?.firstOrNull { it.institusjon?.land == "NO" }
-        val seTildelt = p7000.p7000Pensjon?.samletVedtak?.tildeltepensjoner?.firstOrNull { it.institusjon?.land == "SE" }
+        val noTildelt =
+            p7000.p7000Pensjon?.samletVedtak?.tildeltepensjoner?.firstOrNull { it.institusjon?.land == "NO" }
+        val seTildelt =
+            p7000.p7000Pensjon?.samletVedtak?.tildeltepensjoner?.firstOrNull { it.institusjon?.land == "SE" }
         val dkAvslag = p7000.p7000Pensjon?.samletVedtak?.avslag?.firstOrNull { it.pin?.land == "DK" }
 
         Assertions.assertEquals("2021-07-20", noTildelt?.revurderingtidsfrist)
         Assertions.assertEquals("123123123123", noTildelt?.ytelser?.first()?.beloep?.first()?.beloepBrutto)
-        Assertions.assertEquals("4.1.8.2 revjrflkasdfjasdf asdfasd fadfg", noTildelt?.adressatForRevurdering?.first()?.adressatforrevurdering)
+        Assertions.assertEquals(
+            "4.1.8.2 revjrflkasdfjasdf asdfasd fadfg",
+            noTildelt?.adressatForRevurdering?.first()?.adressatforrevurdering
+        )
         Assertions.assertEquals("01", noTildelt?.pensjonType)
 
         Assertions.assertEquals("2021-07-20", seTildelt?.revurderingtidsfrist)
@@ -35,7 +41,7 @@ class P7000Test {
         Assertions.assertEquals("01", dkAvslag?.pensjonType)
 
         val p7000json = p7000.toJsonSkipEmpty()
-        JSONAssert.assertEquals( p7000json, validNavjson(), false)
+        JSONAssert.assertEquals(p7000json, validNavjson(), false)
 
     }
 

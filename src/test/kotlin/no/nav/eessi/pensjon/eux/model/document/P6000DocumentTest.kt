@@ -3,7 +3,6 @@ package no.nav.eessi.pensjon.eux.model.document
 import no.nav.eessi.pensjon.eux.model.SedType
 import no.nav.eessi.pensjon.utils.mapAnyToJson
 import no.nav.eessi.pensjon.utils.mapJsonToAny
-import no.nav.eessi.pensjon.utils.typeRefs
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 import java.time.LocalDate
@@ -19,7 +18,7 @@ class P6000DocumentTest {
 
     @Test
     fun mapFromJsonP6000Document() {
-        val p6000doc: P6000Dokument = mapJsonToAny(expectedJson(), typeRefs())
+        val p6000doc: P6000Dokument = mapJsonToAny(expectedJson())
 
         Assertions.assertEquals(expectedP6000doc(), p6000doc)
     }
