@@ -59,6 +59,11 @@ fun validateJson(json: String): Boolean {
         false
     }
 }
+
+fun errorBody(error: String, uuid: String = "no-uuid"): String {
+    return "{\"success\": false, \n \"error\": \"$error\", \"uuid\": \"$uuid\"}"
+}
+
 inline fun eessiRequire(value: Boolean, status: HttpStatus = HttpStatus.BAD_REQUEST,  lazyMessage: () -> String) {
     if (!value) {
         val message = lazyMessage()
