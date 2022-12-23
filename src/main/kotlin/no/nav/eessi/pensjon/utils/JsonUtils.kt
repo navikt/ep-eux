@@ -64,6 +64,10 @@ fun errorBody(error: String, uuid: String = "no-uuid"): String {
     return "{\"success\": false, \n \"error\": \"$error\", \"uuid\": \"$uuid\"}"
 }
 
+fun successBody(): String {
+    return "{\"success\": true}"
+}
+
 inline fun eessiRequire(value: Boolean, status: HttpStatus = HttpStatus.BAD_REQUEST,  lazyMessage: () -> String) {
     if (!value) {
         val message = lazyMessage()
