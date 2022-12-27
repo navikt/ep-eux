@@ -60,7 +60,7 @@ fun validateJson(json: String): Boolean {
     }
 }
 
-fun errorBody(error: String, uuid: String = "no-uuid"): String {
+fun errorBody(error: String?, uuid: String = "no-uuid"): String {
     return "{\"success\": false, \n \"error\": \"$error\", \"uuid\": \"$uuid\"}"
 }
 
