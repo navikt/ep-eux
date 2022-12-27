@@ -36,6 +36,8 @@ open class SED(
             SedType.P2000, SedType.P2100, SedType.P2200, SedType.P4000, SedType.P5000, SedType.P6000, SedType.P7000, SedType.P8000,
             SedType.P9000, SedType.P10000, SedType.P15000, SedType.X005, SedType.X009, SedType.X010, SedType.R005
         )
+        inline fun <reified T : SED> generateSedToClass(sed: SED): T = mapJsonToAny<T>(sed.toSkipEmptyString())
+        inline fun <reified T : SED> generateJsonToClass(json: String): T = mapJsonToAny<T>(json)
 
         @JsonIgnoreProperties(ignoreUnknown = true)
         private class SimpleSED(
