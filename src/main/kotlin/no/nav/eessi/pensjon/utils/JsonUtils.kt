@@ -14,11 +14,12 @@ import org.springframework.web.server.ResponseStatusException
 
 inline fun <reified T : Any> typeRefs(): TypeReference<T> = object : TypeReference<T>() {}
 
-inline fun <reified T : Any> mapJsonToAny(json: String, failonunknown: Boolean = false): T {
+inline fun <reified T : Any> mapJsonToAny(json: String, failonunknown: Boolean = false, readUnknownAsNull: Boolean = false): T {
     return try {
         jacksonObjectMapper()
             .registerModule(JavaTimeModule())
             .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, failonunknown)
+            .configure(DeserializationFeature.READ_UNKNOWN_ENUM_VALUES_AS_NULL, readUnknownAsNull)
             .readValue(json, typeRefs<T>())
     } catch (jpe: JsonParseException) {
         jpe.printStackTrace()
