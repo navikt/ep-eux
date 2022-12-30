@@ -4,6 +4,7 @@ import no.nav.eessi.pensjon.eux.model.buc.Buc
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.http.HttpMethod
+import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.client.RestTemplate
 
@@ -30,5 +31,18 @@ class EuxKlientLib(private val euxOAuthRestTemplate: RestTemplate) {
         return euxOAuthRestTemplate.getForObject(
             "/buc/$rinaSakId",
                 Buc::class.java)
+    }
+
+    fun settSensitivSak(rinaSakId: String): Boolean {
+        logger.info("Setter BUC (RinaSakId: $rinaSakId) som sensitiv.")
+
+        val response = euxOAuthRestTemplate.exchange(
+            "/buc/$rinaSakId/sensitivsak",
+            HttpMethod.PUT,
+            null,
+            String::class.java
+        )
+
+        return response.statusCode == HttpStatus.OK || response.statusCode == HttpStatus.NO_CONTENT
     }
 }
