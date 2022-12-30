@@ -85,21 +85,6 @@ class JsonUtilsTest{
         Assertions.assertEquals(true, tree.get("success").booleanValue())
     }
 
-    @Test
-    fun `Gitt en gyldig path når maskerer så masker kun personIdentifikator`() {
-        Assertions.assertEquals("***********___PINFO", maskerPersonIdentifier("12345678910___PINFO"))
-    }
-
-    @Test
-    fun `Gitt en gyldig paths når maskerer så masker kun personIdentifikator`() {
-        Assertions.assertEquals(
-            "***********___PINFO,***********___PINFO",
-            maskerPersonIdentifier(
-                listOf("12345678910___PINFO", "10987654321___PINFO")
-            )
-        )
-    }
-
     @TestOnly
     fun isValidJson(json: String): Boolean {
         val mapper = ObjectMapper()
@@ -110,29 +95,6 @@ class JsonUtilsTest{
             false
         }
     }
-
-/*
-    @Test
-    fun `Test liste med SED kun PensjonSED skal returneres`() {
-        val list  = listOf("X005","P2000","P4000","H02","X06","P9000", "")
-
-        val result = filterPensionSedAndSort(list)
-
-        Assertions.assertEquals(3, result.size)
-        Assertions.assertEquals("[P2000, P4000, P9000]", result.toString())
-    }
-
-    @Test
-    fun `Test av liste med SEDer der kun PensjonSEDer skal returneres`() {
-        val list  = listOf("X005","P2000","P4000","H02","X06","P9000", "")
-
-        val result = filterPensionSedAndSort(list)
-
-        Assertions.assertEquals(3, result.size)
-        Assertions.assertEquals("[ \"P2000\", \"P4000\", \"P9000\" ]", result.toJson())
-    }
-*/
-
 
     @Test
     fun `Test listMapToJson`() {
