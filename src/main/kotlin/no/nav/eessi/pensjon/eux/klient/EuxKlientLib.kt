@@ -1,11 +1,12 @@
 package no.nav.eessi.pensjon.eux.klient
 
 import no.nav.eessi.pensjon.eux.model.buc.Buc
+import no.nav.eessi.pensjon.eux.model.sed.SED
+import no.nav.eessi.pensjon.utils.mapJsonToAny
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.http.HttpMethod
 import org.springframework.http.HttpStatus
-import org.springframework.http.ResponseEntity
 import org.springframework.web.client.RestTemplate
 
 class EuxKlientLib(private val euxOAuthRestTemplate: RestTemplate) {
@@ -15,22 +16,25 @@ class EuxKlientLib(private val euxOAuthRestTemplate: RestTemplate) {
     fun hentSedJson(rinaSakId: String, dokumentId: String): String? {
         logger.info("Henter SED for rinaSakId: $rinaSakId , dokumentId: $dokumentId")
 
-        val exchange: ResponseEntity<String> = euxOAuthRestTemplate.exchange(
-            "/buc/$rinaSakId/sed/$dokumentId",
-            HttpMethod.GET,
-            null,
-            String::class.java
+        return euxOAuthRestTemplate.getForObject(
+            "/buc/$rinaSakId/sed/$dokumentId", String::class.java
         )
-
-    return exchange.body
     }
 
-    fun hentBuc(rinaSakId: String): Buc? {
+    inline fun <reified T : SED> hentSed (rinaSakId: String, dokumentId: String): T? {
+        return hentSedJson(rinaSakId, dokumentId)?.let { mapJsonToAny(it) }
+    }
+
+    fun hentBucJson(rinaSakId: String): String?{
         logger.info("Henter BUC (RinaSakId: $rinaSakId)")
 
         return euxOAuthRestTemplate.getForObject(
-            "/buc/$rinaSakId",
-                Buc::class.java)
+            "/buc/$rinaSakId", String::class.java)
+
+    }
+    fun hentBuc(rinaSakId: String): Buc? {
+        logger.info("Henter BUC (RinaSakId: $rinaSakId)")
+        return hentBucJson(rinaSakId)?.let { mapJsonToAny(it) }
     }
 
     fun settSensitivSak(rinaSakId: String): Boolean {
