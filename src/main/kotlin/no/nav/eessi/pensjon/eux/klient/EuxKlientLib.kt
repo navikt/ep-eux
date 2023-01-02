@@ -33,7 +33,6 @@ class EuxKlientLib(private val euxOAuthRestTemplate: RestTemplate) {
 
     }
     fun hentBuc(rinaSakId: String): Buc? {
-        logger.info("Henter BUC (RinaSakId: $rinaSakId)")
         return hentBucJson(rinaSakId)?.let { mapJsonToAny(it) }
     }
 
