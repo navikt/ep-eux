@@ -9,14 +9,14 @@ import org.springframework.http.HttpMethod
 import org.springframework.http.HttpStatus
 import org.springframework.web.client.RestTemplate
 
-class EuxKlientLib(private val euxOAuthRestTemplate: RestTemplate) {
+class EuxKlientLib(private val euxRestTemplate: RestTemplate) {
 
     private val logger: Logger by lazy { LoggerFactory.getLogger(EuxKlientLib::class.java) }
 
     fun hentSedJson(rinaSakId: String, dokumentId: String): String? {
         logger.info("Henter SED for rinaSakId: $rinaSakId , dokumentId: $dokumentId")
 
-        return euxOAuthRestTemplate.getForObject(
+        return euxRestTemplate.getForObject(
             "/buc/$rinaSakId/sed/$dokumentId", String::class.java
         )
     }
@@ -28,7 +28,7 @@ class EuxKlientLib(private val euxOAuthRestTemplate: RestTemplate) {
     fun hentBucJson(rinaSakId: String): String?{
         logger.info("Henter BUC (RinaSakId: $rinaSakId)")
 
-        return euxOAuthRestTemplate.getForObject(
+        return euxRestTemplate.getForObject(
             "/buc/$rinaSakId", String::class.java)
 
     }
@@ -39,7 +39,7 @@ class EuxKlientLib(private val euxOAuthRestTemplate: RestTemplate) {
     fun settSensitivSak(rinaSakId: String): Boolean {
         logger.info("Setter BUC (RinaSakId: $rinaSakId) som sensitiv.")
 
-        val response = euxOAuthRestTemplate.exchange(
+        val response = euxRestTemplate.exchange(
             "/buc/$rinaSakId/sensitivsak",
             HttpMethod.PUT,
             null,
