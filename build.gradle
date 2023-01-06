@@ -25,6 +25,9 @@ dependencies {
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:$jacksonVersion")
     implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$jacksonVersion")
 
+    // Personoppslag
+    implementation("no.nav.eessi.pensjon:ep-personoppslag:12.1.13")
+
     // Test
     testImplementation("org.skyscreamer:jsonassert:1.5.1")
     testImplementation("org.springframework:spring-test")
