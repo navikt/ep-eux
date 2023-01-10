@@ -1,6 +1,7 @@
 package no.nav.eessi.pensjon.eux.model
 
-import no.nav.eessi.pensjon.eux.model.buc.BucType
+import no.nav.eessi.pensjon.eux.model.BucType.*
+import no.nav.eessi.pensjon.eux.model.SedType.*
 import no.nav.eessi.pensjon.personoppslag.Fodselsnummer
 import no.nav.eessi.pensjon.utils.mapJsonToAny
 import org.junit.jupiter.api.Assertions.*
@@ -35,7 +36,7 @@ class SedHendelseTest {
         assertEquals(sedHendelse.id, 0)
         assertEquals(sedHendelse.sedId, null)
         assertEquals(sedHendelse.sektorKode, "P")
-        assertEquals(sedHendelse.bucType, BucType.P_BUC_01)
+        assertEquals(sedHendelse.bucType, P_BUC_01)
         assertEquals(sedHendelse.rinaSakId, "123456479867")
         assertEquals(sedHendelse.avsenderId, null)
         assertEquals(sedHendelse.avsenderNavn, "avsenderNavn")
@@ -44,7 +45,7 @@ class SedHendelseTest {
         assertEquals(sedHendelse.mottakerNavn, "mottakerNavn")
         assertEquals(sedHendelse.mottakerLand, "mottakerLand")
         assertEquals(sedHendelse.rinaDokumentId, "SOME_DOKUMENT_ID")
-        assertEquals(sedHendelse.sedType, SedType.P2200)
+        assertEquals(sedHendelse.sedType, P2200)
         assertEquals(sedHendelse.navBruker, Fodselsnummer.fra("22190656256"))
     }
 

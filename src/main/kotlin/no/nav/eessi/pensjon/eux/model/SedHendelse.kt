@@ -1,6 +1,5 @@
 package no.nav.eessi.pensjon.eux.model
 
-import no.nav.eessi.pensjon.eux.model.buc.BucType
 import no.nav.eessi.pensjon.personoppslag.Fodselsnummer
 
 data class SedHendelse(
