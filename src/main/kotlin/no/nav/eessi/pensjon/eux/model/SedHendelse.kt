@@ -1,7 +1,6 @@
 package no.nav.eessi.pensjon.eux.model
 
-import no.nav.eessi.pensjon.personoppslag.Fodselsnummer
-
+import no.nav.eessi.pensjon.shared.person.Fodselsnummer
 data class SedHendelse(
     val id: Long? = 0,
     val sedId: String? = null,
