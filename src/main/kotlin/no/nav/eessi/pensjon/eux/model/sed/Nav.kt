@@ -1,6 +1,9 @@
 package no.nav.eessi.pensjon.eux.model.sed
 
+import com.fasterxml.jackson.annotation.JsonAlias
+import com.fasterxml.jackson.annotation.JsonFormat
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
+import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonValue
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -25,8 +28,8 @@ data class Krav(
 @Suppress("unused") // val kode (jsonvalue) brukes av jackson
 enum class KravType(@JsonValue val kode: String?) {
         ALDER("01"),
-        GJENLEV("02"),
-        UFOREP("03");
+        ETTERLATTE("02"),
+        UFORE("03")
 }
 
 @JsonIgnoreProperties(ignoreUnknown = true)
