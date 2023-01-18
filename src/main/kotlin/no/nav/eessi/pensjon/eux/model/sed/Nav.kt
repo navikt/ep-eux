@@ -25,8 +25,8 @@ data class Krav(
 @Suppress("unused") // val kode (jsonvalue) brukes av jackson
 enum class KravType(val verdi: String?) {
         ALDER("01"),
-        ETTERLATTE("02"),
-        UFORE("03")
+        GJENLEV("02"),
+        UFOREP("03")
 }
 
 @JsonIgnoreProperties(ignoreUnknown = true)
