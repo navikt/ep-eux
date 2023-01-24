@@ -19,7 +19,6 @@ inline fun <reified T : Any> mapJsonToAny(json: String, failonunknown: Boolean =
         jacksonObjectMapper()
             .registerModule(JavaTimeModule())
             .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, failonunknown)
-            .configure(DeserializationFeature.READ_ENUMS_USING_TO_STRING, true)
             .configure(DeserializationFeature.READ_UNKNOWN_ENUM_VALUES_AS_NULL, readUnknownAsNull)
             .readValue(json, typeRefs<T>())
     } catch (jpe: JsonParseException) {
