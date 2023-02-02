@@ -92,7 +92,14 @@ enum class SedType(val beskrivelse: String) {
     // Seder i R_BUC_02 Motregning av overskytende utbetaling i etterbetalinger er
     R004("Melding om utbetaling"),
     R005("Anmodning om motregning i etterbetalinger (foreløpig eller endelig)"),
-    R006("Svar på anmodning om informasjon");
+    R006("Svar på anmodning om informasjon"),
+
+    M040("Krav om førtidspensjon"),
+    M050("Anmodning om informasjon om inntekt - særskilte innskuddsfrie kontantytelser"),
+    M051("Svar på anmodning om informasjon om inntekt - særskilte innskuddsfrie kontantytelser"),
+    M052("Anmodning om informasjon om ansettelsesforhold/selvstendig næringsvirksomhet/bosetningsperioder - særskilte innskuddsfrie kontantytelser"),
+    M053("Svar på anmodning om informasjon om ansettelsesforhold/selvstendig næringsvirksomhet/bosetningsperioder - særskilte innskuddsfrie kontantytelser"),
+    ;
 
     /**
      * Lager beskrivelse med SedType som prefiks.
