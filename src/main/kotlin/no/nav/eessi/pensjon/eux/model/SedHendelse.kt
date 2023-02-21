@@ -1,6 +1,10 @@
 package no.nav.eessi.pensjon.eux.model
 
 import no.nav.eessi.pensjon.shared.person.Fodselsnummer
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties
+import no.nav.eessi.pensjon.utils.mapJsonToAny
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 data class SedHendelse(
     val id: Long? = 0,
     val sedId: String? = null,
@@ -17,4 +21,9 @@ data class SedHendelse(
     val rinaDokumentVersjon: String,
     val sedType: SedType? = null,
     val navBruker: Fodselsnummer? = null
-)
+) {
+    companion object {
+
+        fun fromJson(json: String): SedHendelse = mapJsonToAny(json, readUnknownAsNull = true)
+    }
+}
