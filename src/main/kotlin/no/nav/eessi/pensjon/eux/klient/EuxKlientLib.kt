@@ -256,6 +256,7 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate) {
 
     companion object {
 
+        //TODO: se om vi kan erstatte denne med direkte bruk
         fun getRinasakerUri(fnr: String? = null, euxCaseId: String? = null): UriComponents {
             require(!(fnr == null && euxCaseId == null)) {
                 "Minst et søkekriterie må fylles ut for å få et resultat fra Rinasaker"
