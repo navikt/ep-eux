@@ -254,53 +254,6 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate) {
         return result.statusCode == HttpStatus.OK
     }
 
-    /**
-     * eux-rina-api returnerer documentId ved oppretting av SED
-     * Vi legger ved caseId (rinasaksnr).
-     *
-     * Skal bare endres dersom responsen fra EUX endrer seg.
-     */
-    data class BucSedResponse(
-        val caseId: String,
-        val documentId: String
-    )
-
-    /**
-     * Respons fra eux-rina-api/cpi/rinasaker
-     * Skal bare endres dersom responsen fra EUX endrer seg.
-     */
-    class Rinasak(
-        val id: String? = null,
-        val processDefinitionId: String? = null,
-        val traits: Traits? = null,
-        val applicationRoleId: String? = null,
-        val properties: Properties? = null,
-        val status: String? = null
-    )
-
-    /**
-     * Del av respons fra eux-rina-api/cpi/rinasaker
-     * Skal bare endres dersom responsen fra EUX endrer seg.
-     */
-    class Properties(
-        val importance: String? = null,
-        val criticality: String? = null
-    )
-
-    /**
-     * Del av respons fra eux-rina-api/cpi/rinasaker
-     * Skal bare endres dersom responsen fra EUX endrer seg.
-     */
-    class Traits(
-        val birthday: String? = null,
-        val localPin: String? = null,
-        val surname: String? = null,
-        val caseId: String? = null,
-        val name: String? = null,
-        val flowType: String? = null,
-        val status: String? = null
-    )
-
     companion object {
 
         fun getRinasakerUri(fnr: String? = null, euxCaseId: String? = null): UriComponents {
