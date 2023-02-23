@@ -121,16 +121,11 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate) {
         return url.replace(rinaCallid, "").also { logger.info("Url til Rina: $it") }
     }
 
-/*
-    fun getSedOnBucByDocumentIdAsJsonAndAsSystemuser(euxCaseId: String, documentId: String): String =
-        getSedOnBucByDocumentId(euxCaseId, documentId, euxSystemRestTemplate)
-*/
-
     fun getSedOnBucByDocumentIdAsJson(euxCaseId: String, documentId: String): String =
         getSedOnBucByDocumentId(euxCaseId, documentId, euxRestTemplate)
 
 
-    private fun getSedOnBucByDocumentId(euxCaseId: String, documentId: String, restTemplate: RestTemplate): String {
+    protected fun getSedOnBucByDocumentId(euxCaseId: String, documentId: String, restTemplate: RestTemplate): String {
         val path = "/buc/$euxCaseId/sed/$documentId"
 
         val response = restTemplate.exchange(path,HttpMethod.GET,null, String::class.java)
