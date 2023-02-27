@@ -6,10 +6,10 @@ import org.springframework.web.util.UriComponents
 /**
  * Gir tilgang til eux tjenester med både innlogget navIdent (euxRestTemplate) og app-til-app auth (euxSystemRestTemplate)
  */
-class EuxKlientForSystemUser( val euxRestTemplate: RestTemplate,private val euxSystemRestTemplate: RestTemplate) : EuxKlientLib(euxRestTemplate){
+class EuxKlientAsSystemUser( val euxRestTemplate: RestTemplate,private val euxSystemRestTemplate: RestTemplate) : EuxKlientLib(euxRestTemplate){
 
     fun getBucJsonAsSystemuser(euxCaseId: String): String = getBucJson(euxCaseId, euxSystemRestTemplate)
-    fun getSedOnBucByDocumentIdAsJsonAndAsSystemuser(euxCaseId: String, documentId: String): String =
+    fun getSedOnBucByDocumentIdAsSystemuser(euxCaseId: String, documentId: String): String =
         getSedOnBucByDocumentId(euxCaseId, documentId, euxSystemRestTemplate)
 
     companion object{

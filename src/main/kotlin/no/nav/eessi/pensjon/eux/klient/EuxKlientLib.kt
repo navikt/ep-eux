@@ -11,11 +11,7 @@ import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.slf4j.MDC
 import org.springframework.core.io.Resource
-import org.springframework.http.HttpEntity
-import org.springframework.http.HttpHeaders
-import org.springframework.http.HttpMethod
-import org.springframework.http.HttpStatus
-import org.springframework.http.MediaType
+import org.springframework.http.*
 import org.springframework.web.client.HttpStatusCodeException
 import org.springframework.web.client.RestTemplate
 import org.springframework.web.server.ResponseStatusException
@@ -121,7 +117,7 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate) {
         return url.replace(rinaCallid, "").also { logger.info("Url til Rina: $it") }
     }
 
-    fun getSedOnBucByDocumentIdAsJson(euxCaseId: String, documentId: String): String =
+    fun getSedOnBucByDocumentIdNotAsSystemUser(euxCaseId: String, documentId: String): String =
         getSedOnBucByDocumentId(euxCaseId, documentId, euxRestTemplate)
 
 
