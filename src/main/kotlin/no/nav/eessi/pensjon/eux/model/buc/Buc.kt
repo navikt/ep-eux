@@ -16,7 +16,11 @@ class Buc(
     val processDefinitionName: String? = null, // TODO: String -> BucType
     val applicationRoleId: String? = null,
     val businessId: String? = null,
-    val internationalId: String? = null
+    val internationalId: String? = null,
+    val processDefinitionVersion: String? = null,
+    val comments: List<Any>? = null,
+    var actions: List<ActionsItem>? = null,
+    val attachments: List<Attachment>? = null
 ) {
 
     companion object {
