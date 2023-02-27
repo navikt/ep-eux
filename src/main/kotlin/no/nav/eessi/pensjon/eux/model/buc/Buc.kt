@@ -11,7 +11,7 @@ class Buc(
     val status: String? = null,
     var subject: Subject? = null,
     var creator: Creator? = null,
-    var documents: List<Document>? = null,
+    var documents: List<DocumentsItem>? = null,
     var participants: List<Participant>? = null,
     val processDefinitionName: String? = null, // TODO: String -> BucType
     val applicationRoleId: String? = null,
