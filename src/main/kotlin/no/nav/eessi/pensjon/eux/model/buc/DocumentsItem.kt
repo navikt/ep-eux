@@ -20,7 +20,7 @@ class DocumentsItem(
     val lastUpdate: Any? = null,
     val parentDocumentId: String? = null,
     val status: String? = null,
-    val participants: List<ParticipantsItem?>? = null,
+    val participants: List<Participant?>? = null,
     val firstVersion: VersionsItemNoUser? = null,         // I bruk av frontend
     val lastVersion: VersionsItemNoUser? = null,         // I bruk av frontend
     val version: String? = null,

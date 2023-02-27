@@ -2,7 +2,7 @@ package no.nav.eessi.pensjon.eux.klient
 
 import no.nav.eessi.pensjon.eux.model.InstitusjonDetalj
 import no.nav.eessi.pensjon.eux.model.buc.Buc
-import no.nav.eessi.pensjon.eux.model.buc.ParticipantsItem
+import no.nav.eessi.pensjon.eux.model.buc.Participant
 import no.nav.eessi.pensjon.eux.model.buc.PreviewPdf
 import no.nav.eessi.pensjon.eux.model.document.SedDokumentfiler
 import no.nav.eessi.pensjon.eux.model.sed.SED
@@ -159,7 +159,7 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate) {
 
     }
 
-    fun getBucDeltakere(euxCaseId: String): List<ParticipantsItem> {
+    fun getBucDeltakere(euxCaseId: String): List<Participant> {
         logger.info("euxCaseId: $euxCaseId")
 
         val path = "/buc/$euxCaseId/bucdeltakere"

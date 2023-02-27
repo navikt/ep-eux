@@ -4,7 +4,7 @@ typealias Receiver = Organisation
 class ConversationsItem(
     val userMessages: List<UserMessagesItem>? = null,
     val id: String? = null,
-    val participants: List<ParticipantsItem?>? = null
+    val participants: List<Participant?>? = null
 )
 
 class UserMessagesItem(
