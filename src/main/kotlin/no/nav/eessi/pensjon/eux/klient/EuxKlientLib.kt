@@ -19,7 +19,7 @@ import org.springframework.web.util.UriComponents
 import org.springframework.web.util.UriComponentsBuilder
 import java.util.*
 
-open class EuxKlientLib(private val euxRestTemplate: RestTemplate) {
+open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var overrideWaitTimes: Long = 5000L) : EuxExceptionHandler(overrideWaitTimes) {
 
     private val logger: Logger by lazy { LoggerFactory.getLogger(EuxKlientLib::class.java) }
 
@@ -117,14 +117,18 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate) {
         return url.replace(rinaCallid, "").also { logger.info("Url til Rina: $it") }
     }
 
-    fun getSedOnBucByDocumentIdNotAsSystemUser(euxCaseId: String, documentId: String): String =
-        getSedOnBucByDocumentId(euxCaseId, documentId, euxRestTemplate)
+    fun getSedOnBucByDocumentIdNotAsSystemUser(euxCaseId: String, documentId: String, skipError: List<HttpStatus>? = emptyList()): String =
+        getSedOnBucByDocumentId(euxCaseId, documentId, euxRestTemplate, skipError)
 
 
-    protected fun getSedOnBucByDocumentId(euxCaseId: String, documentId: String, restTemplate: RestTemplate): String {
+    protected fun getSedOnBucByDocumentId(euxCaseId: String, documentId: String, restTemplate: RestTemplate, skipError: List<HttpStatus>? = emptyList()): String {
         val path = "/buc/$euxCaseId/sed/$documentId"
 
-        val response = restTemplate.exchange(path,HttpMethod.GET,null, String::class.java)
+        val response = retryHelper(
+            func = { restTemplate.exchange(path,HttpMethod.GET,null, String::class.java) },
+            maxAttempts = 3,
+            skipError = skipError)
+
         return response.body ?: run {
             logger.error("Feiler ved lasting av navSed: $path")
             throw SedDokumentIkkeLestException("Feiler ved lesing av navSED, feiler ved uthenting av SED")
@@ -279,28 +283,3 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate) {
         }
     }
 }
-
-//--- Disse er benyttet av restTemplateErrorhandler  -- start
-class IkkeFunnetException(message: String) : ResponseStatusException(HttpStatus.NOT_FOUND, message)
-
-class RinaIkkeAutorisertBrukerException(message: String?) : ResponseStatusException(HttpStatus.UNAUTHORIZED, message)
-
-class ForbiddenException(message: String?) : ResponseStatusException(HttpStatus.FORBIDDEN, message)
-
-class EuxRinaServerException(message: String?) : ResponseStatusException(HttpStatus.NOT_FOUND, message)
-
-class GenericUnprocessableEntity(message: String) : ResponseStatusException(HttpStatus.UNPROCESSABLE_ENTITY, message)
-
-class GatewayTimeoutException(message: String?) : ResponseStatusException(HttpStatus.GATEWAY_TIMEOUT, message)
-
-class ServerException(message: String?) : ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, message)
-
-class EuxConflictException(message: String?) : ResponseStatusException(HttpStatus.CONFLICT, message)
-
-//--- Disse er benyttet av restTemplateErrorhandler  -- slutt
-
-class SedDokumentIkkeOpprettetException(message: String) : ResponseStatusException(HttpStatus.NOT_FOUND, message)
-
-class SedDokumentIkkeLestException(message: String?) : ResponseStatusException(HttpStatus.NOT_FOUND, message)
-
-class EuxGenericServerException(message: String?) : ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, message)
