@@ -19,7 +19,7 @@ open class EuxExceptionHandler(open var overrideWaitTimes: Long = 1000L) {
             } catch (ex: Throwable) {
                 //magick sjekk...
                 if (ex is HttpClientErrorException && !skipError.isNullOrEmpty() && skipError.contains(ex.statusCode)) {
-                    logger.warn("feilet å kontakte eux, feilmelding: ${ex.message}")
+                    logger.warn("feilet å kontakte eux, feilmelding: ${ex.message}, ${ex.statusCode} ligger i listen over ignorerte exceptions for retry")
                     throw ex
                 }
                 count++
