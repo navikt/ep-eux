@@ -197,10 +197,7 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var 
         val uriComponent = getRinasakerUri(fnr, euxCaseId)
         logger.debug("** fnr: $fnr, eux: $euxCaseId, buc: NULL, status: OPEN **, Url: ${uriComponent.toUriString()}")
 
-        val response = retryHelper(
-            func = { euxRestTemplate.exchange(uriComponent.toUriString(), HttpMethod.GET, null, String::class.java) },
-            maxAttempts = 3,
-            skipError = skipError)
+        val response =  euxRestTemplate.exchange(uriComponent.toUriString(), HttpMethod.GET, null, String::class.java)
 
         return mapJsonToAny(response.body!!)
     }
