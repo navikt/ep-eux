@@ -192,18 +192,16 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var 
      * @param status String, status
      * @return List<Rinasak>
      */
-    fun getRinasaker(fnr: String? = null, euxCaseId: String? = null, skipError: List<HttpStatus>? = emptyList()): List<Rinasak> {
+    fun getRinasaker(fnr: String? = null, euxCaseId: String? = null): List<Rinasak> {
 
         val uriComponent = getRinasakerUri(fnr, euxCaseId)
         logger.debug("** fnr: $fnr, eux: $euxCaseId, buc: NULL, status: OPEN **, Url: ${uriComponent.toUriString()}")
 
-        val response = retryHelper(
-            func = { euxRestTemplate.exchange(uriComponent.toUriString(), HttpMethod.GET, null, String::class.java) },
-            maxAttempts = 3,
-            skipError = skipError)
+        val response =  euxRestTemplate.exchange(uriComponent.toUriString(), HttpMethod.GET, null, String::class.java)
 
         return mapJsonToAny(response.body!!)
     }
+
     fun createBuc(bucType: String): String {
         val correlationId = correlationId()
         val builder = UriComponentsBuilder.fromPath("/buc")
