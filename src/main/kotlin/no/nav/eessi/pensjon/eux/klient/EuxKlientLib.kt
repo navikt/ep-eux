@@ -97,12 +97,18 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var 
     fun opprettSed(navSEDjson: String,
                    euxCaseId: String): BucSedResponse {
 
-        val response =  euxRestTemplate.postForEntity(
-            "/buc/$euxCaseId/sed?ventePaAksjon=false",
-            HttpEntity(navSEDjson, HttpHeaders().apply { contentType = MediaType.APPLICATION_JSON }),
-            String::class.java)
-
+        val response = try {
+            euxRestTemplate.postForEntity(
+                "/buc/$euxCaseId/sed?ventePaAksjon=false",
+                HttpEntity(navSEDjson, HttpHeaders().apply { contentType = MediaType.APPLICATION_JSON }),
+                String::class.java
+            )
+        } catch (ex: Exception) {
+            logger.info("En feil oppstod", ex)
+            throw ex
+        }
         return BucSedResponse(euxCaseId, response.body!!)
+
     }
 
     fun getRinaUrl(): String {
