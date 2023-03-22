@@ -104,7 +104,7 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var 
                 String::class.java
             )
         } catch (ex: Exception) {
-            logger.info("En feil oppstod", ex)
+            logger.error("En feil oppstod ${ex.message}", ex)
             throw ex
         }
         return BucSedResponse(euxCaseId, response.body!!)
