@@ -8,7 +8,6 @@ import no.nav.eessi.pensjon.eux.model.SedType.*
 import no.nav.eessi.pensjon.utils.mapAnyToJson
 import no.nav.eessi.pensjon.utils.mapJsonToAny
 import no.nav.eessi.pensjon.utils.toJson
-import org.slf4j.LoggerFactory
 
 // SED class main request class to basis
 // Strukturerte Elektroniske Dokumenter
@@ -24,8 +23,6 @@ open class SED(
 ) {
 
     companion object {
-        private val logger = LoggerFactory.getLogger(SED::class.java)
-
         private fun fromSimpleJson(sed: String): SedType {
             return mapJsonToAny<SimpleSED>(sed, true).type
         }
@@ -67,11 +64,6 @@ open class SED(
                 else -> fromJson(json!!)
             }
         }
-    }
-
-    @JsonIgnore
-    open fun korrektPerson(): Person? {
-        return this.pensjon?.gjenlevende?.person ?: this.nav?.bruker?.person
     }
 
     @JsonIgnore

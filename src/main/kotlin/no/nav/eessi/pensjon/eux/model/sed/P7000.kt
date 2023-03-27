@@ -9,8 +9,4 @@ class P7000(
     override val nav: Nav? = null,
     @JsonProperty("pensjon")
     val p7000Pensjon: P7000Pensjon?
-) : SED(type, nav = nav) {
-
-    override fun korrektPerson(): Person? = p7000Pensjon?.gjenlevende?.person ?: nav?.bruker?.person
-
-}
+) : SED(type, nav = nav)
