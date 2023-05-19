@@ -87,6 +87,12 @@ data class Ektefelle(
 @JsonIgnoreProperties(ignoreUnknown = true)
 data class Verge(
         val person: Person? = null,
+        val vergemaal: Vergemaal? = null
+)
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+data class Vergemaal(
+        val mandat: String? = null
 )
 
 @JsonIgnoreProperties(ignoreUnknown = true)
