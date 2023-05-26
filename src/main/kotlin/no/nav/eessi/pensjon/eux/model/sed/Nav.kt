@@ -2,6 +2,7 @@ package no.nav.eessi.pensjon.eux.model.sed
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonValue
+import no.nav.eessi.pensjon.eux.model.sed.Person
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 data class Nav(
@@ -87,12 +88,30 @@ data class Ektefelle(
 @JsonIgnoreProperties(ignoreUnknown = true)
 data class Verge(
         val person: Person? = null,
-        val vergemaal: Vergemaal? = null
+        val vergemaal: Vergemaal? = null,
+        val adresse: Adresse? = null
 )
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 data class Vergemaal(
         val mandat: String? = null
+)
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+data class Kontakt(
+        val telefon: List<Telefon>? = null,
+        val email: List<Email>? = null
+)
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+data class Telefon(
+        val type: String? = null,
+        val nummer: String? = null
+)
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+data class Email(
+        val adresse: String? = null
 )
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -112,7 +131,8 @@ data class Person(
         val sivilstand: List<SivilstandItem>? = null,   //familiestatus
         val relasjontilavdod: RelasjonAvdodItem? = null, //5.2.5 P2100
         //noe enkel måte å få denne til å forbli val?
-        var rolle: String? = null  //3.1 i P10000
+        var rolle: String? = null,  //3.1 i P10000
+        var kontakt: Kontakt? = null //P2000
 )
 
 data class PinLandItem(
