@@ -26,6 +26,12 @@ class SedDokumentfilerTest{
         assertEquals(jsonToSed.sed.innhold, "JVBERi0xLjQKJeLj")
     }
 
+    @Test
+    fun`mapping fra json med ukjent mimetype skal gi tom MimeType`() {
+        val jsonToSed = mapJsonToAny<SedDokumentfiler>(expectedWithUnknownMimetype())
+        assertEquals(jsonToSed.sed.mimeType, null)
+    }
+
     fun expectedSedDukumentFiler() : SedDokumentfiler{
         return SedDokumentfiler(
             sed = SedVedlegg("Sak_163373_.pdf", MimeType.PDF, innhold = "JVBERi0xLjQKJeLj"),
@@ -49,6 +55,18 @@ class SedDokumentfilerTest{
                   "innhold": "hEUgAAAAUAAAAFCAYAAACggg=="
                 }
               ]
+            }
+        """.trimIndent()
+    }
+
+    fun expectedWithUnknownMimetype() : String{
+        return """
+            {
+              "sed": {
+                "filnavn": "Sak_163373_.pdf",
+                "mimeType": "application/docx",
+                "innhold": "JVBERi0xLjQKJeLj"
+              }
             }
         """.trimIndent()
     }

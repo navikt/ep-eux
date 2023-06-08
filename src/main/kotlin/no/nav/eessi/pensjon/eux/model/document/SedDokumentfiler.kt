@@ -1,5 +1,6 @@
 package no.nav.eessi.pensjon.eux.model.document
 
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonValue
 
 data class SedDokumentfiler(
@@ -21,4 +22,10 @@ enum class MimeType(@JsonValue val type: String) {
     TIFF("image/tiff"),
     TIF("image/tif"),
     PNG("image/png");
+
+   companion object {
+        @JvmStatic
+        @JsonCreator
+        fun from(value: String): MimeType? = values().firstOrNull { it.type == value }
+    }
 }
