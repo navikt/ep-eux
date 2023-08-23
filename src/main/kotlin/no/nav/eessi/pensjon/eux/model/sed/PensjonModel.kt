@@ -4,33 +4,26 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 
 class MeldingOmPensjon(
 		val melding: String?,
-		val pensjon: Pensjon
+		val pensjon: PensjonBasis
 )
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 data class Pensjon(
 	val gjenlevende: Bruker? = null, // Brukes fleres steder
 
-		//P2000
-	val angitidligstdato: String? = null,
-	val utsettelse: List<Utsettelse>? = null,
+	//P2XXX
+	override val ytelser: List<YtelserItem>? = null,
+	override val forespurtstartdato: String? = null,
+	override val kravDato: Krav? = null, //kravDato pkt. 9.1 P2000
 
-		//P2XXX
-	val ytelser: List<YtelserItem>? = null,
-	val forespurtstartdato: String? = null,
-	val kravDato: Krav? = null, //kravDato pkt. 9.1 P2000
-
-		//P3000
+	//P3000
 	val landspesifikk: Landspesifikk? = null
-)
+) : PensjonBasis(ytelser, forespurtstartdato, kravDato)
 
-//P2000
-data class Utsettelse(
-	val institusjonsnavn: String? = null,
-	val institusjonsid: String? = null,
-	val land: String? = null,
-	val institusjon: Institusjon? = null,
-	val tildato: String? = null
+abstract class PensjonBasis (
+	open val ytelser: List<YtelserItem>? = null,
+	open val forespurtstartdato: String? = null,
+	open val kravDato: Krav? = null
 )
 
 //Institusjon
