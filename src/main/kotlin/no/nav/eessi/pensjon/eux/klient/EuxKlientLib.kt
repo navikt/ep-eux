@@ -188,7 +188,7 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var 
 
         return  mapJsonToAny(responseInstitution.body!!)
     }
-
+//    FIXME: Feil i dokumentasjonen
     /**
      * Lister alle rinasaker på valgt fnr eller euxcaseid, eller bucType...
      * fnr er påkrved resten er fritt
