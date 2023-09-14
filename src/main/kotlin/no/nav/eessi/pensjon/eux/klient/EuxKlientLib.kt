@@ -17,6 +17,8 @@ import org.springframework.web.client.RestTemplate
 import org.springframework.web.server.ResponseStatusException
 import org.springframework.web.util.UriComponents
 import org.springframework.web.util.UriComponentsBuilder
+import java.time.Duration
+import java.time.LocalDateTime
 import java.util.*
 
 open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var overrideWaitTimes: Long = 5000L) : EuxExceptionHandler(overrideWaitTimes) {
@@ -201,10 +203,10 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var 
     fun getRinasaker(fnr: String? = null, euxCaseId: String? = null): List<Rinasak> {
 
         val uriComponent = getRinasakerUri(fnr, euxCaseId)
+        val from = LocalDateTime.now()
         logger.debug("** fnr: $fnr, eux: $euxCaseId, buc: NULL, status: OPEN **, Url: ${uriComponent.toUriString()}")
-
         val response =  euxRestTemplate.exchange(uriComponent.toUriString(), HttpMethod.GET, null, String::class.java)
-
+        logger.debug("Url: ${uriComponent.toUriString()} tiden tok ${Duration.between(from, LocalDateTime.now()).seconds}} status: ${response.statusCode}")
         return mapJsonToAny(response.body!!)
     }
 
