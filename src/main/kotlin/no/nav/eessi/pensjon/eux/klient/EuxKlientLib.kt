@@ -206,7 +206,7 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var 
         val from = LocalDateTime.now()
         logger.debug("** fnr: $fnr, eux: $euxCaseId, buc: NULL, status: OPEN **, Url: ${uriComponent.toUriString()}")
         val response =  euxRestTemplate.exchange(uriComponent.toUriString(), HttpMethod.GET, null, String::class.java)
-        logger.debug("Url: ${uriComponent.toUriString()} tiden tok ${Duration.between(from, LocalDateTime.now()).seconds}} status: ${response.statusCode}")
+        logger.info("GetRinasaker -> Url: ${uriComponent.toUriString()} tok ${Duration.between(from, LocalDateTime.now()).seconds}} sekunder med status: ${response.statusCode}")
         return mapJsonToAny(response.body!!)
     }
 
