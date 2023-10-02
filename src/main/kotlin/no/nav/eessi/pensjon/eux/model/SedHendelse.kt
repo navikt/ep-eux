@@ -1,10 +1,12 @@
 package no.nav.eessi.pensjon.eux.model
 
+import com.fasterxml.jackson.annotation.JsonFilter
 import no.nav.eessi.pensjon.shared.person.Fodselsnummer
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import no.nav.eessi.pensjon.utils.mapJsonToAny
 
 @JsonIgnoreProperties(ignoreUnknown = true)
+@JsonFilter("propertyFilter")
 data class SedHendelse(
     val id: Long? = 0,
     val sedId: String? = null,
@@ -23,7 +25,6 @@ data class SedHendelse(
     val navBruker: Fodselsnummer? = null
 ) {
     companion object {
-
         fun fromJson(json: String): SedHendelse = mapJsonToAny(json, readUnknownAsNull = true)
     }
 }

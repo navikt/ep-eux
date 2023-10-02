@@ -1,10 +1,13 @@
 package no.nav.eessi.pensjon.utils
 
+import com.fasterxml.jackson.annotation.JsonFilter
 import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.core.JsonParseException
 import com.fasterxml.jackson.core.type.TypeReference
 import com.fasterxml.jackson.databind.DeserializationFeature
 import com.fasterxml.jackson.databind.JsonMappingException
+import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter
+import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import org.springframework.http.HttpStatus
@@ -48,6 +51,18 @@ fun mapAnyToJson(data: Any, nonempty: Boolean = false): String {
     }
 }
 
+
+fun mapAnyToJsonWithoutSensitiveData(json: Any, ignoredProperties: List<String>): String {
+    return jacksonObjectMapper()
+            .registerModule(JavaTimeModule())
+            .setFilterProvider(SimpleFilterProvider().apply {
+                ignoredProperties.forEach {
+                    addFilter("propertyFilter", SimpleBeanPropertyFilter.serializeAllExcept(it))
+                }
+            })
+            .writerWithDefaultPrettyPrinter()
+            .writeValueAsString(json)
+    }
 fun validateJson(json: String): Boolean {
     return try {
         jacksonObjectMapper()
