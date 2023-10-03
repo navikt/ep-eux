@@ -42,12 +42,18 @@ inline fun <reified T : Any> mapJsonToAny(json: String, failonunknown: Boolean =
 fun mapAnyToJson(data: Any, nonempty: Boolean = false): String {
     return if (nonempty) {
         jacksonObjectMapper()
+            .setFilterProvider(SimpleFilterProvider().apply {
+                addFilter("propertyFilter", SimpleBeanPropertyFilter.serializeAll())
+            })
             .registerModule(JavaTimeModule())
             .setDefaultPropertyInclusion(JsonInclude.Include.NON_EMPTY)
             .writerWithDefaultPrettyPrinter()
             .writeValueAsString(data)
     } else {
         return jacksonObjectMapper()
+            .setFilterProvider(SimpleFilterProvider().apply {
+                addFilter("propertyFilter", SimpleBeanPropertyFilter.serializeAll())
+            })
             .registerModule(JavaTimeModule())
             .writerWithDefaultPrettyPrinter()
             .writeValueAsString(data)
@@ -70,6 +76,9 @@ fun validateJson(json: String): Boolean {
     return try {
         jacksonObjectMapper()
             .registerModule(JavaTimeModule())
+            .setFilterProvider(SimpleFilterProvider().apply {
+                addFilter("propertyFilter", SimpleBeanPropertyFilter.serializeAll())
+            })
             .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true)
             .readTree(json)
         true
