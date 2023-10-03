@@ -21,6 +21,9 @@ inline fun <reified T : Any> mapJsonToAny(json: String, failonunknown: Boolean =
     return try {
         jacksonObjectMapper()
             .registerModule(JavaTimeModule())
+            .setFilterProvider(SimpleFilterProvider().apply {
+                addFilter("propertyFilter", SimpleBeanPropertyFilter.serializeAll())
+            })
             .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, failonunknown)
             .configure(DeserializationFeature.READ_UNKNOWN_ENUM_VALUES_AS_NULL, readUnknownAsNull)
             .readValue(json, typeRefs<T>())
