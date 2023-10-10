@@ -26,6 +26,7 @@ internal class BucTest {
         assertEquals("PO", buc.applicationRoleId)
         assertEquals("1198662", buc.businessId)
         assertEquals("1afa566e735246c39e83508b7e241eec", buc.internationalId)
+        assertEquals("SRVEESSIPENSJON", buc.documents?.get(0)?.versions?.get(0)?.user?.name)
 
         // Document
         val document = buc.documents!!.first()
