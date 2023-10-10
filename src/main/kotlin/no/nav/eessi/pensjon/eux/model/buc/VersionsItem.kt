@@ -6,7 +6,7 @@ class VersionsItem(
     val user: CaseHandler? = null
 )
 
-class CaseHandler(
+data class CaseHandler(
     val id: String? = null,
     val name: String? = null
 )
