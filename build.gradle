@@ -1,6 +1,6 @@
 buildscript {
     ext {
-        jacksonModuleKotlinVersion = '2.15.2'
+        jacksonModuleKotlinVersion = '2.15.3'
     }
 }
 
