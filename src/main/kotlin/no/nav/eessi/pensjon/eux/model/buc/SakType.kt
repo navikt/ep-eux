@@ -10,7 +10,8 @@ enum class SakType {
     KRIGSP,
     GAM_YRK,
     AFP_PRIVAT,
-    AFP
+    AFP,
+    FAM_PL
 }
 
 enum class SakStatus(val status: String) {
