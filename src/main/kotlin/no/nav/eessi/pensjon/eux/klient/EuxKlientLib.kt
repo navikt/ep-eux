@@ -203,10 +203,8 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var 
     fun getRinasaker(fnr: String? = null, euxCaseId: String? = null): List<Rinasak> {
 
         val uriComponent = getRinasakerUri(fnr, euxCaseId)
-        val from = LocalDateTime.now()
         logger.debug("** fnr: $fnr, eux: $euxCaseId, buc: NULL, status: OPEN **, Url: ${uriComponent.toUriString()}")
         val response =  euxRestTemplate.exchange(uriComponent.toUriString(), HttpMethod.GET, null, String::class.java)
-        logger.info("GetRinasaker -> Url: ${uriComponent.toUriString()} tok ${Duration.between(from, LocalDateTime.now()).seconds} sekunder med status: ${response.statusCode}")
         return mapJsonToAny(response.body!!)
     }
 
