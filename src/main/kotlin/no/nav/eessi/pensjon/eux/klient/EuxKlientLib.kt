@@ -29,7 +29,7 @@ class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var overr
 
     private val logger: Logger by lazy { LoggerFactory.getLogger(EuxKlientLib::class.java) }
 
-    @Cacheable(cacheNames = [SED_CACHE], key = "#root.methodName", cacheManager = "euxCacheManager")
+    @Cacheable(cacheNames = [SED_CACHE], key = "#rinaSakId + '-' +  #dokumentId", cacheManager = "euxCacheManager")
     fun hentSedJson(rinaSakId: String, dokumentId: String): String? {
         logger.info("Henter SED for rinaSakId: $rinaSakId , dokumentId: $dokumentId")
 
