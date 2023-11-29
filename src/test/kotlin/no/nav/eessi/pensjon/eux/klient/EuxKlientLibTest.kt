@@ -28,10 +28,10 @@ class EuxKlientLibTest {
         val json = javaClass.getResource("/sed/P2000-NAV.json")!!.readText()
         every { mockTemplate.getForObject(eq("/buc/111/sed/222"), eq(String::class.java)) } returns json
 
-        val resultAsSED = euxKlientLib.hentSed<SED>("111", "222")!!
+        val resultAsSED = euxKlientLib.hentSed("111", "222")!!
         assertEquals("28064843062", resultAsSED.nav?.bruker?.person?.pin?.firstOrNull()?.identifikator)
 
-        val resultAsP2000 = euxKlientLib.hentSed<P2000>("111", "222")!!
+        val resultAsP2000 = euxKlientLib.hentSed("111", "222")!!
         assertEquals(SedType.P2000, resultAsP2000.type)
     }
 }

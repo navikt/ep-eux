@@ -1,5 +1,6 @@
 package no.nav.eessi.pensjon.eux.klient
 
+import no.nav.eessi.pensjon.eux.config.SED_CACHE
 import no.nav.eessi.pensjon.eux.model.InstitusjonDetalj
 import no.nav.eessi.pensjon.eux.model.buc.Buc
 import no.nav.eessi.pensjon.eux.model.buc.Participant
@@ -10,8 +11,10 @@ import no.nav.eessi.pensjon.utils.mapJsonToAny
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.slf4j.MDC
+import org.springframework.cache.annotation.Cacheable
 import org.springframework.core.io.Resource
 import org.springframework.http.*
+import org.springframework.stereotype.Component
 import org.springframework.web.client.HttpStatusCodeException
 import org.springframework.web.client.RestTemplate
 import org.springframework.web.server.ResponseStatusException
@@ -21,10 +24,12 @@ import java.time.Duration
 import java.time.LocalDateTime
 import java.util.*
 
-open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var overrideWaitTimes: Long = 5000L) : EuxExceptionHandler(overrideWaitTimes) {
+@Component
+class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var overrideWaitTimes: Long = 5000L) : EuxExceptionHandler(overrideWaitTimes) {
 
     private val logger: Logger by lazy { LoggerFactory.getLogger(EuxKlientLib::class.java) }
 
+    @Cacheable(cacheNames = [SED_CACHE], key = "#root.methodName", cacheManager = "euxCacheManager")
     fun hentSedJson(rinaSakId: String, dokumentId: String): String? {
         logger.info("Henter SED for rinaSakId: $rinaSakId , dokumentId: $dokumentId")
 
@@ -33,7 +38,7 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var 
         )
     }
 
-    inline fun <reified T : SED> hentSed (rinaSakId: String, dokumentId: String): T? {
+    fun hentSed (rinaSakId: String, dokumentId: String): SED? {
         return hentSedJson(rinaSakId, dokumentId)?.let { mapJsonToAny(it) }
     }
 
