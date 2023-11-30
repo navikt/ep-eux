@@ -20,14 +20,12 @@ import org.springframework.web.client.RestTemplate
 import org.springframework.web.server.ResponseStatusException
 import org.springframework.web.util.UriComponents
 import org.springframework.web.util.UriComponentsBuilder
-import java.time.Duration
-import java.time.LocalDateTime
 import java.util.*
 
 @Component
-class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var overrideWaitTimes: Long = 5000L) : EuxExceptionHandler(overrideWaitTimes) {
+class EuxKlient(private val euxRestTemplate: RestTemplate, override var overrideWaitTimes: Long = 5000L) : EuxExceptionHandler(overrideWaitTimes) {
 
-    private val logger: Logger by lazy { LoggerFactory.getLogger(EuxKlientLib::class.java) }
+    private val logger: Logger by lazy { LoggerFactory.getLogger(EuxKlient::class.java) }
 
     @Cacheable(cacheNames = [SED_CACHE], key = "#rinaSakId + '-' +  #dokumentId", cacheManager = "euxCacheManager")
     fun hentSedJson(rinaSakId: String, dokumentId: String): String? {
