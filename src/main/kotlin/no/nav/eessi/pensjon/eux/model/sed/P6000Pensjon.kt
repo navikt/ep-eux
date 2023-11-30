@@ -9,11 +9,6 @@ class P6000Pensjon(
     val ytterligeinformasjon: String? = null,
     val kravDato: Krav? = null
 )
-
-class P6000Gjenny(
-    val gjenlevende: Bruker? = null,
-)
-
 data class AndreinstitusjonerItem(
     val institusjonsid: String? = null,
     val institusjonsnavn: String? = null,
