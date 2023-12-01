@@ -26,7 +26,7 @@ class EuxCacheConfig {
     }
 
     @CacheEvict(cacheNames = [SED_CACHE])
-    @Scheduled(fixedDelay = 1, timeUnit = TimeUnit.HOURS)
+    @Scheduled(fixedDelay = 24, timeUnit = TimeUnit.HOURS)
     fun reportCacheEvict() {
         logger.info("Flushing cache: $SED_CACHE")
     }
