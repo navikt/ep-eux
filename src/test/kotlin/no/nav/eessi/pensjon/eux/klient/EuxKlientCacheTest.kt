@@ -12,10 +12,10 @@ import org.springframework.context.annotation.Bean
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig
 import org.springframework.web.client.RestTemplate
 
-
 @SpringJUnitConfig(classes = [EuxCacheConfig::class, EuxKlientCacheTest.Config::class])
 class EuxKlientCacheTest {
     private val RINASAK_ID = 123
+    private val DOCMENT_ID = 123456
 
     @Autowired
     lateinit var euxKlientLib: EuxKlientLib
@@ -26,31 +26,18 @@ class EuxKlientCacheTest {
     @BeforeEach
     fun setup() {
         every {
-            euxRestTemplate.getForObject("/buc/${RINASAK_ID}/sed/11111", String::class.java )
-        } returns javaClass.getResource("/sed/P2000-NAV.json")!!.readText()
-        every {
-            euxRestTemplate.getForObject("/buc/${RINASAK_ID}/sed/22222", String::class.java )
-        } returns javaClass.getResource("/sed/P2000-NAV.json")!!.readText()
-        every {
-            euxRestTemplate.getForObject("/buc/${RINASAK_ID}/sed/33333", String::class.java )
+            euxRestTemplate.getForObject("/buc/${RINASAK_ID}/sed/${DOCMENT_ID}", String::class.java )
         } returns javaClass.getResource("/sed/P2000-NAV.json")!!.readText()
     }
 
     @Test
     fun `euxKlient skal cache henting av SED og kun kalle ekstern API én gang`() {
-        euxKlientLib.hentSedJson("${RINASAK_ID}", "11111")
-        euxKlientLib.hentSedJson("${RINASAK_ID}", "11111")
-        euxKlientLib.hentSedJson("${RINASAK_ID}", "22222")
-        euxKlientLib.hentSedJson("${RINASAK_ID}", "33333")
+        euxKlientLib.hentSedJson("${RINASAK_ID}", "${DOCMENT_ID}")
+        euxKlientLib.hentSedJson("${RINASAK_ID}", "${DOCMENT_ID}")
 
         verify(exactly = 1) {
-            euxRestTemplate.getForObject("/buc/${RINASAK_ID}/sed/11111", String::class.java )
-        }
-        verify(exactly = 1) {
-            euxRestTemplate.getForObject("/buc/${RINASAK_ID}/sed/22222", String::class.java)
-        }
-        verify(exactly = 1) {
-            euxRestTemplate.getForObject("/buc/${RINASAK_ID}/sed/33333", String::class.java)
+            euxRestTemplate.getForObject("/buc/${RINASAK_ID}/sed/${DOCMENT_ID}", String::class.java
+            )
         }
     }
 
