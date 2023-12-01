@@ -19,7 +19,7 @@ import org.springframework.web.client.RestTemplate
 class EuxKlientCacheTest {
 
     @Autowired
-    lateinit var euxKlient: EuxKlient
+    lateinit var euxKlientLib: EuxKlientLib
 
     @Autowired
     lateinit var euxRestTemplate: RestTemplate
@@ -43,7 +43,7 @@ class EuxKlientCacheTest {
     fun `euxKlient skal cache henting av SED og kun kalle ekstern API én gang`() {
 
         sedIds.forEach {
-            euxKlient.hentSedJson(RINASAK_ID, it)
+            euxKlientLib.hentSedJson(RINASAK_ID, it)
         }
         sedIds.distinct().forEach {
             verify(exactly = 1) {
@@ -58,6 +58,6 @@ class EuxKlientCacheTest {
         @Bean
         fun euxRestTemplate(): RestTemplate = mockk(relaxed = true)
         @Bean
-        fun EuxKlientLib(): EuxKlient = EuxKlient(euxRestTemplate())
+        fun EuxKlientLib(): EuxKlientLib = EuxKlientLib(euxRestTemplate())
     }
 }
