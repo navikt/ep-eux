@@ -1,7 +1,6 @@
 buildscript {
     ext {
         jacksonModuleKotlinVersion = '2.16.0'
-        springBootVersion = '3.1.5'
     }
 }
 
@@ -16,17 +15,9 @@ group = "no.nav.eessi.pensjon"
 
 dependencies {
     // Spring Framework BOM-fil overstyrer så vi får siste patch-versjon av Spring Framework
-    implementation(platform("org.springframework.boot:spring-boot-dependencies:${springBootVersion}"))
     implementation(platform("org.springframework:spring-framework-bom:6.1.0"))
     implementation("org.springframework:spring-web")
     implementation("org.springframework:spring-context")
-
-    testImplementation("org.springframework:spring-test")
-    testImplementation('org.springframework.boot:spring-boot-starter-test') {
-        exclude module: 'junit'
-        exclude module: "mockito-core"
-        exclude module: "junit-vintage-engine"
-    }
 
     implementation("org.slf4j:slf4j-api:2.0.9")
 
