@@ -1,6 +1,5 @@
 package no.nav.eessi.pensjon.eux.klient
 
-import no.nav.eessi.pensjon.eux.config.EuxCacheConfig
 import no.nav.eessi.pensjon.eux.config.SED_CACHE
 import no.nav.eessi.pensjon.eux.model.InstitusjonDetalj
 import no.nav.eessi.pensjon.eux.model.buc.Buc
@@ -25,7 +24,7 @@ import java.util.*
 
 open class EuxKlient(private val euxRestTemplate: RestTemplate, override var overrideWaitTimes: Long = 5000L) : EuxExceptionHandler(overrideWaitTimes) {
 
-    private val logger = LoggerFactory.getLogger(EuxKlient::class.java)
+    private val logger: Logger by lazy { LoggerFactory.getLogger(EuxKlient::class.java) }
 
     @Cacheable(cacheNames = [SED_CACHE], key = "#rinaSakId + '-' +  #dokumentId", cacheManager = "euxCacheManager")
     open fun hentSedJson(rinaSakId: String, dokumentId: String): String? {
