@@ -22,12 +22,13 @@ import org.springframework.web.util.UriComponents
 import org.springframework.web.util.UriComponentsBuilder
 import java.util.*
 
-open class EuxKlient(private val euxRestTemplate: RestTemplate, override var overrideWaitTimes: Long = 5000L) : EuxExceptionHandler(overrideWaitTimes) {
+@Component
+class EuxKlient(private val euxRestTemplate: RestTemplate, override var overrideWaitTimes: Long = 5000L) : EuxExceptionHandler(overrideWaitTimes) {
 
     private val logger: Logger by lazy { LoggerFactory.getLogger(EuxKlient::class.java) }
 
     @Cacheable(cacheNames = [SED_CACHE], key = "#rinaSakId + '-' +  #dokumentId", cacheManager = "euxCacheManager")
-    open fun hentSedJson(rinaSakId: String, dokumentId: String): String? {
+    fun hentSedJson(rinaSakId: String, dokumentId: String): String? {
         logger.info("Henter SED for rinaSakId: $rinaSakId , dokumentId: $dokumentId")
 
         return euxRestTemplate.getForObject(
