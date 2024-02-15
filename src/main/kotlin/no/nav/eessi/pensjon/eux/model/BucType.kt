@@ -17,27 +17,29 @@ enum class BucType {
     AD_BUC_12, // Change Participant «Intelligent Routing Application»
     AD_BUC_13, //
 
-    P_BUC_01, // Old age pension claim
-    P_BUC_02, //
-    P_BUC_03, // Invalidity pension claim
-    P_BUC_04, //
-    P_BUC_05, // Ad-hoc Request for Pension Information
-    P_BUC_06, // Notification of pension information
-    P_BUC_07, //
-    P_BUC_08, //
-    P_BUC_09, // Change in personal circumstances
-    P_BUC_10, //
+    P_BUC_01,  // Krav om alder
+    P_BUC_02,  // Krav om gjenlevende
+    P_BUC_03,  // Krav om uføretrygd
+    P_BUC_04,  // Anmodning om perioder med omsorg for barn
+    P_BUC_05,  // Ad hoc forespørsel om informasjon (f.eks trygdetid)
+    P_BUC_06,  // Oversendelse av pensjonsinformasjon
+    P_BUC_07,  // Anmodning om pensjonsbeløp til fastsettelse av tilleggsytelser
+    P_BUC_08,  // Informasjon om pensjonsbeløp til innvilgelse av et pensjonstillegg
+    P_BUC_09,  // Endring i personlig forhold (PDF)
+    P_BUC_10,  // Overganssaker
 
-    H_BUC_01, // Ad-hoc Exchange of Information
-    H_BUC_04, // Reimbursement of Administrative check or Medical Information
-    H_BUC_07, // Notification of Death
-    H_BUC_08, // Medical information
-    H_BUC_09, // Notification of Medical Information
+    H_BUC_01,  // Ad-hoc Exchange of Information
+    H_BUC_04,  // Reimbursement of Administrative check or Medical Information
+    H_BUC_07,  // Notification of Death
+    H_BUC_08,  // Medical information
+    H_BUC_09,  // Notification of Medical Information
 
-    R_BUC_02, // Offsetting of overpayment with arrears
-    M_BUC_02,
-    M_BUC_03a,
-    M_BUC_03b;
+    R_BUC_02,  // Motregning i etterbetaling av pensjon (PDF)
+    M_BUC_02,  // Krav om førtidspensjon (PDF)
+    M_BUC_03a, // Utveksling av informasjon om inntektsbeløp i forbindelse  med særlige, ikke-avgiftsbaserte kontaktytelser
+    M_BUC_03b; // Utveksling av informasjon om inntektsbeløp i forbindelse  med særlige, ikke-avgiftsbaserte kontaktytelser,
+               // informasjon om tid med lønnet arbeid, tid med selvstendig virksomhet eller botid tilbakebelagt i en eller
+               // flere andre medlemsstater
 
     companion object {
         @JvmStatic
@@ -45,7 +47,7 @@ enum class BucType {
         fun from(value: String?): BucType? {
             if (value == null) return null
 
-            return values().firstOrNull { it.name == value }
+            return entries.firstOrNull { it.name == value }
         }
     }
 }
