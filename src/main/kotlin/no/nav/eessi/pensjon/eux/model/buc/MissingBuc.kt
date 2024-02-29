@@ -225,7 +225,8 @@ object MissingBuc {
         "10577594",
         "5686740",
         "9043182",
-        "10180178"
+        "10180178",
+        "1390909" // 2024-02-29: eldre buc som ikke lenger er tilgjengelig i rina
     )
 
 }
