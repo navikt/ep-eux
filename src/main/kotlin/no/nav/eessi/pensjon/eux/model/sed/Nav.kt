@@ -27,7 +27,13 @@ data class Krav(
 enum class KravType(val verdi: String?) {
         ALDER("01"),
         GJENLEV("02"),
-        UFOREP("03")
+        UFOREP("03");
+
+        companion object {
+                fun fraVerdi(verdi: String?): KravType? {
+                        return entries.find { it.verdi == verdi }
+                }
+        }
 }
 
 @JsonIgnoreProperties(ignoreUnknown = true)
