@@ -9,7 +9,7 @@ import org.springframework.web.util.UriComponents
  */
 class EuxKlientAsSystemUser( val euxRestTemplate: RestTemplate, private val euxSystemRestTemplate: RestTemplate, overrideWaitTimes: Long = 5000L) : EuxKlientLib(euxRestTemplate, overrideWaitTimes){
 
-    fun getBucJsonAsSystemuser(euxCaseId: String): String = getBucJson(euxCaseId, euxSystemRestTemplate)
+    fun getBucJsonAsSystemuser(euxCaseId: String): String = getBucJsonAsSystemuser(euxCaseId, euxSystemRestTemplate)
     fun getSedOnBucByDocumentIdAsSystemuser(euxCaseId: String, documentId: String, skipError: List<HttpStatus> = emptyList()): String =
         getSedOnBucByDocumentId(euxCaseId, documentId, euxSystemRestTemplate, skipError)
 

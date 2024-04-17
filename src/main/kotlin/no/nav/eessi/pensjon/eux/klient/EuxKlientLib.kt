@@ -143,7 +143,8 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var 
         }
     }
 
-    fun getBucJsonAsNavIdent(euxCaseId: String): String = getBucJson(euxCaseId, euxRestTemplate)
+    fun getBucJsonAsNavIdent(euxCaseId: String): String = getBucJson(euxCaseId, euxRestTemplate).also { logger.info("getBucJson som getBucJsonAsNavIdent") }
+    fun getBucJsonAsSystemuser(euxCaseId: String, restTemplate: RestTemplate): String = getBucJson(euxCaseId, restTemplate).also { logger.info("getBucJson som getBucJsonAsSystemuser") }
 
     protected fun getBucJson(euxCaseId: String, restTemplate: RestTemplate): String {
         val path = "/buc/$euxCaseId"
