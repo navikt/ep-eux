@@ -6,7 +6,7 @@ buildscript {
 }
 
 plugins {
-    id("io.snyk.gradle.plugin.snykplugin") version "0.5.1"
+    id("io.snyk.gradle.plugin.snykplugin") version "0.6.1"
     id "org.jetbrains.kotlin.jvm" version "$kotlinVersion"
     id "org.jetbrains.kotlin.plugin.spring" version "$kotlinVersion"
     id "org.jetbrains.kotlin.plugin.allopen" version "$kotlinVersion"
