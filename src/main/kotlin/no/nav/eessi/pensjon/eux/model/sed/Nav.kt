@@ -57,7 +57,7 @@ data class Bank(
 @JsonIgnoreProperties(ignoreUnknown = true)
 data class Konto(
         val sepa: Sepa? = null,
-        val ikkeSepa: IkkeSepa?  = null,
+        val ikkesepa: IkkeSepa?  = null,
         val kontonr: String? = null,
         val innehaver: Innehaver? = null,
         val betalingsreferanse: String? = null
