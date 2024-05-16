@@ -86,7 +86,8 @@ data class BarnItem(
         val mor: Foreldre? = null,
         val person: Person? = null,
         val far: Foreldre? = null,
-        val relasjontilbruker: String? = null
+        val relasjontilbruker: String? = null,
+        val opplysningeromannetbarn: String? = null
 )
 
 @JsonIgnoreProperties(ignoreUnknown = true)
