@@ -2,7 +2,6 @@ package no.nav.eessi.pensjon.eux.model.sed
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonValue
-import no.nav.eessi.pensjon.eux.model.sed.Person
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 data class Nav(
@@ -58,6 +57,7 @@ data class Bank(
 @JsonIgnoreProperties(ignoreUnknown = true)
 data class Konto(
         val sepa: Sepa? = null,
+        val ikkeSepa: IkkeSepa?  = null,
         val kontonr: String? = null,
         val innehaver: Innehaver? = null,
         val betalingsreferanse: String? = null
@@ -65,6 +65,10 @@ data class Konto(
 
 data class Sepa(
         val iban: String? = null,
+        val swift: String? = null
+)
+
+data class IkkeSepa(
         val swift: String? = null
 )
 
