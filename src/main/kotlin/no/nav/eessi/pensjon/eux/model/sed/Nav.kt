@@ -143,7 +143,8 @@ data class Person(
         val relasjontilavdod: RelasjonAvdodItem? = null, //5.2.5 P2100
         //noe enkel måte å få denne til å forbli val?
         var rolle: String? = null,  //3.1 i P10000
-        var kontakt: Kontakt? = null //P2000
+        var kontakt: Kontakt? = null, //P2000
+        val doedsdato: String? = null //P2000
 )
 
 data class PinLandItem(
