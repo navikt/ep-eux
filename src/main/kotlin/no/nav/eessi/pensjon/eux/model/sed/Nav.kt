@@ -19,11 +19,11 @@ data class Nav(
 data class Krav(
         var dato: String? = null,
         //P15000
-        val type: String? = null
+        val type: KravType? = null
 )
 
 @Suppress("unused") // val kode (jsonvalue) brukes av jackson
-enum class KravType(val verdi: String?) {
+enum class KravType(@JsonValue val verdi: String?) {
         ALDER("01"),
         GJENLEV("02"),
         UFOREP("03");
