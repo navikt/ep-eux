@@ -8,6 +8,7 @@ class KravTypeTest {
     @Test
     fun `fraVerdi skal returnere riktig KravType`() {
         assertEquals(KravType.ALDER, KravType.fraNavnEllerVerdi("01"))
+        assertEquals(KravType.ALDER, KravType.fraNavnEllerVerdi("ALDER"))
         assertEquals(KravType.GJENLEV, KravType.fraNavnEllerVerdi("02"))
         assertEquals(KravType.UFOREP, KravType.fraNavnEllerVerdi("03"))
     }
