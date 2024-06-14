@@ -29,8 +29,8 @@ enum class KravType(@JsonValue val verdi: String?) {
         UFOREP("03");
 
         companion object {
-                fun fraVerdi(verdi: String?): KravType? {
-                        return entries.find { it.verdi == verdi }
+                fun fraNavnEllerVerdi(input: String?): KravType? {
+                        return entries.find { it.name == input || it.verdi == input }
                 }
         }
 }

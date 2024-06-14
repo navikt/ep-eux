@@ -7,14 +7,14 @@ class KravTypeTest {
 
     @Test
     fun `fraVerdi skal returnere riktig KravType`() {
-        assertEquals(KravType.ALDER, KravType.fraVerdi("01"))
-        assertEquals(KravType.GJENLEV, KravType.fraVerdi("02"))
-        assertEquals(KravType.UFOREP, KravType.fraVerdi("03"))
+        assertEquals(KravType.ALDER, KravType.fraNavnEllerVerdi("01"))
+        assertEquals(KravType.GJENLEV, KravType.fraNavnEllerVerdi("02"))
+        assertEquals(KravType.UFOREP, KravType.fraNavnEllerVerdi("03"))
     }
 
     @Test
     fun `fraVerdi skal returnere null for ugyldig verdi`() {
-        assertNull(KravType.fraVerdi("04"))
-        assertNull(KravType.fraVerdi(null))
+        assertNull(KravType.fraNavnEllerVerdi("04"))
+        assertNull(KravType.fraNavnEllerVerdi(null))
     }
 }
