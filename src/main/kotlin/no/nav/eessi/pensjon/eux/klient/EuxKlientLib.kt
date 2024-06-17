@@ -75,8 +75,6 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var 
         try {
             return block.invoke()
         } catch (ex: Exception) {
-            if (ex is HttpStatusCodeException && ex.statusCode == HttpStatus.NOT_FOUND)
-                return null
             logger.error("Ukjent feil oppsto: ", ex)
             throw ex
         }
