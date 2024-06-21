@@ -90,9 +90,7 @@ data class VedtakItem(
 	val basertPaaAnnen: String? = null,
 	val delvisstans: DelvisstansItem? = null, //2021.09.06, lagt inn grunnet mapping
 	val kjoeringsdato: String? = null,
-	val begrunnelseAnnen: String ? = null,
-	val trekkgrunnlag: List<String> ?= null,
-	val mottaker: List<String> ?= null,
+	val begrunnelseAnnen: String ? = null
 )
 
 data class Ukjent(

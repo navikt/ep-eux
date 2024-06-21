@@ -22,6 +22,7 @@ data class P2000Pensjon(
     val kravDato: Krav? = null, //kravDato pkt. 9.1 P2000
 
     val etterspurtedokumenter: String? = null,
-    val ytterligeinformasjon: String? = null
-
+    val ytterligeinformasjon: String? = null,
+    val trekkgrunnlag: List<String> ?= null,
+    val mottaker: List<String> ?= null
 )
