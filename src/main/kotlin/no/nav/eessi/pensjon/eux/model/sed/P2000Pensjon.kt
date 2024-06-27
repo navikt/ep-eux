@@ -19,10 +19,12 @@ data class P2000Pensjon(
 
     val vedtak: List<VedtakItem>? = null,
     val vedlegg: List<String> ? = null,
+    val vedleggandre: String? = null,
     val kravDato: Krav? = null, //kravDato pkt. 9.1 P2000
 
     val etterspurtedokumenter: String? = null,
     val ytterligeinformasjon: String? = null,
     val trekkgrunnlag: List<String> ?= null,
-    val mottaker: List<String> ?= null
+    val mottaker: List<String> ?= null,
+    val institusjonennaaikkesoektompensjon: List<String> ?= null
 )
