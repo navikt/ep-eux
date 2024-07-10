@@ -32,7 +32,7 @@ dependencies {
     // Test
     testImplementation("org.skyscreamer:jsonassert:1.5.2")
     testImplementation("org.springframework:spring-test")
-    testImplementation(platform("org.junit:junit-bom:5.10.2"))
+    testImplementation(platform("org.junit:junit-bom:5.10.3"))
     testImplementation("org.junit.jupiter:junit-jupiter")
     testImplementation("io.mockk:mockk:1.13.11")
 
