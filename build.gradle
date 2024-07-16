@@ -30,7 +30,7 @@ dependencies {
     implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$jacksonModuleKotlinVersion")
 
     // Test
-    testImplementation("org.skyscreamer:jsonassert:1.5.2")
+    testImplementation("org.skyscreamer:jsonassert:1.5.3")
     testImplementation("org.springframework:spring-test")
     testImplementation(platform("org.junit:junit-bom:5.10.3"))
     testImplementation("org.junit.jupiter:junit-jupiter")
