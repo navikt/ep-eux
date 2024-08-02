@@ -348,7 +348,12 @@
     "tilleggsinformasjon": null,
     "ytterligeinformasjon": null,
     "etterspurtedokumenter": null,
-    "ytelser": null,
+    "ytelser": [
+      {
+        "totalbruttobeloeparbeidsbasert": "2015",
+        "totalbruttobeloepbostedsbasert": "20116"
+      }
+    ],
     "forespurtstartdato": null,
     "landspesifikk": null,
     "medlemskapAnnen": null,
