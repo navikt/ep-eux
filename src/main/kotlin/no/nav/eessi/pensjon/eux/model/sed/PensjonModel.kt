@@ -59,7 +59,8 @@ data class YtelserItem(
 	val sluttdatoUtbetaling: String? = null,
 	val beloep: List<BeloepItem>? = null,
 	val status: String? = null,
-	val annenbetalingshyppighetytelse: String? = null
+	val annenbetalingshyppighetytelse: String? = null,
+	val totalbruttobeloepbostedsbasert: String? = null
 )
 
 @JsonIgnoreProperties(ignoreUnknown = true)
