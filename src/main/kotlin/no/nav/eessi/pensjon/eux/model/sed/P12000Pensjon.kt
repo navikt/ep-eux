@@ -1,15 +1,19 @@
 package no.nav.eessi.pensjon.eux.model.sed
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties
+
 
 class P12000Pensjon(
     val pensjoninfo:  List<Pensjoninfo>? = null
 )
 
 //kap.5
+@JsonIgnoreProperties(ignoreUnknown = true)
 data class Pensjoninfo(
     val betalingsdetaljer: Betalingsdetaljer? = null,
 )
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 data class Betalingsdetaljer(
     val fradato: String? = null,
     val belop: String? = null,
