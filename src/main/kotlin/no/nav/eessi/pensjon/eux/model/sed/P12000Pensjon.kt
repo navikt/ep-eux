@@ -17,7 +17,7 @@ data class Betalingsdetaljer(
     val annenutbetalingshyppighet: String? = null,
     val valuta: String? = null,
     val utbetalingshyppighet: String? = null,
-    var pensjonstype: String? = null,  //5.1.1
+    val pensjonstype: String? = null,  //5.1.1
     val basertpaa: String? = null,
     val bosattotal: String? = null,
     val arbeidstotal: String? = null,
