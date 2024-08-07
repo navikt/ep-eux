@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 
 class P12000Pensjon(
     val pensjoninfo:  List<Pensjoninfo>? = null
-)
+) : Pensjon()
 
 //kap.5
 @JsonIgnoreProperties(ignoreUnknown = true)

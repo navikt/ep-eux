@@ -20,6 +20,9 @@ class P12000Test {
         assertEquals("11111", p12000Betalingsdetaljer?.belop)
         assertEquals("2024-01-01", p12000Betalingsdetaljer?.effektueringsdato)
 
+        // gjenlevende skal også være en del av P12000
+        assertEquals("kari", p12000.p12000Pensjon?.gjenlevende?.mor?.person?.fornavn)
+
         val p12000json = p12000.toJsonSkipEmpty()
         JSONAssert.assertEquals(p12000json, p12000Json(), false)
 
@@ -40,7 +43,15 @@ class P12000Test {
                   "valuta": "EUR"
                 }
               }
-            ]
+            ],
+            "gjenlevende": {             
+              "mor": {
+                "person": {
+                  "etternavnvedfoedsel": "nordmann",
+                  "fornavn": "kari"
+                }
+              }
+            }
           },
           "nav": {
             "bruker": {

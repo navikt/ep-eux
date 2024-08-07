@@ -8,7 +8,7 @@ class MeldingOmPensjon(
 )
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-data class Pensjon(
+open class Pensjon(
 	val gjenlevende: Bruker? = null, // Brukes fleres steder
 
 		//P2000
