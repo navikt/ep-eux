@@ -55,6 +55,7 @@ open class SED(
                 P8000 -> mapJsonToAny<P8000>(json)
                 P9000 -> mapJsonToAny<P9000>(json)
                 P10000 -> mapJsonToAny<P10000>(json)
+                P12000 -> mapJsonToAny<P12000>(json)
                 P15000 -> mapJsonToAny<P15000>(json)
                 R005 -> mapJsonToAny<R005>(json)
                 X005 -> mapJsonToAny<X005>(json)
