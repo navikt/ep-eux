@@ -12,7 +12,7 @@ class P12000Test {
     fun mapJsonToP12000() {
 
         val p12000 = mapJsonToAny<P12000>(p12000Json())
-        val p12000Betalingsdetaljer = p12000.p12000Pensjon?.pensjoninfo?.firstOrNull()?.betalingsdetaljer
+        val p12000Betalingsdetaljer = p12000.pensjon?.pensjoninfo?.firstOrNull()?.betalingsdetaljer
 
         assertEquals("11111", p12000Betalingsdetaljer?.belop)
         assertEquals("01", p12000Betalingsdetaljer?.pensjonstype)
@@ -21,7 +21,7 @@ class P12000Test {
         assertEquals("2024-01-01", p12000Betalingsdetaljer?.effektueringsdato)
 
         // gjenlevende skal også være en del av P12000
-        assertEquals("kari", p12000.p12000Pensjon?.gjenlevende?.mor?.person?.fornavn)
+        assertEquals("kari", p12000.pensjon?.gjenlevende?.mor?.person?.fornavn)
 
         val p12000json = p12000.toJsonSkipEmpty()
         JSONAssert.assertEquals(p12000json, p12000Json(), false)

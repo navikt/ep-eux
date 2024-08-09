@@ -3,7 +3,7 @@ package no.nav.eessi.pensjon.eux.model.sed
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 
 
-class P12000Pensjon(
+data class P12000Pensjon(
     val pensjoninfo:  List<Pensjoninfo>? = null
 ) : Pensjon()
 
