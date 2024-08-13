@@ -3,13 +3,13 @@ package no.nav.eessi.pensjon.eux.model.sed
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 
 class MeldingOmPensjon(
-		val melding: String?,
-		val pensjon: Pensjon
+	val melding: String?,
+	val pensjon: Pensjon
 )
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 open class Pensjon(
-	val gjenlevende: Bruker? = null, // Brukes fleres steder
+    open val gjenlevende: Bruker? = null, // Brukes fleres steder
 
 		//P2000
 	val angitidligstdato: String? = null,
