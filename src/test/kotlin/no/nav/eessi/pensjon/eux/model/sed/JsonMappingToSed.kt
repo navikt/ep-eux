@@ -164,9 +164,9 @@ internal class JsonMappingToSed {
 
             is P15000 -> {
                 assertEquals(P15000::class.java.name, sed.javaClass.name)
-                assertNotNull(sed.p15000Pensjon)
-                assertEquals("322", sed.p15000Pensjon?.gjenlevende?.person?.fornavn)
-                assertEquals("321", sed.p15000Pensjon?.gjenlevende?.person?.etternavn)
+                assertNotNull(sed.pensjon)
+                assertEquals("322", sed.pensjon?.gjenlevende?.person?.fornavn)
+                assertEquals("321", sed.pensjon?.gjenlevende?.person?.etternavn)
             }
             else -> {
                 if(sed.type == SedType.H121) {
