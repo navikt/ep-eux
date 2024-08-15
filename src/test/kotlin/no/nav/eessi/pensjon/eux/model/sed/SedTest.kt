@@ -35,7 +35,7 @@ internal class SedTest {
     @Test
     fun `Gitt en P7000 med personer når vi henter personer fra sed så returneres alle spesifikke personer med pin`() {
         val p7000 = SED.fromJsonToConcrete(javaClass.getResource("/sed/P7000-NAV-personer.json")!!.readText())
-        assertEquals(2, p7000.allePersoner().size)
+        assertEquals(3, p7000.allePersoner().size)
     }
 
 
