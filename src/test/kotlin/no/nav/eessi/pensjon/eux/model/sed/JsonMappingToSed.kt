@@ -84,8 +84,8 @@ internal class JsonMappingToSed {
             is P5000 -> {
                 val p5000: P5000 = sed
                 assertEquals(P5000::class.java.name, p5000.javaClass.name)
-                assertNotNull(p5000.p5000Pensjon)
-                assertEquals("231", p5000.p5000Pensjon?.medlemskapboarbeid?.gyldigperiode)
+                assertNotNull(p5000.pensjon)
+                assertEquals("231", p5000.pensjon?.medlemskapboarbeid?.gyldigperiode)
             }
             is R005 -> {
                 val r005: R005 = sed
@@ -136,15 +136,15 @@ internal class JsonMappingToSed {
             is P6000 -> {
                 val p6000: P6000 = sed
                 assertEquals(P6000::class.java.name, p6000.javaClass.name)
-                assertNotNull(p6000.p6000Pensjon)
-                assertEquals("asdffsdaf", p6000.p6000Pensjon?.gjenlevende?.person?.etternavn)
-                assertEquals("sdafsdf", p6000.p6000Pensjon?.gjenlevende?.person?.fornavn)
-                assertEquals("234", p6000.p6000Pensjon?.vedtak?.firstOrNull()?.delvisstans?.utbetaling?.beloepBrutto)
+                assertNotNull(p6000.pensjon)
+                assertEquals("asdffsdaf", p6000.pensjon?.gjenlevende?.person?.etternavn)
+                assertEquals("sdafsdf", p6000.pensjon?.gjenlevende?.person?.fornavn)
+                assertEquals("234", p6000.pensjon?.vedtak?.firstOrNull()?.delvisstans?.utbetaling?.beloepBrutto)
 
             }
             is P7000 -> {
-                assertEquals(2, sed.p7000Pensjon?.samletVedtak?.tildeltepensjoner?.size)
-                assertEquals(1, sed.p7000Pensjon?.samletVedtak?.avslag?.size)
+                assertEquals(2, sed.pensjon?.samletVedtak?.tildeltepensjoner?.size)
+                assertEquals(1, sed.pensjon?.samletVedtak?.avslag?.size)
             }
             is P8000 -> {
                 assertEquals(P8000::class.java.name, sed.javaClass.name)
