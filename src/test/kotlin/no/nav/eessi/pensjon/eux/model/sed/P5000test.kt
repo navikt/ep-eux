@@ -13,7 +13,7 @@ internal class P5000test {
         val file = javaClass.getResource("/sed/P5000-NAV.json").readText()
         try {
             val p5000 = mapJsonToAny<P5000>(file, true)
-            val pensjon = p5000.p5000Pensjon
+            val pensjon = p5000.pensjon
             assertEquals(pensjon?.medlemskapboarbeid?.medlemskap?.size, 2)
 
         } catch (e: Exception) {
@@ -29,7 +29,7 @@ internal class P5000test {
 
         val p5000 = mapJsonToAny<P5000>(sed.toSkipEmptyString())
         println(p5000.toJson())
-        assertEquals(p5000.p5000Pensjon?.medlemskapboarbeid?.medlemskap?.size, 2)
+        assertEquals(p5000.pensjon?.medlemskapboarbeid?.medlemskap?.size, 2)
     }
 
 }

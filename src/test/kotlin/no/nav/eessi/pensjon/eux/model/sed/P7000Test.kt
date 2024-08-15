@@ -13,14 +13,14 @@ class P7000Test {
 
         val p7000 = mapJsonToAny<P7000>(validNavjson())
 
-        Assertions.assertEquals(2, p7000.p7000Pensjon?.samletVedtak?.tildeltepensjoner?.size)
-        Assertions.assertEquals(1, p7000.p7000Pensjon?.samletVedtak?.avslag?.size)
+        Assertions.assertEquals(2, p7000.pensjon?.samletVedtak?.tildeltepensjoner?.size)
+        Assertions.assertEquals(1, p7000.pensjon?.samletVedtak?.avslag?.size)
 
         val noTildelt =
-            p7000.p7000Pensjon?.samletVedtak?.tildeltepensjoner?.firstOrNull { it.institusjon?.land == "NO" }
+            p7000.pensjon?.samletVedtak?.tildeltepensjoner?.firstOrNull { it.institusjon?.land == "NO" }
         val seTildelt =
-            p7000.p7000Pensjon?.samletVedtak?.tildeltepensjoner?.firstOrNull { it.institusjon?.land == "SE" }
-        val dkAvslag = p7000.p7000Pensjon?.samletVedtak?.avslag?.firstOrNull { it.pin?.land == "DK" }
+            p7000.pensjon?.samletVedtak?.tildeltepensjoner?.firstOrNull { it.institusjon?.land == "SE" }
+        val dkAvslag = p7000.pensjon?.samletVedtak?.avslag?.firstOrNull { it.pin?.land == "DK" }
 
         Assertions.assertEquals("2021-07-20", noTildelt?.revurderingtidsfrist)
         Assertions.assertEquals("123123123123", noTildelt?.ytelser?.first()?.beloep?.first()?.beloepBrutto)
