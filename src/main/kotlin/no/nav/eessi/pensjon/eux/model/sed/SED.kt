@@ -100,11 +100,11 @@ open class SED(
         ).plus((nav?.barn?.map { it.person } ?: emptyList())
         ).plus(
             when (type) {
-                P4000 -> (this as P4000).p4000Pensjon?.gjenlevende?.person
+                P4000 -> (this as P4000).pensjon?.gjenlevende?.person
                 P5000 -> (this as P5000).pensjon?.gjenlevende?.person
                 P6000 -> (this as P6000).pensjon?.gjenlevende?.person
                 P7000 -> (this as P7000).pensjon?.gjenlevende?.person
-                P15000 -> (this as P15000).p15000Pensjon?.gjenlevende?.person
+                P15000 -> (this as P15000).pensjon?.gjenlevende?.person
                 else -> null
             }
         ).filterNotNull().filter { it.pin != null }
