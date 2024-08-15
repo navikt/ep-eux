@@ -4,7 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 
 
 data class P12000Pensjon(
-    val pensjoninfo:  List<Pensjoninfo>? = null
+    val pensjoninfo:  List<Pensjoninfo>? = null,
+    override val gjenlevende: Bruker? = null
 ) : Pensjon()
 
 //kap.5

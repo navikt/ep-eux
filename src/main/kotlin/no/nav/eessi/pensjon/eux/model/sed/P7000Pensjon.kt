@@ -3,9 +3,9 @@ package no.nav.eessi.pensjon.eux.model.sed
 
 class P7000Pensjon(
     val bruker: Bruker? = null,
-    val gjenlevende: Bruker? = null,
+    override val gjenlevende: Bruker? = null,
     val samletVedtak: SamletMeldingVedtak? = null,
-)
+) : Pensjon()
 
 data class SamletMeldingVedtak(
     val utsendtDato: String? = null,
