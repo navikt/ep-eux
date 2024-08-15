@@ -4,7 +4,23 @@ import com.fasterxml.jackson.annotation.JsonIgnore
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonProperty
 import no.nav.eessi.pensjon.eux.model.SedType
-import no.nav.eessi.pensjon.eux.model.SedType.*
+import no.nav.eessi.pensjon.eux.model.SedType.P10000
+import no.nav.eessi.pensjon.eux.model.SedType.P12000
+import no.nav.eessi.pensjon.eux.model.SedType.P15000
+import no.nav.eessi.pensjon.eux.model.SedType.P2000
+import no.nav.eessi.pensjon.eux.model.SedType.P2100
+import no.nav.eessi.pensjon.eux.model.SedType.P2200
+import no.nav.eessi.pensjon.eux.model.SedType.P4000
+import no.nav.eessi.pensjon.eux.model.SedType.P5000
+import no.nav.eessi.pensjon.eux.model.SedType.P6000
+import no.nav.eessi.pensjon.eux.model.SedType.P7000
+import no.nav.eessi.pensjon.eux.model.SedType.P8000
+import no.nav.eessi.pensjon.eux.model.SedType.P9000
+import no.nav.eessi.pensjon.eux.model.SedType.R005
+import no.nav.eessi.pensjon.eux.model.SedType.X005
+import no.nav.eessi.pensjon.eux.model.SedType.X008
+import no.nav.eessi.pensjon.eux.model.SedType.X009
+import no.nav.eessi.pensjon.eux.model.SedType.X010
 import no.nav.eessi.pensjon.utils.mapAnyToJson
 import no.nav.eessi.pensjon.utils.mapJsonToAny
 import no.nav.eessi.pensjon.utils.toJson
@@ -85,9 +101,9 @@ open class SED(
         ).plus(
             when (type) {
                 P4000 -> (this as P4000).p4000Pensjon?.gjenlevende?.person
-                P5000 -> (this as P5000).p5000Pensjon?.gjenlevende?.person
-                P6000 -> (this as P6000).p6000Pensjon?.gjenlevende?.person
-                P7000 -> (this as P7000).p7000Pensjon?.gjenlevende?.person
+                P5000 -> (this as P5000).pensjon?.gjenlevende?.person
+                P6000 -> (this as P6000).pensjon?.gjenlevende?.person
+                P7000 -> (this as P7000).pensjon?.gjenlevende?.person
                 P15000 -> (this as P15000).p15000Pensjon?.gjenlevende?.person
                 else -> null
             }
