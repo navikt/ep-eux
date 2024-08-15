@@ -16,10 +16,8 @@ class P7000Test {
         Assertions.assertEquals(2, p7000.pensjon?.samletVedtak?.tildeltepensjoner?.size)
         Assertions.assertEquals(1, p7000.pensjon?.samletVedtak?.avslag?.size)
 
-        val noTildelt =
-            p7000.pensjon?.samletVedtak?.tildeltepensjoner?.firstOrNull { it.institusjon?.land == "NO" }
-        val seTildelt =
-            p7000.pensjon?.samletVedtak?.tildeltepensjoner?.firstOrNull { it.institusjon?.land == "SE" }
+        val noTildelt = p7000.pensjon?.samletVedtak?.tildeltepensjoner?.firstOrNull { it.institusjon?.land == "NO" }
+        val seTildelt = p7000.pensjon?.samletVedtak?.tildeltepensjoner?.firstOrNull { it.institusjon?.land == "SE" }
         val dkAvslag = p7000.pensjon?.samletVedtak?.avslag?.firstOrNull { it.pin?.land == "DK" }
 
         Assertions.assertEquals("2021-07-20", noTildelt?.revurderingtidsfrist)
