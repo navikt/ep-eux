@@ -9,7 +9,7 @@ class MeldingOmPensjon(
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 open class Pensjon(
-	val gjenlevende: Bruker? = null, // Brukes fleres steder
+	open val gjenlevende: Bruker? = null, // Brukes fleres steder
 
 		//P2000
 	val angitidligstdato: String? = null,
@@ -18,7 +18,7 @@ open class Pensjon(
 		//P2XXX
 	val ytelser: List<YtelserItem>? = null,
 	val forespurtstartdato: String? = null,
-	val kravDato: Krav? = null, //kravDato pkt. 9.1 P2000
+	open val kravDato: Krav? = null, //kravDato pkt. 9.1 P2000
 
 		//P3000
 	val landspesifikk: Landspesifikk? = null
@@ -82,7 +82,7 @@ data class VedtakItem(
 	val grunnlag: Grunnlag? = null,
 	val virkningsdato: String? = null,
 	val ukjent: Ukjent? = null,
-	val type: String? = null,
+	val type: String? = null,  //felt 4.1 Kontekst for overføring (Type pensjon)
 	val resultat: String? = null,
 	val beregning: List<BeregningItem>? = null,
 	val avslagbegrunnelse: List<AvslagbegrunnelseItem>? = null,
