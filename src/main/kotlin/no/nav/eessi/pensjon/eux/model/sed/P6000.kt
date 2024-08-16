@@ -10,3 +10,5 @@ class P6000(
     @JsonProperty("pensjon")
     override val pensjon: P6000Pensjon?
 ) : SED(type, nav = nav)
+
+fun P6000.hasUforePensjonType() = this.pensjon?.vedtak?.firstOrNull()?.type == "30"

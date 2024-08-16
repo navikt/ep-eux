@@ -10,10 +10,8 @@ class P12000(
     override val pensjon: P12000Pensjon?
 ) : SED(type, nav = nav)
 
-
-fun P12000.hasUforePensjonType(): Boolean {
-    return this.pensjon?.pensjoninfo
-        ?.firstOrNull()
-        ?.betalingsdetaljer
-        ?.pensjonstype == "02"
-}
+fun P12000.hasUforePensjonType() =
+    this.pensjon?.pensjoninfo
+    ?.firstOrNull()
+    ?.betalingsdetaljer
+    ?.pensjonstype == "02"

@@ -10,3 +10,5 @@ data class P5000(
     @JsonProperty("pensjon")
     override val pensjon: P5000Pensjon? = null
 ) : SED(type, nav = nav)
+
+fun P5000.hasUforePensjonType() = this.pensjon?.medlemskapboarbeid?.enkeltkrav?.krav == "30"
