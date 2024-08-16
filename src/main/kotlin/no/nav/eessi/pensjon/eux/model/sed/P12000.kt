@@ -2,8 +2,6 @@ package no.nav.eessi.pensjon.eux.model.sed
 
 import com.fasterxml.jackson.annotation.JsonProperty
 import no.nav.eessi.pensjon.eux.model.SedType
-import no.nav.eessi.pensjon.utils.mapJsonToAny
-import no.nav.eessi.pensjon.utils.toJson
 
 class P12000(
     @JsonProperty("sed")
@@ -11,6 +9,7 @@ class P12000(
     override val nav: Nav? = null,
     override val pensjon: P12000Pensjon?
 ) : SED(type, nav = nav)
+
 
 fun P12000.hasUforePensjonType(): Boolean {
     return this.pensjon?.pensjoninfo
