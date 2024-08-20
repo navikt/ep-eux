@@ -1,12 +1,11 @@
 package no.nav.eessi.pensjon.eux.model
 
-import no.nav.eessi.pensjon.eux.model.BucType.*
-import no.nav.eessi.pensjon.eux.model.SedType.*
+import no.nav.eessi.pensjon.eux.model.BucType.P_BUC_01
+import no.nav.eessi.pensjon.eux.model.SedType.P2200
 import no.nav.eessi.pensjon.shared.person.Fodselsnummer
-import no.nav.eessi.pensjon.utils.mapAnyToJson
 import no.nav.eessi.pensjon.utils.mapAnyToJsonWithoutSensitiveData
 import no.nav.eessi.pensjon.utils.mapJsonToAny
-import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
 class SedHendelseTest {
