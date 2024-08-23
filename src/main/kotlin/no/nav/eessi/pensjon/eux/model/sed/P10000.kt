@@ -12,3 +12,4 @@ class P10000(
     ): SED(type, nav = nav)
 
 fun P10000.hasUforePensjonType() = this.pensjon?.merinformasjon?.ytelser?.firstOrNull()?.ytelsestype == "08"
+fun P10000.hasGjenlevPensjonType() = this.pensjon?.merinformasjon?.ytelser?.firstOrNull()?.ytelsestype == "11"

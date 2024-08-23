@@ -2,6 +2,7 @@ package no.nav.eessi.pensjon.eux.model.sed
 
 import com.fasterxml.jackson.annotation.JsonProperty
 import no.nav.eessi.pensjon.eux.model.SedType
+import no.nav.eessi.pensjon.eux.model.sed.KravType.GJENLEV
 import no.nav.eessi.pensjon.eux.model.sed.KravType.UFOREP
 
 class P15000(
@@ -13,3 +14,4 @@ class P15000(
 ) : SED(type, nav = nav)
 
 fun P15000.hasUforePensjonType() = this.nav?.krav?.type == UFOREP
+fun P15000.hasGjenlevendePensjonType() = this.nav?.krav?.type == GJENLEV

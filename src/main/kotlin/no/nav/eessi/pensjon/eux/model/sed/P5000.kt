@@ -12,3 +12,4 @@ data class P5000(
 ) : SED(type, nav = nav)
 
 fun P5000.hasUforePensjonType() = this.pensjon?.medlemskapboarbeid?.enkeltkrav?.krav == "30"
+fun P5000.hasGjenlevPensjonType() = this.pensjon?.medlemskapboarbeid?.enkeltkrav?.krav == "20"

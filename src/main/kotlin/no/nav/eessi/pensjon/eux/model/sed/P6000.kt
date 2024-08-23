@@ -12,3 +12,4 @@ class P6000(
 ) : SED(type, nav = nav)
 
 fun P6000.hasUforePensjonType() = this.pensjon?.vedtak?.firstOrNull()?.type == "30"
+fun P6000.hasGjenlevPensjonType() = this.pensjon?.vedtak?.firstOrNull()?.type == "20"
