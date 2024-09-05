@@ -262,30 +262,22 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var 
 
     companion object {
 
-        //TODO: se om vi kan erstatte denne med direkte bruk
         fun getRinasakerUri(fnr: String? = null, euxCaseId: String? = null): UriComponents {
             require(!(fnr == null && euxCaseId == null)) {
                 "Minst et søkekriterie må fylles ut for å få et resultat fra Rinasaker"
             }
 
-            val uriComponent = if (euxCaseId != null && fnr == null) {
-                UriComponentsBuilder.fromPath("/rinasaker")
-                    .queryParam("rinasaksnummer", euxCaseId)
-                    .queryParam("status", "\"open\"")
-                    .build()
-            } else if (euxCaseId == null && fnr != null) {
-                UriComponentsBuilder.fromPath("/rinasaker")
-                    .queryParam("fødselsnummer", fnr)
-                    .queryParam("status", "\"open\"")
-                    .build()
-            } else {
-                UriComponentsBuilder.fromPath("/rinasaker")
-                    .queryParam("fødselsnummer", fnr ?: "")
-                    .queryParam("rinasaksnummer", euxCaseId ?: "")
-                    .queryParam("status","\"open\"")
-                    .build()
-            }
-            return uriComponent
+            return UriComponentsBuilder.fromPath("/rinasaker").apply {
+                when {
+                    euxCaseId != null && fnr == null -> queryParam("rinasaksnummer", euxCaseId)
+                    euxCaseId == null -> queryParam("fødselsnummer", fnr)
+                    else -> {
+                        queryParam("fødselsnummer", fnr ?: "")
+                        queryParam("rinasaksnummer", euxCaseId ?: "")
+                    }
+                }
+                queryParam("status", "\"open\"")
+            }.build()
         }
     }
 }
