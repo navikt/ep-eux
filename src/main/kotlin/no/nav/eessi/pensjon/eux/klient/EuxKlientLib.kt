@@ -246,6 +246,19 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var 
         return result.statusCode == HttpStatus.OK
     }
 
+    fun sendSed(euxCaseId: String, dokumentId : String):  Boolean {
+        val path = "/buc/{$euxCaseId}/sed/{$dokumentId}/send?ventePaAksjon=false"
+        val result =
+            euxRestTemplate.exchange(
+                path,
+                HttpMethod.POST,
+                HttpEntity("", HttpHeaders().apply { contentType = MediaType.APPLICATION_JSON }),
+                String::class.java
+            )
+
+        return result.statusCode == HttpStatus.OK
+    }
+
     fun updateSedOnBuc(euxCaseId: String, dokumentId: String, sedPayload: String): Boolean {
         val path = "/buc/$euxCaseId/sed/$dokumentId?ventePaAksjon=false"
 
