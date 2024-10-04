@@ -33,7 +33,7 @@ open class SED(
     @JsonProperty("sed")
     open val type: SedType,
     open val sedGVer: String? = "4",
-    open var sedVer: String? = setSEDVersion("3"),
+    open var sedVer: String? = setSEDVersion("2"),
     open val nav: Nav? = null,
     open val pensjon: Pensjon? = null
 ) {
