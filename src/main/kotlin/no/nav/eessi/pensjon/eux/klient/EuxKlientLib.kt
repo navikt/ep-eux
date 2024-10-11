@@ -247,7 +247,7 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var 
     }
 
     fun sendSed(euxCaseId: String, dokumentId : String):  Boolean {
-        val url = "/buc/{$euxCaseId}/sed/{$dokumentId}/send?ventePaAksjon=false"
+        val url = "/buc/$euxCaseId/sed/$dokumentId/send?ventePaAksjon=false"
         logger.info("Kaller sendSed for buc: $euxCaseId, sed: $dokumentId, path: $url")
 
         val result: ResponseEntity<String> = euxRestTemplate.postForEntity(

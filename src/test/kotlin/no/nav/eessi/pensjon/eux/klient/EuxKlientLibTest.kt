@@ -48,7 +48,7 @@ class EuxKlientLibTest {
     fun `sendSed skal sende korrekt id for buc og sed`() {
         val euxCaseId = "1111"
         val dokumentId = "2222"
-        val path = "/buc/{$euxCaseId}/sed/{$dokumentId}/send?ventePaAksjon=false"
+        val path = "/buc/$euxCaseId/sed/$dokumentId/send?ventePaAksjon=false"
 
         val mockResponse = ResponseEntity<String>("", HttpStatus.OK)
         every {
