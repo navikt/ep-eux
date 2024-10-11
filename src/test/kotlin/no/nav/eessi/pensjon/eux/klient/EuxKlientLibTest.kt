@@ -52,9 +52,8 @@ class EuxKlientLibTest {
 
         val mockResponse = ResponseEntity<String>("", HttpStatus.OK)
         every {
-            mockTemplate.exchange(
+            mockTemplate.postForEntity(
                 path,
-                HttpMethod.POST,
                 any<HttpEntity<String>>(),
                 String::class.java
             )
@@ -63,6 +62,6 @@ class EuxKlientLibTest {
         val result = euxKlientLib.sendSed(euxCaseId, dokumentId)
 
         assertTrue(result)
-        verify { mockTemplate.exchange(path, HttpMethod.POST, any<HttpEntity<String>>(), String::class.java) }
+        verify { mockTemplate.postForEntity(path, any<HttpEntity<String>>(), String::class.java) }
     }
 }

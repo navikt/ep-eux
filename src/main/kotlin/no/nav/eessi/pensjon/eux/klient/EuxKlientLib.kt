@@ -247,16 +247,19 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var 
     }
 
     fun sendSed(euxCaseId: String, dokumentId : String):  Boolean {
-        val path = "/buc/{$euxCaseId}/sed/{$dokumentId}/send?ventePaAksjon=false"
-        logger.info("Kaller sendSed for buc: $euxCaseId, sed: $dokumentId")
-        val result =
-            euxRestTemplate.exchange(
-                path,
-                HttpMethod.POST,
-                HttpEntity("", HttpHeaders().apply { contentType = MediaType.APPLICATION_JSON }),
-                String::class.java
-            )
-        logger.info("SendSed response: ${result.statusCode} ")
+        val url = "/buc/{$euxCaseId}/sed/{$dokumentId}/send?ventePaAksjon=false"
+        logger.info("Kaller sendSed for buc: $euxCaseId, sed: $dokumentId, path: $url")
+
+        val result: ResponseEntity<String> = euxRestTemplate.postForEntity(
+            url,
+            HttpEntity<String>(HttpHeaders().apply {
+                set("accept", "*/*")
+            }), String::class.java
+        )
+
+        logger.info("""
+            | Response Code: ${result.statusCode}}
+            | Response Body: ${result.body}""".trimMargin())
         return result.statusCode == HttpStatus.OK
     }
 
