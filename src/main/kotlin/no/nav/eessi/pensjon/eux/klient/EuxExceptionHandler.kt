@@ -11,21 +11,22 @@ open class EuxExceptionHandler(open var overrideWaitTimes: Long = 1000L) {
     private val logger: Logger by lazy { LoggerFactory.getLogger(EuxExceptionHandler::class.java) }
 
     @Throws(Throwable::class)
-    fun <T> retryHelper(func: KFunction<T>, maxAttempts: Int = 3, skipError: List<HttpStatus>? = emptyList()): T {
+    fun <T> retryHelper(func: () -> T, maxAttempts: Int = 3, skipError: List<HttpStatus>? = emptyList()): T {
+        val callingMethodName = Thread.currentThread().stackTrace[2].methodName
         var failException: Throwable? = null
         var count = 0
 
         while (count < maxAttempts) {
             try {
-                if (count > 0) logRetry(count, func.name, null)
-                return func.call()
+                if (count > 0) logRetry(count, callingMethodName, null)
+                return func.invoke()
             } catch (ex: Throwable) {
                 if (isSkippableError(ex, skipError)) {
-                    logSkippedError(func.name, ex)
+                    logSkippedError(callingMethodName, ex)
                     throw ex
                 }
                 count++
-                logRetry(count, func.name, ex.message)
+                logRetry(count, callingMethodName, ex.message)
                 failException = ex
                 Thread.sleep(overrideWaitTimes)
             }
@@ -33,7 +34,7 @@ open class EuxExceptionHandler(open var overrideWaitTimes: Long = 1000L) {
 
         logger.error("Feilet å kontakte eux melding: ${failException?.message}", failException)
 
-        throw failException ?: IllegalStateException("Unexpected failure without exception") // Avoid null crash
+        throw failException ?: IllegalStateException("Unexpected failure without exception")
     }
 
     private fun isSkippableError(ex: Throwable, skipError: List<HttpStatus>?): Boolean {

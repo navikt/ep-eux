@@ -130,12 +130,8 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var 
     protected fun getSedOnBucByDocumentId(euxCaseId: String, documentId: String, restTemplate: RestTemplate, skipError: List<HttpStatus>? = emptyList()): String {
         val path = "/buc/$euxCaseId/sed/$documentId"
 
-        fun callRestTemplate(): ResponseEntity<String> {
-            return restTemplate.exchange(path, HttpMethod.GET, null, String::class.java)
-        }
-
         val response = retryHelper(
-            func = ::callRestTemplate,
+            func = { restTemplate.exchange(path,HttpMethod.GET,null, String::class.java) },
             maxAttempts = 3,
             skipError = skipError)
 
