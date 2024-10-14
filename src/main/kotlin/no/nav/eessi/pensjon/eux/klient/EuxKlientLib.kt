@@ -130,8 +130,12 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var 
     protected fun getSedOnBucByDocumentId(euxCaseId: String, documentId: String, restTemplate: RestTemplate, skipError: List<HttpStatus>? = emptyList()): String {
         val path = "/buc/$euxCaseId/sed/$documentId"
 
+        fun callRestTemplate(): ResponseEntity<String> {
+            return restTemplate.exchange(path, HttpMethod.GET, null, String::class.java)
+        }
+
         val response = retryHelper(
-            func = { restTemplate.exchange(path,HttpMethod.GET,null, String::class.java) },
+            func = ::callRestTemplate,
             maxAttempts = 3,
             skipError = skipError)
 
@@ -140,6 +144,8 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var 
             throw SedDokumentIkkeLestException("Feiler ved lesing av navSED, feiler ved uthenting av SED")
         }
     }
+
+
 
     fun getBucJsonAsNavIdent(euxCaseId: String): String = getBucJson(euxCaseId, euxRestTemplate).also { logger.info("getBucJson som getBucJsonAsNavIdent") }
     fun getBucJsonAsSystemuser(euxCaseId: String, restTemplate: RestTemplate): String = getBucJson(euxCaseId, restTemplate).also { logger.info("getBucJson som getBucJsonAsSystemuser") }
