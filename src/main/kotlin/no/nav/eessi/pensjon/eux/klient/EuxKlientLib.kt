@@ -25,11 +25,12 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var 
 
     private val logger: Logger by lazy { LoggerFactory.getLogger(EuxKlientLib::class.java) }
 
-    fun hentSedJson(rinaSakId: String, dokumentId: String): String? {
+    fun hentSedJson(rinaSakId: String, dokumentId: String, skipError: List<HttpStatus>? = emptyList()): String? {
         logger.info("Henter SED for rinaSakId: $rinaSakId , dokumentId: $dokumentId")
-
-        return euxRestTemplate.getForObject(
-            "/buc/$rinaSakId/sed/$dokumentId", String::class.java
+        return retryHelper(
+            func = { euxRestTemplate.getForObject("/buc/$rinaSakId/sed/$dokumentId", String::class.java) },
+            maxAttempts = 3,
+            skipError = skipError
         )
     }
 
