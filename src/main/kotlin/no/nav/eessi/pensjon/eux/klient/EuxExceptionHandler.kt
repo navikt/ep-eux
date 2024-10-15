@@ -43,7 +43,11 @@ open class EuxExceptionHandler(open var overrideWaitTimes: Long = 1000L) {
     }
 
     private fun logRetry(count: Int, functionName: String, errorMessage: String?) {
-        logger.warn("$functionName feilet å kontakte eux prøver på nytt. nr.: $count${if (errorMessage != null) ", feilmelding: $errorMessage" else ""}")
+        logger.warn("""
+            Funksjon: $functionName, feilet å kontakte eux prøver på nytt. 
+            Forsøk: $count
+            ${errorMessage?.let { "Feilmelding: \"$it\"" } ?: ""}""".trimIndent()
+        )
     }
 
     private fun logSkippedError(functionName: String, ex: Throwable) {
