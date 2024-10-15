@@ -12,29 +12,30 @@ open class EuxExceptionHandler(open var overrideWaitTimes: Long = 1000L) {
 
     @Throws(Throwable::class)
     fun <T> retryHelper(func: () -> T, maxAttempts: Int = 3, skipError: List<HttpStatus>? = emptyList()): T {
-        val callingMethodName = Thread.currentThread().stackTrace[2].methodName
-        var failException: Throwable? = null
+        val orgMetode = Thread.currentThread().stackTrace[2].methodName
+        var exception: Throwable? = null
         var count = 0
 
         while (count < maxAttempts) {
             try {
-                if (count > 0) logRetry(count, callingMethodName, null)
+                if (count > 0) logRetry(count, orgMetode, null)
                 return func.invoke()
             } catch (ex: Throwable) {
                 if (isSkippableError(ex, skipError)) {
-                    logSkippedError(callingMethodName, ex)
+                    logSkippedError(orgMetode, ex)
                     throw ex
                 }
                 count++
-                logRetry(count, callingMethodName, ex.message)
-                failException = ex
+                logRetry(count, orgMetode, ex.message)
+
+                exception = ex
                 Thread.sleep(overrideWaitTimes)
             }
         }
 
-        logger.error("Feilet å kontakte eux melding: ${failException?.message}", failException)
+        logger.error("Feilet å kontakte eux melding: ${exception?.message}", exception)
 
-        throw failException ?: IllegalStateException("Unexpected failure without exception")
+        throw exception ?: IllegalStateException("Unexpected failure without exception")
     }
 
     private fun isSkippableError(ex: Throwable, skipError: List<HttpStatus>?): Boolean {
@@ -42,11 +43,7 @@ open class EuxExceptionHandler(open var overrideWaitTimes: Long = 1000L) {
     }
 
     private fun logRetry(count: Int, functionName: String, errorMessage: String?) {
-        if (errorMessage == null) {
-            logger.info("Prøver for $count gang for metode: $functionName")
-        } else {
-            logger.warn("$functionName feilet å kontakte eux prøver på nytt. nr.: $count, feilmelding: $errorMessage")
-        }
+        logger.warn("$functionName feilet å kontakte eux prøver på nytt. nr.: $count${if (errorMessage != null) ", feilmelding: $errorMessage" else ""}")
     }
 
     private fun logSkippedError(functionName: String, ex: Throwable) {
