@@ -12,13 +12,10 @@ import org.slf4j.LoggerFactory
 import org.slf4j.MDC
 import org.springframework.core.io.Resource
 import org.springframework.http.*
-import org.springframework.web.client.HttpStatusCodeException
 import org.springframework.web.client.RestTemplate
 import org.springframework.web.server.ResponseStatusException
 import org.springframework.web.util.UriComponents
 import org.springframework.web.util.UriComponentsBuilder
-import java.time.Duration
-import java.time.LocalDateTime
 import java.util.*
 
 open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var overrideWaitTimes: Long = 5000L) : EuxExceptionHandler(overrideWaitTimes) {
@@ -144,10 +141,18 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var 
 
 
 
-    fun getBucJsonAsNavIdent(euxCaseId: String): String = getBucJson(euxCaseId, euxRestTemplate).also { logger.info("getBucJson som getBucJsonAsNavIdent") }
-    fun getBucJsonAsSystemuser(euxCaseId: String, restTemplate: RestTemplate): String = getBucJson(euxCaseId, restTemplate).also { logger.info("getBucJson som getBucJsonAsSystemuser") }
+    fun getBucJsonAsNavIdent(euxCaseId: String): String?  = getBucJson(euxCaseId, euxRestTemplate).also { logBucJsonResult(euxCaseId, it, "getBucJsonAsNavIdent") }
+    fun getBucJsonAsSystemuser(euxCaseId: String, restTemplate: RestTemplate): String? = getBucJson(euxCaseId, restTemplate).also { logBucJsonResult(euxCaseId, it, "getBucJsonAsSystemuser")}
 
-    protected fun getBucJson(euxCaseId: String, restTemplate: RestTemplate): String {
+    fun logBucJsonResult(euxCaseId: String, bucJson: String?, metode: String) {
+        if (bucJson == null) {
+            logger.warn("Ingen Buc verdi for euxCaseId: $euxCaseId, metode: $metode. Buc er null")
+        } else {
+            logger.info("getBucJson fra $metode for euxCaseId: $euxCaseId")
+        }
+    }
+
+    private fun getBucJson(euxCaseId: String, restTemplate: RestTemplate): String? {
         val path = "/buc/$euxCaseId"
         logger.info("getBucJsonWithRest prøver å kontakte EUX $path")
 
