@@ -59,14 +59,13 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var 
         return response.statusCode == HttpStatus.OK || response.statusCode == HttpStatus.NO_CONTENT
     }
 
-    fun hentAlleDokumentfiler(rinaSakId: String, dokumentId: String): SedDokumentfiler? {
+    fun hentAlleDokumentfiler(rinaSakId: String, dokumentId: String, skipError: List<HttpStatus>? = emptyList()): SedDokumentfiler? {
         logger.info("Henter PDF for SED og tilhørende vedlegg for rinaSakId: $rinaSakId , dokumentId: $dokumentId")
-        return execute {
-            euxRestTemplate.getForObject(
-                "/buc/$rinaSakId/sed/$dokumentId/filer",
-                SedDokumentfiler::class.java
-            )
-        }
+        return retryHelper(
+            func = { euxRestTemplate.getForObject("/buc/$rinaSakId/sed/$dokumentId/filer", SedDokumentfiler::class.java) },
+            maxAttempts = 3,
+            skipError = skipError
+        )
     }
 
     private fun <T> execute(block: () -> T): T? {
