@@ -35,12 +35,14 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var 
         return hentSedJson(rinaSakId, dokumentId)?.let { mapJsonToAny(it) }
     }
 
-    fun hentBucJson(rinaSakId: String): String?{
+    fun hentBucJson(rinaSakId: String, skipError: List<HttpStatus>? = emptyList()): String?{
         logger.info("Henter BUC (RinaSakId: $rinaSakId)")
 
-        return euxRestTemplate.getForObject(
-            "/buc/$rinaSakId", String::class.java)
-
+        return retryHelper(
+            func = { euxRestTemplate.getForObject("/buc/$rinaSakId", String::class.java)},
+            maxAttempts = 3,
+            skipError = skipError
+        )
     }
     fun hentBuc(rinaSakId: String): Buc? {
         return hentBucJson(rinaSakId)?.let { mapJsonToAny(it) }
