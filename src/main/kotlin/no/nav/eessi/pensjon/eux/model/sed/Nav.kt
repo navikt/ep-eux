@@ -111,13 +111,13 @@ data class Vergemaal(
 @JsonIgnoreProperties(ignoreUnknown = true)
 data class Kontakt(
         val telefon: List<Telefon>? = null,
-        val email: List<Email>? = null
+        val email: List<Email>? = null // P2000 2.2.4.2.1.1
 )
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 data class Telefon(
-        val type: String? = null,
-        val nummer: String? = null
+        val type: String? = null, // P2000 2.2.4.1.1.1
+        val nummer: String? = null // P2000 2.2.4.1.1.2
 )
 
 @JsonIgnoreProperties(ignoreUnknown = true)
