@@ -25,7 +25,6 @@ dependencies {
 
     implementation("org.slf4j:slf4j-api:2.0.16")
 
-    //Jackson json
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:$jacksonModuleKotlinVersion")
     implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$jacksonModuleKotlinVersion")
 
