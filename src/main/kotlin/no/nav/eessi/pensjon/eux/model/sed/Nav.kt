@@ -178,8 +178,18 @@ enum class RelasjonTilAvdod(@JsonValue val kode: String?) {
 
 data class SivilstandItem(
         val fradato: String? = null,
-        val status: String? = null
+        val status: SivilstandRina? = null
 )
+
+enum class SivilstandRina(val kode: String? = null) {
+        UGIFT("01"),
+        GIFT("02"),
+        SKILT("05"),
+        REGISTRERT_PARTNER("04");
+
+        @JsonValue
+        fun toJson() = kode
+}
 
 data class StatsborgerskapItem(
         val land: String? = null
