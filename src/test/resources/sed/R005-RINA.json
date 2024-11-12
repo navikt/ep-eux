@@ -41,7 +41,7 @@
           "foedselsdato": "æøå",
           "etternavnvedfoedsel": "æøå",
           "sivilstand": {
-            "status": "enslig"
+            "status": "01"
           },
           "tilbakekrevingtidligerefornavn": [
             {
