@@ -1,7 +1,6 @@
 package no.nav.eessi.pensjon.eux.model.sed
 
 import no.nav.eessi.pensjon.utils.toJson
-import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import org.skyscreamer.jsonassert.JSONAssert
 
