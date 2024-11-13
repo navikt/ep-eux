@@ -106,7 +106,7 @@
         "sivilstand": [
           {
             "fradato": "2008-09-30",
-            "status": "05"
+            "status": "skilt"
           }
         ],
         "relasjontilavdod": null,
@@ -189,7 +189,7 @@
           "sivilstand": [
             {
               "fradato": "2008-09-17",
-              "status": "05"
+              "status": "skilt"
             }
           ],
           "relasjontilavdod": null,
@@ -293,7 +293,7 @@
           "sivilstand": [
             {
               "fradato": "2014-04-11",
-              "status": "05"
+              "status": "skilt"
             }
           ],
           "relasjontilavdod": null,

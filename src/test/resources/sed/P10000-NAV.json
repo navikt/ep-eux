@@ -145,7 +145,7 @@
       "person" : {
         "fornavn" : "VAIKUNTHARAJAN-MASK",
         "sivilstand" : [ {
-          "status" : "04",
+          "status" : "registrert_partnerskap",
           "fradato" : "1993-05-13"
         } ],
         "kjoenn" : "K",
