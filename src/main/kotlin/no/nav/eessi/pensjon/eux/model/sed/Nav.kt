@@ -181,14 +181,12 @@ data class SivilstandItem(
         val status: SivilstandRina? = null
 )
 
-enum class SivilstandRina(val kode: String? = null) {
-        UGIFT("01"),
-        GIFT("02"),
-        SKILT("05"),
-        REGISTRERT_PARTNER("04");
-
-        @JsonValue
-        fun toJson() = kode
+enum class SivilstandRina {
+        enslig,
+        gift,
+        samboer,
+        skilt,
+        registrert_partnerskap
 }
 
 data class StatsborgerskapItem(
