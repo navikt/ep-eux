@@ -181,12 +181,16 @@ data class SivilstandItem(
         val status: SivilstandRina? = null
 )
 
+// Hentet fra eux-rina-api: sivilstandkoder.properties
 enum class SivilstandRina {
         enslig,
         gift,
         samboer,
         skilt,
-        registrert_partnerskap
+        registrert_partnerskap,
+        skilt_fra_registrert_partnerskap,
+        separert,
+        enke_enkemann;
 }
 
 data class StatsborgerskapItem(
