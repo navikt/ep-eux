@@ -22,7 +22,7 @@ class P7000Test {
         val dkAvslag = p7000.pensjon?.samletVedtak?.avslag?.firstOrNull { it.pin?.land == "DK" }
 
         Assertions.assertEquals("2021-07-20", noTildelt?.revurderingtidsfrist)
-        Assertions.assertEquals("123123123123", noTildelt?.ytelser?.first()?.beloepsListe?.first()?.beloepBrutto)
+        Assertions.assertEquals("123123123123", noTildelt?.ytelser?.first()?.beloep?.first()?.beloepBrutto)
         Assertions.assertEquals(
             "4.1.8.2 revjrflkasdfjasdf asdfasd fadfg",
             noTildelt?.adressatForRevurdering?.first()?.adressatforrevurdering
@@ -30,7 +30,7 @@ class P7000Test {
         Assertions.assertEquals("01", noTildelt?.pensjonType)
 
         Assertions.assertEquals("2021-07-20", seTildelt?.revurderingtidsfrist)
-        Assertions.assertEquals("41", seTildelt?.ytelser?.first()?.beloepsListe?.first()?.beloepBrutto)
+        Assertions.assertEquals("41", seTildelt?.ytelser?.first()?.beloep?.first()?.beloepBrutto)
         Assertions.assertEquals("4.1.8.2.1", seTildelt?.adressatForRevurdering?.first()?.adressatforrevurdering)
         Assertions.assertEquals("01", seTildelt?.pensjonType)
 

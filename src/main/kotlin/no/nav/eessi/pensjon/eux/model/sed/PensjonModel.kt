@@ -57,8 +57,8 @@ data class YtelserItem(
 	val ytelse: YtelseType? = null,
 	val startdatoretttilytelse: String? = null,
 	val sluttdatoUtbetaling: String? = null,
-	val beloep: String? = null,
-	val beloepsListe: List<BeloepItem>? = null,
+//	val beloep: String? = null,
+	val beloep: List<BeloepItem>? = null,
 	val status: StatusType? = null,
 	val annenbetalingshyppighetytelse: String? = null,
 	val totalbruttobeloepbostedsbasert: String? = null
@@ -71,7 +71,7 @@ data class BeloepItem(
         val beloep: String? = null,
 		val beloepBrutto: String? = null,
         val gjeldendesiden: String? = null,
-        val utbetalingshyppighetAnnen: String? = null,
+        val utbetalingshyppighetAnnen: String? = null
 )
 
 enum class BasertPaa {
