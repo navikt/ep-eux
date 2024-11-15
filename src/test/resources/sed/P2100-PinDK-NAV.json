@@ -114,14 +114,14 @@
     "ytelser": [
       {
         "ytelseVedSykdom": "1",
-        "status": "01",
-        "beloep": [
+        "status": "søkt",
+        "beloepsListe": [
           {
             "annenbetalingshyppighetytelse": "3332432222222",
             "gjeldendesiden": "2017-09-09",
             "beloep": "234234",
             "valuta": "NOK",
-            "betalingshyppighetytelse": "04"
+            "betalingshyppighetytelse": "maaned_13_per_aar"
           }
         ],
         "institusjon": {

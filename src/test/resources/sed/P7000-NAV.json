@@ -62,11 +62,12 @@
       "tildeltepensjoner" : [ {
         "pensjonType" : "01",
         "ytelser" : [ {
-          "beloep" : [ {
+          "beloepsListe" : [ {
             "valuta" : "NOK",
-            "betalingshyppighetytelse" : "03",
+            "betalingshyppighetytelse" : "maaned_12_per_aar",
             "beloepBrutto" : "123123123123"
           } ],
+          "beloep" : null,
           "annenbetalingshyppighetytelse" : "4.1.6.6.1 annen",
           "startdatoutbetaling" : "2021-07-20",
           "sluttdatoretttilytelse" : "2021-07-20"
@@ -93,9 +94,10 @@
         "ytelser" : [ {
           "annenbetalingshyppighetytelse" : "4.1.6.6.1",
           "startdatoutbetaling" : "2021-07-20",
-          "beloep" : [ {
+          "beloep" : "20220",
+          "beloepsListe" : [ {
             "beloepBrutto" : "41",
-            "betalingshyppighetytelse" : "03",
+            "betalingshyppighetytelse" : "maaned_12_per_aar",
             "valuta" : "SEK"
           } ],
           "sluttdatoretttilytelse" : "2021-07-20"

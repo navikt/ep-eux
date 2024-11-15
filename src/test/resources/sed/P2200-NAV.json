@@ -197,9 +197,9 @@
   "sedVer" : "0",
   "pensjon" : {
     "ytelser" : [ {
-      "status" : "01",
+      "status" : "innvilget",
       "startdatoutbetaling" : "1994-01-01",
-      "beloep" : [ {
+      "beloepsListe" : [ {
         "annenbetalingshyppighetytelse" : "mmmmmmmmmmmmmm",
         "gjeldendesiden" : "1995-01-01",
         "beloep" : "234",
@@ -218,7 +218,7 @@
       "pin" : {
         "identifikator" : "134123513451"
       },
-      "ytelse" : "02"
+      "ytelse" : "alderspensjon"
     } ],
     "ytterligeinformasjon" : "sfhfgh sfghsfhsfgh",
     "bruker" : {

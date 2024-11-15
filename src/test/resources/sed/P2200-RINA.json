@@ -242,26 +242,22 @@
     ]
   },
   "pensjon": {
-    "ytelser": [
-      {
-        "mottasbasertpaaitem": [
-          {
-            "totalbruttobeloeparbeidsbasert": "æøå",
-            "verdi": "01",
-            "totalbruttobeloepbostedsbasert": "æøå"
-          }
-        ],
-        "status": "01",
+    "ytelser": [{
+        "mottasbasertpaaitem": "basert_på_botid",
+        "totalbruttobeloeparbeidsbasert": "æøå",
+        "totalbruttobeloepbostedsbasert": "æøå",
+        "status": "søkt",
         "startdatoutbetaling": "æøå",
-        "beloep": [
+        "beloepsListe": [
           {
             "annenbetalingshyppighetytelse": "æøå",
             "gjeldendesiden": "æøå",
             "beloep": "æøå",
             "valuta": "NOK",
-            "betalingshyppighetytelse": "01"
+            "betalingshyppighetytelse": "maaned_13_per_aar"
           }
         ],
+        "beloep": "461",
         "sluttdatoutbetaling": "æøå",
         "annenytelse": "æøå",
         "institusjon": {
@@ -275,7 +271,7 @@
         "pin": {
           "identifikator": "æøå"
         },
-        "ytelse": "01",
+        "ytelse": "alderspensjon",
         "sluttdatoUtbetaling": "æøå"
       }
     ],
