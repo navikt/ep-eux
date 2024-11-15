@@ -53,25 +53,65 @@ data class YtelserItem(
 	val institusjon: Institusjon? = null,
 	val pin: PinItem? = null,
 	val startdatoutbetaling: String? = null,
-	val mottasbasertpaa: String? = null,
-	val ytelse: String? = null,
+	val mottasbasertpaa: BasertPaa? = null,
+	val ytelse: YtelseType? = null,
 	val startdatoretttilytelse: String? = null,
 	val sluttdatoUtbetaling: String? = null,
-	val beloep: List<BeloepItem>? = null,
-	val status: String? = null,
+	val beloep: String? = null,
+	val beloepsListe: List<BeloepItem>? = null,
+	val status: StatusType? = null,
 	val annenbetalingshyppighetytelse: String? = null,
 	val totalbruttobeloepbostedsbasert: String? = null
 )
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 data class BeloepItem(
-        val betalingshyppighetytelse: String? = null,
+        val betalingshyppighetytelse: Betalingshyppighet? = null,
         val valuta: String? = null,
         val beloep: String? = null,
 		val beloepBrutto: String? = null,
         val gjeldendesiden: String? = null,
-        val utbetalingshyppighetAnnen: String? = null
+        val utbetalingshyppighetAnnen: String? = null,
 )
+
+enum class BasertPaa {
+	basert_på_botid,
+	basert_på_arbeid,
+	annet;
+}
+enum class Betalingshyppighet {
+	aarlig,
+	kvartalsvis,
+	maaned_12_per_aar,
+	maaned_13_per_aar,
+	maaned_14_per_aar,
+	ukentlig,
+	annet;
+}
+
+enum class YtelseType {
+	fortsatt_lønnsutbetaling_ved_sykdom,
+	sykepenger_ved_arbeidsuførhet,
+	kortsiktig_kontantytelse_ved_arbeidsulykke_eller_yrkessykdom,
+	rehabiliteringspenger,
+	familieytelse,
+	dagpenger,
+	førtidspensjon_før,
+	uførepensjon,
+	førtidspensjon_tidlig,
+	alderspensjon,
+	etterlattepensjon,
+	pensjon_pga_arbeidsulykke_eller_yrkessykdom,
+	pensjonslignende_ytelse_som_utbetales_under_obligatorisk_trafikkforsikring,
+	andre_ytelse;
+}
+
+enum class StatusType {
+	søkt,
+	innvilget,
+	avslått,
+	foreløpig;
+}
 
 data class KravtypeItem(
         val datoFrist: String? = null,
