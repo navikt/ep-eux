@@ -54,7 +54,6 @@ data class YtelserItem(
 	val institusjon: Institusjon? = null,
 	val pin: PinItem? = null,
 	val startdatoutbetaling: String? = null,
-	@JsonValue
 	val mottasbasertpaa: BasertPaa? = null,
 	val ytelse: YtelseType? = null,
 	val startdatoretttilytelse: String? = null,
@@ -76,10 +75,10 @@ data class BeloepItem(
         val utbetalingshyppighetAnnen: String? = null
 )
 
-enum class BasertPaa {
-	basert_på_botid,
-	basert_på_arbeid,
-	annet;
+enum class BasertPaa(@JsonValue val kode: String) {
+	basert_på_botid("01"),
+	basert_på_arbeid("02"),
+	annet("99")
 }
 enum class Betalingshyppighet {
 	aarlig,
