@@ -1,6 +1,7 @@
 package no.nav.eessi.pensjon.eux.model.sed
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
+import com.fasterxml.jackson.annotation.JsonValue
 
 class MeldingOmPensjon(
 		val melding: String?,
@@ -53,6 +54,7 @@ data class YtelserItem(
 	val institusjon: Institusjon? = null,
 	val pin: PinItem? = null,
 	val startdatoutbetaling: String? = null,
+	@JsonValue
 	val mottasbasertpaa: BasertPaa? = null,
 	val ytelse: YtelseType? = null,
 	val startdatoretttilytelse: String? = null,
