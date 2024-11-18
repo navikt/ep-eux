@@ -60,14 +60,17 @@
     },
     "samletVedtak" : {
       "tildeltepensjoner" : [ {
+        "adressatForRevurdering" : [ {
+          "adressatforrevurdering" : "4.1.8.2 revjrflkasdfjasdf asdfasd fadfg"
+        } ],
+        "revurderingtidsfrist" : "2021-07-20",
         "pensjonType" : "01",
         "ytelser" : [ {
-          "beloepsListe" : [ {
+          "beloep" : [ {
             "valuta" : "NOK",
             "betalingshyppighetytelse" : "maaned_12_per_aar",
             "beloepBrutto" : "123123123123"
           } ],
-          "beloep" : null,
           "annenbetalingshyppighetytelse" : "4.1.6.6.1 annen",
           "startdatoutbetaling" : "2021-07-20",
           "sluttdatoretttilytelse" : "2021-07-20"
@@ -83,6 +86,10 @@
           "institusjonsnavn" : "NAV ACCEPTANCE TEST 01"
         }
       }, {
+        "revurderingtidsfrist" : "2021-07-21",
+        "adressatForRevurdering" : [ {
+          "adressatforrevurdering" : "4.1.8.2.1"
+        } ],
         "institusjon" : {
           "institusjonsid" : "SE:ACC2001",
           "sektor" : "alle",
@@ -94,8 +101,7 @@
         "ytelser" : [ {
           "annenbetalingshyppighetytelse" : "4.1.6.6.1",
           "startdatoutbetaling" : "2021-07-20",
-          "beloep" : "20220",
-          "beloepsListe" : [ {
+          "beloep" : [ {
             "beloepBrutto" : "41",
             "betalingshyppighetytelse" : "maaned_12_per_aar",
             "valuta" : "SEK"
@@ -119,6 +125,7 @@
         },
         "dato" : "2021-07-20",
         "begrunnelse" : "06",
+        "tidsfristForRevurdering" : "5.1.5.1 tid",
         "pensjonType" : "01"
       } ]
     }

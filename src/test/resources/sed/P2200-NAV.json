@@ -199,7 +199,7 @@
     "ytelser" : [ {
       "status" : "innvilget",
       "startdatoutbetaling" : "1994-01-01",
-      "beloepsListe" : [ {
+      "beloep" : [ {
         "annenbetalingshyppighetytelse" : "mmmmmmmmmmmmmm",
         "gjeldendesiden" : "1995-01-01",
         "beloep" : "234",

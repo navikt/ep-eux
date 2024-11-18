@@ -115,7 +115,7 @@
       {
         "ytelseVedSykdom": "1",
         "status": "søkt",
-        "beloepsListe": [
+        "beloep": [
           {
             "annenbetalingshyppighetytelse": "3332432222222",
             "gjeldendesiden": "2017-09-09",

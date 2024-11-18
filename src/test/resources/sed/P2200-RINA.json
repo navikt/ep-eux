@@ -248,7 +248,7 @@
         "totalbruttobeloepbostedsbasert": "æøå",
         "status": "søkt",
         "startdatoutbetaling": "æøå",
-        "beloepsListe": [
+        "beloep": [
           {
             "annenbetalingshyppighetytelse": "æøå",
             "gjeldendesiden": "æøå",
@@ -257,7 +257,6 @@
             "betalingshyppighetytelse": "maaned_13_per_aar"
           }
         ],
-        "beloep": "461",
         "sluttdatoutbetaling": "æøå",
         "annenytelse": "æøå",
         "institusjon": {
