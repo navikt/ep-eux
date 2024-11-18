@@ -126,7 +126,7 @@ data class VedtakItem(
 	val resultat: String? = null,
 	val beregning: List<BeregningItem>? = null,
 	val avslagbegrunnelse: List<AvslagbegrunnelseItem>? = null,
-	val basertPaa: String? = null,
+	val basertPaa: BasertPaa? = null,
 	val artikkel: String? = null,
 	val basertPaaAnnen: String? = null,
 	val delvisstans: DelvisstansItem? = null, //2021.09.06, lagt inn grunnet mapping

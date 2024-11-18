@@ -140,7 +140,7 @@
             "utbetalingshyppighet": "aarlig"
           }
         ],
-        "basertPaa": "01",
+        "basertPaa": "basert_på_botid",
         "delvisstans": {
           "utbetaling": {
             "begrunnelse": "æøå",
