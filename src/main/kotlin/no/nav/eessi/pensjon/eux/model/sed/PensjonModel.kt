@@ -55,7 +55,7 @@ data class YtelserItem(
 	val pin: PinItem? = null,
 	val startdatoutbetaling: String? = null,
 	val mottasbasertpaa: BasertPaa? = null,
-	val ytelse: YtelseType? = null,
+	val ytelse: String? = null,
 	val startdatoretttilytelse: String? = null,
 	val sluttdatoUtbetaling: String? = null,
 //	val beloep: String? = null,
@@ -90,21 +90,21 @@ enum class Betalingshyppighet {
 	annet;
 }
 
-enum class YtelseType {
-	fortsatt_lønnsutbetaling_ved_sykdom,
-	sykepenger_ved_arbeidsuførhet,
-	kortsiktig_kontantytelse_ved_arbeidsulykke_eller_yrkessykdom,
-	rehabiliteringspenger,
-	familieytelse,
-	dagpenger,
-	førtidspensjon_før,
-	uførepensjon,
-	førtidspensjon_tidlig,
-	alderspensjon,
-	etterlattepensjon,
-	pensjon_pga_arbeidsulykke_eller_yrkessykdom,
-	pensjonslignende_ytelse_som_utbetales_under_obligatorisk_trafikkforsikring,
-	andre_ytelse;
+enum class YtelseType(@JsonValue val kode: String) {
+	fortsatt_lønnsutbetaling_ved_sykdom("01"),
+	sykepenger_ved_arbeidsuførhet("02"),
+	kortsiktig_kontantytelse_ved_arbeidsulykke_eller_yrkessykdom("03"),
+	rehabiliteringspenger("04"),
+	familieytelse("05"),
+	dagpenger("06"),
+	førtidspensjon_før("07"),
+	uførepensjon("08"),
+	førtidspensjon_tidlig("09"),
+	alderspensjon("10"),
+	etterlattepensjon("11"),
+	pensjon_pga_arbeidsulykke_eller_yrkessykdom("12"),
+	pensjonslignende_ytelse_som_utbetales_under_obligatorisk_trafikkforsikring("13"),
+	andre_ytelse("14");
 }
 
 enum class StatusType {
