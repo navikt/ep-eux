@@ -197,7 +197,7 @@
   "sedVer" : "0",
   "pensjon" : {
     "ytelser" : [ {
-      "status" : "innvilget",
+      "status" : "02",
       "startdatoutbetaling" : "1994-01-01",
       "beloep" : [ {
         "annenbetalingshyppighetytelse" : "mmmmmmmmmmmmmm",

@@ -108,9 +108,9 @@ enum class YtelseType(@JsonValue val kode: String) {
 }
 
 enum class StatusType(@JsonValue val kode: String) {
-	TIL_BEHANDLING("søkt"),
-	INNV("innvilget"),
-	AVSL("avslått"),
+	TIL_BEHANDLING("01"),
+	INNV("02"),
+	AVSL("03"),
 	OPPHOER("");
 
 }

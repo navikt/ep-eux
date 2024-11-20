@@ -112,7 +112,7 @@
     "ytelser": [
       {
         "ytelseVedSykdom": "1",
-        "status": "søkt",
+        "status": "01",
         "beloep": [
           {
             "annenbetalingshyppighetytelse": "3332432222222",
