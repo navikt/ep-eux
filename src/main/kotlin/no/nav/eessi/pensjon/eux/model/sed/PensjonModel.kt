@@ -108,10 +108,11 @@ enum class YtelseType(@JsonValue val kode: String) {
 }
 
 enum class StatusType(@JsonValue val kode: String) {
-	søkt("TIL_BEHANDLING"),
-	innvilget("INNV"),
-	avslått("AVSL"),
-	foreløpig("");
+	TIL_BEHANDLING("søkt"),
+	INNV("innvilget"),
+	AVSL("avslått"),
+	OPPHOER("");
+
 }
 
 data class KravtypeItem(
