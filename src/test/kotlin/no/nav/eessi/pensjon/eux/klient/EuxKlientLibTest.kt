@@ -1,6 +1,9 @@
 package no.nav.eessi.pensjon.eux.klient
 
+import com.tngtech.archunit.thirdparty.com.google.common.base.CharMatcher.any
+import com.tngtech.archunit.thirdparty.com.google.common.base.Verify.verify
 import io.mockk.every
+import io.mockk.justRun
 import io.mockk.mockk
 import io.mockk.verify
 import no.nav.eessi.pensjon.eux.model.SedType
@@ -10,6 +13,7 @@ import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 import org.springframework.http.HttpEntity
+import org.springframework.http.HttpMethod
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.client.RestTemplate
@@ -37,7 +41,7 @@ class EuxKlientLibTest {
         assertEquals("28064843062", resultAsSED.nav?.bruker?.person?.pin?.firstOrNull()?.identifikator)
 
         val resultAsP2000 = euxKlientLib.hentSed<P2000>("111", "222")!!
-        assertEquals(SedType.SEDTYPE_P2000, resultAsP2000.type)
+        assertEquals(SedType.P2000, resultAsP2000.type)
     }
 
     @Test

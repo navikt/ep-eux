@@ -7,7 +7,7 @@ import no.nav.eessi.pensjon.eux.model.sed.KravType.UFOREP
 
 class P15000(
     @JsonProperty("sed")
-    override val type: SedType = SedType.SEDTYPE_P15000,
+    override val type: SedType = SedType.P15000,
     override val nav: Nav? = null,
     @JsonProperty("pensjon")
     override val pensjon: P15000Pensjon?

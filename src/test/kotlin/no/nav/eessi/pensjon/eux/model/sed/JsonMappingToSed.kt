@@ -13,13 +13,13 @@ internal class JsonMappingToSed {
     @ParameterizedTest
     @MethodSource("listSedType")
     fun `Beskrivelse inneholder SedType`(pair: Pair<SedType, String>) {
-        val type = pair.first.toJson()
+        val type = pair.first
         val json = jsonString(pair)
         val sed = SED.fromJsonToConcrete(json)
-        println("*** ${sed.type.toJson()} ***")
+        println("*** ${sed.type} ***")
 
-        assertEquals(type, sed.type.toJson())
-        assertEquals(type, sed.javaClass.simpleName)
+        assertEquals(type, sed.type)
+        assertEquals(type.name, sed.javaClass.simpleName)
         assertPensjon(sed)
 
         JSONAssert.assertEquals( sed.toJsonSkipEmpty(), json, false)
@@ -43,9 +43,9 @@ internal class JsonMappingToSed {
     }
 
     private fun jsonString(pair: Pair<SedType, String>): String {
-        val type = pair.first.toJson()
+        val type = pair.first
         val filename = pair.second
-        println("Henter sed fra resource type: $type, filname: $filename")
+
         val json = try {
             readFile(filename)
         } catch (ex: Exception) {
@@ -63,7 +63,7 @@ internal class JsonMappingToSed {
 
 
     fun assertPensjon(sed: SED) {
-        println("*** detaljert assert på nav og pensjon type: ${sed.type}, for sedType:  ${sed.type.toJson()} ***")
+        println("*** detaljert assert på nav og pensjon type: ${sed.type} ***")
         when(sed) {
             is P2000 -> {
                 assertEquals(P2000::class.java.name, sed.javaClass.name)
@@ -74,8 +74,6 @@ internal class JsonMappingToSed {
 
             }
             is P2100 -> {
-                val p2100: P2100 = sed
-                assertNotNull(p2100.pensjon)
                 assertEquals(P2100::class.java.name, sed.javaClass.name)
                 assertEquals("4.0", sedVersion(sed))
                 sed.sedVer = "5"
@@ -171,7 +169,7 @@ internal class JsonMappingToSed {
                 assertEquals("321", sed.pensjon?.gjenlevende?.person?.etternavn)
             }
             else -> {
-                if(sed.type == SedType.SEDTYPE_H121) {
+                if(sed.type == SedType.H121) {
                     assertEquals("The Norwegian Labour and Welfare Administration", sed.nav?.bruker?.person?.pin?.first()?.institusjonsnavn)
                 }
                 println("Ikke noe detaljert assert på ${sed.type}")
@@ -187,12 +185,12 @@ internal class JsonMappingToSed {
         @JvmStatic
         fun listSedType(): List<Pair<SedType,String>> {
             return SED.listSupportetConcreteClass()
-                .map { Pair(it, "/sed/${it.toJson()}-NAV.json") }
+                .map { Pair(it, "/sed/$it-NAV.json") }
         }
         @JvmStatic
         fun listSedTypeFromRina(): List<Pair<SedType,String>> {
             return SED.listSupportetConcreteClass()
-                .map { Pair(it, "/sed/${it.toJson()}-RINA.json") }
+                .map { Pair(it, "/sed/$it-RINA.json") }
         }
     }
 }

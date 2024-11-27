@@ -1,7 +1,7 @@
 package no.nav.eessi.pensjon.eux.model
 
 import no.nav.eessi.pensjon.eux.model.BucType.P_BUC_01
-import no.nav.eessi.pensjon.eux.model.SedType.SEDTYPE_P2200
+import no.nav.eessi.pensjon.eux.model.SedType.P2200
 import no.nav.eessi.pensjon.shared.person.Fodselsnummer
 import no.nav.eessi.pensjon.utils.mapAnyToJsonWithoutSensitiveData
 import no.nav.eessi.pensjon.utils.mapJsonToAny
@@ -35,7 +35,7 @@ class SedHendelseTest {
         assertEquals(sedHendelse.mottakerNavn, "mottakerNavn")
         assertEquals(sedHendelse.mottakerLand, "mottakerLand")
         assertEquals(sedHendelse.rinaDokumentId, "SOME_DOKUMENT_ID")
-        assertEquals(sedHendelse.sedType, SEDTYPE_P2200)
+        assertEquals(sedHendelse.sedType, P2200)
         assertEquals(sedHendelse.navBruker, Fodselsnummer.fra("22190656256"))
     }
 
