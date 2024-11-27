@@ -26,7 +26,7 @@ class P6000DocumentTest {
 
     fun expectedP6000doc() : P6000Dokument {
         return P6000Dokument(
-            type = SedType.P6000,
+            type = SedType.SEDTYPE_P6000,
             bucid = "1213213",
             documentID = "123123a21312ad23123asad23123",
             fraLand = "NO",

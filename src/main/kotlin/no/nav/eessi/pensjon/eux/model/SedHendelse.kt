@@ -1,8 +1,10 @@
 package no.nav.eessi.pensjon.eux.model
 
+import com.fasterxml.jackson.annotation.JsonAlias
 import com.fasterxml.jackson.annotation.JsonFilter
 import no.nav.eessi.pensjon.shared.person.Fodselsnummer
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
+import com.fasterxml.jackson.annotation.JsonProperty
 import no.nav.eessi.pensjon.utils.mapJsonToAny
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -21,6 +23,8 @@ data class SedHendelse(
     val mottakerLand: String? = null,
     val rinaDokumentId: String,
     val rinaDokumentVersjon: String,
+    @JsonAlias("sedType")
+    @JsonProperty("sed")
     val sedType: SedType? = null,
     val navBruker: Fodselsnummer? = null
 ) {

@@ -29,7 +29,7 @@ internal class SedTest {
 
     @Test
     fun `Gitt at vi skal hente alle personer fra en tom sed så returnerer vi en tom liste`() {
-        assertEquals(0, SED(SedType.P2100).allePersoner().size)
+        assertEquals(0, SED(SedType.SEDTYPE_P2100).allePersoner().size)
     }
 
     @Test

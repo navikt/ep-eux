@@ -7,7 +7,7 @@ import no.nav.eessi.pensjon.eux.model.SedType
 
 class R005(
     @JsonProperty("sed")
-    override val type: SedType = SedType.R005,
+    override val type: SedType = SedType.SEDTYPE_R005,
     @JsonProperty("nav")
     val recoveryNav: RNav? = null,
     val tilbakekreving: Tilbakekreving? = null
