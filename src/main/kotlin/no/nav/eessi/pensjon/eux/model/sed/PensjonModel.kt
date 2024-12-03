@@ -80,14 +80,14 @@ enum class BasertPaa(@JsonValue val kode: String) {
 	basert_på_arbeid("02"),
 	annet("99")
 }
-enum class Betalingshyppighet {
-	aarlig,
-	kvartalsvis,
-	maaned_12_per_aar,
-	maaned_13_per_aar,
-	maaned_14_per_aar,
-	ukentlig,
-	annet;
+enum class Betalingshyppighet(@JsonValue val kode: String) {
+	aarlig("01"),
+	kvartalsvis("02"),
+	maaned_12_per_aar("03"),
+	maaned_13_per_aar("04"),
+	maaned_14_per_aar("05"),
+	ukentlig("06"),
+	annet("99");
 }
 
 enum class StatusType(@JsonValue val kode: String) {
