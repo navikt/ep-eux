@@ -68,7 +68,7 @@
         "ytelser" : [ {
           "beloep" : [ {
             "valuta" : "NOK",
-            "betalingshyppighetytelse" : "maaned_12_per_aar",
+            "betalingshyppighetytelse" : "03",
             "beloepBrutto" : "123123123123"
           } ],
           "annenbetalingshyppighetytelse" : "4.1.6.6.1 annen",
@@ -103,7 +103,7 @@
           "startdatoutbetaling" : "2021-07-20",
           "beloep" : [ {
             "beloepBrutto" : "41",
-            "betalingshyppighetytelse" : "maaned_12_per_aar",
+            "betalingshyppighetytelse" : "03",
             "valuta" : "SEK"
           } ],
           "sluttdatoretttilytelse" : "2021-07-20"
