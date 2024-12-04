@@ -2,6 +2,8 @@ package no.nav.eessi.pensjon.eux.model.sed
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonValue
+import no.nav.eessi.pensjon.eux.model.buc.SakStatus
+import no.nav.eessi.pensjon.eux.model.buc.SakStatus.UKJENT
 
 class MeldingOmPensjon(
 		val melding: String?,
@@ -95,6 +97,13 @@ enum class StatusType(@JsonValue val kode: String) {
 	INNV("02"),
 	AVSL("03"),
 	OPPHOER("");
+
+	companion object {
+		@JvmStatic
+		fun from(s: String): StatusType {
+			return StatusType.entries.firstOrNull { it.kode == s } ?: OPPHOER
+		}
+	}
 
 }
 
