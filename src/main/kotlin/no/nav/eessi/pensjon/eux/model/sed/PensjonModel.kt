@@ -2,8 +2,6 @@ package no.nav.eessi.pensjon.eux.model.sed
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonValue
-import no.nav.eessi.pensjon.eux.model.buc.SakStatus
-import no.nav.eessi.pensjon.eux.model.buc.SakStatus.UKJENT
 
 class MeldingOmPensjon(
 		val melding: String?,
@@ -60,9 +58,8 @@ data class YtelserItem(
 	val ytelse: String? = null,
 	val startdatoretttilytelse: String? = null,
 	val sluttdatoUtbetaling: String? = null,
-//	val beloep: String? = null,
 	val beloep: List<BeloepItem>? = null,
-	val status: StatusType? = null,
+	val status: String? = null,
 	val annenbetalingshyppighetytelse: String? = null,
 	val totalbruttobeloepbostedsbasert: String? = null
 )

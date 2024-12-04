@@ -19,8 +19,8 @@ enum class SakStatus(val status: String) {
     AVSLUTTET("AVSL"),
     LOPENDE("INNV"),
     OPPHOR("OPPHOR"),
-    OPPRETTET(""),
-    UKJENT("");
+    INGEN_STATUS("Ingen status"),
+    UKJENT("Ukjent");
 
     companion object {
         @JvmStatic
