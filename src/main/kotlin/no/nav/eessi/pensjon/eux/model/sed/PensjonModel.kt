@@ -3,27 +3,50 @@ package no.nav.eessi.pensjon.eux.model.sed
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonValue
 
-class MeldingOmPensjon(
-		val melding: String?,
-		val pensjon: Pensjon
+open class MeldingOmPensjon(
+	open val melding: String?,
+	open val pensjon: Pensjon
 )
+
+class MeldingOmPensjonP2000(
+	override val melding: String?,
+	override val pensjon: P2000Pensjon
+) : MeldingOmPensjon(melding, pensjon)
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 open class Pensjon(
-	open val gjenlevende: Bruker? = null, // Brukes fleres steder
 
+	open val gjenlevende: Bruker? = null, // Brukes fleres steder
 		//P2000
 	val angitidligstdato: String? = null,
 	val utsettelse: List<Utsettelse>? = null,
 
 		//P2XXX
-	val ytelser: List<YtelserItem>? = null,
+	open val ytelser: List<YtelserItem>? = null,
 	val forespurtstartdato: String? = null,
 	open val kravDato: Krav? = null, //kravDato pkt. 9.1 P2000
 
 		//P3000
 	val landspesifikk: Landspesifikk? = null
 )
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+data class P2000Pensjon(
+	override val ytelser: List<YtelserItem>? = null,
+	override val gjenlevende: Bruker? = null,
+	override val kravDato: Krav? = null,
+	//P2XXX
+	val vedtak: List<VedtakItem>? = null,
+	val vedlegg: List<String> ? = null,
+	val vedleggandre: String? = null,
+
+	val etterspurtedokumenter: String? = null,
+	val ytterligeinformasjon: String? = null,
+	val trekkgrunnlag: List<String> ?= null,
+	val mottaker: List<String> ?= null,
+	val institusjonennaaikkesoektompensjon: List<String> ?= null
+): Pensjon()
+
 
 //P2000
 data class Utsettelse(
