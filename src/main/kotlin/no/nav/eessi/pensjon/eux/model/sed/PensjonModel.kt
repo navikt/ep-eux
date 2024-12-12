@@ -23,7 +23,7 @@ open class Pensjon(
 
 		//P2XXX
 	open val ytelser: List<YtelserItem>? = null,
-	val forespurtstartdato: String? = null,
+	open val forespurtstartdato: String? = null,
 	open val kravDato: Krav? = null, //kravDato pkt. 9.1 P2000
 
 		//P3000
@@ -35,6 +35,8 @@ data class P2000Pensjon(
 	override val ytelser: List<YtelserItem>? = null,
 	override val gjenlevende: Bruker? = null,
 	override val kravDato: Krav? = null,
+	override val forespurtstartdato: String? = null,
+
 	//P2XXX
 	val vedtak: List<VedtakItem>? = null,
 	val vedlegg: List<String> ? = null,
