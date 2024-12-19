@@ -100,8 +100,8 @@ data class BeloepItem(
 )
 
 enum class BasertPaa(@JsonValue val kode: String) {
-	basert_på_botid("01"),
-	basert_på_arbeid("02"),
+	botid("01"),
+	i_arbeid("02"),
 	annet("99")
 }
 enum class Betalingshyppighet(@JsonValue val kode: String) {
