@@ -79,7 +79,7 @@ data class YtelserItem(
 	val institusjon: Institusjon? = null,
 	val pin: PinItem? = null,
 	val startdatoutbetaling: String? = null,
-	val mottasbasertpaa: BasertPaa? = null,
+	val mottasbasertpaa: String? = null,
 	val ytelse: String? = null,
 	val startdatoretttilytelse: String? = null,
 	val sluttdatoUtbetaling: String? = null,
