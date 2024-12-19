@@ -79,7 +79,7 @@ data class YtelserItem(
 	val institusjon: Institusjon? = null,
 	val pin: PinItem? = null,
 	val startdatoutbetaling: String? = null,
-	val mottasbasertpaa: String? = null,
+	val mottasbasertpaa: BasertPaa? = null,
 	val ytelse: String? = null,
 	val startdatoretttilytelse: String? = null,
 	val sluttdatoUtbetaling: String? = null,
@@ -99,11 +99,11 @@ data class BeloepItem(
         val utbetalingshyppighetAnnen: String? = null
 )
 
-//enum class BasertPaa(val kode: String) {
-//	botid("01"),
-//	i_arbeid("02"),
-//	annet("99")
-//}
+enum class BasertPaa(@JsonValue val kode: String) {
+	botid("01"),
+	i_arbeid("02"),
+	annet("99")
+}
 enum class Betalingshyppighet(@JsonValue val kode: String) {
 	aarlig("01"),
 	kvartalsvis("02"),
@@ -142,7 +142,7 @@ data class VedtakItem(
 	val resultat: String? = null,
 	val beregning: List<BeregningItem>? = null,
 	val avslagbegrunnelse: List<AvslagbegrunnelseItem>? = null,
-	val basertPaa: String? = null,
+	val basertPaa: BasertPaa? = null,
 	val artikkel: String? = null,
 	val basertPaaAnnen: String? = null,
 	val delvisstans: DelvisstansItem? = null, //2021.09.06, lagt inn grunnet mapping
