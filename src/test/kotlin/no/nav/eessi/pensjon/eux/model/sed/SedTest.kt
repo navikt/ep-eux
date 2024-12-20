@@ -114,7 +114,41 @@ internal class SedTest {
                  "bank":null
               },
               "ektefelle":null,
-              "barn":null,
+              "barn" : [ {
+                  "mor" : {
+                    "person" : {
+                      "fornavn" : "SELVHJULPEN"
+                    }
+                  },
+                  "person" : {
+                    "pin" : [ {
+                      "institusjonsnavn" : "NAV ACCEPTANCE TEST 07",
+                      "institusjonsid" : "NO:NAVAT07",
+                      "identifikator" : "06422075303",
+                      "land" : "NO"
+                    }, {
+                      "identifikator" : "200206-5465",
+                      "land" : "SE"
+                    } ],
+                    "statsborgerskap" : [ {
+                      "land" : "NO"
+                    } ],
+                    "etternavn" : "HALVMETER",
+                    "fornavn" : "KREATIV",
+                    "kjoenn" : "M",
+                    "foedested" : {
+                      "by" : "Unknown",
+                      "land" : "NO"
+                    },
+                    "foedselsdato" : "2020-02-06"
+                  },
+                  "far" : {
+                    "person" : {
+                      "fornavn" : "REKTANGULÆR"
+                    }
+                  },
+                  "relasjontilbruker" : "eget_barn"
+                } ],
               "verge":{
                  "person":{
                     "etternavn":"Pettersen",
@@ -172,7 +206,9 @@ internal class SedTest {
            "sedVer":"2"
         }
         """.trimIndent()
-    SED.fromJsonToConcrete(p2000)
+        val sed  = SED.fromJsonToConcrete(p2000)
+        assertEquals(sed.nav?.barn?.firstOrNull()?.relasjontilbruker, "eget_barn")
+        assertEquals(sed.nav?.barn?.firstOrNull()?.relasjontilbruker43, "eget_barn")
     }
 
 }

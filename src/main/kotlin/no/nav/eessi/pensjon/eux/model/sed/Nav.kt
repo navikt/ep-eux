@@ -82,22 +82,15 @@ data class Foreldre(
 )
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-class BarnItem(
+data class BarnItem(
         val mor: Foreldre? = null,
         val person: Person? = null,
         val far: Foreldre? = null,
-        relasjontilbruker: String? = null,
+        val relasjontilbruker: String? = null,
         val opplysningeromannetbarn: String? = null
 ) {
-        var relasjontilbruker: String? = relasjontilbruker
-                set(value) {
-                        field = value
-                        relasjontilbruker43 = value?.let { relasjontilbruker }
-                }
-
-        var relasjontilbruker43: String? = null
-                private set
-
+        @Transient
+        val relasjontilbruker43: String? = relasjontilbruker
 }
 
 
