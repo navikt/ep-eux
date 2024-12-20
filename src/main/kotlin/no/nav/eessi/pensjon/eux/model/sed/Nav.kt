@@ -86,7 +86,7 @@ data class BarnItem(
         val mor: Foreldre? = null,
         val person: Person? = null,
         val far: Foreldre? = null,
-//        val relasjontilbruker: String? = null,
+        val relasjontilbruker: String? = null,
         val relasjontilbruker43: String? = null,
         val opplysningeromannetbarn: String? = null
 )
