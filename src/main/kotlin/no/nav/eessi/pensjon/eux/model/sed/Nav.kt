@@ -89,7 +89,6 @@ data class BarnItem(
         val relasjontilbruker: String? = null,
         val opplysningeromannetbarn: String? = null
 ) {
-        @Transient
         val relasjontilbruker43: String? = relasjontilbruker
 }
 

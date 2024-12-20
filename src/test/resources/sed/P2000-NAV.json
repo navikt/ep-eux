@@ -227,7 +227,8 @@
           }
         },
         "opplysningeromannetbarn": null,
-        "relasjontilbruker": "BARN"
+        "relasjontilbruker": "BARN",
+        "relasjontilbruker43": "BARN"
       },
       {
         "mor": {
@@ -331,7 +332,8 @@
           }
         },
         "opplysningeromannetbarn": null,
-        "relasjontilbruker": "BARN"
+        "relasjontilbruker": "BARN",
+        "relasjontilbruker43": "BARN"
       }
     ],
     "verge": null,

@@ -32,12 +32,12 @@ internal class JsonMappingToSed {
         val json = jsonString(pair)
         val sed = SED.fromJsonToConcrete(json)
 
-        println(sed.toJsonSkipEmpty())
+//        println(sed.toJsonSkipEmpty())
 
-        println("*".repeat(100))
-
-        println(json)
-
+//        println("*".repeat(100))
+//
+//        println(json)
+        print(json)
 
         JSONAssert.assertEquals( sed.toJsonSkipEmpty(), json, false)
     }
