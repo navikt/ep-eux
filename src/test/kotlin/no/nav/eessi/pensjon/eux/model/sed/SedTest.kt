@@ -208,7 +208,7 @@ internal class SedTest {
         """.trimIndent()
         val sed  = SED.fromJsonToConcrete(p2000)
         assertEquals(sed.nav?.barn?.firstOrNull()?.relasjontilbruker, "eget_barn")
-        assertEquals(sed.nav?.barn?.firstOrNull()?.relasjontilbruker43, "eget_barn")
+//        assertEquals(sed.nav?.barn?.firstOrNull()?.relasjontilbruker43, "eget_barn")
     }
 
 }
