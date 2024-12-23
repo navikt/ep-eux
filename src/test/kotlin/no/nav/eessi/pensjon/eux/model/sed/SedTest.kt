@@ -3,6 +3,7 @@ package no.nav.eessi.pensjon.eux.model.sed
 import no.nav.eessi.pensjon.eux.model.SedType
 import no.nav.eessi.pensjon.utils.JsonIllegalArgumentException
 import no.nav.eessi.pensjon.utils.mapJsonToAny
+import no.nav.eessi.pensjon.utils.toJson
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
@@ -66,149 +67,219 @@ internal class SedTest {
 
     @Test
     fun `Serialiseringstest for P2000 med verge`() {
-        val p2000 = """
-                    {
-           "sed":"P2000",
-           "nav":{
-              "eessisak":null,
-              "bruker":{
-                 "mor":null,
-                 "far":null,
-                 "person":{
-                    "pin":[
-                       {
-                          "institusjonsnavn":null,
-                          "institusjonsid":null,
-                          "sektor":null,
-                          "identifikator":"11128221249",
-                          "land":"NO",
-                          "institusjon":null
-                       },
-                       {
-                          "institusjonsnavn":null,
-                          "institusjonsid":null,
-                          "sektor":null,
-                          "identifikator":"821112-5464",
-                          "land":"SE",
-                          "institusjon":null
-                       }
-                    ],
-                    "pinland":null,
-                    "statsborgerskap":null,
-                    "etternavn":"d",
-                    "etternavnvedfoedsel":null,
-                    "fornavn":"d",
-                    "fornavnvedfoedsel":null,
-                    "tidligerefornavn":null,
-                    "tidligereetternavn":null,
-                    "kjoenn":"K",
-                    "foedested":null,
-                    "foedselsdato":"1982-12-11",
-                    "sivilstand":null,
-                    "relasjontilavdod":null,
-                    "rolle":null,
-                    "kontakt":null
-                 },
-                 "adresse":null,
-                 "arbeidsforhold":null,
-                 "bank":null
-              },
-              "ektefelle":null,
-              "barn" : [ {
-                  "mor" : {
-                    "person" : {
-                      "fornavn" : "SELVHJULPEN"
-                    }
-                  },
-                  "person" : {
-                    "pin" : [ {
-                      "institusjonsnavn" : "NAV ACCEPTANCE TEST 07",
-                      "institusjonsid" : "NO:NAVAT07",
-                      "identifikator" : "06422075303",
-                      "land" : "NO"
-                    }, {
-                      "identifikator" : "200206-5465",
-                      "land" : "SE"
-                    } ],
-                    "statsborgerskap" : [ {
-                      "land" : "NO"
-                    } ],
-                    "etternavn" : "HALVMETER",
-                    "fornavn" : "KREATIV",
-                    "kjoenn" : "M",
-                    "foedested" : {
-                      "by" : "Unknown",
-                      "land" : "NO"
-                    },
-                    "foedselsdato" : "2020-02-06"
-                  },
-                  "far" : {
-                    "person" : {
-                      "fornavn" : "REKTANGULÆR"
-                    }
-                  },
-                  "relasjontilbruker" : "eget_barn"
-                } ],
-              "verge":{
-                 "person":{
-                    "etternavn":"Pettersen",
-                    "fornavn":"Jacob",
-                    "kontakt":{
-                       "telefon":[
-                          {
-                             "nummer":"98798798",
-                             "type":"arbeid"
-                          },
-                          {
-                             "nummer":"55464445",
-                             "type":"arbeid"
-                          }
-                       ],
-                       "email":[
-                          {
-                             "adresse":"jp@gemail.com"
-                          }
-                       ]
-                    }
-                 },
-                 "vergemaal":{
-                    "mandat":"Demens"
-                 },
-                 "adresse":{
-                    "gate":"Løpeveien",
-                    "postnummer":"5478",
-                    "by":"Bergen",
-                    "region":"Vestland",
-                    "land":"NO",
-                       "currencies":[
-                          "NOK"
-                       ],            
-                       "ioc":"NOR",
-                       "languages":[
-                          "nor"
-                       ],
-                       "name":"Norway",
-                       "status":"assigned",
-                       "label":"Norge",
-                       "value":"NO",
-                       "value3":"NOR"
-                    }
-                 }
-              },
-              "krav":{
-                 "dato":"2023-03-09",
-                 "type":null
-              },
-              "annenperson":null
-           },
-           "pensjon":null,
-           "sedGVer":"4",
-           "sedVer":"2"
-        }
-        """.trimIndent()
+        val p2000 = getSed(sedVersion = "2")
         val sed  = SED.fromJsonToConcrete(p2000)
         assertEquals(sed.nav?.barn?.firstOrNull()?.relasjontilbruker, "eget_barn")
-//        assertEquals(sed.nav?.barn?.firstOrNull()?.relasjontilbruker43, "eget_barn")
     }
+
+    @Test
+    fun `Serialiseringstest for P2000 med barn og relasjon for versjon 43 skal fungerer begge veier`() {
+        val p2000 = getSed(sedVersion = "2")
+        val sedString  = SED.fromJsonToConcrete(p2000)
+        assertEquals(sedString.nav?.barn?.firstOrNull()?.relasjontilbruker, "eget_barn")
+        assertEquals(sedString.nav?.barn?.firstOrNull()?.getRelasjontilbruker43(), "eget_barn")
+
+        val sedStringVersjon2 = sedString.toJson()
+        val sedVersjon2  = SED.fromJsonToConcrete(sedStringVersjon2)
+        assertEquals(sedVersjon2.nav?.barn?.firstOrNull()?.relasjontilbruker, "eget_barn")
+        assertEquals(sedVersjon2.nav?.barn?.firstOrNull()?.getRelasjontilbruker43(), "eget_barn")
+    }
+
+    fun getSed(sedVersion: String): String {
+        return """
+        {
+           "sed":"P2000",
+           "nav":${getNav()},
+           "pensjon":null,
+           "sedGVer":"4",
+           "sedVer":"versjon"
+        }
+    """.trimIndent()
+    }
+
+    fun getNav(): String {
+        return """
+        {
+           "eessisak":null,
+           "bruker":${getBruker()},
+           "ektefelle":null,
+           "barn":[${getBarn()}],
+           "verge":${getVerge()},
+           "krav":${getKrav()},
+           "annenperson":null
+        }
+    """.trimIndent()
+    }
+
+    fun getBruker(): String {
+        return """
+        {
+           "mor":null,
+           "far":null,
+           "person":${getPerson()},
+           "adresse":null,
+           "arbeidsforhold":null,
+           "bank":null
+        }
+    """.trimIndent()
+    }
+
+    fun getPerson(): String {
+        return """
+        {
+           "pin":[
+              ${getPin1()},
+              ${getPin2()}
+           ],
+           "pinland":null,
+           "statsborgerskap":null,
+           "etternavn":"d",
+           "etternavnvedfoedsel":null,
+           "fornavn":"d",
+           "fornavnvedfoedsel":null,
+           "tidligerefornavn":null,
+           "tidligereetternavn":null,
+           "kjoenn":"K",
+           "foedested":null,
+           "foedselsdato":"1982-12-11",
+           "sivilstand":null,
+           "relasjontilavdod":null,
+           "rolle":null,
+           "kontakt":null
+        }
+    """.trimIndent()
+    }
+
+    fun getPin1(): String {
+        return """
+        {
+           "institusjonsnavn":null,
+           "institusjonsid":null,
+           "sektor":null,
+           "identifikator":"11128221249",
+           "land":"NO",
+           "institusjon":null
+        }
+    """.trimIndent()
+    }
+
+    fun getPin2(): String {
+        return """
+        {
+           "institusjonsnavn":null,
+           "institusjonsid":null,
+           "sektor":null,
+           "identifikator":"821112-5464",
+           "land":"SE",
+           "institusjon":null
+        }
+    """.trimIndent()
+    }
+
+    fun getBarn(): String {
+        return """
+        {
+           "mor":{
+              "person":{
+                 "fornavn":"SELVHJULPEN"
+              }
+           },
+           "person":{
+              "pin":[
+                 {
+                    "institusjonsnavn":"NAV ACCEPTANCE TEST 07",
+                    "institusjonsid":"NO:NAVAT07",
+                    "identifikator":"06422075303",
+                    "land":"NO"
+                 },
+                 {
+                    "identifikator":"200206-5465",
+                    "land":"SE"
+                 }
+              ],
+              "statsborgerskap":[
+                 {
+                    "land":"NO"
+                 }
+              ],
+              "etternavn":"HALVMETER",
+              "fornavn":"KREATIV",
+              "kjoenn":"M",
+              "foedested":{
+                 "by":"Unknown",
+                 "land":"NO"
+              },
+              "foedselsdato":"2020-02-06"
+           },
+           "far":{
+              "person":{
+                 "fornavn":"REKTANGULÆR"
+              }
+           },
+           "relasjontilbruker":"eget_barn"
+        }
+    """.trimIndent()
+    }
+
+    fun getVerge(): String {
+        return """
+        {
+           "person":{
+              "etternavn":"Pettersen",
+              "fornavn":"Jacob",
+              "kontakt":{
+                 "telefon":[
+                    {
+                       "nummer":"98798798",
+                       "type":"arbeid"
+                    },
+                    {
+                       "nummer":"55464445",
+                       "type":"arbeid"
+                    }
+                 ],
+                 "email":[
+                    {
+                       "adresse":"jp@gemail.com"
+                    }
+                 ]
+              }
+           },
+           "vergemaal":{
+              "mandat":"Demens"
+           },
+           "adresse":{
+              "gate":"Løpeveien",
+              "postnummer":"5478",
+              "by":"Bergen",
+              "region":"Vestland",
+              "land":"NO",
+              "currencies":[
+                 "NOK"
+              ],
+              "ioc":"NOR",
+              "languages":[
+                 "nor"
+              ],
+              "name":"Norway",
+              "status":"assigned",
+              "label":"Norge",
+              "value":"NO",
+              "value3":"NOR"
+           }
+        }
+    """.trimIndent()
+    }
+
+    fun getKrav(): String {
+        return """
+        {
+           "dato":"2023-03-09",
+           "type":null
+        }
+    """.trimIndent()
+    }
+
+
 
 }

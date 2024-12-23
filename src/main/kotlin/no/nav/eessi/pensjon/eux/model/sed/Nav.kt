@@ -1,6 +1,8 @@
 package no.nav.eessi.pensjon.eux.model.sed
 
+import com.fasterxml.jackson.annotation.JsonGetter
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
+import com.fasterxml.jackson.annotation.JsonSetter
 import com.fasterxml.jackson.annotation.JsonValue
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -88,12 +90,20 @@ data class BarnItem(
         val far: Foreldre? = null,
         val relasjontilbruker: String? = null,
         val opplysningeromannetbarn: String? = null,
-        val relasjontilbruker43: String? = null,
+
+        // ikke direkte tilgjengelig da vi benytter egne metoder for set/get
+        private var _relasjontilbruker43: String? = null
 ) {
+        @JsonGetter("relasjontilbruker43")
+        fun getRelasjontilbruker43(): String? {
+                return _relasjontilbruker43 ?: relasjontilbruker
+        }
 
+        @JsonSetter("relasjontilbruker43")
+        fun setRelasjontilbruker43(value: String?) {
+                _relasjontilbruker43 = value
+        }
 }
-
-
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 data class Ektefelle(
