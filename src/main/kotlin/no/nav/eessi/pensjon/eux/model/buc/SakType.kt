@@ -20,6 +20,7 @@ enum class SakStatus(val status: String) {
     LOPENDE("INNV"),
     OPPHOR("OPPHOR"),
     INGEN_STATUS("Ingen status"),
+    OPPRETTET(""),
     UKJENT("Ukjent");
 
     companion object {
