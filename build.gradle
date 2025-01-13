@@ -1,7 +1,6 @@
 buildscript {
     ext {
         kotlinVersion = '2.0.21'
-        jacksonModuleKotlinVersion = '2.18.1'
     }
 }
 
@@ -25,8 +24,8 @@ dependencies {
 
     implementation("org.slf4j:slf4j-api:2.0.16")
 
-    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:$jacksonModuleKotlinVersion")
-    implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$jacksonModuleKotlinVersion")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.18.1")
+    implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.18.1")
 
     // Test
     testImplementation("org.skyscreamer:jsonassert:1.5.3")
