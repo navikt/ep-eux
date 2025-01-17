@@ -290,17 +290,17 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var 
         val path = "/sed/pdf"
 
         try {
-            val response: ResponseEntity<String> = euxRestTemplate.exchange(
+            val result: ResponseEntity<String> = euxRestTemplate.exchange(
                 path,
                 HttpMethod.POST,
                 HttpEntity(jsonPdf, HttpHeaders().apply { contentType = MediaType.APPLICATION_JSON }),
                 String::class.java
             )
 
-            if (response.statusCode.is2xxSuccessful) {
-                logger.info("Response 200: ${response.statusCode}")
+            if (result.statusCode.is2xxSuccessful) {
+                logger.info("Response 200: ${result.statusCode}")
             }
-            return true
+            return result.statusCode == HttpStatus.OK
 
         } catch (e: Exception) {
             logger.error("En feil oppstod under generering av pdf ${e.message}")
