@@ -294,8 +294,12 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var 
             val response = euxRestTemplate.exchange(
                 path,
                 HttpMethod.POST,
-                HttpEntity(jsonPdf, HttpHeaders().apply { contentType = MediaType.APPLICATION_PDF }),
-                Resource::class.java)
+                HttpEntity(jsonPdf, HttpHeaders().apply {
+                    contentType = MediaType.APPLICATION_JSON
+                    accept = listOf(MediaType.APPLICATION_PDF)
+                }),
+                Resource::class.java
+            )
 
             logger.debug("pdf response: ${response.toJson()}")
 
