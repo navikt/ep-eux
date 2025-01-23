@@ -19,6 +19,7 @@ import org.springframework.web.util.UriComponents
 import org.springframework.web.util.UriComponentsBuilder
 import java.util.*
 
+
 open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var overrideWaitTimes: Long = 5000L) : EuxExceptionHandler(overrideWaitTimes) {
 
     private val logger: Logger by lazy { LoggerFactory.getLogger(EuxKlientLib::class.java) }
@@ -297,7 +298,7 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var 
                 HttpEntity(jsonPdf, HttpHeaders().apply {
                     contentType = MediaType.APPLICATION_JSON
                 }),
-                Resource::class.java
+                ByteArray::class.java
             )
 
             logger.debug("pdf response: ${response.toJson()}")
@@ -305,8 +306,8 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var 
             if (response.statusCode.is2xxSuccessful) {
                 val filnavn = response.headers.contentDisposition.filename
                 val contentType = response.headers.contentType!!.toString()
-                val dokumentInnholdBase64 = String(Base64.getEncoder().encode(response.body!!.inputStream.readBytes()))
-                return PreviewPdf(dokumentInnholdBase64, filnavn!!, contentType)
+                val pdfContent  = Base64.getEncoder().encodeToString(response.body)
+                return PreviewPdf(pdfContent, filnavn!!, contentType)
             }
             return null
 
