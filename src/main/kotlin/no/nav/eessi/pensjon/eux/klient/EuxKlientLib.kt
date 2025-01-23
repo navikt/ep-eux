@@ -291,7 +291,7 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var 
     fun lagPdf(jsonPdf: String) : PreviewPdf? {
         val path = "/sed/pdf"
 
-        try {
+        return try {
             val response = euxRestTemplate.exchange(
                 path,
                 HttpMethod.POST,
@@ -300,20 +300,22 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var 
                 }),
                 ByteArray::class.java
             )
+            logger.debug("pdf response body: {}", response.body)
 
-            logger.debug("pdf response body: ${response.body}")
+            if (response.statusCode.is2xxSuccessful && response.body != null) {
+                val filnavn = response.headers.contentDisposition.filename ?: "unknown.pdf"
+                val contentType = response.headers.contentType?.toString() ?: MediaType.APPLICATION_PDF_VALUE
+                val pdfContent = Base64.getEncoder().encodeToString(response.body)
 
-            if (response.statusCode.is2xxSuccessful) {
-                val filnavn = response.headers.contentDisposition.filename
-                val contentType = response.headers.contentType!!.toString()
-                val pdfContent  = Base64.getEncoder().encodeToString(response.body)
-                return PreviewPdf(pdfContent, filnavn!!, contentType)
+                logger.debug("PDF ble laget: filename=$filnavn, contentType=$contentType")
+                PreviewPdf(pdfContent, filnavn, contentType)
+            } else {
+                logger.warn("En feil oppstod under generering av pdf: Status code: ${response.statusCode}")
+                null
             }
-            return null
-
         } catch (e: Exception) {
-            logger.error("En feil oppstod under generering av pdf ${e.message}")
-            return null
+            logger.error("En feil oppstod under generering av pdf: ${e.message}", e)
+            null
         }
     }
 
