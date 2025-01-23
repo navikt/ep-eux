@@ -305,11 +305,10 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var 
 
             if (response.statusCode.is2xxSuccessful && response.body != null) {
                 val filnavn = response.headers.contentDisposition.filename ?: "unknown.pdf"
-                val contentType = response.headers.contentType?.toString() ?: MediaType.APPLICATION_PDF_VALUE
                 val pdfContent = Base64.getEncoder().encodeToString(response.body)
 
-                logger.debug("PDF ble laget: filename=$filnavn, contentType=$contentType")
-                PreviewPdf(pdfContent, filnavn, contentType)
+                logger.debug("PDF ble laget: filename=$filnavn, contentType=application/json;charset=utf-8")
+                PreviewPdf(pdfContent, filnavn, "application/json;charset=utf-8")
             } else {
                 logger.warn("En feil oppstod under generering av pdf: Status code: ${response.statusCode}")
                 null
