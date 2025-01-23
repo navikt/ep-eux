@@ -301,7 +301,7 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var 
                 ByteArray::class.java
             )
 
-            logger.debug("pdf response: ${response.toJson()}")
+            logger.debug("pdf response body: ${response.body}")
 
             if (response.statusCode.is2xxSuccessful) {
                 val filnavn = response.headers.contentDisposition.filename
