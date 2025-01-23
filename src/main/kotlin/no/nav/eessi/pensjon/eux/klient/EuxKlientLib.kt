@@ -297,6 +297,7 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var 
                 HttpMethod.POST,
                 HttpEntity(jsonPdf, HttpHeaders().apply {
                     contentType = MediaType.APPLICATION_JSON
+                    accept = listOf(MediaType.APPLICATION_PDF, MediaType.APPLICATION_JSON)
                 }),
                 ByteArray::class.java
             )
