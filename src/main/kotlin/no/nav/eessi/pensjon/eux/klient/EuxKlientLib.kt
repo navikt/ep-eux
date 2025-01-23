@@ -7,6 +7,7 @@ import no.nav.eessi.pensjon.eux.model.buc.PreviewPdf
 import no.nav.eessi.pensjon.eux.model.document.SedDokumentfiler
 import no.nav.eessi.pensjon.eux.model.sed.SED
 import no.nav.eessi.pensjon.utils.mapJsonToAny
+import no.nav.eessi.pensjon.utils.toJson
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.slf4j.MDC
@@ -295,6 +296,8 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var 
                 HttpMethod.POST,
                 HttpEntity(jsonPdf, HttpHeaders().apply { contentType = MediaType.APPLICATION_PDF }),
                 Resource::class.java)
+
+            logger.debug("pdf response: ${response.toJson()}")
 
             if (response.statusCode.is2xxSuccessful) {
                 val filnavn = response.headers.contentDisposition.filename
