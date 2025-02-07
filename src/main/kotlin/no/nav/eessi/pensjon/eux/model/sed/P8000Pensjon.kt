@@ -8,8 +8,12 @@ class P8000Pensjon(
     val ytterligeinformasjon: String? = null,
     val vedlegg: List<String> ? = null
 )
-
 @JsonIgnoreProperties(ignoreUnknown = true)
 data class AnmodningOmTilleggsInfo(
-    val referanseTilPerson: String? = null
+    val referanseTilPerson: String? = null,
+    val seder: List<Seder>? = null
 )
+@JsonIgnoreProperties(ignoreUnknown = true)
+class Seder {
+    val sendFolgendeSEDer: List<String>? = null
+}
