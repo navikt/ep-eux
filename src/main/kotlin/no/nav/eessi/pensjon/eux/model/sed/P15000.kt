@@ -11,7 +11,12 @@ class P15000(
     override val nav: Nav? = null,
     @JsonProperty("pensjon")
     override val pensjon: P15000Pensjon?
-) : SED(type, nav = nav)
+) : SED(type, nav = nav), GjenlevPensjon, UforePensjon {
+    override fun hasGjenlevPensjonType(): Boolean {
+        return nav?.krav?.type == GJENLEV
+    }
 
-fun P15000.hasUforePensjonType() = this.nav?.krav?.type == UFOREP
-fun P15000.hasGjenlevendePensjonType() = this.nav?.krav?.type == GJENLEV
+    override fun hasUforePensjonType(): Boolean {
+        return nav?.krav?.type == UFOREP
+    }
+}

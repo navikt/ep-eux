@@ -9,7 +9,12 @@ class P10000(
     override val nav: Nav? = null,
     @JsonProperty("pensjon")
     override val pensjon: P10000Pensjon? = null,
-    ): SED(type, nav = nav)
+    ): SED(type, nav = nav), GjenlevPensjon, UforePensjon {
+    override fun hasGjenlevPensjonType(): Boolean {
+        return this.pensjon?.merinformasjon?.ytelser?.firstOrNull()?.ytelsestype == "11"
+    }
 
-fun P10000.hasUforePensjonType() = this.pensjon?.merinformasjon?.ytelser?.firstOrNull()?.ytelsestype == "08"
-fun P10000.hasGjenlevPensjonType() = this.pensjon?.merinformasjon?.ytelser?.firstOrNull()?.ytelsestype == "11"
+    override fun hasUforePensjonType(): Boolean {
+        return this.pensjon?.merinformasjon?.ytelser?.firstOrNull()?.ytelsestype == "08"
+    }
+}
