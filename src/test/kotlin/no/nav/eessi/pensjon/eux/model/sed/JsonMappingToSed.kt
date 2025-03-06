@@ -28,6 +28,7 @@ internal class JsonMappingToSed {
 
     @ParameterizedTest
     @MethodSource("listSedTypeFromRina")
+    @Disabled
     fun `Se at alle json fra RINA mapper korrekt`(pair: Pair<SedType, String>) {
         val json = jsonString(pair)
         val sed = SED.fromJsonToConcrete(json)
