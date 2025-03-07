@@ -3,10 +3,13 @@ package no.nav.eessi.pensjon.eux.model.sed
 import com.fasterxml.jackson.annotation.JsonProperty
 import no.nav.eessi.pensjon.eux.model.SedType
 
-open class P8000(
+class P8000Frontend(
     @JsonProperty("sed")
-    override val type: SedType = SedType.P8000,
-    override val nav: Nav? = null,
+    type: SedType = SedType.P8000,
+    nav: Nav? = null,
     @JsonProperty("pensjon")
-    val p8000Pensjon: P8000Pensjon?
-) : SED(type, nav = nav)
+    p8000Pensjon: P8000Pensjon?,
+    val options: Map<String, Any>? = null
+) : P8000(type, nav, p8000Pensjon) {
+
+}
