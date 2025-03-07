@@ -53,5 +53,26 @@
     "anmodning" : {
       "referanseTilPerson" : "02"
     }
+  },
+  "options": {
+    "type": {
+      "spraak": "nb",
+      "bosettingsstatus": "UTL",
+      "ytelse": "UT"
+    },
+    "ofteEtterspurtInformasjon": {
+      "dokumentasjonPaaArbeidINorge": {
+        "value": true
+      },
+      "ytelseshistorikk": {
+        "value": true
+      },
+      "inntektFoerUfoerhetIUtlandet": {
+        "value": true
+      },
+      "ibanSwift": {
+        "value": true
+      }
+    }
   }
 }
