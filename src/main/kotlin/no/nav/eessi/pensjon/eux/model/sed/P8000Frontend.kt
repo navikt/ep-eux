@@ -9,7 +9,7 @@ class P8000Frontend(
     nav: Nav? = null,
     @JsonProperty("pensjon")
     p8000Pensjon: P8000Pensjon?,
-    val options: Map<String, Any>? = null
+    var options: Map<String, Any>? = null
 ) : P8000(type, nav, p8000Pensjon) {
 
 }
