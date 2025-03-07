@@ -35,8 +35,7 @@ open class SED(
     open val sedGVer: String? = "4",
     open var sedVer: String? = setSEDVersion("2"),
     open val nav: Nav? = null,
-    open val pensjon: Pensjon? = null,
-    open val options: String? = null
+    open val pensjon: Pensjon? = null
 ) {
     companion object {
     private val logger by lazy { org.slf4j.LoggerFactory.getLogger(SED::class.java) }

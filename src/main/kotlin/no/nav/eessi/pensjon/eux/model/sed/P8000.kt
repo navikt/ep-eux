@@ -9,5 +9,5 @@ class P8000(
     override val nav: Nav? = null,
     @JsonProperty("pensjon")
     val p8000Pensjon: P8000Pensjon?,
-    override val options: String? = null
+    val options: String? = null
 ) : SED(type, nav = nav)
