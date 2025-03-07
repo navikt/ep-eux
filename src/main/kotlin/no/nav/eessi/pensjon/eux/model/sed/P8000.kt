@@ -11,17 +11,17 @@ class P8000(
     override val nav: Nav? = null,
     @JsonProperty("pensjon")
     val p8000Pensjon: P8000Pensjon?,
-    @JsonRawValue
-    private var _options: String? = null
+    @JsonIgnore
+    private var options: String? = null
 ) : SED(type, nav = nav){
     @JsonRawValue
     @JsonProperty("options")
-    fun setOptions(options: String?) {
-        _options = options
+    fun setOptions(_options: String?) {
+        options = _options
     }
 
     @JsonIgnore
     fun getOptions(): String? {
-        return _options
+        return options
     }
 }
