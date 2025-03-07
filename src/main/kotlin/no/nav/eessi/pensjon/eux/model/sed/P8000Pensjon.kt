@@ -45,7 +45,7 @@ enum class SedNummer(val kode: String) {
         @JsonCreator
         @JvmStatic
         fun fromValue(value: String): SedNummer {
-            return entries.find { it.name == value || it.kode == value }
+            return entries.find { it.name.equals(value, ignoreCase = true) || it.kode == value }
                 ?: throw IllegalArgumentException("Invalid SedNummer: $value")
         }
     }
