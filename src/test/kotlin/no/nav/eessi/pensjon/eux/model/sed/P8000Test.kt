@@ -10,19 +10,9 @@ class P8000Test {
     fun deserialiseringsTest() {
         val p8000sed = mapJsonToAny<P8000Frontend>(javaClass.getResource("/sed/P8000-NAV.json")!!.readText())
 
-        assertEquals(
-            "{type={spraak=nb, bosettingsstatus=UTL, ytelse=UT}, ofteEtterspurtInformasjon={dokumentasjonPaaArbeidINorge={value=true}, ytelseshistorikk={value=true}, inntektFoerUfoerhetIUtlandet={value=true}, ibanSwift={value=true}}}",
+        assertEquals("Options(type=Type(bosettingsstatus=UTL, spraak=nb, ytelse=UT), ofteEtterspurtInformasjon=OfteEtterspurtInformasjon(tiltak=null, inntektFoerUfoerhetIUtlandet=InntektFoerUfoerhetIUtlandet(value=true, landkode=null, periodeFra=null, periodeTil=null), brukersAdresse=null, medisinskInformasjon=null, naavaerendeArbeid=null, dokumentasjonPaaArbeidINorge=BooleanValue(value=true), ytelseshistorikk=BooleanValue(value=true), ibanSwift=BooleanValue(value=true), folkbokfoering=null, brukersSivilstand=null, opplysningerOmEPS=null, personUtenPNRDNR=null), informasjonSomKanLeggesInn=null)".trimIndent(),
             p8000sed.options.toString()
         )
         assertEquals("02", p8000sed.p8000Pensjon?.anmodning?.referanseTilPerson)
     }
-
-//    @Test
-//    fun serialiseringsTest() {
-//        val fraJson = mapJsonToAny<P8000Frontend>(javaClass.getResource("/sed/P8000-NAV.json")!!.readText())
-//
-//        val serialisertJson = fraJson.toJson()
-//        val fraJsonUtenOptions = mapJsonToAny<P8000Frontend(serialisertJson)
-//        assertNull(fraJsonUtenOptions.options)
-//    }
 }

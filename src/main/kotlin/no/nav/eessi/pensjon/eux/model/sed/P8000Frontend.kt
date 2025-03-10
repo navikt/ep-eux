@@ -9,7 +9,59 @@ class P8000Frontend(
     nav: Nav? = null,
     @JsonProperty("pensjon")
     p8000Pensjon: P8000Pensjon?,
-    var options: Map<String, Any>? = null
-) : P8000(type, nav, p8000Pensjon) {
+    var options: Options? = null,
 
-}
+) : P8000(type, nav, p8000Pensjon)
+
+data class Options(
+    val type: Type?,
+    val ofteEtterspurtInformasjon: OfteEtterspurtInformasjon?,
+    val informasjonSomKanLeggesInn: InformasjonSomKanLeggesInn?
+)
+
+data class Type(
+    val bosettingsstatus: String?,
+    val spraak: String?,
+    val ytelse: String?
+)
+
+data class OfteEtterspurtInformasjon(
+    val tiltak: BooleanValue?,
+    val inntektFoerUfoerhetIUtlandet: InntektFoerUfoerhetIUtlandet?,
+    val brukersAdresse: BooleanValue?,
+    val medisinskInformasjon: BooleanValue?,
+    val naavaerendeArbeid: BooleanValue?,
+    val dokumentasjonPaaArbeidINorge: BooleanValue?,
+    val ytelseshistorikk: BooleanValue?,
+    val ibanSwift: BooleanValue?,
+    val folkbokfoering: BooleanValue?,
+    val brukersSivilstand: BooleanValue?,
+    val opplysningerOmEPS: OpplysningerOmEPS?,
+    val personUtenPNRDNR: BooleanValue?
+)
+
+data class InformasjonSomKanLeggesInn(
+    val saksbehandlingstid: Saksbehandlingstid?,
+    val P5000ForP5000NO: BooleanValue?
+)
+
+data class BooleanValue(
+    val value: Boolean?
+)
+
+data class InntektFoerUfoerhetIUtlandet(
+    val value: Boolean?,
+    val landkode: String?,
+    val periodeFra: String?,
+    val periodeTil: String?
+)
+
+data class OpplysningerOmEPS(
+    val value: Boolean?,
+    val landkode: String?
+)
+
+data class Saksbehandlingstid(
+    val value: Boolean?,
+    val antallMaaneder: String?
+)
