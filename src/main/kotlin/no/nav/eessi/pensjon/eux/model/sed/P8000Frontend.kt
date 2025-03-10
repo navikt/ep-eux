@@ -1,8 +1,10 @@
 package no.nav.eessi.pensjon.eux.model.sed
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonProperty
 import no.nav.eessi.pensjon.eux.model.SedType
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 class P8000Frontend(
     @JsonProperty("sed")
     type: SedType = SedType.P8000,
