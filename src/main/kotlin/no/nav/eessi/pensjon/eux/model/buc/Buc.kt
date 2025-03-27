@@ -20,7 +20,9 @@ class Buc(
     val processDefinitionVersion: String? = null,
     val comments: List<Any>? = null,
     var actions: List<ActionsItem>? = null,
-    val attachments: List<Attachment>? = null
+    val attachments: List<Attachment>? = null,
+    val sensitive: String? = null,
+    val sensitiveCommitted: String? = null
 ) {
 
     companion object {
