@@ -7,7 +7,6 @@ import no.nav.eessi.pensjon.eux.model.buc.PreviewPdf
 import no.nav.eessi.pensjon.eux.model.document.SedDokumentfiler
 import no.nav.eessi.pensjon.eux.model.sed.SED
 import no.nav.eessi.pensjon.utils.mapJsonToAny
-import no.nav.eessi.pensjon.utils.toJson
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.slf4j.MDC
@@ -212,7 +211,7 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var 
      */
     fun getRinasaker(fnr: String? = null, euxCaseId: String? = null): List<Rinasak> {
 
-        val uriComponent = getRinasakerUri(fnr, euxCaseId)
+        val uriComponent = getRinasakerUri("/rinasaker", fnr, euxCaseId)
         logger.debug("** fnr: $fnr, eux: $euxCaseId, buc: NULL, status: OPEN **, Url: ${uriComponent.toUriString()}")
         val response =  euxRestTemplate.exchange(uriComponent.toUriString(), HttpMethod.GET, null, String::class.java)
         return mapJsonToAny(response.body!!)
@@ -321,12 +320,12 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var 
 
     companion object {
 
-        fun getRinasakerUri(fnr: String? = null, euxCaseId: String? = null): UriComponents {
+        fun getRinasakerUri(url: String, fnr: String? = null, euxCaseId: String? = null): UriComponents {
             require(!(fnr == null && euxCaseId == null)) {
                 "Minst et søkekriterie må fylles ut for å få et resultat fra Rinasaker"
             }
 
-            return UriComponentsBuilder.fromPath("/rinasaker").apply {
+            return UriComponentsBuilder.fromPath(url).apply {
                 when {
                     euxCaseId != null && fnr == null -> queryParam("rinasaksnummer", euxCaseId)
                     euxCaseId == null -> queryParam("fødselsnummer", fnr)

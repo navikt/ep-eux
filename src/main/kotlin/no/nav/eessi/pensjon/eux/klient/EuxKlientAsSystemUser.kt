@@ -14,6 +14,6 @@ class EuxKlientAsSystemUser( val euxRestTemplate: RestTemplate, private val euxS
         getSedOnBucByDocumentId(euxCaseId, documentId, euxSystemRestTemplate, skipError)
 
     companion object{
-        fun getRinasakerUri(fnr: String?, euxCaseId: String?): UriComponents =  EuxKlientLib.getRinasakerUri(fnr, euxCaseId)
+        fun getRinasakerUri(fnr: String?, euxCaseId: String?): UriComponents =  getRinasakerUri("/rinasaker" , fnr, euxCaseId )
     }
 }
