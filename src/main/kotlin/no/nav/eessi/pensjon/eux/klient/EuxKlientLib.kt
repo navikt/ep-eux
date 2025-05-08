@@ -273,6 +273,28 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var 
         return result.statusCode == HttpStatus.OK
     }
 
+    fun sendTo(euxCaseId: String, dokumentId : String, mottakere: List<String>):  Boolean {
+        val correlationId = correlationId()
+        val builder = UriComponentsBuilder.fromPath("/buc/$euxCaseId/sed/$dokumentId/sendTo")
+            .queryParam("KorrelasjonsId", correlationId)
+            .queryParam("MottakereId", mottakere.joinToString { "$it " })
+            .build()
+        val url = builder.toUriString()
+
+        val result: ResponseEntity<String> = euxRestTemplate.postForEntity(
+            url,
+            HttpEntity<String>(HttpHeaders().apply {
+                set("accept", "*/*")
+            }), String::class.java
+        )
+
+        logger.info("""
+            | Response Code: ${result.statusCode}}
+            | Response Body: ${result.body}""".trimMargin())
+        return result.statusCode == HttpStatus.OK
+    }
+
+
     fun updateSedOnBuc(euxCaseId: String, dokumentId: String, sedPayload: String): Boolean {
         val path = "/buc/$euxCaseId/sed/$dokumentId?ventePaAksjon=false"
 
