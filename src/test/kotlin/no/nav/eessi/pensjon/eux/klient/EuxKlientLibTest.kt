@@ -1,9 +1,6 @@
 package no.nav.eessi.pensjon.eux.klient
 
-import com.tngtech.archunit.thirdparty.com.google.common.base.CharMatcher.any
-import com.tngtech.archunit.thirdparty.com.google.common.base.Verify.verify
 import io.mockk.every
-import io.mockk.justRun
 import io.mockk.mockk
 import io.mockk.verify
 import no.nav.eessi.pensjon.eux.model.SedType
@@ -13,7 +10,6 @@ import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 import org.springframework.http.HttpEntity
-import org.springframework.http.HttpMethod
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.client.RestTemplate
@@ -63,5 +59,27 @@ class EuxKlientLibTest {
 
         assertTrue(result)
         verify { mockTemplate.postForEntity(path, any<HttpEntity<String>>(), String::class.java) }
+    }
+    @Test
+    fun `sendTo skal sende sed mottakere`() {
+        val euxCaseId = "1234"
+        val dokumentId = "5678"
+        val mottakere = listOf("Mottaker1", "Mottaker2")
+
+        every {
+            mockTemplate.postForEntity(
+                match<String> { path -> path.contains("/buc/$euxCaseId/sed/$dokumentId/sendTo") },
+                any<HttpEntity<String>>(),
+                String::class.java
+            )
+        } returns ResponseEntity("", HttpStatus.OK)
+
+        assertTrue(euxKlientLib.sendTo(euxCaseId, dokumentId, mottakere))
+        verify {
+            mockTemplate.postForEntity(
+                match<String> { path ->
+                    path.contains("Mottaker1 Mottaker2") && path.contains("/buc/1234/sed/5678/sendTo?KorrelasjonsId=")},
+                any<HttpEntity<String>>(),
+            String::class.java) }
     }
 }

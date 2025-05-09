@@ -275,11 +275,10 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var 
 
     fun sendTo(euxCaseId: String, dokumentId : String, mottakere: List<String>):  Boolean {
         val correlationId = correlationId()
-        val builder = UriComponentsBuilder.fromPath("/buc/$euxCaseId/sed/$dokumentId/sendTo")
+        val url = UriComponentsBuilder.fromPath("/buc/$euxCaseId/sed/$dokumentId/sendTo")
             .queryParam("KorrelasjonsId", correlationId)
-            .queryParam("MottakereId", mottakere.joinToString { "$it " })
-            .build()
-        val url = builder.toUriString()
+            .queryParam("MottakereId", mottakere.joinToString(separator = " "))
+            .build().toUriString()
 
         val result: ResponseEntity<String> = euxRestTemplate.postForEntity(
             url,
