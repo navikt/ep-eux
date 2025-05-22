@@ -293,6 +293,36 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var 
         return result.statusCode == HttpStatus.OK
     }
 
+    //Brukes av saksbehandlere til å resende dokumenter
+    fun resend(dokumentListe: String):  Boolean {
+        val correlationId = correlationId()
+        val url = UriComponentsBuilder.fromPath("/buc/resend/liste")
+            .queryParam("KorrelasjonsId", correlationId)
+            .queryParam("intervall", 1)
+            .build().toUriString()
+
+
+        val response: ResponseEntity<String> = euxRestTemplate.postForEntity(
+            url,
+            HttpEntity<String>(
+                dokumentListe,
+                HttpHeaders().apply {
+                set("accept", "*/*")
+            }), String::class.java
+        )
+
+       response.body?.let {
+            logger.info("Resender: $it")
+        } ?: run {
+            logger.error("Ingen data i body")
+        }
+
+        logger.info("""
+            | Response Code: ${response.statusCode}}
+            | Response Body: ${response.body}""".trimMargin())
+        return response.statusCode == HttpStatus.OK
+    }
+
 
     fun updateSedOnBuc(euxCaseId: String, dokumentId: String, sedPayload: String): Boolean {
         val path = "/buc/$euxCaseId/sed/$dokumentId?ventePaAksjon=false"
