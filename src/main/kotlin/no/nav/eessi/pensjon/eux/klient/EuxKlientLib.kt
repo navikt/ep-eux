@@ -326,7 +326,7 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var 
     //Brukes av saksbehandlere til å resende dokumenter
     fun resendeDokMedrinaId(rinasakId: String, dokumentId: String):  Boolean {
         val correlationId = correlationId()
-        val url = UriComponentsBuilder.fromPath("/resend/buc/{RinaSakId}/sed/{DokumentId}")
+        val url = UriComponentsBuilder.fromPath("/resend/buc/$rinasakId/sed/$dokumentId")
             .queryParam("KorrelasjonsId", correlationId)
             .queryParam("intervall", 1)
             .build().toUriString()
