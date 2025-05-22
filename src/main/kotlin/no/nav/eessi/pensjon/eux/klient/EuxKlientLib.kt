@@ -296,7 +296,7 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var 
     //Brukes av saksbehandlere til å resende dokumenter
     fun resend(dokumentListe: String):  Boolean {
         val correlationId = correlationId()
-        val url = UriComponentsBuilder.fromPath("/buc/resend/liste")
+        val url = UriComponentsBuilder.fromPath("/resend/liste")
             .queryParam("KorrelasjonsId", correlationId)
             .queryParam("intervall", 1)
             .build().toUriString()
@@ -317,6 +317,28 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var 
             logger.error("Ingen data i body")
         }
 
+        logger.info("""
+            | Response Code: ${response.statusCode}}
+            | Response Body: ${response.body}""".trimMargin())
+        return response.statusCode == HttpStatus.OK
+    }
+
+    //Brukes av saksbehandlere til å resende dokumenter
+    fun resendeDokMedrinaId(rinasakId: String, dokumentId: String):  Boolean {
+        val correlationId = correlationId()
+        val url = UriComponentsBuilder.fromPath("/resend/buc/{RinaSakId}/sed/{DokumentId}")
+            .queryParam("KorrelasjonsId", correlationId)
+            .queryParam("intervall", 1)
+            .build().toUriString()
+
+
+        val response: ResponseEntity<String> = euxRestTemplate.postForEntity(
+            url,
+            HttpEntity<String>(
+                HttpHeaders().apply {
+                    set("accept", "*/*")
+                }), String::class.java
+        )
         logger.info("""
             | Response Code: ${response.statusCode}}
             | Response Body: ${response.body}""".trimMargin())
