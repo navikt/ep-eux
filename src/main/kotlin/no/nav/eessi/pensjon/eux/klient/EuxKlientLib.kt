@@ -316,7 +316,7 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var 
             | Response Code: ${response.statusCode}
             | Response Body: ${response.body}""".trimMargin())
         return if (response.body != null) {
-            mapJsonToAny<HentResponseBody>(response.body!!)
+            mapJsonToAny<HentResponseBody>(response.body!!).also { logger.debug("HentResponseBody: $it") }
         } else null
     }
 
