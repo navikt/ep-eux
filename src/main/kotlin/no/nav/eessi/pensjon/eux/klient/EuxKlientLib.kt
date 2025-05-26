@@ -268,7 +268,7 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var 
         )
 
         logger.info("""
-            | Response Code: ${result.statusCode}}
+            | Response Code: ${result.statusCode}
             | Response Body: ${result.body}""".trimMargin())
         return result.statusCode == HttpStatus.OK
     }
@@ -288,7 +288,7 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var 
         )
 
         logger.info("""
-            | Response Code: ${result.statusCode}}
+            | Response Code: ${result.statusCode}
             | Response Body: ${result.body}""".trimMargin())
         return result.statusCode == HttpStatus.OK
     }
@@ -312,7 +312,7 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var 
         )
 
         logger.info("""
-            | Response Code: ${response.statusCode}}
+            | Response Code: ${response.statusCode}
             | Response Body: ${response.body}""".trimMargin())
         return if (response.body != null) {
             mapJsonToAny<HentResponseBody>(response.body!!)
@@ -336,7 +336,7 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var 
                 }), String::class.java
         )
         logger.info("""
-            | Response Code: ${response.statusCode}}
+            | Response Code: ${response.statusCode}
             | Response Body: ${response.body}""".trimMargin())
         return response.statusCode == HttpStatus.OK
     }
