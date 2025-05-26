@@ -411,7 +411,7 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var 
 
     @JsonIgnoreProperties(ignoreUnknown = true)
     data class HentResponseBody(
-        val status: String? = null,
+        val status: HttpStatus? = null,
         val messages: String? = null,
         val timestamp: String? = null
     )
