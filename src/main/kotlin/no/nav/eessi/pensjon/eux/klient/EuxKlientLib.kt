@@ -294,7 +294,7 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var 
     }
 
     //Brukes av saksbehandlere til å resende dokumenter
-    fun resend(dokumentListe: String):  Boolean {
+    fun resend(dokumentListe: String): HentResponseBody? {
         val correlationId = correlationId()
         val url = UriComponentsBuilder.fromPath("/resend/liste")
             .queryParam("KorrelasjonsId", correlationId)
@@ -311,16 +311,12 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var 
             }), String::class.java
         )
 
-       response.body?.let {
-            logger.info("Resender: $it")
-        } ?: run {
-            logger.error("Ingen data i body")
-        }
-
         logger.info("""
             | Response Code: ${response.statusCode}}
             | Response Body: ${response.body}""".trimMargin())
-        return response.statusCode == HttpStatus.OK
+        return if (response.body != null) {
+            mapJsonToAny<HentResponseBody>(response.body!!)
+        } else null
     }
 
     //Brukes av saksbehandlere til å resende dokumenter
@@ -411,4 +407,10 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var 
             }.build()
         }
     }
+
+    data class HentResponseBody(
+        val status: HttpStatus,
+        val messages: String,
+        val timestamp: String
+    )
 }
