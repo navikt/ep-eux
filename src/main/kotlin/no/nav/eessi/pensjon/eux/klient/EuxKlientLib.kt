@@ -1,5 +1,6 @@
 package no.nav.eessi.pensjon.eux.klient
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import no.nav.eessi.pensjon.eux.model.InstitusjonDetalj
 import no.nav.eessi.pensjon.eux.model.buc.Buc
 import no.nav.eessi.pensjon.eux.model.buc.Participant
@@ -408,9 +409,10 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var 
         }
     }
 
+    @JsonIgnoreProperties(ignoreUnknown = true)
     data class HentResponseBody(
-        val status: HttpStatus,
-        val messages: String,
-        val timestamp: String
+        val status: String? = null,
+        val messages: String? = null,
+        val timestamp: String? = null
     )
 }
