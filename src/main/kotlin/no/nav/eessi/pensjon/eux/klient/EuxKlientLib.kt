@@ -295,7 +295,7 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var 
     }
 
     //Brukes av saksbehandlere til å resende dokumenter
-    fun resend(dokumentListe: String): HentResponseBody? {
+    fun resend(dokumentListe: String): HentResponseBody {
         val correlationId = correlationId()
         val url = UriComponentsBuilder.fromPath("/resend/liste")
             .queryParam("KorrelasjonsId", correlationId)
@@ -322,7 +322,7 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var 
     }
 
     //Brukes av saksbehandlere til å resende dokumenter
-    fun resendeDokMedrinaId(rinasakId: String, dokumentId: String):  Boolean {
+    fun resendeDokMedrinaId(rinasakId: String, dokumentId: String): HentResponseBody {
         val correlationId = correlationId()
         val url = UriComponentsBuilder.fromPath("/resend/buc/$rinasakId/sed/$dokumentId")
             .queryParam("KorrelasjonsId", correlationId)
@@ -340,7 +340,10 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var 
         logger.info("""
             | Response Code: ${response.statusCode}
             | Response Body: ${response.body}""".trimMargin())
-        return response.statusCode == HttpStatus.OK
+        if(response.statusCode == HttpStatus.OK) {
+            return HentResponseBody(HttpStatus.OK, response.body ?: "", Date().toString())
+        }
+        throw SedDokumentIkkeLestException("Feil ved oversending av dokumenter: ${response.statusCode}")
     }
 
 
