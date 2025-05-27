@@ -315,9 +315,10 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var 
         logger.info("""
             | Response Code: ${response.statusCode}
             | Response Body: ${response.body}""".trimMargin())
-        return if (response.body != null) {
-            mapJsonToAny<HentResponseBody>(response.body!!).also { logger.debug("HentResponseBody: $it") }
-        } else null
+        if(response.statusCode == HttpStatus.OK) {
+            return HentResponseBody(HttpStatus.OK, response.body ?: "", Date().toString())
+        }
+        throw SedDokumentIkkeLestException("Feil ved oversending av dokumenter: ${response.statusCode}")
     }
 
     //Brukes av saksbehandlere til å resende dokumenter
