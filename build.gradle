@@ -35,7 +35,7 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter:5.13.2")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
-    testImplementation("io.mockk:mockk:1.14.2")
+    testImplementation("io.mockk:mockk:1.14.4")
     // Architecture tests
     testImplementation ("com.tngtech.archunit:archunit:1.4.1")
 }
