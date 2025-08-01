@@ -37,6 +37,7 @@ data class P2000Pensjon(
 	override val kravDato: Krav? = null,
 	override val forespurtstartdato: String? = null,
 
+	val bruker: Bruker? = null,
 	//P2XXX
 	val vedtak: List<VedtakItem>? = null,
 	val vedlegg: List<String> ? = null,
