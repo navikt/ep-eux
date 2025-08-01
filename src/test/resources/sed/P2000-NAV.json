@@ -40,7 +40,7 @@
           {
             "institusjonsnavn": "NAV ACCEPTANCE TEST 07",
             "institusjonsid": "NO:NAVAT07",
-            "identifikator": "60425910747",
+            "identifikator": "28064843062",
             "land": "NO"
           },
           {
@@ -288,5 +288,5 @@
     }
   },
   "sedGVer": "4",
-  "sedVer": "3"
+  "sedVer": "2"
 }
