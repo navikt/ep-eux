@@ -75,6 +75,5 @@ data class Sak(
     val artikkel54: String? = null,
     val reduksjon: List<ReduksjonItem>? = null,
     val kravtype: List<KravtypeItem>? = null,
-    val enkeltkrav: KravtypeItem? = null
 )
 
