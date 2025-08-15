@@ -142,8 +142,6 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var 
         }
     }
 
-
-
     fun getBucJsonAsNavIdent(euxCaseId: String): String?  = getBucJson(euxCaseId, euxRestTemplate).also { logBucJsonResult(euxCaseId, it, "getBucJsonAsNavIdent") }
     fun getBucJsonAsSystemuser(euxCaseId: String, restTemplate: RestTemplate): String? = getBucJson(euxCaseId, restTemplate).also { logBucJsonResult(euxCaseId, it, "getBucJsonAsSystemuser")}
 
@@ -345,7 +343,6 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var 
         }
         throw SedDokumentIkkeLestException("Feil ved oversending av dokumenter: ${response.statusCode}")
     }
-
 
     fun updateSedOnBuc(euxCaseId: String, dokumentId: String, sedPayload: String): Boolean {
         val path = "/buc/$euxCaseId/sed/$dokumentId?ventePaAksjon=false"
