@@ -23,7 +23,7 @@ data class AndreinstitusjonerItem(
 data class Tilleggsinformasjon(
     val dato: String? = null,
     val andreinstitusjoner: List<AndreinstitusjonerItem>? = null,
-    val artikkel48: String? = null,
+    val artikkel48: String? = null,    // 6.6 i P6000
     val opphoer: Opphoer? = null,
     val revurderingtidsfrist: String? = null,
 
@@ -72,7 +72,7 @@ data class Opphoer(
 )
 
 data class Sak(
-    val artikkel54: String? = null,
+    val artikkel54: String? = null,  // 5.1.4 i P6000
     val reduksjon: List<ReduksjonItem>? = null,
     val kravtype: List<KravtypeItem>? = null,
 )

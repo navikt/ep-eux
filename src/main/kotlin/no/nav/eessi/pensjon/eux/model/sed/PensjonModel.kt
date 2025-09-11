@@ -131,7 +131,7 @@ enum class StatusType(@JsonValue val kode: String) {
 }
 
 data class KravtypeItem(
-        val datoFrist: String? = null,
+        val datoFrist: String? = null,     //6.5.1 i P6000
         val krav: String? = null
 )
 
