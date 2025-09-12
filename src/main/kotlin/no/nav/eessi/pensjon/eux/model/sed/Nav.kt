@@ -2,6 +2,7 @@ package no.nav.eessi.pensjon.eux.model.sed
 
 import com.fasterxml.jackson.annotation.JsonGetter
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
+import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonSetter
 import com.fasterxml.jackson.annotation.JsonValue
 
@@ -263,6 +264,7 @@ data class Foedested(
         val region: String? = null
 )
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 data class EessisakItem(
         val institusjonsid: String? = null,
         val institusjonsnavn: String? = null,
