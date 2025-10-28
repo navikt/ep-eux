@@ -1,4 +1,4 @@
-package no.nav.eessi.pensjon.eux.klient
+package no.nav.eessi.pensjon.eux.model
 
 data class SedMetadata (
    val sedTittel : String? = null,
