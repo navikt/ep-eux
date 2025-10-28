@@ -50,6 +50,14 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var 
         return hentBucJson(rinaSakId)?.let { mapJsonToAny(it) }
     }
 
+    fun hentSedMetadata(rinasakId: String, dokumentId: String): SedMetadata? {
+        logger.info("Henter SED metadata for rinaSakId: $rinasakId , dokumentId: $dokumentId")
+
+        val response = euxRestTemplate.getForObject("/buc/$rinasakId/sed/$dokumentId/oversikt", String::class.java)
+        return response?.let { mapJsonToAny<SedMetadata>(it) }
+
+    }
+
     fun settSensitivSak(rinaSakId: String): Boolean {
         logger.info("Setter BUC (RinaSakId: $rinaSakId) som sensitiv.")
 
@@ -126,7 +134,6 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var 
 
     fun getSedOnBucByDocumentIdNotAsSystemUser(euxCaseId: String, documentId: String, skipError: List<HttpStatus>? = emptyList()): String =
         getSedOnBucByDocumentId(euxCaseId, documentId, euxRestTemplate, skipError)
-
 
     protected fun getSedOnBucByDocumentId(euxCaseId: String, documentId: String, restTemplate: RestTemplate, skipError: List<HttpStatus>? = emptyList()): String {
         val path = "/buc/$euxCaseId/sed/$documentId"

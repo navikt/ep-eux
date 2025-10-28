@@ -6,6 +6,8 @@ import io.mockk.verify
 import no.nav.eessi.pensjon.eux.model.SedType
 import no.nav.eessi.pensjon.eux.model.sed.P2000
 import no.nav.eessi.pensjon.eux.model.sed.SED
+import no.nav.eessi.pensjon.utils.mapAnyToJson
+import no.nav.eessi.pensjon.utils.toJson
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
@@ -13,6 +15,7 @@ import org.springframework.http.HttpEntity
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.client.RestTemplate
+import org.springframework.web.client.exchange
 
 class EuxKlientLibTest {
 
@@ -26,6 +29,31 @@ class EuxKlientLibTest {
 
         val resultat = euxKlientLib.hentBuc("111")!!
         assertEquals("1198662", resultat.id)
+    }
+
+    @Test
+    fun `hentSedMetadata skal returnere oversikt over metadata for sed`() {
+        val rinasakId = "1453391"
+        val dokumentId = "a38a5116a005436f83f71523db0a17f2"
+
+        val response = """
+        {
+          "sedTittel" : "Vedtak om pensjon",
+          "sedType" : "P6000",
+          "sedId" : "a38a5116a005436f83f71523db0a17f2",
+          "status" : "sent",
+          "sistEndretDato" : "2025-10-03",
+          "opprettetDato" : "2025-10-03"
+        }""".trimIndent()
+
+        every { mockTemplate.getForObject(eq("/buc/$rinasakId/sed/$dokumentId/oversikt"), eq(String::class.java)) } returns response
+
+        val resultat = euxKlientLib.hentSedMetadata(rinasakId, dokumentId)
+
+        assertEquals(response,resultat?.toJson())
+        assertEquals("sent",resultat?.status)
+        assertEquals("P6000",resultat?.sedType)
+        assertEquals("a38a5116a005436f83f71523db0a17f2",resultat?.sedId)
     }
 
     @Test
