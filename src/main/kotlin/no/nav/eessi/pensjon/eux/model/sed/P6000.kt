@@ -1,7 +1,9 @@
 package no.nav.eessi.pensjon.eux.model.sed
 
+import com.fasterxml.jackson.annotation.JsonIgnore
 import com.fasterxml.jackson.annotation.JsonProperty
 import no.nav.eessi.pensjon.eux.model.SedType
+import no.nav.eessi.pensjon.eux.model.document.Retning
 import no.nav.eessi.pensjon.eux.model.sed.KravType.GJENLEV
 import no.nav.eessi.pensjon.eux.model.sed.KravType.UFOREP
 
@@ -10,7 +12,9 @@ class P6000(
     override val type: SedType = SedType.P6000,
     override val nav: Nav? = null,
     @JsonProperty("pensjon")
-    override val pensjon: P6000Pensjon?
+    override val pensjon: P6000Pensjon?,
+    @JsonIgnore
+    val retning: String? = null
 ) : SED(type, nav = nav), GjenlevPensjon, UforePensjon {
     override fun hasGjenlevPensjonType(): Boolean {
         return pensjon?.vedtak?.firstOrNull()?.type == "20"
