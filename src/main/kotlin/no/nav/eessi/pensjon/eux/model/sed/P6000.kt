@@ -14,7 +14,7 @@ class P6000(
     @JsonProperty("pensjon")
     override val pensjon: P6000Pensjon?,
     @JsonIgnore
-    val retning: String? = null
+    var retning: String? = null
 ) : SED(type, nav = nav), GjenlevPensjon, UforePensjon {
     override fun hasGjenlevPensjonType(): Boolean {
         return pensjon?.vedtak?.firstOrNull()?.type == "20"
