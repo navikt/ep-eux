@@ -6,7 +6,6 @@ import io.mockk.verify
 import no.nav.eessi.pensjon.eux.model.SedType
 import no.nav.eessi.pensjon.eux.model.sed.P2000
 import no.nav.eessi.pensjon.eux.model.sed.SED
-import no.nav.eessi.pensjon.utils.mapAnyToJson
 import no.nav.eessi.pensjon.utils.toJson
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue
@@ -15,7 +14,6 @@ import org.springframework.http.HttpEntity
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.client.RestTemplate
-import org.springframework.web.client.exchange
 
 class EuxKlientLibTest {
 
@@ -48,7 +46,7 @@ class EuxKlientLibTest {
 
         every { mockTemplate.getForObject(eq("/buc/$rinasakId/sed/$dokumentId/oversikt"), eq(String::class.java)) } returns response
 
-        val resultat = euxKlientLib.hentSedMetadata(rinasakId, dokumentId)
+        val resultat = euxKlientLib.hentSedMetadata(rinasakId, dokumentId, euxSystemRestTemplate)
 
         assertEquals(response,resultat?.toJson())
         assertEquals("sent",resultat?.status)

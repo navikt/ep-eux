@@ -51,10 +51,10 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var 
         return hentBucJson(rinaSakId)?.let { mapJsonToAny(it) }
     }
 
-    fun hentSedMetadata(rinasakId: String, dokumentId: String): SedMetadata? {
+    fun hentSedMetadata(rinasakId: String, dokumentId: String, euxSystemRestTemplate: RestTemplate): SedMetadata? {
         logger.info("Henter SED metadata for rinaSakId: $rinasakId , dokumentId: $dokumentId")
 
-        val response = euxRestTemplate.getForObject("/buc/$rinasakId/sed/$dokumentId/oversikt", String::class.java)
+        val response = euxSystemRestTemplate.getForObject("/buc/$rinasakId/sed/$dokumentId/oversikt", String::class.java)
         return response?.let { mapJsonToAny<SedMetadata>(it) }
 
     }
