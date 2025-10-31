@@ -46,7 +46,7 @@ class EuxKlientLibTest {
 
         every { mockTemplate.getForObject(eq("/buc/$rinasakId/sed/$dokumentId/oversikt"), eq(String::class.java)) } returns response
 
-        val resultat = euxKlientLib.hentSedMetadata(rinasakId, dokumentId, euxSystemRestTemplate)
+        val resultat = euxKlientLib.hentSedMetadata(rinasakId, dokumentId, mockTemplate)
 
         assertEquals(response,resultat?.toJson())
         assertEquals("sent",resultat?.status)
