@@ -1,10 +1,24 @@
 package no.nav.eessi.pensjon.eux.model
 
-data class SedMetadata (
-   val sedTittel : String? = null,
-   val sedType : String? = null,
-   val sedId : String? = null,
-   val status : String? = null,
-   val sistEndretDato : String? = null,
-   val opprettetDato : String? = null,
+import com.fasterxml.jackson.annotation.JsonIgnore
+import com.fasterxml.jackson.annotation.JsonInclude
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
+data class SedMetadata(
+    val sedTittel: String? = null,
+    val sedType: String? = null,
+    val sedId: String? = null,
+    val status: String? = null,
+    val avsender: Avsender? = null,
+    val sistEndretDato: String? = null,
+    val opprettetDato: String? = null,
+)
+
+
+data class Avsender(
+    val formatertNavn: String? = null,
+    val id: String? = null,
+    val navn: String? = null,
+    val landkode: String? = null,
+    val land: String? = null
 )
