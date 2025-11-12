@@ -19,6 +19,6 @@ data class Avsender(
     val formatertNavn: String? = null,
     val id: String? = null,
     val navn: String? = null,
-    val landkode: String? = null,
-    val land: String? = null
+    val landkode: String? = null,  //landkode er 3-bokstavs
+    val land: String? = null       //land er 2-bokstavs
 )
