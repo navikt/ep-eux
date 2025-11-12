@@ -28,7 +28,7 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var 
     fun hentSedJson(rinaSakId: String, dokumentId: String, skipError: List<HttpStatus>? = emptyList()): String? {
         logger.info("Henter SED for rinaSakId: $rinaSakId , dokumentId: $dokumentId")
         return retryHelper(
-            func = { euxRestTemplate.getForObject("/cpi/buc$rinaSakId/sed/$dokumentId", String::class.java) },
+            func = { euxRestTemplate.getForObject("/cpi/buc/$rinaSakId/sed/$dokumentId", String::class.java) },
             maxAttempts = 3,
             skipError = skipError
         )
@@ -42,7 +42,7 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var 
         logger.info("Henter BUC (RinaSakId: $rinaSakId)")
 
         return retryHelper(
-            func = { euxRestTemplate.getForObject("/cpi/buc$rinaSakId", String::class.java)},
+            func = { euxRestTemplate.getForObject("/cpi/buc/$rinaSakId", String::class.java)},
             maxAttempts = 3,
             skipError = skipError
         )
@@ -54,7 +54,7 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var 
     fun hentSedMetadata(rinasakId: String, dokumentId: String, euxSystemRestTemplate: RestTemplate): SedMetadata? {
         logger.info("Henter SED metadata for rinaSakId: $rinasakId , dokumentId: $dokumentId")
 
-        val response = euxSystemRestTemplate.getForObject("/v2/buc$rinasakId/sed/$dokumentId/oversikt", String::class.java)
+        val response = euxSystemRestTemplate.getForObject("/v2/buc/$rinasakId/sed/$dokumentId/oversikt", String::class.java)
         return response?.let { mapJsonToAny<SedMetadata>(it) }
 
     }
@@ -75,7 +75,7 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var 
     fun hentAlleDokumentfiler(rinaSakId: String, dokumentId: String, skipError: List<HttpStatus>? = emptyList()): SedDokumentfiler? {
         logger.info("Henter PDF for SED og tilhørende vedlegg for rinaSakId: $rinaSakId , dokumentId: $dokumentId")
         return retryHelper(
-            func = { euxRestTemplate.getForObject("/cpi/buc$rinaSakId/sed/$dokumentId/filer", SedDokumentfiler::class.java) },
+            func = { euxRestTemplate.getForObject("/cpi/buc/$rinaSakId/sed/$dokumentId/filer", SedDokumentfiler::class.java) },
             maxAttempts = 3,
             skipError = skipError
         )
@@ -94,7 +94,7 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var 
                        euxCaseId: String,
                        parentDocumentId: String): BucSedResponse {
         val response = euxRestTemplate.postForEntity(
-            "/cpi/buc$euxCaseId/sed/$parentDocumentId/svar",
+            "/cpi/buc/$euxCaseId/sed/$parentDocumentId/svar",
             HttpEntity(navSEDjson, HttpHeaders().apply { contentType = MediaType.APPLICATION_JSON }),
             String::class.java
         )
@@ -109,7 +109,7 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var 
 
         val response = try {
             euxRestTemplate.postForEntity(
-                "/cpi/buc$euxCaseId/sed?ventePaAksjon=false",
+                "/cpi/buc/$euxCaseId/sed?ventePaAksjon=false",
                 HttpEntity(navSEDjson, HttpHeaders().apply { contentType = MediaType.APPLICATION_JSON }),
                 String::class.java
             )
@@ -137,7 +137,7 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var 
         getSedOnBucByDocumentId(euxCaseId, documentId, euxRestTemplate, skipError)
 
     protected fun getSedOnBucByDocumentId(euxCaseId: String, documentId: String, restTemplate: RestTemplate, skipError: List<HttpStatus>? = emptyList()): String {
-        val path = "/cpi/buc$euxCaseId/sed/$documentId"
+        val path = "/cpi/buc/$euxCaseId/sed/$documentId"
 
         val response = retryHelper(
             func = { restTemplate.exchange(path,HttpMethod.GET,null, String::class.java) },
@@ -162,7 +162,7 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var 
     }
 
     private fun getBucJson(euxCaseId: String, restTemplate: RestTemplate): String? {
-        val path = "/cpi/buc$euxCaseId"
+        val path = "/cpi/buc/$euxCaseId"
         logger.info("getBucJsonWithRest prøver å kontakte EUX $path")
 
         val response =  restTemplate.exchange(path, HttpMethod.GET, null, String::class.java)
@@ -171,7 +171,7 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var 
 
     fun getPdfJson(euxCaseId: String, documentId: String): PreviewPdf {
 
-        val path = "/cpi/buc${euxCaseId}/sed/${documentId}/pdf"
+        val path = "/cpi/buc/${euxCaseId}/sed/${documentId}/pdf"
         logger.info("getPdfJsonWithRest prøver å kontakte EUX path")
 
         val response = euxRestTemplate.exchange(
@@ -190,7 +190,7 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var 
     fun getBucDeltakere(euxCaseId: String): List<Participant> {
         logger.info("euxCaseId: $euxCaseId")
 
-        val path = "/cpi/buc$euxCaseId/bucdeltakere"
+        val path = "/cpi/buc/$euxCaseId/bucdeltakere"
         val response = euxRestTemplate.exchange(path, HttpMethod.GET,null,String::class.java)
 
         return mapJsonToAny(response.body!!)
@@ -251,7 +251,7 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var 
 
     fun putBucMottakere(euxCaseId: String, institusjoner: List<String>): Boolean {
         val correlationId = correlationId()
-        val builder = UriComponentsBuilder.fromPath("/cpi/buc$euxCaseId/mottakere")
+        val builder = UriComponentsBuilder.fromPath("/cpi/buc/$euxCaseId/mottakere")
             .queryParam("KorrelasjonsId", correlationId)
             .build()
         val url = builder.toUriString() + convertListInstitusjonItemToString(institusjoner)
@@ -264,7 +264,7 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var 
     }
 
     fun sendSed(euxCaseId: String, dokumentId : String):  Boolean {
-        val url = "/cpi/buc$euxCaseId/sed/$dokumentId/send?ventePaAksjon=false"
+        val url = "/cpi/buc/$euxCaseId/sed/$dokumentId/send?ventePaAksjon=false"
         logger.info("Kaller sendSed for buc: $euxCaseId, sed: $dokumentId, path: $url")
 
         val result: ResponseEntity<String> = euxRestTemplate.postForEntity(
@@ -282,7 +282,7 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var 
 
     fun sendTo(euxCaseId: String, dokumentId : String, mottakere: List<String>):  Boolean {
         val correlationId = correlationId()
-        val url = UriComponentsBuilder.fromPath("/cpi/buc$euxCaseId/sed/$dokumentId/sendTo")
+        val url = UriComponentsBuilder.fromPath("/cpi/buc/$euxCaseId/sed/$dokumentId/sendTo")
             .queryParam("KorrelasjonsId", correlationId)
             .queryParam("MottakereId", mottakere.joinToString(separator = " "))
             .build().toUriString()
@@ -353,7 +353,7 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var 
     }
 
     fun updateSedOnBuc(euxCaseId: String, dokumentId: String, sedPayload: String): Boolean {
-        val path = "/cpi/buc$euxCaseId/sed/$dokumentId?ventePaAksjon=false"
+        val path = "/cpi/buc/$euxCaseId/sed/$dokumentId?ventePaAksjon=false"
 
         val result =
             euxRestTemplate.exchange(
