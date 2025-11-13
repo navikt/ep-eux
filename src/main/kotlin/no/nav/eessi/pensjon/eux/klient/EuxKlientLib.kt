@@ -63,7 +63,7 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var 
         logger.info("Setter BUC (RinaSakId: $rinaSakId) som sensitiv.")
 
         val response = euxRestTemplate.exchange(
-            "/cpi/buc/$rinaSakId/sensitivsak",
+            "≈/$rinaSakId/sensitivsak",
             HttpMethod.PUT,
             null,
             String::class.java
