@@ -123,7 +123,7 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var 
 
     fun getRinaUrl(): String {
         val rinaCallid = "-1-11-111"
-        val path = "/cpi/url/buc/$rinaCallid"
+        val path = "/url/buc/$rinaCallid"
         val response = euxRestTemplate.exchange(path, HttpMethod.GET, null, String::class.java)
 
         val url =  response.body ?: run {
