@@ -44,7 +44,7 @@ class EuxKlientLibTest {
           "opprettetDato" : "2025-10-03"
         }""".trimIndent()
 
-        every { mockTemplate.getForObject(eq("/v2/buc$rinasakId/sed/$dokumentId/oversikt"), eq(String::class.java)) } returns response
+        every { mockTemplate.getForObject(eq("/cpi/buc$rinasakId/sed/$dokumentId/oversikt"), eq(String::class.java)) } returns response
 
         val resultat = euxKlientLib.hentSedMetadata(rinasakId, dokumentId, mockTemplate)
 
