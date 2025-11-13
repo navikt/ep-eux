@@ -54,7 +54,7 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var 
     fun hentSedMetadata(rinasakId: String, dokumentId: String, euxSystemRestTemplate: RestTemplate): SedMetadata? {
         logger.info("Henter SED metadata for rinaSakId: $rinasakId , dokumentId: $dokumentId")
 
-        val response = euxSystemRestTemplate.getForObject("/v2/buc$rinasakId/sed/$dokumentId/oversikt", String::class.java)
+        val response = euxSystemRestTemplate.getForObject("/cpi/buc$rinasakId/sed/$dokumentId/oversikt", String::class.java)
         return response?.let { mapJsonToAny<SedMetadata>(it) }
 
     }
