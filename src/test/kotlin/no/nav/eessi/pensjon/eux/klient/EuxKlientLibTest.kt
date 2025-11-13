@@ -23,7 +23,7 @@ class EuxKlientLibTest {
    @Test
     fun `hentBuc skal returnere et Buc dokument`() {
         val json = javaClass.getResource("/buc/exampleBuc.json")!!.readText()
-        every { mockTemplate.getForObject(eq("/cpi/buc/111"), eq(String::class.java)) } returns json
+        every { mockTemplate.getForObject(eq("/cpi/buc111"), eq(String::class.java)) } returns json
 
         val resultat = euxKlientLib.hentBuc("111")!!
         assertEquals("1198662", resultat.id)
@@ -44,7 +44,7 @@ class EuxKlientLibTest {
           "opprettetDato" : "2025-10-03"
         }""".trimIndent()
 
-        every { mockTemplate.getForObject(eq("/v2/buc/$rinasakId/sed/$dokumentId/oversikt"), eq(String::class.java)) } returns response
+        every { mockTemplate.getForObject(eq("/v2/buc$rinasakId/sed/$dokumentId/oversikt"), eq(String::class.java)) } returns response
 
         val resultat = euxKlientLib.hentSedMetadata(rinasakId, dokumentId, mockTemplate)
 
@@ -57,7 +57,7 @@ class EuxKlientLibTest {
     @Test
     fun `hentSed skal returnere et SED document som er en SED eller et subset av SED`() {
         val json = javaClass.getResource("/sed/P2000-NAV.json")!!.readText()
-        every { mockTemplate.getForObject(eq("/cpi/buc/111/sed/222"), eq(String::class.java)) } returns json
+        every { mockTemplate.getForObject(eq("/cpi/buc111/sed/222"), eq(String::class.java)) } returns json
 
         val resultAsSED = euxKlientLib.hentSed<SED>("111", "222")!!
         assertEquals("28064843062", resultAsSED.nav?.bruker?.person?.pin?.firstOrNull()?.identifikator)
@@ -70,7 +70,7 @@ class EuxKlientLibTest {
     fun `sendSed skal sende korrekt id for buc og sed`() {
         val euxCaseId = "1111"
         val dokumentId = "2222"
-        val path = "/cpi/buc/$euxCaseId/sed/$dokumentId/send?ventePaAksjon=false"
+        val path = "/cpi/buc$euxCaseId/sed/$dokumentId/send?ventePaAksjon=false"
 
         val mockResponse = ResponseEntity<String>("", HttpStatus.OK)
         every {
@@ -94,7 +94,7 @@ class EuxKlientLibTest {
 
         every {
             mockTemplate.postForEntity(
-                match<String> { path -> path.contains("/cpi/buc/$euxCaseId/sed/$dokumentId/sendTo") },
+                match<String> { path -> path.contains("/cpi/buc$euxCaseId/sed/$dokumentId/sendTo") },
                 any<HttpEntity<String>>(),
                 String::class.java
             )
@@ -104,7 +104,7 @@ class EuxKlientLibTest {
         verify {
             mockTemplate.postForEntity(
                 match<String> { path ->
-                    path.contains("Mottaker1 Mottaker2") && path.contains("/cpi/buc/1234/sed/5678/sendTo?KorrelasjonsId=")},
+                    path.contains("Mottaker1 Mottaker2") && path.contains("/cpi/buc1234/sed/5678/sendTo?KorrelasjonsId=")},
                 any<HttpEntity<String>>(),
             String::class.java) }
     }
