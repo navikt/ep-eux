@@ -4,9 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore
 import com.fasterxml.jackson.annotation.JsonProperty
 import no.nav.eessi.pensjon.eux.model.Avsender
 import no.nav.eessi.pensjon.eux.model.SedType
-import no.nav.eessi.pensjon.eux.model.document.Retning
-import no.nav.eessi.pensjon.eux.model.sed.KravType.GJENLEV
-import no.nav.eessi.pensjon.eux.model.sed.KravType.UFOREP
 
 class P6000(
     @JsonProperty("sed")
@@ -20,6 +17,8 @@ class P6000(
     override fun hasGjenlevPensjonType(): Boolean {
         return pensjon?.vedtak?.firstOrNull()?.type == "20"
     }
+
+    fun erNorskSed(): Boolean = Avsender.erNorsk(avsender)
 
     override fun hasUforePensjonType(): Boolean {
         return pensjon?.vedtak?.firstOrNull()?.type == "30"
