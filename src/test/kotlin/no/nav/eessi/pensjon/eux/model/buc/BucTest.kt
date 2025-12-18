@@ -42,7 +42,7 @@ internal class BucTest {
 
         // Document Creator
         assertEquals("SRVEESSIPENSJON", document.creator!!.name)
-        assertEquals("User", document.creator!!.type)
+        assertEquals("User", document.creator.type)
 
         // Participants
         val participant = buc.participants!!.first()

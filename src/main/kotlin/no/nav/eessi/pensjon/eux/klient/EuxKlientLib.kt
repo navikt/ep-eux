@@ -410,7 +410,7 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var 
                     euxCaseId == null -> queryParam("fødselsnummer", fnr)
                     else -> {
                         queryParam("fødselsnummer", fnr ?: "")
-                        queryParam("rinasaksnummer", euxCaseId ?: "")
+                        queryParam("rinasaksnummer", euxCaseId)
                     }
                 }
                 queryParam("status", "\"open\"")
