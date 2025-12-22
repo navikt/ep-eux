@@ -74,6 +74,9 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var 
 
     fun hentAlleDokumentfiler(rinaSakId: String, dokumentId: String, skipError: List<HttpStatus>? = emptyList()): SedDokumentfiler? {
         logger.info("Henter PDF for SED og tilhørende vedlegg for rinaSakId: $rinaSakId , dokumentId: $dokumentId")
+
+        logger.debug("jackson converters = ${euxRestTemplate.messageConverters}")
+
         return retryHelper(
             func = { euxRestTemplate.getForObject("/buc/$rinaSakId/sed/$dokumentId/filer", SedDokumentfiler::class.java) },
             maxAttempts = 3,
