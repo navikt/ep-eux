@@ -77,11 +77,29 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var 
 
         logger.debug("jackson converters = ${euxRestTemplate.messageConverters}")
 
-        return retryHelper(
-            func = { euxRestTemplate.getForObject("/buc/$rinaSakId/sed/$dokumentId/filer", SedDokumentfiler::class.java) },
-            maxAttempts = 3,
-            skipError = skipError
-        )
+        try {
+            return retryHelper(
+                func = { euxRestTemplate.getForObject("/buc/$rinaSakId/sed/$dokumentId/filer", SedDokumentfiler::class.java) },
+                maxAttempts = 3,
+                skipError = skipError
+            )
+        } catch (e: Exception) {
+            logger.warn("Feil ved henting av dokument filer for rinaSakId: $rinaSakId , dokumentId: $dokumentId, prøver å logge innhold")
+            val resp = euxRestTemplate.exchange("/buc/$rinaSakId/sed/$dokumentId/filer", HttpMethod.GET, null, String::class.java)
+            logger.warn("Hentet dok")
+            val json = resp.body!!
+            val key = "\"innhold\""
+            val idx = json.indexOf(key)
+
+            require(idx >= 0) { "innhold not found" }
+
+            val sample = json.substring(
+                idx,
+                minOf(idx + 400, json.length)
+            )
+            logger.warn(sample)
+            throw e
+        }
     }
 
     private fun <T> execute(block: () -> T): T? {
