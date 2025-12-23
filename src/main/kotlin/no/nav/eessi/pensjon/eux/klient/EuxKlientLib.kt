@@ -6,6 +6,7 @@ import com.fasterxml.jackson.core.StreamReadConstraints
 import com.fasterxml.jackson.core.StreamReadFeature
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.databind.json.JsonMapper
+import com.fasterxml.jackson.module.kotlin.registerKotlinModule
 import no.nav.eessi.pensjon.eux.model.InstitusjonDetalj
 import no.nav.eessi.pensjon.eux.model.SedMetadata
 import no.nav.eessi.pensjon.eux.model.buc.Buc
@@ -91,7 +92,7 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var 
                 )
                 .build()
 
-            val mapper = ObjectMapper(factory)
+            val mapper = ObjectMapper(factory).registerKotlinModule()
 
             val uri = URI.create("$urlBase/buc/$rinaSakId/sed/$dokumentId/filer")
 
