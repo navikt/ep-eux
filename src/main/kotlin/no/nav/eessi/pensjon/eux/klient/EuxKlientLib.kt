@@ -3,6 +3,7 @@ package no.nav.eessi.pensjon.eux.klient
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.core.JsonFactory
 import com.fasterxml.jackson.core.StreamReadConstraints
+import com.fasterxml.jackson.core.StreamReadFeature
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.databind.json.JsonMapper
 import no.nav.eessi.pensjon.eux.model.InstitusjonDetalj
@@ -82,26 +83,22 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var 
 
         try {
             val factory = JsonFactory.builder()
+                .enable(StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION)
                 .streamReadConstraints(
                     StreamReadConstraints.builder()
                         .maxStringLength(50_000_000)
                         .build()
                 )
                 .build()
+
             val mapper = ObjectMapper(factory)
+
             val uri = URI.create("$urlBase/buc/$rinaSakId/sed/$dokumentId/filer")
 
             return euxRestTemplate.execute(uri, HttpMethod.GET, null) { resp ->
                 resp.body.use { mapper.readValue(it, SedDokumentfiler::class.java) }
             }
-//            return euxRestTemplate.exchange(
-//                "/buc/$rinaSakId/sed/$dokumentId/filer",
-//                HttpMethod.GET,
-//                null,
-//                SedDokumentfiler::class.java
-//            ).body
-
-            } catch (e: Exception) {
+        } catch (e: Exception) {
             logger.warn("Feil ved henting av dokument filer for rinaSakId: $rinaSakId , dokumentId: $dokumentId, prøver å logge innhold")
             throw e
         }
