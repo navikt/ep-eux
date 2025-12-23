@@ -1,13 +1,14 @@
 package no.nav.eessi.pensjon.eux.klient
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
+import com.fasterxml.jackson.databind.ObjectMapper
 import no.nav.eessi.pensjon.eux.model.InstitusjonDetalj
+import no.nav.eessi.pensjon.eux.model.SedMetadata
 import no.nav.eessi.pensjon.eux.model.buc.Buc
 import no.nav.eessi.pensjon.eux.model.buc.Participant
 import no.nav.eessi.pensjon.eux.model.buc.PreviewPdf
 import no.nav.eessi.pensjon.eux.model.document.SedDokumentfiler
 import no.nav.eessi.pensjon.eux.model.sed.SED
-import no.nav.eessi.pensjon.eux.model.SedMetadata
 import no.nav.eessi.pensjon.utils.mapJsonToAny
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
@@ -18,6 +19,7 @@ import org.springframework.web.client.RestTemplate
 import org.springframework.web.server.ResponseStatusException
 import org.springframework.web.util.UriComponents
 import org.springframework.web.util.UriComponentsBuilder
+import java.net.URI
 import java.util.*
 
 
@@ -75,29 +77,18 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var 
     fun hentAlleDokumentfiler(rinaSakId: String, dokumentId: String, skipError: List<HttpStatus>? = emptyList()): SedDokumentfiler? {
         logger.info("Henter PDF for SED og tilhørende vedlegg for rinaSakId: $rinaSakId , dokumentId: $dokumentId")
 
-        logger.debug("jackson converters = ${euxRestTemplate.messageConverters}")
-
         try {
-            return retryHelper(
-                func = { euxRestTemplate.getForObject("/buc/$rinaSakId/sed/$dokumentId/filer", SedDokumentfiler::class.java) },
-                maxAttempts = 3,
-                skipError = skipError
-            )
-        } catch (e: Exception) {
+            val objectMapper = ObjectMapper()
+            val uri = URI.create("/buc/$rinaSakId/sed/$dokumentId/filer")
+
+            return euxRestTemplate.execute(uri, HttpMethod.GET, null) { resp ->
+                resp.body.use { input ->
+                    objectMapper.readValue(input, SedDokumentfiler::class.java)
+                }
+            }
+
+            } catch (e: Exception) {
             logger.warn("Feil ved henting av dokument filer for rinaSakId: $rinaSakId , dokumentId: $dokumentId, prøver å logge innhold")
-            val resp = euxRestTemplate.exchange("/buc/$rinaSakId/sed/$dokumentId/filer", HttpMethod.GET, null, String::class.java)
-            logger.warn("Hentet dok")
-            val json = resp.body!!
-            val key = "\"innhold\""
-            val idx = json.indexOf(key)
-
-            require(idx >= 0) { "innhold not found" }
-
-            val sample = json.substring(
-                idx,
-                minOf(idx + 400, json.length)
-            )
-            logger.warn(sample)
             throw e
         }
     }
