@@ -1,6 +1,10 @@
 package no.nav.eessi.pensjon.eux.klient
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
+import com.fasterxml.jackson.core.JsonFactory
+import com.fasterxml.jackson.core.StreamReadConstraints
+import com.fasterxml.jackson.databind.ObjectMapper
+import com.fasterxml.jackson.databind.json.JsonMapper
 import no.nav.eessi.pensjon.eux.model.InstitusjonDetalj
 import no.nav.eessi.pensjon.eux.model.SedMetadata
 import no.nav.eessi.pensjon.eux.model.buc.Buc
@@ -18,6 +22,7 @@ import org.springframework.web.client.RestTemplate
 import org.springframework.web.server.ResponseStatusException
 import org.springframework.web.util.UriComponents
 import org.springframework.web.util.UriComponentsBuilder
+import java.net.URI
 import java.util.*
 
 
@@ -72,16 +77,29 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var 
         return response.statusCode == HttpStatus.OK || response.statusCode == HttpStatus.NO_CONTENT
     }
 
-    fun hentAlleDokumentfiler(rinaSakId: String, dokumentId: String, skipError: List<HttpStatus>? = emptyList()): SedDokumentfiler? {
+    fun hentAlleDokumentfiler(rinaSakId: String, dokumentId: String, skipError: List<HttpStatus>? = emptyList(), urlBase: String): SedDokumentfiler? {
         logger.info("Henter PDF for SED og tilhørende vedlegg for rinaSakId: $rinaSakId , dokumentId: $dokumentId")
 
         try {
-            return euxRestTemplate.exchange(
-                "/buc/$rinaSakId/sed/$dokumentId/filer",
-                HttpMethod.GET,
-                null,
-                SedDokumentfiler::class.java
-            ).body
+            val factory = JsonFactory.builder()
+                .streamReadConstraints(
+                    StreamReadConstraints.builder()
+                        .maxStringLength(50_000_000)
+                        .build()
+                )
+                .build()
+            val mapper = ObjectMapper(factory)
+            val uri = URI.create("$urlBase/buc/$rinaSakId/sed/$dokumentId/filer")
+
+            return euxRestTemplate.execute(uri, HttpMethod.GET, null) { resp ->
+                resp.body.use { mapper.readValue(it, SedDokumentfiler::class.java) }
+            }
+//            return euxRestTemplate.exchange(
+//                "/buc/$rinaSakId/sed/$dokumentId/filer",
+//                HttpMethod.GET,
+//                null,
+//                SedDokumentfiler::class.java
+//            ).body
 
             } catch (e: Exception) {
             logger.warn("Feil ved henting av dokument filer for rinaSakId: $rinaSakId , dokumentId: $dokumentId, prøver å logge innhold")
