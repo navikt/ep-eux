@@ -83,7 +83,7 @@ data class YtelserItem(
 	val mottasbasertpaa: String? = null,
 	val ytelse: String? = null,
 	val startdatoretttilytelse: String? = null,
-	val sluttdatoUtbetaling: String? = null,
+	val sluttdatoutbetaling: String? = null,
 	val beloep: List<BeloepItem>? = null,
 	val status: String? = null,
 	val annenbetalingshyppighetytelse: String? = null,
