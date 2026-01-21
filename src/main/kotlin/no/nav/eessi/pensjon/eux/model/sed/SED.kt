@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonProperty
 import no.nav.eessi.pensjon.eux.model.SedType
+import no.nav.eessi.pensjon.eux.model.SedType.H001
+import no.nav.eessi.pensjon.eux.model.SedType.H002
 import no.nav.eessi.pensjon.eux.model.SedType.P10000
 import no.nav.eessi.pensjon.eux.model.SedType.P12000
 import no.nav.eessi.pensjon.eux.model.SedType.P15000
@@ -85,6 +87,8 @@ open class SED(
                 X008 -> mapJsonToAny<X008>(json)
                 X009 -> mapJsonToAny<X009>(json)
                 X010 -> mapJsonToAny<X010>(json)
+                H002 -> mapJsonToAny<H002>(json)
+                H001 -> mapJsonToAny<H001>(json)
                 else -> fromJson(json!!)
             }
         }

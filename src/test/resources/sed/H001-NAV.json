@@ -1,0 +1,43 @@
+{
+  "nav": {
+    "bruker": {
+      "person": {
+        "kjoenn": "M",
+        "etternavn": "Tilly",
+        "pin": [
+          {
+            "sektor": "pensjoner",
+            "land": "CH",
+            "institusjonsid": "CH:4534534",
+            "institusjonsnavn": "Centrale de Pensjon",
+            "identifikator": "53453443534534"
+          }
+        ],
+        "fornavn": "Olaf",
+        "foedselsdato": "1976-10-14",
+        "statsborgerskap": [
+          {
+            "land": "SE"
+          }
+        ]
+      },
+      "adresse": [
+        {
+          "type": "bosted"
+        }
+      ]
+    }
+  },
+  "sedGVer": "4",
+  "sedVer": "3",
+  "sed": "H001",
+  "horisontal": {
+    "bruker": {
+      "negativesvar": [
+        {
+          "informasjon": "Nous ne sommes pas en mesure de vous fournir l'information demandée."
+        }
+      ]
+    }
+  }
+}
