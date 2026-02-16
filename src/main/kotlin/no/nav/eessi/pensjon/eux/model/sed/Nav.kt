@@ -1,5 +1,6 @@
 package no.nav.eessi.pensjon.eux.model.sed
 
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonGetter
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonInclude
@@ -33,8 +34,14 @@ enum class KravType(@JsonValue val verdi: String?) {
         UFOREP("03");
 
         companion object {
+                @JsonCreator
+                @JvmStatic
+                fun fromValue(value: String?): KravType? {
+                        return entries.find { it.verdi == value || it.name == value || (it == GJENLEV && value == "GJENLEV") }
+                }
+
                 fun fraNavnEllerVerdi(input: String?): KravType? {
-                        return entries.find { it.name == input || it.verdi == input }
+                        return entries.find { it.name == input || it.verdi == input || (it == GJENLEV && input == "GJENLEV") }
                 }
         }
 }
