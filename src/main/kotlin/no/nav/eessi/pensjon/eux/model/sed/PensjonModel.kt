@@ -13,6 +13,11 @@ class MeldingOmPensjonP2000(
 	override val pensjon: P2000Pensjon
 ) : MeldingOmPensjon(melding, pensjon)
 
+class MeldingOmPensjonP2200(
+	override val melding: String?,
+	override val pensjon: P2200Pensjon
+) : MeldingOmPensjon(melding, pensjon)
+
 @JsonIgnoreProperties(ignoreUnknown = true)
 open class Pensjon(
 
@@ -59,6 +64,26 @@ data class Utsettelse(
 	val institusjon: Institusjon? = null,
 	val tildato: String? = null
 )
+
+//P2200
+@JsonIgnoreProperties(ignoreUnknown = true)
+data class P2200Pensjon(
+	override val ytelser: List<YtelserItem>? = null,
+	override val kravDato: Krav? = null,
+	override val forespurtstartdato: String? = null,
+
+	val bruker: Bruker? = null,
+	//P2XXX
+	val vedtak: List<VedtakItem>? = null,
+	val vedlegg: List<String> ? = null,
+	val vedleggandre: String? = null,
+
+	val etterspurtedokumenter: String? = null,
+	val ytterligeinformasjon: String? = null,
+	val trekkgrunnlag: List<String> ?= null,
+	val mottaker: List<String> ?= null,
+	val institusjonennaaikkesoektompensjon: List<String> ?= null
+): Pensjon()
 
 //Institusjon
 @JsonIgnoreProperties(ignoreUnknown = true)
