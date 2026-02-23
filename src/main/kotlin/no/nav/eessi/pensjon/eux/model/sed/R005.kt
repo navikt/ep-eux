@@ -21,7 +21,7 @@ data class RNav(
 )
 
 data class Begunstiget(
-    val forsikret: Bruker? = null,
+    val forsikret: Brukere? = null,
 )
 
 //kun for R005
