@@ -15,13 +15,9 @@ class R005(
 
 //R005 nav
 data class RNav(
-    val begunstiget: Begunstiget? = null,
+    val forsikret: Brukere? = null,
     val brukere: List<Brukere>? = null,
     val eessisak: List<EessisakItem>? = null
-)
-
-data class Begunstiget(
-    val forsikret: Brukere? = null,
 )
 
 //kun for R005
