@@ -15,12 +15,13 @@ class R005(
 
 //R005 nav
 data class RNav(
-    val forsikret: Forsikra? = null,
+    val forsikret: Mottaker? = null,
+    val begunstiget: Mottaker? = null,
     val brukere: List<Brukere>? = null,
     val eessisak: List<EessisakItem>? = null
 )
 
-data class Forsikra(
+data class Mottaker(
     val bruker: Brukere? = null,
 )
 
@@ -31,9 +32,25 @@ data class Brukere(
     val person: PersonR005? = null,
     @JsonFormat(with = [JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY]) // i R005 kan det være flere adresser pr person
     val adresse: List<Adresse>? = null,
+    val sistekjenteadresser: List<Adresse>? = null,
     val arbeidsforhold: List<ArbeidsforholdItem>? = null,
     val bank: Bank? = null,
-    val tilbakekreving: TilbakekrevingBrukere? = null // Kun brukt av R005
+    val tilbakekreving: TilbakekrevingBrukere? = null, // Kun brukt av R005
+
+    val statsborgerskap: StatsborgerskapItem? = null, // nasjonalitet (CMD 4.4)
+    val personstatus: Personstatus? = null, // (CMD 4.4)
+    val familiestatus: FamiliestatusType? = null, // (CMD 4.4)
+    val doedsdato: String? = null, // (CMD 4.4)
+)
+
+data class Personstatus(
+    @JsonProperty("RStatusPersonBeneficiaryNoDeceaseType")
+    val tilgodeStatusIngenAvdodType: String? = null,
+)
+
+data class FamiliestatusType(
+    @JsonProperty("RFamilyStatusType")
+    val status: String? = null,
 )
 
 @JsonIgnoreProperties(ignoreUnknown = true)

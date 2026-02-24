@@ -1,0 +1,109 @@
+{
+  "nav": {
+    "begunstiget": {
+      "bruker": {
+        "statsborgerskap": {
+          "land": "DK"
+        },
+        "person": {
+          "kjoenn": "K",
+          "pin": [
+            {
+              "identifikator": "19870523-7842",
+              "institusjonsid": "DK:4201",
+              "sektor": "alle",
+              "land": "DK",
+              "institusjonsnavn": "Danish Pension Authority"
+            }
+          ],
+          "fornavn": "Ingrid Marie",
+          "foedselsdato": "1987-05-23",
+          "etternavn": "Hansen",
+          "foedested": {
+            "by": "AARHUS",
+            "land": "DK"
+          }
+        },
+        "personstatus": {
+          "RStatusPersonBeneficiaryNoDeceaseType": "02"
+        },
+        "sistekjenteadresser": [
+          {
+            "postkode": "8200",
+            "land": "DK",
+            "type43": "bosted",
+            "gate": "VESTERGADE 42",
+            "by": "Aarhus N"
+          }
+        ],
+        "familiestatus": {
+          "RFamilyStatusType": "skilt"
+        }
+      }
+    },
+    "forsikret": {
+      "bruker": {
+        "person": {
+          "pin": [
+            {
+              "identifikator": "19820314-6293",
+              "institusjonsid": "DK:4201",
+              "land": "DK",
+              "sektor": "alle",
+              "institusjonsnavn": "Danish Pension Authority"
+            },
+            {
+              "institusjonsnavn": "The Norwegian Labour and Welfare Administration",
+              "land": "NO",
+              "sektor": "alle",
+              "institusjonsid": "NO:974760673",
+              "identifikator": "140382 42156"
+            }
+          ],
+          "etternavn": "Kristensen",
+          "foedested": {
+            "land": "NO",
+            "by": "Bergen"
+          },
+          "kjoenn": "M",
+          "fornavn": "Lars",
+          "foedselsdato": "1982-03-14"
+        },
+        "sistekjenteadresser": [
+          {
+            "land": "DK",
+            "postkode": "8200",
+            "type43": "bosted",
+            "gate": "VESTERGADE 42",
+            "by": "Aarhus N"
+          }
+        ],
+        "statsborgerskap": {
+          "land": "NO"
+        },
+        "doedsdato": "2024-11-09"
+      }
+    },
+    "eessisak": [
+      {
+        "institusjonsnavn": "Danish Pension Authority",
+        "saksnummer": "2024-08-385291",
+        "land": "DK",
+        "institusjonsid": "DK:4201"
+      }
+    ]
+  },
+  "sedVer": "4",
+  "tilbakekreving": {
+    "feilutbetaling": {
+      "ytelse": {
+        "type": "alderspensjon"
+      }
+    },
+    "anmodning": {
+      "type": "endelig"
+    }
+  },
+  "sedGVer": "4",
+  "sed": "R005"
+}
