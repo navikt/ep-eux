@@ -3,93 +3,93 @@
     "begunstiget": {
       "bruker": {
         "statsborgerskap": {
-          "land": "DK"
+          "land": "SE"
         },
         "person": {
-          "kjoenn": "K",
+          "kjoenn": "M",
           "pin": [
             {
-              "identifikator": "19870523-7842",
-              "institusjonsid": "DK:4201",
+              "identifikator": "19611217-3551",
+              "institusjonsid": "SE:2001",
               "sektor": "alle",
-              "land": "DK",
-              "institusjonsnavn": "Danish Pension Authority"
+              "land": "SE",
+              "institusjonsnavn": "The Swedish Pensions Agency"
             }
           ],
-          "fornavn": "Ingrid Marie",
-          "foedselsdato": "1987-05-23",
-          "etternavn": "Hansen",
+          "fornavn": "Egon Karl Bernhard",
+          "foedselsdato": "1961-12-17",
+          "etternavn": "Palmgren",
           "foedested": {
-            "by": "AARHUS",
-            "land": "DK"
+            "by": "HÄSSLEHOLM",
+            "land": "SE"
           }
         },
         "personstatus": {
-          "RStatusPersonBeneficiaryNoDeceaseType": "02"
+          " RStatusPersonBeneficiaryNoDeceaseType": "01"
         },
         "sistekjenteadresser": [
           {
-            "postkode": "8200",
-            "land": "DK",
+            "postkode": "27293",
+            "land": "SE",
             "type43": "bosted",
-            "gate": "VESTERGADE 42",
-            "by": "Aarhus N"
+            "gate": "BYGATAN 26",
+            "by": "Tommarp"
           }
         ],
         "familiestatus": {
-          "RFamilyStatusType": "skilt"
+          "RFamilyStatusType": "enke_enkemann"
         }
-      }
-    },
-    "forsikret": {
-      "bruker": {
-        "person": {
-          "pin": [
-            {
-              "identifikator": "19820314-6293",
-              "institusjonsid": "DK:4201",
-              "land": "DK",
-              "sektor": "alle",
-              "institusjonsnavn": "Danish Pension Authority"
-            },
-            {
-              "institusjonsnavn": "The Norwegian Labour and Welfare Administration",
+      },
+      "forsikret": {
+        "bruker": {
+          "person": {
+            "pin": [
+              {
+                "identifikator": "19651204-5797",
+                "institusjonsid": "SE:2001",
+                "land": "SE",
+                "sektor": "alle",
+                "institusjonsnavn": "The Swedish Pensions Agency"
+              },
+              {
+                "institusjonsnavn": "The Norwegian Labour and Welfare Administration",
+                "land": "NO",
+                "sektor": "alle",
+                "institusjonsid": "NO:889640782",
+                "identifikator": "041265 35770"
+              }
+            ],
+            "etternavn": "Ruud",
+            "foedested": {
               "land": "NO",
-              "sektor": "alle",
-              "institusjonsid": "NO:974760673",
-              "identifikator": "140382 42156"
+              "by": "Oslo"
+            },
+            "kjoenn": "M",
+            "fornavn": "Simen",
+            "foedselsdato": "1965-12-04"
+          },
+          "sistekjenteadresser": [
+            {
+              "land": "SE",
+              "postkode": "27293",
+              "type43": "bosted",
+              "gate": "BYGATAN 26",
+              "by": "Tommarp"
             }
           ],
-          "etternavn": "Kristensen",
-          "foedested": {
-            "land": "NO",
-            "by": "Bergen"
+          "statsborgerskap": {
+            "land": "NO"
           },
-          "kjoenn": "M",
-          "fornavn": "Lars",
-          "foedselsdato": "1982-03-14"
-        },
-        "sistekjenteadresser": [
-          {
-            "land": "DK",
-            "postkode": "8200",
-            "type43": "bosted",
-            "gate": "VESTERGADE 42",
-            "by": "Aarhus N"
-          }
-        ],
-        "statsborgerskap": {
-          "land": "NO"
-        },
-        "doedsdato": "2024-11-09"
+          "doedsdato": "2025-06-18"
+        }
       }
     },
     "eessisak": [
       {
-        "institusjonsnavn": "Danish Pension Authority",
-        "saksnummer": "2024-08-385291",
-        "land": "DK",
-        "institusjonsid": "DK:4201"
+        "institusjonsnavn": "The Swedish Pensions Agency",
+        "saksnummer": "2026-02-210748",
+        "land": "SE",
+        "institusjonsid": "SE:2001"
       }
     ]
   },
@@ -97,11 +97,11 @@
   "tilbakekreving": {
     "feilutbetaling": {
       "ytelse": {
-        "type": "alderspensjon"
+        "type": "etterlattepensjon_enke"
       }
     },
     "anmodning": {
-      "type": "endelig"
+      "type": "foreløpig"
     }
   },
   "sedGVer": "4",
