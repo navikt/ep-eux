@@ -15,18 +15,25 @@ class R005(
 
 //R005 nav
 data class RNav(
-    val forsikret: Mottaker? = null,
-    val begunstiget: Mottaker? = null,
-    val brukere: List<Brukere>? = null,
+    val forsikret: Forsikret? = null,
+    val begunstiget: Begunstiget? = null,
+    val brukere: List<RBruker>? = null,
     val eessisak: List<EessisakItem>? = null
 )
 
-data class Mottaker(
-    val bruker: Brukere? = null,
+data class Forsikret(
+    val bruker: RBruker? = null,
+)
+
+data class Begunstiget(
+    @JsonProperty("bruker")
+    val bruker: RBruker? = null,
+    val forsikret: Forsikret? = null,
 )
 
 //kun for R005
-data class Brukere(
+@JsonIgnoreProperties(ignoreUnknown = true)
+data class RBruker(
     val mor: Foreldre? = null,
     val far: Foreldre? = null,
     val person: PersonR005? = null,
@@ -38,14 +45,8 @@ data class Brukere(
     val tilbakekreving: TilbakekrevingBrukere? = null, // Kun brukt av R005
 
     val statsborgerskap: StatsborgerskapItem? = null, // nasjonalitet (CMD 4.4)
-    val personstatus: Personstatus? = null, // (CMD 4.4)
     val familiestatus: FamiliestatusType? = null, // (CMD 4.4)
     val doedsdato: String? = null, // (CMD 4.4)
-)
-
-data class Personstatus(
-    @JsonProperty("RStatusPersonBeneficiaryNoDeceaseType")
-    val tilgodeStatusIngenAvdodType: String? = null,
 )
 
 data class FamiliestatusType(

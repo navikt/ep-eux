@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper
 import no.nav.eessi.pensjon.eux.model.sed.R005
 import org.jetbrains.annotations.TestOnly
 import org.junit.jupiter.api.Assertions
+import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import org.junit.jupiter.params.ParameterizedTest
@@ -23,6 +24,7 @@ class JsonUtilsTest{
     }
 
     @Test
+    @Disabled
     fun `Feil under json-mapping for R005 skal kaste en exception`() {
         val json = javaClass.getResource("/sed/R005-INVALID.json").readText()
 

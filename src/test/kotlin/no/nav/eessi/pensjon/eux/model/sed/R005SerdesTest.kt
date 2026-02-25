@@ -17,10 +17,10 @@ class R005SerdesTest {
 
         assertThat(recoveryNav.eessisak).hasSize(1)
         with(requireNotNull(recoveryNav.eessisak!!.first())) {
-            assertThat(institusjonsnavn).isEqualTo("Danish Pension Authority")
-            assertThat(saksnummer).isEqualTo("2024-08-385291")
-            assertThat(land).isEqualTo("DK")
-            assertThat(institusjonsid).isEqualTo("DK:4201")
+            assertThat(institusjonsnavn).isEqualTo("Dutch Pension Authority")
+            assertThat(saksnummer).isEqualTo("2026-01-998877")
+            assertThat(land).isEqualTo("NL")
+            assertThat(institusjonsid).isEqualTo("NL:7001")
         }
 
         val begunstigetBruker = requireNotNull(recoveryNav.begunstiget?.bruker) { "begunstiget.bruker skal ikke være null" }
@@ -28,47 +28,46 @@ class R005SerdesTest {
         // begunstiget person
         with(requireNotNull(begunstigetBruker.person)) {
             assertThat(kjoenn).isEqualTo("K")
-            assertThat(fornavn).isEqualTo("Ingrid Marie")
-            assertThat(etternavn).isEqualTo("Hansen")
-            assertThat(foedselsdato).isEqualTo("1987-05-23")
-            assertThat(foedested?.by).isEqualTo("AARHUS")
-            assertThat(foedested?.land).isEqualTo("DK")
+            assertThat(fornavn).isEqualTo("Emma")
+            assertThat(etternavn).isEqualTo("de Vries")
+            assertThat(foedselsdato).isEqualTo("1990-02-17")
+            assertThat(foedested?.by).isEqualTo("Utrecht")
+            assertThat(foedested?.land).isEqualTo("NL")
 
             assertThat(pin).hasSize(1)
-            assertThat(pin!!.first().identifikator).isEqualTo("19870523-7842")
-            assertThat(pin.first().institusjonsid).isEqualTo("DK:4201")
+            assertThat(pin!!.first().identifikator).isEqualTo("19900217-5566")
+            assertThat(pin.first().institusjonsid).isEqualTo("NL:7001")
             assertThat(pin.first().sektor).isEqualTo("alle")
-            assertThat(pin.first().land).isEqualTo("DK")
-            assertThat(pin.first().institusjonsnavn).isEqualTo("Danish Pension Authority")
+            assertThat(pin.first().land).isEqualTo("NL")
+            assertThat(pin.first().institusjonsnavn).isEqualTo("Dutch Pension Authority")
         }
 
-        val forsikretBruker = requireNotNull(recoveryNav.forsikret?.bruker) { "forsikret.bruker skal ikke være null" }
+        val forsikretBruker = requireNotNull(recoveryNav.begunstiget.forsikret?.bruker) { "forsikret.bruker skal ikke være null" }
 
         // forsikret person
         with(requireNotNull(forsikretBruker.person)) {
             assertThat(kjoenn).isEqualTo("M")
-            assertThat(fornavn).isEqualTo("Lars")
-            assertThat(etternavn).isEqualTo("Kristensen")
-            assertThat(foedselsdato).isEqualTo("1982-03-14")
-            assertThat(foedested?.by).isEqualTo("Bergen")
-            assertThat(foedested?.land).isEqualTo("NO")
+            assertThat(fornavn).isEqualTo("Johan")
+            assertThat(etternavn).isEqualTo("Visser")
+            assertThat(foedselsdato).isEqualTo("1984-11-05")
+            assertThat(foedested?.by).isEqualTo("Gent")
+            assertThat(foedested?.land).isEqualTo("BE")
 
             assertThat(pin).hasSize(2)
-            assertThat(pin!!.first().identifikator).isEqualTo("19820314-6293")
-            assertThat(pin.first().institusjonsid).isEqualTo("DK:4201")
-            assertThat(pin.first().land).isEqualTo("DK")
+            assertThat(pin!!.first().identifikator).isEqualTo("19841105-7788")
+            assertThat(pin.first().institusjonsid).isEqualTo("NL:7001")
+            assertThat(pin.first().land).isEqualTo("NL")
             assertThat(pin.first().sektor).isEqualTo("alle")
-            assertThat(pin.first().institusjonsnavn).isEqualTo("Danish Pension Authority")
+            assertThat(pin.first().institusjonsnavn).isEqualTo("Dutch Pension Authority")
 
-            assertThat(pin[1].identifikator).isEqualTo("140382 42156")
-            assertThat(pin[1].institusjonsid).isEqualTo("NO:974760673")
-            assertThat(pin[1].land).isEqualTo("NO")
+            assertThat(pin[1].identifikator).isEqualTo("051184 34567")
+            assertThat(pin[1].institusjonsid).isEqualTo("BE:1200")
+            assertThat(pin[1].land).isEqualTo("BE")
             assertThat(pin[1].sektor).isEqualTo("alle")
-            assertThat(pin[1].institusjonsnavn).isEqualTo("The Norwegian Labour and Welfare Administration")
+            assertThat(pin[1].institusjonsnavn).isEqualTo("Belgian Pension Service")
         }
 
-        assertThat(tilbakekreving.anmodning?.type).isEqualTo("endelig")
-        assertThat(tilbakekreving.feilutbetaling?.ytelse?.type).isEqualTo("alderspensjon")
+        assertThat(tilbakekreving.anmodning?.type).isEqualTo("forelopig")
+        assertThat(tilbakekreving.feilutbetaling?.ytelse?.type).isEqualTo("uforepensjon")
     }
 }
-

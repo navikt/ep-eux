@@ -3,41 +3,41 @@
     "begunstiget": {
       "bruker": {
         "statsborgerskap": {
-          "land": "SE"
+          "land": "NL"
         },
         "person": {
-          "kjoenn": "M",
+          "kjoenn": "K",
           "pin": [
             {
-              "identifikator": "19611217-3551",
-              "institusjonsid": "SE:2001",
+              "identifikator": "19900217-5566",
+              "institusjonsid": "NL:7001",
               "sektor": "alle",
-              "land": "SE",
-              "institusjonsnavn": "The Swedish Pensions Agency"
+              "land": "NL",
+              "institusjonsnavn": "Dutch Pension Authority"
             }
           ],
-          "fornavn": "Egon Karl Bernhard",
-          "foedselsdato": "1961-12-17",
-          "etternavn": "Palmgren",
+          "fornavn": "Emma",
+          "foedselsdato": "1990-02-17",
+          "etternavn": "de Vries",
           "foedested": {
-            "by": "HÄSSLEHOLM",
-            "land": "SE"
+            "by": "Utrecht",
+            "land": "NL"
           }
         },
         "personstatus": {
-          " RStatusPersonBeneficiaryNoDeceaseType": "01"
+          " RStatusPersonBeneficiaryNoDeceaseType": "02"
         },
         "sistekjenteadresser": [
           {
-            "postkode": "27293",
-            "land": "SE",
+            "postkode": "3511",
+            "land": "NL",
             "type43": "bosted",
-            "gate": "BYGATAN 26",
-            "by": "Tommarp"
+            "gate": "OUDGRACHT 120",
+            "by": "Utrecht"
           }
         ],
         "familiestatus": {
-          "RFamilyStatusType": "enke_enkemann"
+          "RFamilyStatusType": "gift"
         }
       },
       "forsikret": {
@@ -45,51 +45,51 @@
           "person": {
             "pin": [
               {
-                "identifikator": "19651204-5797",
-                "institusjonsid": "SE:2001",
-                "land": "SE",
+                "identifikator": "19841105-7788",
+                "institusjonsid": "NL:7001",
+                "land": "NL",
                 "sektor": "alle",
-                "institusjonsnavn": "The Swedish Pensions Agency"
+                "institusjonsnavn": "Dutch Pension Authority"
               },
               {
-                "institusjonsnavn": "The Norwegian Labour and Welfare Administration",
-                "land": "NO",
+                "institusjonsnavn": "Belgian Pension Service",
+                "land": "BE",
                 "sektor": "alle",
-                "institusjonsid": "NO:889640782",
-                "identifikator": "041265 35770"
+                "institusjonsid": "BE:1200",
+                "identifikator": "051184 34567"
               }
             ],
-            "etternavn": "Ruud",
+            "etternavn": "Visser",
             "foedested": {
-              "land": "NO",
-              "by": "Oslo"
+              "land": "BE",
+              "by": "Gent"
             },
             "kjoenn": "M",
-            "fornavn": "Simen",
-            "foedselsdato": "1965-12-04"
+            "fornavn": "Johan",
+            "foedselsdato": "1984-11-05"
           },
           "sistekjenteadresser": [
             {
-              "land": "SE",
-              "postkode": "27293",
+              "land": "NL",
+              "postkode": "3511",
               "type43": "bosted",
-              "gate": "BYGATAN 26",
-              "by": "Tommarp"
+              "gate": "OUDGRACHT 120",
+              "by": "Utrecht"
             }
           ],
           "statsborgerskap": {
-            "land": "NO"
+            "land": "BE"
           },
-          "doedsdato": "2025-06-18"
+          "doedsdato": "2023-09-14"
         }
       }
     },
     "eessisak": [
       {
-        "institusjonsnavn": "The Swedish Pensions Agency",
-        "saksnummer": "2026-02-210748",
-        "land": "SE",
-        "institusjonsid": "SE:2001"
+        "institusjonsnavn": "Dutch Pension Authority",
+        "saksnummer": "2026-01-998877",
+        "land": "NL",
+        "institusjonsid": "NL:7001"
       }
     ]
   },
@@ -97,11 +97,11 @@
   "tilbakekreving": {
     "feilutbetaling": {
       "ytelse": {
-        "type": "etterlattepensjon_enke"
+        "type": "uforepensjon"
       }
     },
     "anmodning": {
-      "type": "foreløpig"
+      "type": "forelopig"
     }
   },
   "sedGVer": "4",

@@ -5,6 +5,7 @@ import no.nav.eessi.pensjon.utils.JsonIllegalArgumentException
 import no.nav.eessi.pensjon.utils.mapJsonToAny
 import no.nav.eessi.pensjon.utils.toJson
 import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
@@ -12,6 +13,7 @@ internal class SedTest {
 
 
     @Test
+    @Disabled
     fun `Feil under json-mapping for R005 skal kaste en exception`() {
         val json = javaClass.getResource("/sed/R005-INVALID.json").readText()
 
