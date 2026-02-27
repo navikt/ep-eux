@@ -39,10 +39,6 @@ enum class KravType(@JsonValue val verdi: String?) {
                 fun fromValue(value: String?): KravType? {
                         return entries.find { it.verdi == value || it.name == value || (it == GJENLEV && value == "GJENLEV") }
                 }
-
-                fun fraNavnEllerVerdi(input: String?): KravType? {
-                        return entries.find { it.name == input || it.verdi == input || (it == GJENLEV && input == "GJENLEV") }
-                }
         }
 }
 
