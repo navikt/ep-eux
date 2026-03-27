@@ -87,7 +87,6 @@ private fun sed(string: String): String = """
             "annenperson" : null
           },
           "sedGVer" : "4",
-          "sedVer" : "3",
           "pensjon" : null
         }
         """.trimIndent()

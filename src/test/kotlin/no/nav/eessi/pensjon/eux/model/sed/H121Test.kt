@@ -18,7 +18,6 @@ internal class SedTestX121 {
         {
           "sed" : "H121",
           "sedGVer" : "4",
-          "sedVer" : "2",
           "nav" : {
             "eessisak" : null,
             "bruker" : {
