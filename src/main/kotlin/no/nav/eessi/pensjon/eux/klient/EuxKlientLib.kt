@@ -87,7 +87,7 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var 
                 .enable(StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION)
                 .streamReadConstraints(
                     StreamReadConstraints.builder()
-                        .maxStringLength(100_000_000)
+                        .maxStringLength(150_000_000)
                         .build()
                 )
                 .build()
