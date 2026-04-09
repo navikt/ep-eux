@@ -1,7 +1,11 @@
 package no.nav.eessi.pensjon.eux.model.sed
 
+import com.fasterxml.jackson.annotation.JsonIgnore
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
+import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonValue
+import java.time.LocalDate
+import java.time.LocalDateTime
 
 open class MeldingOmPensjon(
 	open val melding: String?,
@@ -173,7 +177,10 @@ data class VedtakItem(
 	val basertPaaAnnen: String? = null,
 	val delvisstans: DelvisstansItem? = null, //2021.09.06, lagt inn grunnet mapping
 	val kjoeringsdato: String? = null,
-	val begrunnelseAnnen: String ? = null
+	val begrunnelseAnnen: String ? = null,
+	@JsonInclude(JsonInclude.Include.NON_NULL)
+	val iverksettelsesTidspunkt: LocalDate ? = null,
+
 )
 
 data class Ukjent(
