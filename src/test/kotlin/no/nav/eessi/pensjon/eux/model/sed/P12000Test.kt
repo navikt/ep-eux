@@ -63,8 +63,6 @@ class P12000Test {
               }
             }
           },
-          "sedGVer": "4",
-          "sedVer": "2",
           "sed": "P12000"
         }
         """.trimIndent()

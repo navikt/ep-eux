@@ -89,7 +89,6 @@ class X010Test {
               }
             }
           },
-          "sedGVer" : "4",
           "pensjon" : null
         }
         """.trimIndent()

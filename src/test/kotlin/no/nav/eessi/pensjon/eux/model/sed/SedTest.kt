@@ -92,9 +92,7 @@ internal class SedTest {
         {
            "sed":"P2000",
            "nav":${getNav()},
-           "pensjon":null,
-           "sedGVer":"4",
-           "sedVer":"versjon"
+           "pensjon":null
         }
     """.trimIndent()
     }

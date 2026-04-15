@@ -47,8 +47,6 @@ internal class JsonMappingToSed {
             println("Feil readFile :${ex.message}")
             """ {
                   "sed": "$type",
-                  "sedGVer": "4",
-                  "sedVer": "2",
                   "nav": null 
                   }
                 """.trimIndent()
@@ -62,14 +60,9 @@ internal class JsonMappingToSed {
         when(sed) {
             is P2000 -> {
                 assertEquals(P2000::class.java.name, sed.javaClass.name)
-//                assertEquals("4.2", sedVersion(sed))
-//                assertEquals("4.5", sedVersion(sed))
-
             }
             is P2100 -> {
                 assertEquals(P2100::class.java.name, sed.javaClass.name)
-//                assertEquals("4.0", sedVersion(sed))
-//                assertEquals("4.5", sedVersion(sed))
                 assertEquals("adgadfgadfgadfgadfgadfgadfgadfgadfgadfgadfgdafgdaf", sed.pensjon?.gjenlevende?.person?.etternavn)
             }
             is P5000 -> {
@@ -106,8 +99,6 @@ internal class JsonMappingToSed {
 
                 assertEquals("dokument", x009.xnav?.sak?.paaminnelse?.sende?.firstOrNull()?.type)
                 assertEquals("æøå", x009.xnav?.sak?.paaminnelse?.sende?.firstOrNull()?.detaljer)
-
-
 
             }
             is X010 -> {
@@ -164,11 +155,9 @@ internal class JsonMappingToSed {
                     assertEquals("The Norwegian Labour and Welfare Administration", sed.nav?.bruker?.person?.pin?.first()?.institusjonsnavn)
                 }
                 println("Ikke noe detaljert assert på ${sed.type}")
-            } //
+            }
         }
     }
-
-//    private fun sedVersion(sed: SED) = "${sed.sedGVer}.${sed.sedVer}"
 
     private fun readFile(file: String): String = javaClass.getResource(file)!!.readText()
 
