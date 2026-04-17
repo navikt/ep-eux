@@ -17,6 +17,7 @@ internal class SedTestX121 {
         val expected = """
         {
           "sed" : "H121",
+          "sedGVer" : "4",
           "nav" : {
             "eessisak" : null,
             "bruker" : {

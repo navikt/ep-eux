@@ -28,6 +28,8 @@
       ]
     }
   },
+  "sedGVer": "4",
+  "sedVer": "3",
   "sed": "H001",
   "horisontal": {
     "bruker": {

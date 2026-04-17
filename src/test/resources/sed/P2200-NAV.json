@@ -195,6 +195,7 @@
       "land" : "NO"
     } ]
   },
+  "sedVer" : "0",
   "pensjon" : {
     "ytelser" : [ {
       "status" : "02",
@@ -263,5 +264,6 @@
       "mottaker" : [ "representant_eller_verge" ]
     } ]
   },
+  "sedGVer" : "4",
   "sed" : "P2200"
 }
