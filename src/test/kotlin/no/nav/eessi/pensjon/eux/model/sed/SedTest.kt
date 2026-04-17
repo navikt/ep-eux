@@ -69,14 +69,14 @@ internal class SedTest {
 
     @Test
     fun `Serialiseringstest for P2000 med verge`() {
-        val p2000 = getSed()
+        val p2000 = getSed(sedVersion = "2")
         val sed  = SED.fromJsonToConcrete(p2000)
         assertEquals(sed.nav?.barn?.firstOrNull()?.relasjontilbruker, "eget_barn")
     }
 
     @Test
     fun `Serialiseringstest for P2000 med barn og relasjon for versjon 43 skal fungerer begge veier`() {
-        val p2000 = getSed()
+        val p2000 = getSed(sedVersion = "2")
         val sedString  = SED.fromJsonToConcrete(p2000)
         assertEquals(sedString.nav?.barn?.firstOrNull()?.relasjontilbruker, "eget_barn")
         assertEquals(sedString.nav?.barn?.firstOrNull()?.getRelasjontilbruker43(), "eget_barn")
@@ -87,7 +87,7 @@ internal class SedTest {
         assertEquals(sedVersjon2.nav?.barn?.firstOrNull()?.getRelasjontilbruker43(), "eget_barn")
     }
 
-    fun getSed(): String {
+    fun getSed(sedVersion: String): String {
         return """
         {
            "sed":"P2000",
