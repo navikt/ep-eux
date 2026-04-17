@@ -40,6 +40,7 @@ class X010Test {
         )
 
         val json = x010.toJson()
+        println(json)
 
         JSONAssert.assertEquals(expectedJson(), json, false)
 
@@ -90,6 +91,7 @@ class X010Test {
             }
           },
           "sedGVer" : "4",
+          "sedVer" : "2",
           "pensjon" : null
         }
         """.trimIndent()

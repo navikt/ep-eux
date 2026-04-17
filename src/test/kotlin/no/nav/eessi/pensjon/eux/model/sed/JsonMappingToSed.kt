@@ -62,14 +62,18 @@ internal class JsonMappingToSed {
         when(sed) {
             is P2000 -> {
                 assertEquals(P2000::class.java.name, sed.javaClass.name)
-//                assertEquals("4.2", sedVersion(sed))
-//                assertEquals("4.5", sedVersion(sed))
+                assertEquals("4.2", sedVersion(sed))
+                sed.sedVer = "5"
+                assertEquals("4.5", sedVersion(sed))
+                sed.sedVer = "2" //sett tilbake
 
             }
             is P2100 -> {
                 assertEquals(P2100::class.java.name, sed.javaClass.name)
-//                assertEquals("4.0", sedVersion(sed))
-//                assertEquals("4.5", sedVersion(sed))
+                assertEquals("4.0", sedVersion(sed))
+                sed.sedVer = "5"
+                assertEquals("4.5", sedVersion(sed))
+                sed.sedVer = "0" // sett tilbake
                 assertEquals("adgadfgadfgadfgadfgadfgadfgadfgadfgadfgadfgdafgdaf", sed.pensjon?.gjenlevende?.person?.etternavn)
             }
             is P5000 -> {
@@ -168,9 +172,9 @@ internal class JsonMappingToSed {
         }
     }
 
-//    private fun sedVersion(sed: SED) = "${sed.sedGVer}.${sed.sedVer}"
+    private fun sedVersion(sed: SED) = "${sed.sedGVer}.${sed.sedVer}"
 
-    private fun readFile(file: String): String = javaClass.getResource(file)!!.readText()
+    private fun readFile(file: String): String = javaClass.getResource(file).readText()
 
     companion object {
         @JvmStatic
