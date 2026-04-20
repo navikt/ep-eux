@@ -35,7 +35,7 @@ open class SED(
     @JsonProperty("sed")
     open val type: SedType,
     open val sedGVer: String? = "4",
-    open var sedVer: String? = setSEDVersion("2"),
+    open var sedVer: String? = setSEDVersion("4"),
     open val nav: Nav? = null,
     open val pensjon: Pensjon? = null
 ) {
@@ -44,6 +44,7 @@ open class SED(
         //TODO Hvorfor logges 4.3 som 4.2????
         fun setSEDVersion(sedVersion: String?): String {
             return when(sedVersion) {
+                "v4.4" -> "4"
                 "v4.3" -> "3"
                 else -> "2"
             }.also { logger.debug("SED version: v4.$sedVersion") }
