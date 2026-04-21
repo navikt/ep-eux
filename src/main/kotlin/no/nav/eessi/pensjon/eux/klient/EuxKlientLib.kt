@@ -5,7 +5,6 @@ import com.fasterxml.jackson.core.JsonFactory
 import com.fasterxml.jackson.core.StreamReadConstraints
 import com.fasterxml.jackson.core.StreamReadFeature
 import com.fasterxml.jackson.databind.ObjectMapper
-import com.fasterxml.jackson.databind.json.JsonMapper
 import com.fasterxml.jackson.module.kotlin.registerKotlinModule
 import no.nav.eessi.pensjon.eux.model.InstitusjonDetalj
 import no.nav.eessi.pensjon.eux.model.SedMetadata
@@ -15,6 +14,7 @@ import no.nav.eessi.pensjon.eux.model.buc.PreviewPdf
 import no.nav.eessi.pensjon.eux.model.document.SedDokumentfiler
 import no.nav.eessi.pensjon.eux.model.sed.SED
 import no.nav.eessi.pensjon.utils.mapJsonToAny
+import no.nav.eessi.pensjon.utils.toJson
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.slf4j.MDC
@@ -261,6 +261,24 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var 
         response.body?.let { return it } ?: run {
             logger.error("Får ikke opprettet BUC på bucType: $bucType")
             throw IkkeFunnetException("Fant ikke noen euxCaseId på bucType: $bucType")
+        }
+    }
+
+    fun createHBuc07(mottakerId: String, h070: SED): String {
+        val headers = HttpHeaders()
+        headers.contentType = MediaType.APPLICATION_JSON
+        val httpEntity = HttpEntity(h070.toJson(), headers)
+        val builder = UriComponentsBuilder.fromPath("/buc/sed")
+            .queryParam("BuCType", "H_BUC_07")
+            .queryParam("MottakerId ", mottakerId )
+            .build()
+
+        logger.info("Kontakter EUX for å prøve på opprette en H070 på H_BUC_07")
+        val response = euxRestTemplate.exchange(builder.toUriString(), HttpMethod.POST, httpEntity, String::class.java)
+
+        response.body?.let { return it } ?: run {
+            logger.error("Får ikke opprettet BUC på bucType: H_BUC_07")
+            throw IkkeFunnetException("Fant ikke noen euxCaseId på bucType: H_BUC_07")
         }
     }
 
