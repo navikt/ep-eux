@@ -269,8 +269,8 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var 
         headers.contentType = MediaType.APPLICATION_JSON
         val httpEntity = HttpEntity(h070.toJson(), headers)
         val builder = UriComponentsBuilder.fromPath("/buc/sed")
-            .queryParam("BuCType", "H_BUC_07")
-            .queryParam("MottakerId ", mottakerId )
+            .queryParam("BucType", "H_BUC_07")
+            .queryParam("MottakerId", mottakerId )
             .build()
 
         logger.info("Kontakter EUX for å prøve på opprette en H070 på H_BUC_07")
