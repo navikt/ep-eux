@@ -16,5 +16,5 @@ data class HBruker(
 )
 
 data class Doedsfall(
-    val doedsdato: LocalDate? = null,
+    val doedsdato: String? = null,
 )
