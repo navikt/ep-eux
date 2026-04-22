@@ -6,5 +6,6 @@ import no.nav.eessi.pensjon.eux.model.SedType
 class H070(
     @JsonProperty("sed")
     override var type: SedType,
-    override var nav: Nav? = null,
-) : SED(type, nav = nav)
+    @JsonProperty("nav")
+    var hnav: HNav? = null,
+) : SED(type)
