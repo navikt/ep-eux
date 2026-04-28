@@ -37,5 +37,5 @@ dependencies {
     testImplementation("org.assertj:assertj-core:3.27.7")
     testImplementation("io.mockk:mockk:1.14.9")
     // Architecture tests
-    testImplementation ("com.tngtech.archunit:archunit:1.4.1")
+    testImplementation ("com.tngtech.archunit:archunit:1.4.2")
 }
