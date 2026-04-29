@@ -9,4 +9,5 @@ class Attachment(
     val documentId: String? = null,
     val id: String? = null,
     val parentDocumentId: Any? = null         // I bruk av frontend
+    val filesize: String? = null
 )
