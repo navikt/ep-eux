@@ -13,6 +13,17 @@ data class SedMetadata(
     val opprettetDato: String? = null,
 )
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
+data class Avsendere(
+    val motparter: List<Motparter>,
+)
+
+data class Motparter(
+    val motpartId: String,
+    val motpartLand: String,
+    val motpartLandkode: String,
+)
+
 
 data class Avsender(
     val formatertNavn: String? = null,
