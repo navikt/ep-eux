@@ -55,6 +55,29 @@ class EuxKlientLibTest {
     }
 
     @Test
+    fun `hentSedMetadataLand skal returnere avsenderland`() {
+        val rinasakId = "1453391"
+
+        val response = """
+        {
+          "motparter" : [ {
+            "motpartId" : "SE:SWETT",
+            "motpartLand" : "SE",
+            "motpartLandkode" : "SWE"
+          } ]
+        }
+        """.trimIndent()
+
+        every { mockTemplate.getForObject(eq("/v5/rinasaker/$rinasakId/oversikt"), eq(String::class.java)) } returns response
+
+        val resultat = euxKlientLib.hentSedMetadataLand(rinasakId,  mockTemplate)
+
+        assertEquals(response,resultat?.toJson())
+        assertEquals("SE",resultat?.motparter?.firstOrNull()?.motpartLand)
+        assertEquals("SWE",resultat?.motparter?.firstOrNull()?.motpartLandkode)
+    }
+
+    @Test
     fun `hentSed skal returnere et SED document som er en SED eller et subset av SED`() {
         val json = javaClass.getResource("/sed/P2000-NAV.json")!!.readText()
         every { mockTemplate.getForObject(eq("/buc/111/sed/222"), eq(String::class.java)) } returns json
