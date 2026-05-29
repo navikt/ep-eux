@@ -21,11 +21,12 @@ class DocumentsItem(
     val parentDocumentId: String? = null,
     val status: String? = null,
     val participants: List<Participant?>? = null,
-    val firstVersion: VersionsItemNoUser? = null,         // I bruk av frontend
+    val firstVersion: VersionsItemNoUser? = null,        // I bruk av frontend
     val lastVersion: VersionsItemNoUser? = null,         // I bruk av frontend
     val version: String? = null,
     var message: String? = null,
     val name: Any? = null,
     val mimeType: String? = null,
     val creator: Creator? = null,
+    val attachmentsSize: String? = null                 // full størrelse på alle attachment
 )
