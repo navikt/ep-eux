@@ -63,7 +63,7 @@ class ForbiddenException(message: String?) : ResponseStatusException(HttpStatus.
 
 class EuxRinaServerException(message: String?) : ResponseStatusException(HttpStatus.NOT_FOUND, message)
 
-class GenericUnprocessableEntity(message: String) : ResponseStatusException(HttpStatus.UNPROCESSABLE_ENTITY, message)
+class GenericUnprocessableEntity(message: String) : ResponseStatusException(HttpStatus.UNPROCESSABLE_CONTENT, message)
 
 class GatewayTimeoutException(message: String?) : ResponseStatusException(HttpStatus.GATEWAY_TIMEOUT, message)
 

@@ -107,7 +107,7 @@ inline fun eessiRequire(value: Boolean, status: HttpStatus = HttpStatus.BAD_REQU
 fun Any.toJsonSkipEmpty() = mapAnyToJson(this, true)
 fun Any.toJson() = mapAnyToJson(this)
 
-@ResponseStatus(value = HttpStatus.UNPROCESSABLE_ENTITY)
+@ResponseStatus(value = HttpStatus.UNPROCESSABLE_CONTENT)
 class JsonException(message: String?, cause: Throwable?) : RuntimeException(message, cause)
 
 @ResponseStatus(value = HttpStatus.BAD_REQUEST)
