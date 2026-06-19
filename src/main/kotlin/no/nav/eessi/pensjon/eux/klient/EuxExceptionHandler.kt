@@ -11,7 +11,7 @@ open class EuxExceptionHandler(open var overrideWaitTimes: Long = 1000L) {
     private val logger: Logger by lazy { LoggerFactory.getLogger(EuxExceptionHandler::class.java) }
 
     @Throws(Throwable::class)
-    fun <T> retryHelper(func: () -> T, maxAttempts: Int = 3, skipError: List<HttpStatus>? = emptyList()): T {
+    fun <T> retryHelper(func: () -> T, maxAttempts: Int = 2, skipError: List<HttpStatus>? = emptyList()): T {
         val orgMetode = Thread.currentThread().stackTrace[2].methodName
         var exception: Throwable? = null
         var count = 0
@@ -23,6 +23,7 @@ open class EuxExceptionHandler(open var overrideWaitTimes: Long = 1000L) {
             } catch (ex: Throwable) {
                 if (isSkippableError(ex, skipError)) {
                     logSkippedError(orgMetode, ex)
+                    Thread.sleep(overrideWaitTimes)
                     throw ex
                 }
                 count++
@@ -33,7 +34,7 @@ open class EuxExceptionHandler(open var overrideWaitTimes: Long = 1000L) {
             }
         }
 
-        logger.error("Feilet å kontakte eux melding: ${exception?.message}", exception)
+        logger.error("Feilet å kontakte eux melding: ${exception?.message}, overrideWaitTime: $overrideWaitTimes", exception)
 
         throw exception ?: IllegalStateException("Unexpected failure without exception")
     }
