@@ -68,7 +68,7 @@ class EuxKlientLibTest {
         }
         """.trimIndent()
 
-        every { mockTemplate.getForObject(eq("/v5/rinasaker/$rinasakId/oversikt"), eq(String::class.java)) } returns response
+        every { mockTemplate.getForObject(eq("/rinasaker/$rinasakId/oversikt"), eq(String::class.java)) } returns response
 
         val resultat = euxKlientLib.hentSedMetadataLand(rinasakId,  mockTemplate)
 
