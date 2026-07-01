@@ -70,7 +70,7 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var 
     fun hentSedMetadataLand(rinasakId: String, euxSystemRestTemplate: RestTemplate): Avsendere? {
         logger.info("Henter SED metadata for å finne land i sak med rinasakId: $rinasakId.")
 
-        val response = euxSystemRestTemplate.getForObject("/v5/rinasaker/$rinasakId/oversikt", String::class.java)
+        val response = euxSystemRestTemplate.getForObject("/rinasaker/$rinasakId/oversikt", String::class.java)
         return response?.let { mapJsonToAny<Avsendere>(it) }
 
     }
