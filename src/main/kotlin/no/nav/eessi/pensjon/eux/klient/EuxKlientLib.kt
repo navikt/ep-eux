@@ -7,6 +7,7 @@ import com.fasterxml.jackson.core.StreamReadFeature
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.module.kotlin.registerKotlinModule
 import no.nav.eessi.pensjon.eux.model.Avsendere
+import no.nav.eessi.pensjon.eux.model.BucInfo
 import no.nav.eessi.pensjon.eux.model.InstitusjonDetalj
 import no.nav.eessi.pensjon.eux.model.SedMetadata
 import no.nav.eessi.pensjon.eux.model.buc.Buc
@@ -67,12 +68,11 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var 
 
     }
 
-    fun hentSedMetadataLand(rinasakId: String, euxSystemRestTemplate: RestTemplate): Avsendere? {
+    fun hentSedMetadataLand(rinasakId: String, euxSystemRestTemplate: RestTemplate): BucInfo? {
         logger.info("Henter SED metadata for å finne land i sak med rinasakId: $rinasakId.")
 
         val response = euxSystemRestTemplate.getForObject("/rinasaker/$rinasakId/oversikt", String::class.java)
-        return response?.let { mapJsonToAny<Avsendere>(it) }
-
+        return response?.let { mapJsonToAny<BucInfo>(it) }
     }
 
 
