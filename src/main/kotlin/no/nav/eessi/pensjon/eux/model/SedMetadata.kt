@@ -19,10 +19,16 @@ data class Avsendere(
 )
 
 data class Motparter(
-    val motpartId: String,
-    val motpartLand: String,
-    val motpartLandkode: String,
-)
+    val motpartId: String? = null,
+    val motpartLand: String? = null,
+    val motpartLandkode: String? = null
+){
+    fun normalisert() = copy(
+        motpartId = motpartId?.trim(),
+        motpartLand = motpartLand?.trim(),
+        motpartLandkode = motpartLandkode?.trim(),
+    )
+}
 
 
 data class Avsender(

@@ -11,4 +11,14 @@ data class BucInfo(
     val motparter: List<Motparter>? = null,
     val sistEndretDato: String? = null,
     val opprettetDato: String? = null,
-)
+) {
+    fun normalisert() = copy(
+        sakTittel = sakTittel?.trim(),
+        sakType = sakType?.trim(),
+        internasjonalSakId = internasjonalSakId?.trim(),
+        erSakseier = erSakseier?.trim(),
+        motparter = motparter?.map { it.normalisert() },
+        sistEndretDato = sistEndretDato?.trim(),
+        opprettetDato = opprettetDato?.trim(),
+    )
+}
