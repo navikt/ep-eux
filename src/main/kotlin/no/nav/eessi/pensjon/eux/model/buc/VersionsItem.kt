@@ -10,8 +10,3 @@ data class CaseHandler(
     val id: String? = null,
     val name: String? = null
 )
-
-class VersionsItemNoUser(
-    val date: Any? = null,
-    val id: String? = null
-)

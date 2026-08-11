@@ -21,8 +21,8 @@ class DocumentsItem(
     val parentDocumentId: String? = null,
     val status: String? = null,
     val participants: List<Participant?>? = null,
-    val firstVersion: VersionsItemNoUser? = null,        // I bruk av frontend
-    val lastVersion: VersionsItemNoUser? = null,         // I bruk av frontend
+    val firstVersion: VersionsItem? = null,        // I bruk av frontend
+    val lastVersion: VersionsItem? = null,         // I bruk av frontend
     val version: String? = null,
     var message: String? = null,
     val name: Any? = null,
