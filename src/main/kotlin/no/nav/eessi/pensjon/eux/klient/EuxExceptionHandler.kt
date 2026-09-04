@@ -2,7 +2,9 @@ package no.nav.eessi.pensjon.eux.klient
 
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
+import org.springframework.http.HttpMessage
 import org.springframework.http.HttpStatus
+import org.springframework.http.StreamingHttpOutputMessage
 import org.springframework.web.client.HttpClientErrorException
 import org.springframework.web.server.ResponseStatusException
 import kotlin.reflect.KFunction
@@ -20,6 +22,12 @@ open class EuxExceptionHandler(open var overrideWaitTimes: Long = 1000L) {
             try {
                 if (count > 0) logRetry(count, orgMetode, null)
                 return func.invoke()
+            } catch (ex: Exception) {
+                if (ex.message?.contains("Saken er arkivert") == true) {
+                    logger.error("Saken er arkivert. Denne er ikke kandidat for retry", ex)
+                    return func.invoke()
+                }
+                throw ex
             } catch (ex: Throwable) {
                 if (isSkippableError(ex, skipError)) {
                     logSkippedError(orgMetode, ex)

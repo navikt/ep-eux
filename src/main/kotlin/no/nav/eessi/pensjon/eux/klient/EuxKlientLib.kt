@@ -23,6 +23,7 @@ import org.slf4j.MDC
 import org.springframework.core.io.Resource
 import org.springframework.http.*
 import org.springframework.web.client.RestTemplate
+import org.springframework.web.client.getForObject
 import org.springframework.web.server.ResponseStatusException
 import org.springframework.web.util.UriComponents
 import org.springframework.web.util.UriComponentsBuilder
@@ -51,7 +52,7 @@ open class EuxKlientLib(private val euxRestTemplate: RestTemplate, override var 
         logger.info("Henter BUC (RinaSakId: $rinaSakId)")
 
         return retryHelper(
-            func = { euxRestTemplate.getForObject("/buc/$rinaSakId", String::class.java)},
+            func = { euxRestTemplate.getForObject<String>("/buc/$rinaSakId")},
             maxAttempts = 3,
             skipError = skipError
         )
