@@ -1,6 +1,7 @@
 package no.nav.eessi.pensjon.eux.model.sed
 
 import no.nav.eessi.pensjon.utils.mapJsonToAny
+import no.nav.eessi.pensjon.utils.toJson
 import no.nav.eessi.pensjon.utils.toJsonSkipEmpty
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
@@ -15,6 +16,11 @@ class P12000UtvidetTest {
         val p12000Betalingsdetaljer = p12000.pensjon?.pensjoninfo?.firstOrNull()?.betalingsdetaljer
         val p12000Opphoring = p12000.pensjon?.pensjoninfo?.firstOrNull()?.pensjonsopphoring
         val p12000Avslag = p12000.pensjon?.pensjoninfo?.firstOrNull()?.pensjonsavslag
+        val p12000YtterligereInformasjon = p12000.pensjon?.ytterligereInformasjon
+        val p12000MerInformasjon = p12000.pensjon?.merinformasjon?.ytelser?.firstOrNull()?.tilleggsytelserutbetalingitilleggtilpensjon
+
+        assertEquals("ytterligere", p12000YtterligereInformasjon)
+        assertEquals("tillegg", p12000MerInformasjon)
 
         assertEquals("æøå", p12000Betalingsdetaljer?.belop)
         assertEquals("01", p12000Betalingsdetaljer?.pensjonstype)
@@ -23,8 +29,10 @@ class P12000UtvidetTest {
         assertEquals("2001-01-01", p12000Betalingsdetaljer?.effektueringsdato)
 
         assertEquals("01", p12000Opphoring?.pensjonstype)
+        assertEquals("æøå", p12000Opphoring?.begrunnelse)
 
         assertEquals("01", p12000Avslag?.pensjonstype)
+        assertEquals("æøå", p12000Avslag?.begrunnelse)
 
         // gjenlevende skal også være en del av P12000
         assertEquals("Kari", p12000.pensjon?.gjenlevende?.mor?.person?.fornavn)
@@ -160,7 +168,7 @@ class P12000UtvidetTest {
             },
             "merinformasjon" : {
               "ytelser" : [ {
-                "tilleggsytelserutbetalingitilleggtilpensjon" : "æøå"
+                "tilleggsytelserutbetalingitilleggtilpensjon" : "tillegg"
               } ]
             },
             "pensjoninfo" : [ {
@@ -178,18 +186,18 @@ class P12000UtvidetTest {
                 "arbeidstotal" : "æøå"
               },
               "pensjonsavslag" : {
-                "tekstfelt" : "æøå",
+                "begrunnelse" : "æøå",
                 "pensjonstype" : "01"
               },
               "pensjonsopphoring" : {
                 "pensjonstype" : "01",
-                "tekstfelt" : "æøå"
+                "begrunnelse" : "æøå"
               }
             } ],
             "foresporsel" : {
               "referanseTilPerson" : "01"
             },
-            "ytterligeinformasjon" : "æøå",
+            "ytterligereInformasjon" : "ytterligere",
             "anmodning13000verdi" : "1"
           },
           "sedVer" : "3",
