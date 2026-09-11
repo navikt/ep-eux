@@ -5,6 +5,10 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 
 data class P12000Pensjon(
     val pensjoninfo:  List<Pensjoninfo>? = null,
+    val merinformasjon: Ytelser? = null,
+    val ytterligeinformasjon: String? = null,
+    val foresporsel: MerInformasjon? = null,
+    val anmodning13000verdi:  String? = null,
     override val gjenlevende: Bruker? = null
 ) : Pensjon()
 
@@ -12,6 +16,8 @@ data class P12000Pensjon(
 @JsonIgnoreProperties(ignoreUnknown = true)
 data class Pensjoninfo(
     val betalingsdetaljer: Betalingsdetaljer? = null,
+    val pensjonsavslag: PensjonsType? = null,
+    val pensjonsopphoring: Pensjonsopphoring? = null,
 )
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -27,4 +33,20 @@ data class Betalingsdetaljer(
     val bosattotal: String? = null,
     val arbeidstotal: String? = null,
     val betaldato: String? = null,
+)
+
+data class Ytelser(
+    val ytelser: List<Tilleggsytelserutbetalingitilleggtilpensjon>? = null
+)
+
+data class Tilleggsytelserutbetalingitilleggtilpensjon(
+    val tilleggsytelserutbetalingitilleggtilpensjon: String? = null
+)
+
+data class Pensjonsopphoring(
+    val pensjonstype: String? = null
+)
+
+data class PensjonsType(
+    val pensjonstype: String? = null
 )
