@@ -41,7 +41,10 @@ class P12000Test {
                   "basertpaa": "01",
                   "belop": "11111",
                   "valuta": "EUR"
-                }
+                },
+                "pensjonsavslag" : {
+                 "pensjonstype" : "01"
+               }
               }
             ],
             "gjenlevende": {             
