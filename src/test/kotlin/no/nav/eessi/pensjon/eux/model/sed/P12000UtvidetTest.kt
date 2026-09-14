@@ -13,11 +13,11 @@ class P12000UtvidetTest {
     fun mapJsonToP12000() {
 
         val p12000 = mapJsonToAny<P12000>(p12000Json())
-        val p12000Betalingsdetaljer = p12000.pensjon?.pensjoninfo?.firstOrNull()?.betalingsdetaljer
-        val p12000Opphoring = p12000.pensjon?.pensjoninfo?.firstOrNull()?.pensjonsopphoring
-        val p12000Avslag = p12000.pensjon?.pensjoninfo?.firstOrNull()?.pensjonsavslag
-        val p12000YtterligereInformasjon = p12000.pensjon?.ytterligereInformasjon
-        val p12000MerInformasjon = p12000.pensjon?.merinformasjon?.ytelser?.firstOrNull()?.tilleggsytelserutbetalingitilleggtilpensjon
+        val p12000Betalingsdetaljer = p12000.pensjonP12000?.pensjoninfo?.firstOrNull()?.betalingsdetaljer
+        val p12000Opphoring = p12000.pensjonP12000?.pensjoninfo?.firstOrNull()?.pensjonsopphoring
+        val p12000Avslag = p12000.pensjonP12000?.pensjoninfo?.firstOrNull()?.pensjonsavslag
+        val p12000YtterligereInformasjon = p12000.pensjonP12000?.ytterligereInformasjon
+        val p12000MerInformasjon = p12000.pensjonP12000?.merinformasjon?.ytelser?.firstOrNull()?.tilleggsytelserutbetalingitilleggtilpensjon
 
         assertEquals("ytterligere", p12000YtterligereInformasjon)
         assertEquals("tillegg", p12000MerInformasjon)
@@ -35,7 +35,7 @@ class P12000UtvidetTest {
         assertEquals("æøå", p12000Avslag?.begrunnelse)
 
         // gjenlevende skal også være en del av P12000
-        assertEquals("Kari", p12000.pensjon?.gjenlevende?.mor?.person?.fornavn)
+        assertEquals("Kari", p12000.pensjonP12000?.gjenlevende?.mor?.person?.fornavn)
 
         val p12000json = p12000.toJsonSkipEmpty()
         JSONAssert.assertEquals(p12000json, p12000Json(), false)
