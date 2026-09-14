@@ -7,11 +7,12 @@ class P12000(
     @JsonProperty("sed")
     override val type: SedType = SedType.P12000,
     override val nav: Nav? = null,
-    override val pensjon: P12000Pensjon?
+    @JsonProperty("pensjon")
+    val pensjonP12000: P12000Pensjon?
 ) : SED(type, nav = nav)
 
 fun P12000.hasUforePensjonType() =
-    this.pensjon?.pensjoninfo
+    this.pensjonP12000?.pensjoninfo
     ?.firstOrNull()
     ?.betalingsdetaljer
     ?.pensjonstype == "02"

@@ -9,8 +9,8 @@ data class P12000Pensjon(
     val ytterligereInformasjon: String? = null,
     val foresporsel: ReferanseTilPerson? = null,
     val anmodning13000verdi:  String? = null,
-    override val gjenlevende: Bruker? = null
-) : Pensjon()
+    val gjenlevende: Bruker? = null
+)
 
 //kap.5
 @JsonIgnoreProperties(ignoreUnknown = true)
