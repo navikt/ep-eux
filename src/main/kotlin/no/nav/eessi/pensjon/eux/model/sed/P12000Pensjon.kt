@@ -16,8 +16,8 @@ data class P12000Pensjon(
 @JsonIgnoreProperties(ignoreUnknown = true)
 data class Pensjoninfo(
     val betalingsdetaljer: Betalingsdetaljer? = null,
-    val pensjonsavslag: OpphoringEllerAvslag? = null,
-    val pensjonsopphoring: OpphoringEllerAvslag? = null,
+    val pensjonsavslag: List<OpphoringEllerAvslag>? = null,
+    val pensjonsopphoring: List<OpphoringEllerAvslag>? = null,
 )
 
 @JsonIgnoreProperties(ignoreUnknown = true)
