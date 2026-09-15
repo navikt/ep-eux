@@ -28,11 +28,11 @@ class P12000UtvidetTest {
         assertEquals("æøå", p12000Betalingsdetaljer?.belop)
         assertEquals("2001-01-01", p12000Betalingsdetaljer?.effektueringsdato)
 
-        assertEquals("01", p12000Opphoring?.pensjonstype)
-        assertEquals("æøå", p12000Opphoring?.begrunnelse)
+        assertEquals("01", p12000Opphoring?.firstOrNull()?.pensjonstype)
+        assertEquals("æøå", p12000Opphoring?.firstOrNull()?.begrunnelse)
 
-        assertEquals("01", p12000Avslag?.pensjonstype)
-        assertEquals("æøå", p12000Avslag?.begrunnelse)
+        assertEquals("01", p12000Avslag?.firstOrNull()?.pensjonstype)
+        assertEquals("æøå", p12000Avslag?.firstOrNull()?.begrunnelse)
 
         // gjenlevende skal også være en del av P12000
         assertEquals("Kari", p12000.pensjonP12000?.gjenlevende?.mor?.person?.fornavn)
@@ -185,15 +185,15 @@ class P12000UtvidetTest {
                 "bosattotal" : "æøå",
                 "arbeidstotal" : "æøå"
               },
-              "pensjonsavslag" : {
+              "pensjonsavslag" : [{
                 "begrunnelse" : "æøå",
                 "pensjonstype" : "01"
-              },
-              "pensjonsopphoring" : {
+              }],
+              "pensjonsopphoring" : [{
                 "pensjonstype" : "01",
                 "begrunnelse" : "æøå"
-              }
-            } ],
+              }]
+            }],
             "foresporsel" : {
               "referanseTilPerson" : "01"
             },
