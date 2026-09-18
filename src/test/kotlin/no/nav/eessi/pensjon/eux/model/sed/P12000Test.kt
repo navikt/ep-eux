@@ -12,13 +12,13 @@ class P12000Test {
     fun mapJsonToP12000() {
 
         val p12000 = mapJsonToAny<P12000>(p12000Json())
-        val p12000Betalingsdetaljer = p12000.pensjonP12000?.pensjoninfo?.firstOrNull()?.betalingsdetaljer
+        val p12000Betalingsdetaljer = p12000.pensjonP12000?.pensjoninfo?.betalingsdetaljer
 
-        assertEquals("11111", p12000Betalingsdetaljer?.belop)
-        assertEquals("01", p12000Betalingsdetaljer?.pensjonstype)
-        assertEquals("maaned_12_per_aar", p12000Betalingsdetaljer?.utbetalingshyppighet)
-        assertEquals("11111", p12000Betalingsdetaljer?.belop)
-        assertEquals("2024-01-01", p12000Betalingsdetaljer?.effektueringsdato)
+        assertEquals("11111", p12000Betalingsdetaljer?.firstOrNull()?.belop)
+        assertEquals("01", p12000Betalingsdetaljer?.firstOrNull()?.pensjonstype)
+        assertEquals("maaned_12_per_aar", p12000Betalingsdetaljer?.firstOrNull()?.utbetalingshyppighet)
+        assertEquals("11111", p12000Betalingsdetaljer?.firstOrNull()?.belop)
+        assertEquals("2024-01-01", p12000Betalingsdetaljer?.firstOrNull()?.effektueringsdato)
 
         // gjenlevende skal også være en del av P12000
         assertEquals("kari", p12000.pensjonP12000?.gjenlevende?.mor?.person?.fornavn)
@@ -32,21 +32,19 @@ class P12000Test {
         """
         {
           "pensjon": {
-            "pensjoninfo": [
-              {
-                "betalingsdetaljer": {
+            "pensjoninfo": {
+                "betalingsdetaljer":[ {
                   "pensjonstype": "01",
                   "effektueringsdato": "2024-01-01",
                   "utbetalingshyppighet": "maaned_12_per_aar",
                   "basertpaa": "01",
                   "belop": "11111",
                   "valuta": "EUR"
-                },
+                } ],
                 "pensjonsavslag" :[ {
                  "pensjonstype" : "01"
                } ]
-              }
-            ],
+              },
             "gjenlevende": {             
               "mor": {
                 "person": {
