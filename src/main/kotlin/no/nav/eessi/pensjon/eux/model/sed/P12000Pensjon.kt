@@ -8,7 +8,7 @@ data class P12000Pensjon(
     val ytterligereInformasjon: String? = null,
     val foresporsel: ReferanseTilPerson? = null,
     val anmodning13000verdi:  String? = null,
-    val gjenlevende: Bruker? = null
+    val gjenlevende: BrukerP12000? = null
 )
 
 //kap.5
@@ -33,6 +33,13 @@ data class Betalingsdetaljer(
     val bosattotal: String? = null,
     val arbeidstotal: String? = null,
     val betaldato: String? = null,
+)
+
+data class BrukerP12000(
+    val mor: Foreldre? = null,
+    val far: Foreldre? = null,
+    val person: Person? = null,
+    val adresse: Adresse? = null,
 )
 
 data class OpphoringEllerAvslag(
