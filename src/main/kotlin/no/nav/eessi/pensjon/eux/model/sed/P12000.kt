@@ -13,6 +13,4 @@ class P12000(
 
 fun P12000.hasUforePensjonType() =
     this.pensjonP12000?.pensjoninfo
-    ?.firstOrNull()
-    ?.betalingsdetaljer
-    ?.pensjonstype == "02"
+    ?.betalingsdetaljer?.firstOrNull()?.pensjonstype == "02"
