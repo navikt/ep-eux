@@ -63,8 +63,8 @@ internal class SedTest {
 
     @Test
     fun `Gitt en P2200 med personer inklusive barn når vi henter personer fra sed så returneres alle spesifikke personer med pin`() {
-        val p2200 = SED.fromJsonToConcrete(javaClass.getResource("/sed/P2200-MedFamilie-NAV.json")!!.readText())
-        assertEquals(5, p2200.allePersoner().size)
+        val p2200 = mapJsonToAny<P2200>(javaClass.getResource("/sed/P2200-MedFamilie-NAV.json")!!.readText())
+        assertEquals(5, p2200.allePersonerP2200().size)
     }
 
     @Test

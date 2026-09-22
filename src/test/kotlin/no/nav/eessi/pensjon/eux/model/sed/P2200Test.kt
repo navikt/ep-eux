@@ -1,0 +1,329 @@
+package no.nav.eessi.pensjon.eux.model.sed
+
+import no.nav.eessi.pensjon.utils.mapJsonToAny
+import no.nav.eessi.pensjon.utils.toJsonSkipEmpty
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Test
+import org.skyscreamer.jsonassert.JSONAssert
+
+class P2200Test {
+
+    @Test
+    fun mapJsonToP12000() {
+
+        val p2200 = mapJsonToAny<P2200>(p2200Json())
+
+        val p2200json = p2200.toJsonSkipEmpty()
+        JSONAssert.assertEquals(p2200json, p2200Json(), true)
+        JSONAssert.assertEquals(p2200Json(), p2200json, true)
+    }
+
+    private fun p2200Json() =
+        """
+        {
+          "nav": {
+            "bruker": {
+              "mor": {
+                "person": {
+                  "etternavnvedfoedsel": "Forbilde",
+                  "fornavn": "dårlig"
+                }
+              },
+              "person": {
+                "fornavn": "sur",
+                "sivilstand": [
+                  {
+                    "status": "gift",
+                    "fradato": "2024-05-07"
+                  }
+                ],
+                "kjoenn": "K",
+                "etternavn": "kompis",
+                "kontakt": {
+                  "email": [
+                    {
+                      "adresse": "hei@post.no"
+                    }
+                  ],
+                  "telefon": [
+                    {
+                      "nummer": "99999999",
+                      "type": "mobil"
+                    }
+                  ]
+                },
+                "foedselsdato": "2004-02-04",
+                "tidligereetternavn": "Sykkel",
+                "statsborgerskap": [
+                  {
+                    "land": "HR"
+                  }
+                ],
+                "pin": [
+                  {
+                    "sektor": "pensjoner",
+                    "identifikator": "123456789",
+                    "institusjon": {
+                      "institusjonsid": "NO:NAVAT01",
+                      "institusjonsnavn": "NAV ACC 01"
+                    },
+                    "land": "AT"
+                  }
+                ],
+                "foedested": {
+                  "region": "Vestland",
+                  "land": "NO",
+                  "by": "Bergen"
+                },
+                "fornavnvedfoedsel": "blid",
+                "tidligerefornavn": "Jente",
+                "etternavnvedfoedsel": "venn"
+              },
+              "uforhet": {
+                "arbeidsUlykke": "0",
+                "startDatoPensjon": "2025-06-01",
+                "startdatoLege": "2025-05-22",
+                "militartjenesteUlykke": "1",
+                "ansvarligTredjepart": "0",
+                "bevisstforsaketSoker": "0"
+              },
+              "adresse": {
+                "region": "Vestland",
+                "land": "CY",
+                "gate": "Storgata 4",
+                "bygning": "Høyblokka",
+                "postnummer": "5000",
+                "by": "Bergen"
+              },
+              "bank": {
+                "konto": {
+                  "innehaver": {
+                    "navn": "gg",
+                    "rolle": "forsikret_person"
+                  },
+                  "sepa": {
+                    "swift": "dnbanokxxxx",
+                    "iban": "no9386011117947"
+                  }
+                }
+              },
+              "far": {
+                "person": {
+                  "fornavn": "God",
+                  "etternavnvedfoedsel": "Venn"
+                }
+              }
+            },
+            "barn": [
+              {
+                "relasjontilbruker43": "eget_barn",
+                "far": {
+                  "person": {
+                    "etternavnvedfoedsel": "båt",
+                    "fornavn": "liten"
+                  }
+                },
+                "person": {
+                  "pin": [
+                    {
+                      "identifikator": "125",
+                      "institusjon": {
+                        "institusjonsnavn": "NAV ACC 05",
+                        "institusjonsid": "NO:NAVAT05"
+                      },
+                      "sektor": "pensjoner",
+                      "land": "BE"
+                    }
+                  ],
+                  "foedested": {
+                    "by": "Bø",
+                    "land": "NO",
+                    "region": "Nordland"
+                  },
+                  "foedselsdato": "2022-12-25",
+                  "kjoenn": "M",
+                  "fornavn": "blå",
+                  "statsborgerskap": [
+                    {
+                      "land": "BG"
+                    }
+                  ],
+                  "etternavn": "ballong",
+                  "doedsdato": "2026-09-17",
+                  "etternavnvedfoedsel": "grå",
+                  "fornavnvedfoedsel": "bil"
+                },
+                "mor": {
+                  "person": {
+                    "fornavn": "stor",
+                    "etternavnvedfoedsel": "ball"
+                  }
+                }
+              }
+            ],
+            "verge": {
+              "person": {
+                "kontakt": {
+                  "telefon": [
+                    {
+                      "nummer": "888888888",
+                      "type": "mobil"
+                    }
+                  ],
+                  "email": [
+                    {
+                      "adresse": "gh@post.no"
+                    }
+                  ]
+                },
+                "fornavn": "y",
+                "etternavn": "x"
+              },
+              "vergemaal": {
+                "mandat": "kjennelse"
+              },
+              "adresse": {
+                "by": "b",
+                "postnummer": "3200",
+                "gate": "h",
+                "land": "AT",
+                "region": "ff",
+                "bygning": "i"
+              }
+            },
+            "krav": {
+              "dato": "2026-07-02"
+            },
+            "ektefelle": {
+              "mor": {
+                "person": {
+                  "etternavnvedfoedsel": "kommode",
+                  "fornavn": "brun"
+                }
+              },
+              "person": {
+                "pin": [
+                  {
+                    "land": "BE",
+                    "institusjon": {
+                      "institusjonsnavn": "NAV ACC 05",
+                      "institusjonsid": "NO:NAVAT05"
+                    },
+                    "identifikator": "1122",
+                    "sektor": "pensjoner"
+                  }
+                ],
+                "statsborgerskap": [
+                  {
+                    "land": "DZ"
+                  }
+                ],
+                "etternavnvedfoedsel": "kjele",
+                "fornavn": "heftig",
+                "tidligereetternavn": "båt",
+                "foedested": {
+                  "region": "østfold",
+                  "land": "NO",
+                  "by": "moss"
+                },
+                "etternavn": "regn",
+                "foedselsdato": "2004-02-04",
+                "tidligerefornavn": "liten",
+                "kjoenn": "M",
+                "fornavnvedfoedsel": "liten"
+              },
+              "type": "ektefelle",
+              "far": {
+                "person": {
+                  "fornavn": "grønn",
+                  "etternavnvedfoedsel": "ert"
+                }
+              }
+            },
+            "eessisak": [
+              {
+                "saksnummer": "123",
+                "land": "AT"
+              }
+            ]
+          },
+          "pensjon": {
+            "ytelser": [
+              {
+                "mottasbasertpaaitem": [
+                  {
+                    "totalbruttobeloeparbeidsbasert": "54",
+                    "verdi": "01",
+                    "totalbruttobeloepbostedsbasert": "45"
+                  }
+                ],
+                "status": "02",
+                "startdatoutbetaling": "2025-06-04",
+                "sluttdatoRettTilUtbetaling": "2025-07-11",
+                "institusjon": {
+                  "saksnummer": "154",
+                  "land": "AT",
+                  "institusjonsnavn": "NAV ACC 01",
+                  "sektor": "pensjoner",
+                  "institusjonsid": "NO:NAVAT01"
+                },
+                "beloep": [
+                  {
+                    "gjeldendesiden": "2025-07-11",
+                    "beloep": "55",
+                    "valuta": "EUR",
+                    "betalingshyppighetytelse": "02"
+                  }
+                ],
+                "startdatoretttilytelse": "2025-03-07",
+                "sluttdatoutbetaling": "2025-11-21",
+                "pin": {
+                  "identifikator": "123"
+                },
+                "ytelse": "08"
+              }
+            ],
+            "ytterligeinformasjon": "ingen",
+            "bruker": {
+              "arbeidsforhold": [
+                {
+                  "yrke": "Bødker",
+                  "planlagtpensjoneringsdato": "2025-11-13",
+                  "inntekt": [
+                    {
+                      "beloeputbetaltsiden": "2025-06-04",
+                      "annenbetalingshyppighetinntekt": "timelønn",
+                      "beloep": "123",
+                      "valuta": "EUR",
+                      "betalingshyppighetinntekt": "03"
+                    }
+                  ],
+                  "type": "forsikrede_driver_fortsatt_selvstendig_naerigsvirksomhet",
+                  "arbeidstimerperuke": "12",
+                  "sluttdato": "2025-12-14",
+                  "planlagtstartdato": "2025-06-05"
+                }
+              ]
+            },
+            "etterspurtedokumenter": "p5000",
+            "vedtak": [
+              {
+                "mottaker": [
+                  "forsikret_person"
+                ],
+                "trekkgrunnlag": [
+                  "987_2009_Art_72_1"
+                ]
+              }
+            ],
+            "vedlegg": [
+              "utførlig_medisinsk_rapport"
+            ],
+            "vedleggandre": "pass"
+          },
+          "sedVer": "4",
+          "sedGVer": "4",
+          "sed": "P2200"
+        }
+        """.trimIndent()
+}

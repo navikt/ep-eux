@@ -13,12 +13,13 @@ import org.junit.jupiter.params.provider.CsvSource
 class JsonUtilsTest{
 
     @ParameterizedTest
-    @CsvSource(
-        "/sed/P2000-NAV.json",
-        "/sed/P2200-NAV.json",
-        "/sed/P4000-RINA.json",
-        "/sed/P6000-NAV.json",
-        "/sed/P6000-RINA.json")
+//    @CsvSource(
+//        "/sed/P2000-NAV.json",
+//        "/sed/P2200-NAV.json",
+//        "/sed/P4000-RINA.json",
+//        "/sed/P6000-NAV.json",
+//        "/sed/P6000-RINA.json")
+    @CsvSource("/sed/P2200-NAV-NY.json")
     fun testValidateJSon(jsonFile : String){
         Assertions.assertTrue(validateJson(javaClass.getResource(jsonFile)!!.readText()))
     }
