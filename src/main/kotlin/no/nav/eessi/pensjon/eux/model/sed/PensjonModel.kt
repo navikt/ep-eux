@@ -78,7 +78,7 @@ data class P2200Pensjon(
 
 	val bruker: Bruker? = null,
 	//P2XXX
-	val vedtak: List<VedtakItem>? = null,
+	val vedtak: List<VedtakItemP2200>? = null,
 	val vedlegg: List<String> ? = null,
 	val vedleggandre: String? = null,
 
@@ -110,9 +110,14 @@ data class YtelserItem(
 	val pin: PinItem? = null,
 	val startdatoutbetaling: String? = null,
 	val mottasbasertpaa: String? = null,
+
+	//Dette feltet finnes KUN i P2200
+	val mottasbasertpaaitem: List<MottasbasertpaaItem>? = null,
+
 	val ytelse: String? = null,
 	val startdatoretttilytelse: String? = null,
 	val sluttdatoutbetaling: String? = null,
+	val sluttdatoRettTilUtbetaling: String? = null,
 	val beloep: List<BeloepItem>? = null,
 	val status: String? = null,
 	val annenbetalingshyppighetytelse: String? = null,
@@ -128,6 +133,12 @@ data class BeloepItem(
         val gjeldendesiden: String? = null,
         val utbetalingshyppighetAnnen: String? = null
 )
+
+data class MottasbasertpaaItem(
+	val totalbruttobeloepbostedsbasert: String? = null,
+	val totalbruttobeloeparbeidsbasert: String? = null,
+	val verdi: String? = null,
+	)
 
 enum class BasertPaa(@JsonValue val kode: String) {
 	botid("01"),
@@ -217,6 +228,11 @@ data class Opptjening(
 data class AvslagbegrunnelseItem(
         val begrunnelse: String? = null,
         val annenbegrunnelse: String? = null
+)
+
+data class VedtakItemP2200(
+	val mottaker: List<String>? = null,
+	val trekkgrunnlag: List<String>? = null
 )
 
 data class BeregningItem(
