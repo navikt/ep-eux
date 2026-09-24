@@ -151,10 +151,11 @@ internal class JsonMappingToSed {
             is P12000 -> {
                 assertEquals(P12000::class.java.name, sed.javaClass.name)
                 assertNotNull(sed.pensjon)
-                assertEquals("01", sed.pensjonP12000?.pensjoninfo?.betalingsdetaljer?.firstOrNull()?.pensjonstype)
-                assertEquals("maaned_12_per_aar", sed.pensjonP12000?.pensjoninfo?.betalingsdetaljer?.firstOrNull()?.utbetalingshyppighet)
-                assertEquals("11111", sed.pensjonP12000?.pensjoninfo?.betalingsdetaljer?.firstOrNull()?.belop)
-                assertEquals("xx", sed.pensjonP12000?.pensjoninfo?.betalingsdetaljer?.firstOrNull()?.effektueringsdato)
+                val pensjonsInfo = sed.pensjonP12000?.pensjoninfo
+                assertEquals("01", pensjonsInfo?.firstOrNull()?.betalingsdetaljer?.firstOrNull()?.pensjonstype)
+                assertEquals("maaned_12_per_aar", pensjonsInfo?.firstOrNull()?.betalingsdetaljer?.firstOrNull()?.utbetalingshyppighet)
+                assertEquals("11111", pensjonsInfo?.firstOrNull()?.betalingsdetaljer?.firstOrNull()?.belop)
+                assertEquals("xx", pensjonsInfo?.firstOrNull()?.betalingsdetaljer?.firstOrNull()?.effektueringsdato)
             }
 
             is P15000 -> {

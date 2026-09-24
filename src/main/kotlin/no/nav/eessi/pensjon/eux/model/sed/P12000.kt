@@ -12,5 +12,4 @@ class P12000(
 ) : SED(type, nav = nav)
 
 fun P12000.hasUforePensjonType() =
-    this.pensjonP12000?.pensjoninfo
-    ?.betalingsdetaljer?.firstOrNull()?.pensjonstype == "02"
+    this.pensjonP12000?.pensjoninfo?.any { it.betalingsdetaljer?.firstOrNull()?.pensjonstype == "02" } == true
