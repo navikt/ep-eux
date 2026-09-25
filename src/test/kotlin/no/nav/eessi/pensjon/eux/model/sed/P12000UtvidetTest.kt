@@ -14,10 +14,9 @@ class P12000UtvidetTest {
 
         val p12000 = mapJsonToAny<P12000>(p12000Json())
         println(p12000.toJsonSkipEmpty())
-        val pensjonsInfo = p12000.pensjonP12000?.pensjoninfo?.firstOrNull()
-        val p12000Betalingsdetaljer = pensjonsInfo?.betalingsdetaljer
-        val p12000Opphoring = pensjonsInfo?.pensjonsopphoring
-        val p12000Avslag = pensjonsInfo?.pensjonsavslag
+        val p12000Betalingsdetaljer = p12000.pensjonP12000?.pensjoninfo?.betalingsdetaljer
+        val p12000Opphoring = p12000.pensjonP12000?.pensjoninfo?.pensjonsopphoring
+        val p12000Avslag = p12000.pensjonP12000?.pensjoninfo?.pensjonsavslag
         val p12000YtterligereInformasjon = p12000.pensjonP12000?.ytterligereInformasjon
 //        val p12000MerInformasjon = p12000.pensjonP12000?.pensjoninfo?.tilleggsytelserutbetalingitilleggtilpensjon
 //
@@ -168,7 +167,7 @@ class P12000UtvidetTest {
             }
           }
         },
-        "pensjoninfo" : [{
+        "pensjoninfo" :{
           "tilleggsytelserutbetalingitilleggtilpensjon" : "tillegg",
           "betalingsdetaljer" : [{
             "effektueringsdato" : "2001-01-01",
@@ -191,7 +190,7 @@ class P12000UtvidetTest {
             "pensjonstype" : "01",
             "begrunnelse" : "æøå"
           }]
-        }],
+        },
         "foresporsel" : {
           "referanseTilPerson" : "01"
         },

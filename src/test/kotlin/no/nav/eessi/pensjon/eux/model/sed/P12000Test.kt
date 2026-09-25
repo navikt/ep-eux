@@ -12,7 +12,7 @@ class P12000Test {
     fun mapJsonToP12000() {
 
         val p12000 = mapJsonToAny<P12000>(p12000Json())
-        val p12000Betalingsdetaljer = p12000.pensjonP12000?.pensjoninfo?.firstOrNull()?.betalingsdetaljer
+        val p12000Betalingsdetaljer = p12000.pensjonP12000?.pensjoninfo?.betalingsdetaljer
 
         assertEquals("11111", p12000Betalingsdetaljer?.firstOrNull()?.belop)
         assertEquals("01", p12000Betalingsdetaljer?.firstOrNull()?.pensjonstype)
@@ -32,7 +32,7 @@ class P12000Test {
         """
         {
           "pensjon": {
-            "pensjoninfo": [{
+            "pensjoninfo": {
                 "betalingsdetaljer":[ {
                   "pensjonstype": "01",
                   "effektueringsdato": "2024-01-01",
@@ -44,7 +44,7 @@ class P12000Test {
                 "pensjonsavslag" :[ {
                  "pensjonstype" : "01"
                } ]
-              }],
+              },
             "gjenlevende": {             
               "mor": {
                 "person": {

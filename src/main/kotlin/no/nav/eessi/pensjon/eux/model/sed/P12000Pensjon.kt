@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 
 
 data class P12000Pensjon(
-    val pensjoninfo:  List<Pensjoninfo>? = null,
+    val pensjoninfo:  Pensjoninfo? = null,
     val ytterligereInformasjon: String? = null,
     val foresporsel: ReferanseTilPerson? = null,
     val anmodning13000verdi:  String? = null,
