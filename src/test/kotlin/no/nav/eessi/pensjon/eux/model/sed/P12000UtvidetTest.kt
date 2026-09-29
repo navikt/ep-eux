@@ -13,33 +13,33 @@ class P12000UtvidetTest {
     fun mapJsonToP12000() {
 
         val p12000 = mapJsonToAny<P12000>(p12000Json())
-        println(p12000.toJsonSkipEmpty())
+
         val p12000Betalingsdetaljer = p12000.pensjonP12000?.pensjoninfo?.betalingsdetaljer
         val p12000Opphoring = p12000.pensjonP12000?.pensjoninfo?.pensjonsopphoring
         val p12000Avslag = p12000.pensjonP12000?.pensjoninfo?.pensjonsavslag
         val p12000YtterligereInformasjon = p12000.pensjonP12000?.ytterligereInformasjon
-//        val p12000MerInformasjon = p12000.pensjonP12000?.pensjoninfo?.tilleggsytelserutbetalingitilleggtilpensjon
-//
-//        assertEquals("ytterligere", p12000YtterligereInformasjon)
-////        assertEquals("tillegg", p12000MerInformasjon)
-//
-//        assertEquals("æøå", p12000Betalingsdetaljer?.firstOrNull()?.belop)
-//        assertEquals("01", p12000Betalingsdetaljer?.firstOrNull()?.pensjonstype)
-//        assertEquals("aarlig", p12000Betalingsdetaljer?.firstOrNull()?.utbetalingshyppighet)
-//        assertEquals("æøå", p12000Betalingsdetaljer?.firstOrNull()?.belop)
-//        assertEquals("2001-01-01", p12000Betalingsdetaljer?.firstOrNull()?.effektueringsdato)
-//
-//        assertEquals("01", p12000Opphoring?.firstOrNull()?.pensjonstype)
-//        assertEquals("æøå", p12000Opphoring?.firstOrNull()?.begrunnelse)
-//
-//        assertEquals("01", p12000Avslag?.firstOrNull()?.pensjonstype)
-//        assertEquals("æøå", p12000Avslag?.firstOrNull()?.begrunnelse)
-//
-//        // gjenlevende skal også være en del av P12000
-//        assertEquals("Kari", p12000.pensjonP12000?.gjenlevende?.mor?.person?.fornavn)
-//
-//        val p12000json = p12000.toJsonSkipEmpty()
-//        JSONAssert.assertEquals(p12000json, p12000Json(), false)
+        val p12000MerInformasjon = p12000.pensjonP12000?.pensjoninfo?.tilleggsytelserutbetalingitilleggtilpensjon
+
+        assertEquals("ytterligere", p12000YtterligereInformasjon)
+        assertEquals("tillegg", p12000MerInformasjon)
+
+        assertEquals("æøå", p12000Betalingsdetaljer?.firstOrNull()?.belop)
+        assertEquals("01", p12000Betalingsdetaljer?.firstOrNull()?.pensjonstype)
+        assertEquals("aarlig", p12000Betalingsdetaljer?.firstOrNull()?.utbetalingshyppighet)
+        assertEquals("æøå", p12000Betalingsdetaljer?.firstOrNull()?.belop)
+        assertEquals("2001-01-01", p12000Betalingsdetaljer?.firstOrNull()?.effektueringsdato)
+
+        assertEquals("01", p12000Opphoring?.firstOrNull()?.pensjonstype)
+        assertEquals("æøå", p12000Opphoring?.firstOrNull()?.begrunnelse)
+
+        assertEquals("01", p12000Avslag?.firstOrNull()?.pensjonstype)
+        assertEquals("æøå", p12000Avslag?.firstOrNull()?.begrunnelse)
+
+        // gjenlevende skal også være en del av P12000
+        assertEquals("Kari", p12000.pensjonP12000?.gjenlevende?.mor?.person?.fornavn)
+
+        val p12000json = p12000.toJsonSkipEmpty()
+        JSONAssert.assertEquals(p12000json, p12000Json(), false)
 
     }
 
