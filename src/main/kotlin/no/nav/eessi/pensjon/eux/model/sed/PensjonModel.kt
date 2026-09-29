@@ -110,6 +110,7 @@ data class YtelserItem(
 	val pin: PinItem? = null,
 	val startdatoutbetaling: String? = null,
 	val mottasbasertpaa: String? = null,
+	val annenytelse: String? = null,
 
 	//Dette feltet finnes KUN i P2200
 	val mottasbasertpaaitem: List<MottasbasertpaaItem>? = null,
