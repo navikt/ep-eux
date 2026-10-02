@@ -79,10 +79,8 @@ class P2200Test {
         assertEquals("Jente", forsikret?.tidligerefornavn)
         //2.2.2.1. Family Status (rina enum 02 Married)
         assertEquals(SivilstandRina.gift, forsikret?.sivilstand?.firstOrNull()?.status)
-
         //2.2.2.2. Family status date
         assertEquals("2024-05-07", forsikret?.sivilstand?.firstOrNull()?.fradato)
-
         //2.2.3. Address
         //2.2.3.1. Street
         assertEquals("Storgata 4", bruker?.adresse?.gate)
@@ -117,7 +115,6 @@ class P2200Test {
         //2.3.6. Invalidity caused by liable third party
         assertEquals("0", uforhet?.ansvarligTredjepart)
 
-
         val pensjonP2200 = p2200.pensjon
         /** 3. Insured person's employment and self-employment details */
         //3.1.1. Occupation mappingfelt: occupation
@@ -133,7 +130,6 @@ class P2200Test {
         //3.1.6. Hours per week mappingsfelt: hoursPerWeek
         assertEquals("12", pensjonP2200?.bruker?.arbeidsforhold?.firstOrNull()?.arbeidstimerperuke)
 
-
         //3.1.7.1. Amount mappingfelt: amount
         assertEquals("123", pensjonP2200?.bruker?.arbeidsforhold?.firstOrNull()?.inntekt?.firstOrNull()?.beloep)
         //3.1.7.2. Currency mappingsfelt: currency
@@ -144,7 +140,6 @@ class P2200Test {
         assertEquals("03", pensjonP2200?.bruker?.arbeidsforhold?.firstOrNull()?.inntekt?.firstOrNull()?.betalingshyppighetinntekt)
         //3.1.7.5.1. Other payment frequency mappingsfelt: otherPaymentFrequency
         assertEquals("timelønn", pensjonP2200?.bruker?.arbeidsforhold?.firstOrNull()?.inntekt?.firstOrNull()?.annenbetalingshyppighetinntekt)
-
 
         /** 4 Insured person's benefit details */
         //4.1.1. Benefits mappingsfelt: benefits (rina enum mapping)
@@ -171,7 +166,6 @@ class P2200Test {
         assertEquals("2025-03-07", pensjonP2200?.ytelser?.firstOrNull()?.startdatoretttilytelse)
         //4.1.8. End date of entitlement to benefits
         assertEquals("2025-11-21", pensjonP2200?.ytelser?.firstOrNull()?.sluttdatoutbetaling)
-
         //4.1.9.1. Amount
         assertEquals("55", pensjonP2200?.ytelser?.firstOrNull()?.beloep?.firstOrNull()?.beloep)
         //4.1.9.2. Currency
@@ -182,7 +176,6 @@ class P2200Test {
         assertEquals(Betalingshyppighet.kvartalsvis, pensjonP2200?.ytelser?.firstOrNull()?.beloep?.firstOrNull()?.betalingshyppighetytelse)
         //4.1.9.5.1. Other payment frequency
         assertEquals("fritekstfelt", pensjonP2200?.ytelser?.firstOrNull()?.beloep?.firstOrNull()?.utbetalingshyppighetAnnen)
-
         //4.1.10.1. The pension received is based on
         assertEquals("45", pensjonP2200?.ytelser?.firstOrNull()?.mottasbasertpaaitem?.firstOrNull()?.totalbruttobeloepbostedsbasert)
         //4.1.10.2. Total gross amount of residence - based pension (rina enum 01 tilsvarer Residence)
@@ -259,7 +252,6 @@ class P2200Test {
         assertEquals("NO:NAVAT05", p2200.navP2200?.barn?.firstOrNull()?.person?.pin?.firstOrNull()?.institusjon?.institusjonsid)
         //6.1.1.7.1.4.2. Institution Name
         assertEquals("NAV ACC 05", p2200.navP2200?.barn?.firstOrNull()?.person?.pin?.firstOrNull()?.institusjon?.institusjonsnavn)
-
         //6.1.1.8.1.1. Town
         assertEquals("Bø", p2200.navP2200?.barn?.firstOrNull()?.person?.foedested?.by)
         //6.1.1.8.1.2. Region
