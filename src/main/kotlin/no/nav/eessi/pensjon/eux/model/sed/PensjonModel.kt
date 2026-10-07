@@ -121,12 +121,14 @@ data class YtelserItem(
 	val sluttdatoRettTilUtbetaling: String? = null,
 	val beloep: List<BeloepItem>? = null,
 	val status: String? = null,
+	//TODO: brukes denne andre steder enn i P2200
 	val annenbetalingshyppighetytelse: String? = null,
 	val totalbruttobeloepbostedsbasert: String? = null
 )
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 data class BeloepItem(
+		val annenbetalingshyppighetytelse: String? = null,
         val betalingshyppighetytelse: Betalingshyppighet? = null,
         val valuta: String? = null,
         val beloep: String? = null,
