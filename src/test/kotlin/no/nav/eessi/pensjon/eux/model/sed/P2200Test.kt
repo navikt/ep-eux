@@ -139,7 +139,8 @@ class P2200Test {
         //3.1.7.4. Payment frequency mappingsfelt: paymentFrequency (rina enum mapping)
         assertEquals("03", pensjonP2200?.bruker?.arbeidsforhold?.firstOrNull()?.inntekt?.firstOrNull()?.betalingshyppighetinntekt)
         //3.1.7.5.1. Other payment frequency mappingsfelt: otherPaymentFrequency
-        assertEquals("timelønn", pensjonP2200?.bruker?.arbeidsforhold?.firstOrNull()?.inntekt?.firstOrNull()?.annenbetalingshyppighetinntekt)
+//        assertEquals("timelønn", pensjonP2200?.bruker?.arbeidsforhold?.firstOrNull()?.inntekt?.firstOrNull()?.annenbetalingshyppighetinntekt)
+        assertEquals("timelønn", pensjonP2200?.ytelser?.firstOrNull()?.beloep?.firstOrNull()?.annenbetalingshyppighetytelse)
 
         /** 4 Insured person's benefit details */
         //4.1.1. Benefits mappingsfelt: benefits (rina enum mapping)
