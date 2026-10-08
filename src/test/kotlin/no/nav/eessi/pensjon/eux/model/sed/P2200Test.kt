@@ -139,14 +139,14 @@ class P2200Test {
         //3.1.7.4. Payment frequency mappingsfelt: paymentFrequency (rina enum mapping)
         assertEquals("03", pensjonP2200?.bruker?.arbeidsforhold?.firstOrNull()?.inntekt?.firstOrNull()?.betalingshyppighetinntekt)
         //3.1.7.5.1. Other payment frequency mappingsfelt: otherPaymentFrequency
-//        assertEquals("timelønn", pensjonP2200?.bruker?.arbeidsforhold?.firstOrNull()?.inntekt?.firstOrNull()?.annenbetalingshyppighetinntekt)
-        assertEquals("timelønn", pensjonP2200?.ytelser?.firstOrNull()?.beloep?.firstOrNull()?.annenbetalingshyppighetytelse)
+        assertEquals("daglig", pensjonP2200?.ytelser?.firstOrNull()?.beloep?.firstOrNull()?.annenbetalingshyppighetytelse)
+
 
         /** 4 Insured person's benefit details */
         //4.1.1. Benefits mappingsfelt: benefits (rina enum mapping)
         assertEquals("08", pensjonP2200?.ytelser?.firstOrNull()?.ytelse)
         //4.1.2.1. Other benefit mappingsfelt: otherBenefit
-        assertEquals(null, pensjonP2200?.ytelser?.firstOrNull()?.annenytelse)
+        assertEquals("hjelpestønad", pensjonP2200?.ytelser?.firstOrNull()?.annenytelse)
         //4.1.3. Status mappingsfelt:status? (rina enum)
         assertEquals("02", pensjonP2200?.ytelser?.firstOrNull()?.status)
         //4.1.4.1.1. Country
@@ -582,6 +582,7 @@ class P2200Test {
                 },
                 "beloep": [
                   {
+                    "annenbetalingshyppighetytelse": "daglig",
                     "gjeldendesiden": "2025-07-11",
                     "beloep": "55",
                     "valuta": "EUR",
@@ -591,6 +592,7 @@ class P2200Test {
                 ],
                 "startdatoretttilytelse": "2025-03-07",
                 "sluttdatoutbetaling": "2025-11-21",
+                "annenytelse": "hjelpestønad",
                 "pin": {
                   "identifikator": "123"
                 },
