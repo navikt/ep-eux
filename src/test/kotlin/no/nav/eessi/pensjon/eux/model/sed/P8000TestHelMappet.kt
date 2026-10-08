@@ -9,10 +9,10 @@ import org.skyscreamer.jsonassert.JSONAssert
 class P8000TestHelMappet {
 
     //Testsed i rina q2: P2200Test
+    //rinasak = 1457540
     @Test
     fun mapJsonToP8000() {
 
-        val rinasak = "1457540"
         val p8000 = mapJsonToAny<P8000>(p8000Json())
 
         val bruker = p8000.nav?.bruker
@@ -21,8 +21,8 @@ class P8000TestHelMappet {
         val pensjon = p8000.p8000Pensjon
 
         val p8000json = p8000.toJsonSkipEmpty()
-        JSONAssert.assertEquals(p8000json, p8000Json(), false)
-//        JSONAssert.assertEquals(p8000Json(), p8000json, false)
+        JSONAssert.assertEquals(p8000json, p8000Json(), true)
+        JSONAssert.assertEquals(p8000Json(), p8000json, true)
 
         //1.1.1  Country
         assertEquals("NO", p8000.nav?.eessisak?.firstOrNull()?.land)
@@ -65,13 +65,13 @@ class P8000TestHelMappet {
         //2.1.8.1.3. Country
         assertEquals("BE", forsikret?.foedested?.land)
         //2.1.8.2. Father's family name at birth
-//        assertEquals("farsetternavnvedfoedsel", forsikret?.etternavnvedfoedsel)
+        assertEquals("farsetternavnvedfoedsel", bruker?.far?.person?.etternavnvedfoedsel)
         //2.1.8.3. Forename of father
-//        assertEquals("farsfornavn", bruker?.far?.person?.fornavn)
+        assertEquals("farsfornavn", bruker?.far?.person?.fornavn)
         //2.1.8.4. Mother's family name at birth
-//        assertEquals("morsetternavnvedfoedsel", brukerMor?.etternavnvedfoedsel)
+        assertEquals("morsetternavnvedfoedsel", bruker?.mor?.person?.etternavnvedfoedsel)
         //2.1.8.5. Forename of mother
-//        assertEquals("morsfornavn", brukerMor?.fornavn)
+        assertEquals("morsfornavn", bruker?.mor?.person?.fornavn)
 
         //2.2.1.1. Nationality
         assertEquals("BG", forsikret?.statsborgerskap?.firstOrNull()?.land)
@@ -370,6 +370,18 @@ class P8000TestHelMappet {
              }
            },
            "bruker": {
+               "mor" : {
+                "person" : {
+                  "etternavnvedfoedsel" : "morsetternavnvedfoedsel",
+                  "fornavn" : "morsfornavn"
+                }
+              },
+              "far" : {
+                "person" : {
+                  "etternavnvedfoedsel" : "farsetternavnvedfoedsel",
+                  "fornavn" : "farsfornavn"
+                }
+              },
              "person": {
                "fornavn": "SART",
                "kjoenn": "M",
@@ -432,18 +444,6 @@ class P8000TestHelMappet {
              }
            ],
            "ektefelle": {
-             "mor": {
-               "person": {
-                 "etternavnvedfoedsel": "morsetternavnvedfoedsel",
-                 "fornavn": "morsfornavn"
-               }
-             },
-             "far": {
-               "person": {
-                 "fornavn": "farsfornavn",
-                 "etternavnvedfoedsel": "farsetternavnvedfoedsel"
-               }
-             }
            }
          },
          "sedVer": "4",
