@@ -111,18 +111,14 @@ data class YtelserItem(
 	val startdatoutbetaling: String? = null,
 	val mottasbasertpaa: String? = null,
 	val annenytelse: String? = null,
-
 	//Dette feltet finnes KUN i P2200
 	val mottasbasertpaaitem: List<MottasbasertpaaItem>? = null,
-
 	val ytelse: String? = null,
 	val startdatoretttilytelse: String? = null,
 	val sluttdatoutbetaling: String? = null,
 	val sluttdatoRettTilUtbetaling: String? = null,
 	val beloep: List<BeloepItem>? = null,
 	val status: String? = null,
-	//TODO: brukes denne andre steder enn i P2200
-	val annenbetalingshyppighetytelse: String? = null,
 	val totalbruttobeloepbostedsbasert: String? = null
 )
 
