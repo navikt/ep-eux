@@ -113,7 +113,13 @@ data class BarnItem(
 @JsonIgnoreProperties(ignoreUnknown = true)
 data class Ektefelle(
         val person: Person? = null,
-        val type: String? = null
+        val type: String? = null,
+        val far: Far? = null,
+        val mor: Far? = null
+)
+
+data class Far(
+        val person: Person? = null
 )
 
 @JsonIgnoreProperties(ignoreUnknown = true)

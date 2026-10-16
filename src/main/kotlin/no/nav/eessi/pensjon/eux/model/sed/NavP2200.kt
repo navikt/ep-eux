@@ -17,7 +17,6 @@ data class BrukerP2200(
     val far: Foreldre? = null,
     val person: Person? = null,
     val adresse: Adresse? = null,
-    val arbeidsforhold: List<ArbeidsforholdItem>? = null,
     val bank: Bank? = null,
     val uforhet: Uforhet? = null,
 )
