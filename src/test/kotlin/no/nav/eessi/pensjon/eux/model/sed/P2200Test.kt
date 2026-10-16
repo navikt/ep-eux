@@ -1,7 +1,6 @@
 package no.nav.eessi.pensjon.eux.model.sed
 
 import no.nav.eessi.pensjon.utils.mapJsonToAny
-import no.nav.eessi.pensjon.utils.toJson
 import no.nav.eessi.pensjon.utils.toJsonSkipEmpty
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
@@ -151,6 +150,8 @@ class P2200Test {
         assertEquals("02", pensjonP2200?.ytelser?.firstOrNull()?.status)
         //4.1.4.1.1. Country
         assertEquals("AT", pensjonP2200?.ytelser?.firstOrNull()?.institusjon?.land)
+        //4.1.4.1.2. Personal Identification Number (PIN)
+        assertEquals("123456987", pensjonP2200?.ytelser?.firstOrNull()?.institusjon?.pin)
         //4.1.4.1.3. Sector sector mappingsfelt: sector ($nav.bruker.person.pin[x].sektor)
         assertEquals("pensjoner", bruker?.person?.pin?.firstOrNull()?.sektor)
         //4.1.4.1.4.1. Institution ID
@@ -162,7 +163,7 @@ class P2200Test {
         //4.1.5. Start date of benefits payment mappingsfelt: startDateBenefitsPayment ($pensjon.ytelser[x].startdatoutbetaling)
         assertEquals("2025-06-04", pensjonP2200?.ytelser?.firstOrNull()?.startdatoutbetaling)
         //4.1.6. End date of benefits payment
-        assertEquals("2025-07-11", pensjonP2200?.ytelser?.firstOrNull()?.sluttdatoRettTilUtbetaling)
+        assertEquals("2025-07-11", pensjonP2200?.ytelser?.firstOrNull()?.sluttdatorettilutbetaling)
         //4.1.7. Start date of entitlement to benefits
         assertEquals("2025-03-07", pensjonP2200?.ytelser?.firstOrNull()?.startdatoretttilytelse)
         //4.1.8. End date of entitlement to benefits
@@ -180,7 +181,7 @@ class P2200Test {
         //4.1.10.1. The pension received is based on
         assertEquals("45", pensjonP2200?.ytelser?.firstOrNull()?.mottasbasertpaaitem?.firstOrNull()?.totalbruttobeloepbostedsbasert)
         //4.1.10.2. Total gross amount of residence - based pension (rina enum 01 tilsvarer Residence)
-        assertEquals("01", pensjonP2200?.ytelser?.firstOrNull()?.mottasbasertpaaitem?.firstOrNull()?.verdi)
+        assertEquals("01", pensjonP2200?.ytelser?.firstOrNull()?.mottasbasertpaaitem?.firstOrNull()?.mottasbasertpaa)
         //4.1.10.3. Total gross amount of work related pension
         assertEquals("54", pensjonP2200?.ytelser?.firstOrNull()?.mottasbasertpaaitem?.firstOrNull()?.totalbruttobeloeparbeidsbasert)
 
@@ -304,7 +305,7 @@ class P2200Test {
 
         /** 8. Information on payment */
         //8.1. Payment to mappingsfelt: recipientDecision
-        assertEquals("forsikret_person", pensjonP2200?.vedtak?.firstOrNull()?.mottaker?.firstOrNull())
+        assertEquals("forsikret_person", pensjonP2200?.mottaker?.firstOrNull())
         //8.2.1. Account holder name mappingsfelt: accountHolderName
         assertEquals("gg", p2200.navP2200?.bruker?.bank?.konto?.innehaver?.navn)
         //8.2.2.1. IBAN mappingsfelt: IBAN
@@ -316,9 +317,9 @@ class P2200Test {
         //9.1. Date of claim mappingsfelt: dateClaim
         assertEquals("2026-07-02", p2200.navP2200?.krav?.dato)
         //9.2. Recipient of the decision mappingsfelt: recipientDecision
-        assertEquals("forsikret_person", pensjonP2200?.vedtak?.firstOrNull()?.mottaker?.firstOrNull())
+        assertEquals("forsikret_person", pensjonP2200?.mottaker?.firstOrNull())
         //9.3. Deductions grounds mappingsfelt: deductionsGrounds
-        assertEquals("987_2009_Art_72_1", pensjonP2200?.vedtak?.firstOrNull()?.trekkgrunnlag?.firstOrNull())
+        assertEquals("987_2009_Art_72_1", pensjonP2200?.trekkgrunnlag?.firstOrNull())
         //9.4. Attachments mappingsfelt: attachments
         assertEquals("utførlig_medisinsk_rapport", pensjonP2200?.vedlegg?.firstOrNull())
         //9.5.1. Other attachment mappingsfelt: otherAttachment
@@ -566,16 +567,17 @@ class P2200Test {
                 "mottasbasertpaaitem": [
                   {
                     "totalbruttobeloeparbeidsbasert": "54",
-                    "verdi": "01",
+                    "mottasbasertpaa": "01",
                     "totalbruttobeloepbostedsbasert": "45"
                   }
                 ],
                 "status": "02",
                 "startdatoutbetaling": "2025-06-04",
-                "sluttdatoRettTilUtbetaling": "2025-07-11",
+                "sluttdatorettilutbetaling": "2025-07-11",
                 "institusjon": {
                   "saksnummer": "154",
                   "land": "AT",
+                  "pin": "123456987",
                   "institusjonsnavn": "NAV ACC 01",
                   "sektor": "pensjoner",
                   "institusjonsid": "NO:NAVAT01"
@@ -622,16 +624,12 @@ class P2200Test {
               ]
             },
             "etterspurtedokumenter": "p5000",
-            "vedtak": [
-              {
-                "mottaker": [
-                  "forsikret_person"
-                ],
-                "trekkgrunnlag": [
-                  "987_2009_Art_72_1"
-                ]
-              }
-            ],
+              "mottaker": [
+                "forsikret_person"
+              ],
+              "trekkgrunnlag": [
+                "987_2009_Art_72_1"
+              ],
             "vedlegg": [
               "utførlig_medisinsk_rapport"
             ],
