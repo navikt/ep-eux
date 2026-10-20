@@ -1,9 +1,11 @@
 package no.nav.eessi.pensjon.eux.model.sed
 
+import com.fasterxml.jackson.annotation.JsonIgnore
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonValue
 import java.time.LocalDate
+import java.time.LocalDateTime
 
 open class MeldingOmPensjon(
 	open val melding: String?,
@@ -31,12 +33,17 @@ open class Pensjon(
 		//P2XXX
 	open val ytelser: List<YtelserItem>? = null,
 	open val forespurtstartdato: String? = null,
+	open val kravDato: Krav? = null, //kravDato pkt. 9.1 P2000
+
+		//P3000
+	val landspesifikk: Landspesifikk? = null
 )
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 data class P2000Pensjon(
 	override val ytelser: List<YtelserItem>? = null,
 	override val gjenlevende: Bruker? = null,
+	override val kravDato: Krav? = null,
 	override val forespurtstartdato: String? = null,
 
 	val bruker: Bruker? = null,
@@ -66,14 +73,20 @@ data class Utsettelse(
 @JsonIgnoreProperties(ignoreUnknown = true)
 data class P2200Pensjon(
 	override val ytelser: List<YtelserItem>? = null,
+	override val kravDato: Krav? = null,
+	override val forespurtstartdato: String? = null,
+
 	val bruker: Bruker? = null,
 	//P2XXX
-	val mottaker: List<String>? = null,
-	val trekkgrunnlag: List<String>? = null,
+	val vedtak: List<VedtakItemP2200>? = null,
 	val vedlegg: List<String> ? = null,
 	val vedleggandre: String? = null,
+
 	val etterspurtedokumenter: String? = null,
-	val ytterligeinformasjon: String? = null
+	val ytterligeinformasjon: String? = null,
+	val trekkgrunnlag: List<String> ?= null,
+	val mottaker: List<String> ?= null,
+	val institusjonennaaikkesoektompensjon: List<String> ?= null
 ): Pensjon()
 
 //Institusjon
@@ -84,7 +97,6 @@ data class Institusjon(
         val saksnummer: String? = null,
         val sektor: String? = null,
         val land: String? = null,
-        val pin: String? = null,
 		val personNr: String? = null,
         val utstedelsesDato: String? = null,  //4.1.4.
         val startdatoPensjonsRettighet: String? = null  //4.1.5
@@ -104,7 +116,7 @@ data class YtelserItem(
 	val ytelse: String? = null,
 	val startdatoretttilytelse: String? = null,
 	val sluttdatoutbetaling: String? = null,
-	val sluttdatorettilutbetaling: String? = null,
+	val sluttdatoRettTilUtbetaling: String? = null,
 	val beloep: List<BeloepItem>? = null,
 	val status: String? = null,
 	val totalbruttobeloepbostedsbasert: String? = null
@@ -124,7 +136,7 @@ data class BeloepItem(
 data class MottasbasertpaaItem(
 	val totalbruttobeloepbostedsbasert: String? = null,
 	val totalbruttobeloeparbeidsbasert: String? = null,
-	val mottasbasertpaa: String? = null,
+	val verdi: String? = null,
 	)
 
 enum class BasertPaa(@JsonValue val kode: String) {
@@ -215,6 +227,11 @@ data class Opptjening(
 data class AvslagbegrunnelseItem(
         val begrunnelse: String? = null,
         val annenbegrunnelse: String? = null
+)
+
+data class VedtakItemP2200(
+	val mottaker: List<String>? = null,
+	val trekkgrunnlag: List<String>? = null
 )
 
 data class BeregningItem(
