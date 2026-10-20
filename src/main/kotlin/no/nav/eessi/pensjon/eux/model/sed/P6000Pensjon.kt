@@ -7,6 +7,7 @@ class P6000Pensjon(
     val sak: Sak? = null,
     val tilleggsinformasjon: Tilleggsinformasjon? = null,
     val ytterligeinformasjon: String? = null,
+    override val kravDato: Krav? = null
 ) : Pensjon()
 data class AndreinstitusjonerItem(
     val institusjonsid: String? = null,
