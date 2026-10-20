@@ -11,6 +11,29 @@ import org.junit.jupiter.api.assertThrows
 
 internal class SedTest {
 
+    @Test
+    fun `Deserialization skal ivareta eksplisitte SED-versjoner`() {
+        for (type in listOf(SedType.P2000, SedType.X010)) {
+            for (version in listOf("\"2\"", "\"3\"", "\"4\"", "\"5\"", "null")) {
+                val json = """{"sed":"$type","sedGVer":"4","sedVer":$version}"""
+                val expected = if (version == "null") null else version.trim('"')
+                for (sed in listOf(SED.fromJson(json), SED.fromJsonToConcrete(json))) {
+                    assertEquals(expected, sed.sedVer, "$type with sedVer=$version")
+                    assertEquals(expected, SED.fromJsonToConcrete(sed.toJson()).sedVer)
+                }
+            }
+        }
+    }
+
+    @Test
+    fun `Deserialization bruker versjon fire når SED-versjonen mangler`() {
+        for (type in listOf(SedType.P2000, SedType.X010)) {
+            val json = """{"sed":"$type"}"""
+            assertEquals("4", SED.fromJson(json).sedVer)
+            assertEquals("4", SED.fromJsonToConcrete(json).sedVer)
+        }
+    }
+
 
     @Test
     @Disabled

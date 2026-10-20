@@ -35,22 +35,11 @@ open class SED(
     @JsonProperty("sed")
     open val type: SedType,
     open val sedGVer: String? = "4",
-    open var sedVer: String? = setSEDVersion("4"),
+    open var sedVer: String? = "4",
     open val nav: Nav? = null,
     open val pensjon: Pensjon? = null
 ) {
     companion object {
-    private val logger by lazy { org.slf4j.LoggerFactory.getLogger(SED::class.java) }
-        //TODO Hvorfor logges 4.3 som 4.2????
-        fun setSEDVersion(sedVersion: String?): String {
-            return when(sedVersion) {
-                "v4.5" -> "5"
-                "5" -> "5"
-                "v4.3" -> "3"
-                "3" -> "3"
-                else -> "4"
-            }.also { logger.debug("SED version: V4.$it") }
-        }
         private fun fromSimpleJson(sed: String): SedType {
             return mapJsonToAny<SimpleSED>(sed, true).type
         }
