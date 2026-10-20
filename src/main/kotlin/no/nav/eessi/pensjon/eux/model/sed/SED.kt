@@ -44,10 +44,12 @@ open class SED(
         //TODO Hvorfor logges 4.3 som 4.2????
         fun setSEDVersion(sedVersion: String?): String {
             return when(sedVersion) {
-                "v4.4" -> "4"
+                "v4.5" -> "5"
+                "5" -> "5"
                 "v4.3" -> "3"
-                else -> "2"
-            }.also { logger.debug("SED version: v4.$sedVersion") }
+                "3" -> "3"
+                else -> "4"
+            }.also { logger.debug("SED version: V4.$it") }
         }
         private fun fromSimpleJson(sed: String): SedType {
             return mapJsonToAny<SimpleSED>(sed, true).type

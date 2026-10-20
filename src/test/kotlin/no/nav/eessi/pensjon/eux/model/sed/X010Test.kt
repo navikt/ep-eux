@@ -91,7 +91,7 @@ class X010Test {
             }
           },
           "sedGVer" : "4",
-          "sedVer" : "2",
+          "sedVer" : "4",
           "pensjon" : null
         }
         """.trimIndent()
