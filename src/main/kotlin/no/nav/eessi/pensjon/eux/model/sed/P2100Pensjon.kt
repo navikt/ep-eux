@@ -7,13 +7,15 @@ data class P2100Pensjon(
     override val gjenlevende: Bruker? = null,
     override val ytelser: List<YtelserItem>? = null,
     override val forespurtstartdato: String? = null,
+    override val kravDato: Krav? = null,
     val bruker: Bruker? = null,
     val vedtak: List<P2100Vedtak>? = null,
     val vedlegg: List<String>? = null,
     val vedleggandre: String? = null,
     val etterspurtedokumenter: String? = null,
     val ytterligeinformasjon: String? = null,
-    val antallSokereKjent: String? = null
+    val antallSokereKjent: String? = null,
+
 ) : Pensjon()
 
 data class P2100Vedtak(

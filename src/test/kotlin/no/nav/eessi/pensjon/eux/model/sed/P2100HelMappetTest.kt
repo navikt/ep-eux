@@ -193,26 +193,24 @@ class P2100HelMappetTest {
         assertEquals("2019-04-01", pension?.startDatoPensjonrettighet, "3.2.3 Start date of pension right")
     }
 
-    @Disabled
     @Test
     fun kap4() {
 
         val p2100 = mapJsonToAny<P2100>(p2100Json())
-        val dodsdetalj = p2100.pensjon?.gjenlevende?.person?.dodsdetalj
-        println("Rezz: ${p2100.pensjon?.gjenlevende?.person?.toJson()}")
+        val navbruker = p2100.nav?.bruker?.person
 
         // 4.1 sted
         // Mapping (ACL v4.4/v4.5): $nav.bruker.person.dodsDetalj.sted -> P2100.InsuredPersonDeathDetails.placeDeath
-        assertEquals("4.1 Test place of death", dodsdetalj?.sted, "4.1 nav.bruker.person.dodsdetalj.sted")
+        assertEquals("4.1 Test place of death", navbruker?.dodsdetalj?.sted)
         // 4.2 dato
         // Mapping (ACL v4.4/v4.5): $nav.bruker.person.dodsDetalj.dato -> P2100.InsuredPersonDeathDetails.dateDeath
-        assertEquals("2024-01-01", dodsdetalj?.dato, "4.2 nav.bruker.person.dodsdetalj.dato")
+        assertEquals("2024-01-01", navbruker?.dodsdetalj?.dato, "4.2 nav.bruker.person.dodsdetalj.dato")
         // 4.3.1 arsak
         // Mapping (ACL v4.4/v4.5): $nav.bruker.person.dodsdetalj.arsaker[x].arsak -> P2100.InsuredPersonDeathDetails.CauseDeath[x].causeDeath.value[x]
-        assertEquals("99", dodsdetalj?.arsaker?.getOrNull(0)?.arsak, "4.3.1 nav.bruker.person.dodsdetalj.arsaker.0.arsak")
+        assertEquals("99", navbruker?.dodsdetalj?.arsaker?.getOrNull(0)?.arsak, "4.3.1 nav.bruker.person.dodsdetalj.arsaker.0.arsak")
         // 4.3.2.1 annenArsak
         // Mapping (ACL v4.4/v4.5): $nav.bruker.person.dodsdetalj.arsaker[x].annenArsak -> P2100.InsuredPersonDeathDetails.CauseDeath[x].PleaseFillInFollowingIfCauseDeathOther.describeOtherCauseDeath
-        assertEquals("4.3.2.1 Test other cause", dodsdetalj?.arsaker?.getOrNull(0)?.annenArsak, "4.3.2.1 nav.bruker.person.dodsdetalj.arsaker.0.annenArsak")
+        assertEquals("4.3.2.1 Test other cause", navbruker?.dodsdetalj?.arsaker?.getOrNull(0)?.annenArsak, "4.3.2.1 nav.bruker.person.dodsdetalj.arsaker.0.annenArsak")
     }
 
 
