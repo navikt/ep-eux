@@ -98,8 +98,8 @@ data class Institusjon(
         val sektor: String? = null,
         val land: String? = null,
 		val personNr: String? = null,
-        val utstedelsesDato: String? = null,  //4.1.4.
-        val startdatoPensjonsRettighet: String? = null  //4.1.5
+		val pin: String? = null,
+        val utstedelsesDato: String? = null  //4.1.4.
 )
 
 //P2000 - P2200 - P7000
@@ -116,11 +116,12 @@ data class YtelserItem(
 	val ytelse: String? = null,
 	val startdatoretttilytelse: String? = null,
 	val sluttdatoutbetaling: String? = null,
-	val sluttdatoRettTilUtbetaling: String? = null,
+	val sluttdatorettilutbetaling: String? = null,
 	val beloep: List<BeloepItem>? = null,
 	val status: String? = null,
-	val totalbruttobeloepbostedsbasert: String? = null
-)
+	val totalbruttobeloepbostedsbasert: String? = null,
+	val retttilytelsevedsykdom: String? = null
+	)
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 data class BeloepItem(
@@ -136,7 +137,7 @@ data class BeloepItem(
 data class MottasbasertpaaItem(
 	val totalbruttobeloepbostedsbasert: String? = null,
 	val totalbruttobeloeparbeidsbasert: String? = null,
-	val verdi: String? = null,
+	val mottasbasertpaa: String? = null,
 	)
 
 enum class BasertPaa(@JsonValue val kode: String) {

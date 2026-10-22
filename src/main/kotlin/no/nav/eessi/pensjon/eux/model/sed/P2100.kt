@@ -7,6 +7,6 @@ class P2100(
     @JsonProperty("sed")
     override val type: SedType = SedType.P2100,
     override val nav: Nav? = null,
-    override val pensjon: Pensjon?
+    override val pensjon: P2100Pensjon?
 ) : SED(type, nav =  nav, pensjon = pensjon)
 

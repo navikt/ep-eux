@@ -1,0 +1,464 @@
+{
+  "sed": "P2100",
+  "sedVer": "2",
+  "sedGVer": "4",
+  "nav": {
+    "eessisak": [
+      {
+        "land": "NO",
+        "saksnummer": "TEST-CASE-1",
+        "institusjonsid": "NO:TEST-CASE-1",
+        "institusjonsnavn": "Test case institution 1"
+      },
+      {
+        "land": "SE",
+        "saksnummer": "TEST-CASE-2",
+        "institusjonsid": "NO:TEST-CASE-2",
+        "institusjonsnavn": "Test case institution 2"
+      }
+    ],
+    "bruker": {
+      "person": {
+        "etternavn": "2.1 Test family name",
+        "fornavn": "2.1 Test forename",
+        "foedselsdato": "1970-02-03",
+        "kjoenn": "K",
+        "etternavnvedfoedsel": "2.1 Test birth family name",
+        "fornavnvedfoedsel": "2.1 Test birth forename",
+        "pin": [
+          {
+            "land": "NO",
+            "identifikator": "TEST-2.1-1",
+            "sektor": "alle",
+            "institusjon": {
+              "institusjonsid": "NO:TEST-2.1-1",
+              "institusjonsnavn": "Test institution 2.1-1"
+            }
+          },
+          {
+            "land": "SE",
+            "identifikator": "TEST-2.1-2",
+            "sektor": "alle",
+            "institusjon": {
+              "institusjonsid": "NO:TEST-2.1-2",
+              "institusjonsnavn": "Test institution 2.1-2"
+            }
+          }
+        ],
+        "foedested": {
+          "by": "2.1 Birth town",
+          "region": "2.1 Birth region",
+          "land": "DK"
+        },
+        "statsborgerskap": [
+          {
+            "land": "FI"
+          }
+        ],
+        "tidligereetternavn": "2.2.1 Previous family name",
+        "tidligerefornavn": "2.2.1 Previous forename",
+        "dodsdetalj": {
+          "sted": "4.1 Test place of death",
+          "dato": "2024-01-01",
+          "arsaker": [
+            {
+              "arsak": "99",
+              "annenArsak": "4.3.2.1 Test other cause"
+            }
+          ]
+        }
+      },
+      "far": {
+        "person": {
+          "etternavnvedfoedsel": "2.1 Father birth name",
+          "fornavn": "2.1 Father forename"
+        }
+      },
+      "mor": {
+        "person": {
+          "etternavnvedfoedsel": "2.1 Mother birth name",
+          "fornavn": "2.1 Mother forename"
+        }
+      },
+      "adresse": {
+        "gate": "2.2.2 Test street",
+        "bygning": "2.2.2 Test building",
+        "by": "2.2.2 Test town",
+        "postnummer": "0123",
+        "region": "2.2.2 Test region",
+        "land": "NO"
+      },
+      "bank": {
+        "konto": {
+          "innehaver": {
+            "rolle": "01",
+            "navn": "10.2.1 Test account holder"
+          },
+          "sepa": {
+            "iban": "TEST-IBAN-NOT-A-REAL-ACCOUNT",
+            "swift": "TEST-NOT-A-REAL-BIC"
+          }
+        }
+      }
+    },
+    "barn": [
+      {
+        "person": {
+          "etternavn": "8.1.1 Test family name",
+          "fornavn": "8.1.1 Test forename",
+          "foedselsdato": "1970-02-03",
+          "kjoenn": "K",
+          "etternavnvedfoedsel": "8.1.1 Test birth family name",
+          "fornavnvedfoedsel": "8.1.1 Test birth forename",
+          "pin": [
+            {
+              "land": "NO",
+              "identifikator": "TEST-8.1.1-1",
+              "sektor": "alle",
+              "institusjon": {
+                "institusjonsid": "NO:TEST-8.1.1-1",
+                "institusjonsnavn": "Test institution 8.1.1-1"
+              }
+            },
+            {
+              "land": "SE",
+              "identifikator": "TEST-8.1.1-2",
+              "sektor": "alle",
+              "institusjon": {
+                "institusjonsid": "NO:TEST-8.1.1-2",
+                "institusjonsnavn": "Test institution 8.1.1-2"
+              }
+            }
+          ],
+          "foedested": {
+            "by": "8.1.1 Birth town",
+            "region": "8.1.1 Birth region",
+            "land": "DK"
+          },
+          "statsborgerskap": [
+            {
+              "land": "SE"
+            }
+          ],
+          "doedsdato": "2023-01-02"
+        },
+        "far": {
+          "person": {
+            "etternavnvedfoedsel": "8.1.1 Father birth name",
+            "fornavn": "8.1.1 Father forename"
+          }
+        },
+        "mor": {
+          "person": {
+            "etternavnvedfoedsel": "8.1.1 Mother birth name",
+            "fornavn": "8.1.1 Mother forename"
+          }
+        },
+        "relasjontilbruker": "99",
+        "relasjontilbruker43": "99",
+        "opplysningeromannetbarn": "8.1.2.3.1 Test child 1"
+      },
+      {
+        "person": {
+          "etternavn": "8.1.1 Test family name",
+          "fornavn": "8.1.1 Test forename",
+          "foedselsdato": "1970-02-03",
+          "kjoenn": "K",
+          "etternavnvedfoedsel": "8.1.1 Test birth family name",
+          "fornavnvedfoedsel": "8.1.1 Test birth forename",
+          "pin": [
+            {
+              "land": "NO",
+              "identifikator": "TEST-8.1.1-1",
+              "sektor": "alle",
+              "institusjon": {
+                "institusjonsid": "NO:TEST-8.1.1-1",
+                "institusjonsnavn": "Test institution 8.1.1-1"
+              }
+            },
+            {
+              "land": "SE",
+              "identifikator": "TEST-8.1.1-2",
+              "sektor": "alle",
+              "institusjon": {
+                "institusjonsid": "NO:TEST-8.1.1-2",
+                "institusjonsnavn": "Test institution 8.1.1-2"
+              }
+            }
+          ],
+          "foedested": {
+            "by": "8.1.1 Birth town",
+            "region": "8.1.1 Birth region",
+            "land": "DK"
+          },
+          "statsborgerskap": [
+            {
+              "land": "SE"
+            }
+          ],
+          "doedsdato": "2023-01-02"
+        },
+        "far": {
+          "person": {
+            "etternavnvedfoedsel": "8.1.1 Father birth name",
+            "fornavn": "8.1.1 Father forename"
+          }
+        },
+        "mor": {
+          "person": {
+            "etternavnvedfoedsel": "8.1.1 Mother birth name",
+            "fornavn": "8.1.1 Mother forename"
+          }
+        },
+        "relasjontilbruker": "99",
+        "relasjontilbruker43": "99",
+        "opplysningeromannetbarn": "8.1.2.3.1 Test child 2"
+      }
+    ],
+    "verge": {
+      "person": {
+        "etternavn": "9.1 Test guardian family name",
+        "fornavn": "9.2 Test guardian forename",
+        "kontakt": {
+          "telefon": [
+            {
+              "type": "hjem",
+              "nummer": "00000001"
+            },
+            {
+              "type": "mobil",
+              "nummer": "00000002"
+            }
+          ],
+          "email": [
+            {
+              "adresse": "test-9.5@example.invalid"
+            }
+          ]
+        }
+      },
+      "vergemaal": {
+        "mandat": "9.3 Test mandate"
+      },
+      "adresse": {
+        "gate": "9.4 Test street",
+        "bygning": "9.4 Test building",
+        "by": "9.4 Test town",
+        "postnummer": "0123",
+        "region": "9.4 Test region",
+        "land": "NO"
+      }
+    },
+    "krav": {
+      "dato": "2024-01-02"
+    }
+  },
+  "pensjon": {
+    "gjenlevende": {
+      "person": {
+        "etternavn": "5.1 Test family name",
+        "fornavn": "5.1 Test forename",
+        "foedselsdato": "1970-02-03",
+        "kjoenn": "K",
+        "etternavnvedfoedsel": "5.1 Test birth family name",
+        "fornavnvedfoedsel": "5.1 Test birth forename",
+        "pin": [
+          {
+            "land": "NO",
+            "identifikator": "TEST-5.1-1",
+            "sektor": "alle",
+            "institusjonsid": "NO:TEST-5.1-1",
+            "institusjonsnavn": "Test institution 5.1-1"
+          },
+          {
+            "land": "SE",
+            "identifikator": "TEST-5.1-2",
+            "sektor": "alle",
+            "institusjonsid": "NO:TEST-5.1-2",
+            "institusjonsnavn": "Test institution 5.1-2"
+          }
+        ],
+        "foedested": {
+          "by": "5.1 Birth town",
+          "region": "5.1 Birth region",
+          "land": "DK"
+        },
+        "statsborgerskap": [
+          {
+            "land": "FI"
+          }
+        ],
+        "tidligereetternavn": "5.2.1 Previous family name",
+        "tidligerefornavn": "5.2.1 Previous forename",
+        "sivilstand": [
+          {
+            "status": "gift",
+            "fradato": "2000-01-02"
+          }
+        ],
+        "kontakt": {
+          "telefon": [
+            {
+              "type": "hjem",
+              "nummer": "00000001"
+            },
+            {
+              "type": "mobil",
+              "nummer": "00000002"
+            }
+          ],
+          "email": [
+            {
+              "adresse": "test-5.2.4@example.invalid"
+            }
+          ]
+        },
+        "relasjontilavdod": {
+          "relasjon": "01",
+          "pensjondetalj": [
+            {
+              "mottattPensjonvedDod": "1",
+              "mottattPensjonType": "01",
+              "startDatoPensjonrettighet": "2019-04-01",
+              "institusjon": {
+                "institusjonsid": "NO:TEST-PENSION",
+                "institusjonsnavn": "Test pension institution",
+                "saksnummer": "TEST-PENSION-CASE"
+              }
+            }
+          ],
+          "sammehusholdning": "1",
+          "sammehusholdningfradato": "2000-01-01",
+          "giftParnerDato": "2001-02-03",
+          "harfellesbarn": "1",
+          "forventetTerim": "2024-08-01",
+          "separasjonType": "01"
+        },
+        "nyttEkteskapPartnerskapEtterForsikredeDod": {
+          "fraDato": "2025-01-01",
+          "etternavn": "5.3.4.2.1 Test partner family name",
+          "fornavn": "5.3.4.2.2 Test partner forename"
+        },
+        "bormednypartner": "1"
+      },
+      "far": {
+        "person": {
+          "etternavnvedfoedsel": "5.1 Father birth name",
+          "fornavn": "5.1 Father forename"
+        }
+      },
+      "mor": {
+        "person": {
+          "etternavnvedfoedsel": "5.1 Mother birth name",
+          "fornavn": "5.1 Mother forename"
+        }
+      },
+      "adresse": {
+        "gate": "5.2.3 Test street",
+        "bygning": "5.2.3 Test building",
+        "by": "5.2.3 Test town",
+        "postnummer": "0123",
+        "region": "5.2.3 Test region",
+        "land": "NO"
+      }
+    },
+    "ytelser": [
+      {
+        "ytelse": "99",
+        "annenytelse": "7.1.2.1 Test benefit 1",
+        "status": "02",
+        "institusjon": {
+          "institusjonsid": "NO:TEST-BENEFIT-1",
+          "institusjonsnavn": "Test benefit institution 1",
+          "saksnummer": "TEST-BENEFIT-CASE-1"
+        },
+        "startdatoutbetaling": "2020-02-01",
+        "sluttdatoutbetaling": "2024-03-01",
+        "startdatoretttilytelse": "2020-01-01",
+        "sluttdatorettilutbetaling": "2024-02-01",
+        "beloep": [
+          {
+            "beloep": "1100.50",
+            "valuta": "NOK",
+            "gjeldendesiden": "2020-02-01",
+            "betalingshyppighetytelse": "03"
+          },
+          {
+            "beloep": "1200.50",
+            "valuta": "NOK",
+            "gjeldendesiden": "2021-02-01",
+            "betalingshyppighetytelse": "99",
+            "annenbetalingshyppighetytelse": "7.1.9.5.1 Test frequency 1"
+          }
+        ]
+      },
+      {
+        "ytelse": "01",
+        "annenytelse": "7.1.2.1 Test benefit 2",
+        "status": "02",
+        "institusjon": {
+          "institusjonsid": "NO:TEST-BENEFIT-2",
+          "institusjonsnavn": "Test benefit institution 2",
+          "saksnummer": "TEST-BENEFIT-CASE-2"
+        },
+        "startdatoutbetaling": "2020-02-01",
+        "sluttdatoutbetaling": "2024-03-01",
+        "startdatoretttilytelse": "2020-01-01",
+        "sluttdatorettilutbetaling": "2024-02-01",
+        "beloep": [
+          {
+            "beloep": "2100.50",
+            "valuta": "NOK",
+            "gjeldendesiden": "2020-02-01",
+            "betalingshyppighetytelse": "03"
+          },
+          {
+            "beloep": "2200.50",
+            "valuta": "NOK",
+            "gjeldendesiden": "2021-02-01",
+            "betalingshyppighetytelse": "99",
+            "annenbetalingshyppighetytelse": "7.1.9.5.1 Test frequency 2"
+          }
+        ]
+      }
+    ],
+    "bruker": {
+      "arbeidsforhold": [
+        {
+          "yrke": "6.1.1 Test occupation",
+          "type": "01",
+          "planlagtstartdato": "2025-02-01",
+          "sluttdato": "2026-03-01",
+          "planlagtpensjoneringsdato": "2027-04-01",
+          "arbeidstimerperuke": "37.5",
+          "inntekt": [
+            {
+              "beloep": "12345.67",
+              "valuta": "NOK",
+              "beloeputbetaltsiden": "2025-02-01",
+              "betalingshyppighetinntekt": "99",
+              "annenbetalingshyppighetinntekt": "6.1.7.5.1 Test frequency"
+            }
+          ]
+        }
+      ]
+    },
+    "vedtak": [
+      {
+        "mottaker": [
+          "01"
+        ],
+        "trekkgrunnlag": [
+          "02"
+        ]
+      }
+    ],
+    "vedlegg": [
+      "99"
+    ],
+    "vedleggandre": "11.4.2.1 Test attachment",
+    "etterspurtedokumenter": "11.5 Test requested documents",
+    "ytterligeinformasjon": "11.6 Test additional information",
+    "antallSokereKjent": "2"
+  }
+}

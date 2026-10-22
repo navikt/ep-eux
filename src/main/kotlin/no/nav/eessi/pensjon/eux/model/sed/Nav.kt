@@ -113,7 +113,9 @@ data class BarnItem(
 @JsonIgnoreProperties(ignoreUnknown = true)
 data class Ektefelle(
         val person: Person? = null,
-        val type: String? = null
+        val type: String? = null,
+        val far: Person? = null,
+        val mor: Person? = null
 )
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -164,8 +166,29 @@ data class Person(
         //noe enkel måte å få denne til å forbli val?
         var rolle: String? = null,  //3.1 i P10000
         var kontakt: Kontakt? = null, //P2000
+        var nyttEkteskapPartnerskapEtterForsikredeDod: NyttEkteskapPartnerskapP2100? = null, //P2000
+        var bormednypartner: String? = null, //P2000
+        val dodsdetalj: DodsdetaljP2100? = null,
         val doedsdato: String? = null //P2000
 )
+
+data class DodsdetaljP2100(
+        val dato: String? = null,
+        val sted: String? = null,
+        val arsaker: List<DodsarsakP2100>? = null
+)
+
+data class DodsarsakP2100(
+        val arsak: String? = null,
+        val annenArsak: String? = null
+)
+
+data class NyttEkteskapPartnerskapP2100(
+        val fornavn: String? = null,
+        val etternavn: String? = null,
+        val fraDato: String? = null
+)
+
 
 data class PinLandItem(
         val oppholdsland: String? = null,
@@ -175,6 +198,21 @@ data class PinLandItem(
 @JsonIgnoreProperties(ignoreUnknown = true)
 data class RelasjonAvdodItem(
         val relasjon: String? = null,  //5.2.5  P2100
+        val pensjondetalj: List<Pensjondetalj>? = null,
+        val forventetTerim: String? = null,
+        val harfellesbarn: String? = null,
+        val giftParnerDato: String? = null,
+        val separasjonType: String? = null,
+        val sammehusholdning: String? = null,
+        val sammehusholdningfradato: String? = null,
+)
+
+data class Pensjondetalj(
+        val mottattPensjonType: String? = null,
+        val mottattPensjonvedDod: String? = null,
+        val startDatoPensjonrettighet: String? = null,
+        val institusjon: Institusjon? = null,
+
 )
 
 // TODO bytt denne med RelasjonAvdodItem
