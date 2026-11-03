@@ -1,0 +1,509 @@
+{
+  "sed": "P9000",
+  "sedVer": "4",
+  "sedGVer": "4",
+  "nav": {
+    "bruker": {
+      "adresse": {
+        "gate": "2.2.2.1 Test street 1",
+        "bygning": "2.2.2.2 Test building Name 1",
+        "land": "NO",
+        "by": "2.2.2.3 Test town 1",
+        "region": "2.2.2.5 Test region 1",
+        "postnummer": "0123"
+      },
+      "person": {
+        "kontakt": {
+          "telefon": [
+            {
+              "type": "hjem",
+              "nummer": "2.2.3.1.1.2 Test number 1"
+            },
+            {
+              "type": "mobil",
+              "nummer": "2.2.3.1.1.2 Test number 2"
+            }
+          ],
+          "email": [
+            {
+              "adresse": "test-2.2.3.2.1.1-1@example.invalid"
+            },
+            {
+              "adresse": "test-2.2.3.2.1.1-2@example.invalid"
+            }
+          ]
+        },
+        "tidligereetternavn": "2.2.1.2 Test previous Family Name 1",
+        "statsborgerskap": [
+          {
+            "land": "NO"
+          },
+          {
+            "land": "SE"
+          }
+        ],
+        "tidligerefornavn": "2.2.1.3 Test previous Forename 1",
+        "pin": [
+          {
+            "institusjonsnavn": "2.1.7.1.4.2 Test institution Name 1",
+            "institusjonsid": "2.1.7.1.4.1 Test institution ID 1",
+            "land": "NO",
+            "identifikator": "2.1.7.1.2 Test personal Identification Number 1",
+            "sektor": "pensjoner"
+          },
+          {
+            "institusjonsnavn": "2.1.7.1.4.2 Test institution Name 2",
+            "institusjonsid": "2.1.7.1.4.1 Test institution ID 2",
+            "land": "SE",
+            "identifikator": "2.1.7.1.2 Test personal Identification Number 2",
+            "sektor": "pensjoner"
+          }
+        ],
+        "etternavnvedfoedsel": "2.1.5 Test family Name At Birth 1",
+        "foedested": {
+          "land": "NO",
+          "region": "2.1.8.1.2 Test region 1",
+          "by": "2.1.8.1.1 Test town 1"
+        },
+        "kjoenn": "K",
+        "fornavn": "2.1.2 Test forename 1",
+        "foedselsdato": "2020-01-02",
+        "fornavnvedfoedsel": "2.1.6 Test forename At Birth 1",
+        "etternavn": "2.1.1 Test family Name 1",
+        "sivilstand": [
+          {
+            "fradato": "2020-01-02",
+            "status": "gift"
+          },
+          {
+            "fradato": "2021-01-02",
+            "status": "gift"
+          }
+        ]
+      },
+      "far": {
+        "person": {
+          "etternavnvedfoedsel": "2.1.8.2 Test father Family Name At Birth 1",
+          "fornavn": "2.1.8.3 Test forename Father 1"
+        }
+      },
+      "mor": {
+        "person": {
+          "fornavn": "2.1.8.5 Test forename Mother 1",
+          "etternavnvedfoedsel": "2.1.8.4 Test mother Family Name At Birth 1"
+        }
+      },
+      "bank": {
+        "adresse": {
+          "by": "12.2.3.4.3 Test town 1",
+          "gate": "12.2.3.4.1 Test street 1",
+          "bygning": "12.2.3.4.2 Test building Name 1",
+          "postkode": "0123",
+          "region": "12.2.3.4.5 Test region 1",
+          "land": "NO"
+        },
+        "konto": {
+          "kontonr": "12.2.3.1 Test account Number 1",
+          "ikkesepa": {
+            "swift": "TEST-NOT-A-REAL-BIC"
+          },
+          "sepa": {
+            "swift": "TEST-NOT-A-REAL-BIC",
+            "iban": "TEST-IBAN-NOT-A-REAL-ACCOUNT"
+          },
+          "innehaver": {
+            "navn": "12.2.1 Test account Holder Name 1",
+            "rolle": "01"
+          }
+        },
+        "navn": "12.2.3.3 Test bank Name 1"
+      }
+    },
+    "annenperson": {
+      "mor": {
+        "person": {
+          "fornavnvedfoedsel": "3.2.8.5 Test forename Mother 1",
+          "fornavn": "3.2.8.5 Test current forename",
+          "etternavnvedfoedsel": "3.2.8.4 Test mother Family Name At Birth 1"
+        }
+      },
+      "person": {
+        "foedested": {
+          "by": "3.2.8.1.1 Test town 1",
+          "region": "3.2.8.1.2 Test region 1",
+          "land": "NO"
+        },
+        "fornavn": "3.2.2 Test forename 1",
+        "etternavnvedfoedsel": "3.2.5 Test family Name At Birth 1",
+        "pin": [
+          {
+            "institusjonsid": "3.2.7.1.4.1 Test institution ID 1",
+            "institusjonsnavn": "3.2.7.1.4.2 Test institution Name 1",
+            "land": "NO",
+            "sektor": "pensjoner",
+            "identifikator": "3.2.7.1.2 Test personal Identification Number 1"
+          },
+          {
+            "institusjonsid": "3.2.7.1.4.1 Test institution ID 2",
+            "institusjonsnavn": "3.2.7.1.4.2 Test institution Name 2",
+            "land": "SE",
+            "sektor": "pensjoner",
+            "identifikator": "3.2.7.1.2 Test personal Identification Number 2"
+          }
+        ],
+        "fornavnvedfoedsel": "3.2.6 Test forename At Birth 1",
+        "foedselsdato": "2020-01-02",
+        "etternavn": "3.2.1 Test family Name 1",
+        "pinannen": {
+          "identifikator": "3.2.7.2 Test personal Identification Number For Person Concerned"
+        },
+        "kjoenn": "K",
+        "rolle": "01",
+        "kontakt": {
+          "email": [
+            {
+              "adresse": "test-3.3.2.2.1.1-1@example.invalid"
+            },
+            {
+              "adresse": "test-3.3.2.2.1.1-2@example.invalid"
+            }
+          ],
+          "telefon": [
+            {
+              "type": "hjem",
+              "nummer": "3.3.2.1.1.2 Test number 1"
+            },
+            {
+              "type": "mobil",
+              "nummer": "3.3.2.1.1.2 Test number 2"
+            }
+          ]
+        },
+        "tidligerefornavn": "3.3.1.3 Test previous Forename 1",
+        "tidligereetternavn": "3.3.1.2 Test previous Family Name 1",
+        "statsborgerskap": [
+          {
+            "land": "NO"
+          },
+          {
+            "land": "SE"
+          }
+        ]
+      },
+      "far": {
+        "person": {
+          "etternavnvedfoedsel": "3.2.8.2 Test father Family Name At Birth 1",
+          "fornavnvedfoedsel": "3.2.8.3 Test forename Father 1",
+          "fornavn": "3.2.8.3 Test current forename"
+        }
+      },
+      "adresse": {
+        "postnummer": "0123",
+        "land": "NO",
+        "gate": "8.1.1 Test street 1",
+        "by": "8.1.3 Test town 1",
+        "region": "8.1.5 Test region 1",
+        "bygning": "8.1.2 Test building Name 1",
+        "datoforadresseendring": "2020-01-02"
+      }
+    },
+    "eessisak": [
+      {
+        "land": "NO",
+        "institusjonsid": "1.1.3.1 Test institution ID 1",
+        "institusjonsnavn": "1.1.3.2 Test institution Name 1",
+        "saksnummer": "1.1.2 Test case Number 1"
+      },
+      {
+        "land": "SE",
+        "institusjonsid": "1.1.3.1 Test institution ID 2",
+        "institusjonsnavn": "1.1.3.2 Test institution Name 2",
+        "saksnummer": "1.1.2 Test case Number 2"
+      }
+    ],
+    "verge": {
+      "vergenavn": "11.1 Test representative name",
+      "adresse": {
+        "postnummer": "0123",
+        "bygning": "11.3.2 Test building Name 1",
+        "region": "11.3.5 Test region 1",
+        "gate": "11.3.1 Test street 1",
+        "land": "NO",
+        "by": "11.3.3 Test town 1"
+      },
+      "vergemaal": {
+        "mandat": "11.2 Test grounds 1"
+      }
+    }
+  },
+  "pensjon": {
+    "tilleggsinformasjon": {
+      "p8000": {
+        "dato": "2024-01-15",
+        "henvisningperson": "01"
+      },
+      "negativtsvar": {
+        "informasjon": "Test unavailable information",
+        "sed": "P4000",
+        "dokument": "Test unavailable document",
+        "bekreftelseinformasjon": "Test unavailable confirmation",
+        "aarsakgrunn": "99",
+        "aarsakannen": "Test other reason",
+        "aarsakikkesendsed": "Test reason for unavailable SED",
+        "sedsProvidedInMultipleType": "06",
+        "annensed": "Test additional unavailable SED"
+      },
+      "vedlegg": [
+        {
+          "dokument": "01"
+        },
+        {
+          "dokument": "02"
+        }
+      ],
+      "vedlegginfo": "Test attached document details",
+      "yrkesaktivitet": {
+        "ingenaktivtetinformasjon": "Test activity and non-activity details",
+        "tilleggsopplysning": "Test additional reply details"
+      },
+      "anneninformation": "Test other requested information",
+      "bekreftelseSed": [
+        {
+          "p8000ref": "6.1",
+          "info": "01",
+          "aarsak": "Test confirmation reason 1",
+          "grunn": "Test different information 1"
+        },
+        {
+          "p8000ref": "7.1",
+          "info": "02",
+          "aarsak": "Test confirmation reason 2",
+          "grunn": "Test different information 2"
+        }
+      ]
+    },
+    "merinformasjon": {
+      "livdoedinfo": {
+        "lever": "01",
+        "dodsdato": "2020-06-15",
+        "by": "Test birth town 1",
+        "region": "Test birth region 1",
+        "land": "NO"
+      },
+      "aktivitetsinfo": [
+        {
+          "ansattype": "01",
+          "antalltimer": "30",
+          "startdato": "2020-01-01",
+          "sluttdato": "2020-02-01",
+          "sted": "Test occupation 1-1"
+        },
+        {
+          "ansattype": "02",
+          "antalltimer": "31",
+          "startdato": "2020-01-02",
+          "sluttdato": "2020-02-02",
+          "sted": "Test occupation 1-2"
+        }
+      ],
+      "bruker": {
+        "person": {
+          "kontakt": {
+            "telefon": [
+              {
+                "type": "hjem",
+                "nummer": "TEST-PHONE-1-1"
+              },
+              {
+                "type": "mobil",
+                "nummer": "TEST-PHONE-1-2"
+              }
+            ],
+            "email": [
+              {
+                "adresse": "test-1-1@example.invalid"
+              },
+              {
+                "adresse": "test-1-2@example.invalid"
+              }
+            ]
+          }
+        }
+      },
+      "egenerklaering": {
+        "dato": "2020-05-15",
+        "egenerklaering": "Test signed declaration 1"
+      },
+      "infoarbeidsledig": [
+        {
+          "startdato": "2020-03-01",
+          "sluttdato": "2020-04-01",
+          "arbeidsledig": "01"
+        },
+        {
+          "startdato": "2020-04-02",
+          "sluttdato": "2020-05-02",
+          "arbeidsledig": "02"
+        }
+      ],
+      "yrkesaktiv": [
+        {
+          "yrkesstatus": "0",
+          "startdato": "2020-07-01",
+          "sluttdato": "2020-08-01"
+        },
+        {
+          "yrkesstatus": "1",
+          "startdato": "2020-08-02",
+          "sluttdato": "2020-09-02"
+        }
+      ],
+      "infoinntekt": [
+        {
+          "inntektellerikke": "01",
+          "inntektskilde": "Test income source 1-1",
+          "startdatomottakinntekt": "2020-09-01",
+          "sluttdatomottakinntekt": "2020-12-01",
+          "ytterligereinfoinntekt": "Test income details 1-1",
+          "tilleggsytelserutbetalingeritilleggtilinntekt": "Test income supplement 1-1",
+          "inntektbelop": [
+            {
+              "betalingshyppighet": "99",
+              "beloepgjeldendesiden": "2020-10-01",
+              "annenbetalingshyppighet": "Test other frequency 1-1-1",
+              "beloep": "1000.50",
+              "valuta": "NOK"
+            },
+            {
+              "betalingshyppighet": "99",
+              "beloepgjeldendesiden": "2020-10-02",
+              "annenbetalingshyppighet": "Test other frequency 1-1-2",
+              "beloep": "1001.50",
+              "valuta": "SEK"
+            }
+          ]
+        },
+        {
+          "inntektellerikke": "03",
+          "inntektskilde": "Test income source 1-2",
+          "startdatomottakinntekt": "2020-09-02",
+          "sluttdatomottakinntekt": "2020-12-02",
+          "ytterligereinfoinntekt": "Test income details 1-2",
+          "tilleggsytelserutbetalingeritilleggtilinntekt": "Test income supplement 1-2",
+          "inntektbelop": [
+            {
+              "betalingshyppighet": "99",
+              "beloepgjeldendesiden": "2020-10-03",
+              "annenbetalingshyppighet": "Test other frequency 1-2-1",
+              "beloep": "1010.50",
+              "valuta": "NOK"
+            },
+            {
+              "betalingshyppighet": "99",
+              "beloepgjeldendesiden": "2020-10-04",
+              "annenbetalingshyppighet": "Test other frequency 1-2-2",
+              "beloep": "1011.50",
+              "valuta": "SEK"
+            }
+          ]
+        }
+      ],
+      "infoskolegang": [
+        {
+          "startdatoskolegang": "2020-01-01",
+          "sluttdatoskolegang": "2020-06-01",
+          "typeskolegang": "Test education type 1-1",
+          "skolenavn": "Test institution 1-1",
+          "merinfoomskolegang": "Test education details 1-1"
+        },
+        {
+          "startdatoskolegang": "2020-01-02",
+          "sluttdatoskolegang": "2020-06-02",
+          "typeskolegang": "Test education type 1-2",
+          "skolenavn": "Test institution 1-2",
+          "merinfoomskolegang": "Test education details 1-2"
+        }
+      ],
+      "ytelser": [
+        {
+          "status": "01",
+          "ytelsestype": "10",
+          "anneninfoomytelsertekst": "Test benefit details 1",
+          "tilleggsytelserutbetalingitilleggtilpensjon": "Test benefit supplements 1",
+          "ytelsesdatoer": {
+            "annenytelse": "Test other benefit 1",
+            "datotyper": {
+              "datokravytelse": "2022-01-15",
+              "startdatoretttilytelser": "2022-02-15",
+              "startdatoutbetaling": "2022-03-15",
+              "sluttdatoutbetaling": "2022-04-15",
+              "startdatoforstansytelse": "2022-05-15",
+              "sluttdatoforstansiytelser": "2022-06-15",
+              "startdatoredusertytelse": "2022-07-15"
+            }
+          },
+          "datotyper": {
+            "datoavslagpaaytelse": "2022-09-15",
+            "sluttdatorettytelse": "2022-10-15",
+            "sluttdatoredusertytelse": "2022-11-15"
+          },
+          "beloep": [
+            {
+              "beloep": "3000.50",
+              "valuta": "NOK",
+              "gjeldendesiden": "2022-08-01",
+              "betalingshyppighetytelse": "99",
+              "annenbetalingshyppighetytelse": "Test benefit frequency 1-1"
+            },
+            {
+              "beloep": "3010.50",
+              "valuta": "SEK",
+              "gjeldendesiden": "2022-08-02",
+              "betalingshyppighetytelse": "99",
+              "annenbetalingshyppighetytelse": "Test benefit frequency 1-2"
+            }
+          ]
+        },
+        {
+          "status": "02",
+          "ytelsestype": "11",
+          "anneninfoomytelsertekst": "Test benefit details 2",
+          "tilleggsytelserutbetalingitilleggtilpensjon": "Test benefit supplements 2",
+          "ytelsesdatoer": {
+            "annenytelse": "Test other benefit 2",
+            "datotyper": {
+              "datokravytelse": "2023-01-15",
+              "startdatoretttilytelser": "2023-02-15",
+              "startdatoutbetaling": "2023-03-15",
+              "sluttdatoutbetaling": "2023-04-15",
+              "startdatoforstansytelse": "2023-05-15",
+              "sluttdatoforstansiytelser": "2023-06-15",
+              "startdatoredusertytelse": "2023-07-15"
+            }
+          },
+          "datotyper": {
+            "datoavslagpaaytelse": "2023-09-15",
+            "sluttdatorettytelse": "2023-10-15",
+            "sluttdatoredusertytelse": "2023-11-15"
+          },
+          "beloep": [
+            {
+              "beloep": "3100.50",
+              "valuta": "NOK",
+              "gjeldendesiden": "2023-08-01",
+              "betalingshyppighetytelse": "99",
+              "annenbetalingshyppighetytelse": "Test benefit frequency 2-1"
+            },
+            {
+              "beloep": "3110.50",
+              "valuta": "SEK",
+              "gjeldendesiden": "2023-08-02",
+              "betalingshyppighetytelse": "99",
+              "annenbetalingshyppighetytelse": "Test benefit frequency 2-2"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

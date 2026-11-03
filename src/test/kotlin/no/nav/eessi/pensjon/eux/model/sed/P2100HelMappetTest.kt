@@ -1,10 +1,8 @@
 package no.nav.eessi.pensjon.eux.model.sed
 
 import no.nav.eessi.pensjon.utils.mapJsonToAny
-import no.nav.eessi.pensjon.utils.toJson
 import no.nav.eessi.pensjon.utils.toJsonSkipEmpty
 import org.junit.jupiter.api.Assertions.assertEquals
-import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import org.skyscreamer.jsonassert.JSONAssert
 
@@ -470,7 +468,7 @@ class P2100HelMappetTest {
         assertEquals("2020-02-01", firstBenefitFirstAmount?.gjeldendesiden, "7.1.9.3 pensjon.ytelser.0.beloep.0.gjeldendesiden")
         // 7.1.9.4 Payment frequency (benefit 1, amount 1)
         // Mapping (ACL v4.4/v4.5): $pensjon.ytelser[x].beloep[x].betalingshyppighetytelse -> P2100.ClaimantBenefitDetails.BenefitDetails[x].Amount[x].paymentFrequency.value[x]
-        assertEquals(Betalingshyppighet.maaned_12_per_aar, firstBenefitFirstAmount?.betalingshyppighetytelse, "7.1.9.4 pensjon.ytelser.0.beloep.0.betalingshyppighetytelse")
+        assertEquals(Betalingshyppighet.maaned_12_per_aar.kode, firstBenefitFirstAmount?.betalingshyppighetytelse, "7.1.9.4 pensjon.ytelser.0.beloep.0.betalingshyppighetytelse")
         // 7.1.9.1 Amount (benefit 1, amount 2)
         // Mapping (ACL v4.4/v4.5): $pensjon.ytelser[x].beloep[x].beloep -> P2100.ClaimantBenefitDetails.BenefitDetails[x].Amount[x].amount
         assertEquals("1200.50", firstBenefitSecondAmount?.beloep, "7.1.9.1 pensjon.ytelser.0.beloep.1.beloep")
@@ -482,7 +480,7 @@ class P2100HelMappetTest {
         assertEquals("2021-02-01", firstBenefitSecondAmount?.gjeldendesiden, "7.1.9.3 pensjon.ytelser.0.beloep.1.gjeldendesiden")
         // 7.1.9.4 Payment frequency (benefit 1, amount 2)
         // Mapping (ACL v4.4/v4.5): $pensjon.ytelser[x].beloep[x].betalingshyppighetytelse -> P2100.ClaimantBenefitDetails.BenefitDetails[x].Amount[x].paymentFrequency.value[x]
-        assertEquals(Betalingshyppighet.annet, firstBenefitSecondAmount?.betalingshyppighetytelse, "7.1.9.4 pensjon.ytelser.0.beloep.1.betalingshyppighetytelse")
+        assertEquals(Betalingshyppighet.annet.kode, firstBenefitSecondAmount?.betalingshyppighetytelse, "7.1.9.4 pensjon.ytelser.0.beloep.1.betalingshyppighetytelse")
         // 7.1.9.5.1 Other payment frequency (benefit 1)
         // Mapping (ACL v4.4/v4.5): $pensjon.ytelser[x].beloep[x].annenbetalingshyppighetytelse -> P2100.ClaimantBenefitDetails.BenefitDetails[x].Amount[x].PleaseFillInFollowingIfPaymentFrequencyOther.otherPaymentFrequency
         assertEquals("7.1.9.5.1 Test frequency 1", firstBenefitSecondAmount?.annenbetalingshyppighetytelse, "7.1.9.5.1 pensjon.ytelser.0.beloep.1.annenbetalingshyppighetytelse")
@@ -529,7 +527,7 @@ class P2100HelMappetTest {
         assertEquals("2020-02-01", secondBenefitFirstAmount?.gjeldendesiden, "7.1.9.3 pensjon.ytelser.1.beloep.0.gjeldendesiden")
         // 7.1.9.4 Payment frequency (benefit 2, amount 1)
         // Mapping (ACL v4.4/v4.5): $pensjon.ytelser[x].beloep[x].betalingshyppighetytelse -> P2100.ClaimantBenefitDetails.BenefitDetails[x].Amount[x].paymentFrequency.value[x]
-        assertEquals(Betalingshyppighet.maaned_12_per_aar, secondBenefitFirstAmount?.betalingshyppighetytelse, "7.1.9.4 pensjon.ytelser.1.beloep.0.betalingshyppighetytelse")
+        assertEquals(Betalingshyppighet.maaned_12_per_aar.kode, secondBenefitFirstAmount?.betalingshyppighetytelse, "7.1.9.4 pensjon.ytelser.1.beloep.0.betalingshyppighetytelse")
         // 7.1.9.1 Amount (benefit 2, amount 2)
         // Mapping (ACL v4.4/v4.5): $pensjon.ytelser[x].beloep[x].beloep -> P2100.ClaimantBenefitDetails.BenefitDetails[x].Amount[x].amount
         assertEquals("2200.50", secondBenefitSecondAmount?.beloep, "7.1.9.1 pensjon.ytelser.1.beloep.1.beloep")
@@ -541,7 +539,7 @@ class P2100HelMappetTest {
         assertEquals("2021-02-01", secondBenefitSecondAmount?.gjeldendesiden, "7.1.9.3 pensjon.ytelser.1.beloep.1.gjeldendesiden")
         // 7.1.9.4 Payment frequency (benefit 2, amount 2)
         // Mapping (ACL v4.4/v4.5): $pensjon.ytelser[x].beloep[x].betalingshyppighetytelse -> P2100.ClaimantBenefitDetails.BenefitDetails[x].Amount[x].paymentFrequency.value[x]
-        assertEquals(Betalingshyppighet.annet, secondBenefitSecondAmount?.betalingshyppighetytelse, "7.1.9.4 pensjon.ytelser.1.beloep.1.betalingshyppighetytelse")
+        assertEquals(Betalingshyppighet.annet.kode, secondBenefitSecondAmount?.betalingshyppighetytelse, "7.1.9.4 pensjon.ytelser.1.beloep.1.betalingshyppighetytelse")
         // 7.1.9.5.1 Other payment frequency (benefit 2)
         // Mapping (ACL v4.4/v4.5): $pensjon.ytelser[x].beloep[x].annenbetalingshyppighetytelse -> P2100.ClaimantBenefitDetails.BenefitDetails[x].Amount[x].PleaseFillInFollowingIfPaymentFrequencyOther.otherPaymentFrequency
         assertEquals("7.1.9.5.1 Test frequency 2", secondBenefitSecondAmount?.annenbetalingshyppighetytelse, "7.1.9.5.1 pensjon.ytelser.1.beloep.1.annenbetalingshyppighetytelse")
@@ -555,35 +553,35 @@ class P2100HelMappetTest {
     @Test
     fun claimantChildren() {
         val p2100 = mapJsonToAny<P2100>(p2100Json())
-        val firstChild = p2100.nav?.barn?.getOrNull(0)
-        val secondChild = p2100.nav?.barn?.getOrNull(1)
-        val firstPerson = firstChild?.person
-        val secondPerson = secondChild?.person
-        val firstChildFirstPin = firstPerson?.pin?.getOrNull(0)
-        val firstChildSecondPin = firstPerson?.pin?.getOrNull(1)
-        val secondChildFirstPin = secondPerson?.pin?.getOrNull(0)
-        val secondChildSecondPin = secondPerson?.pin?.getOrNull(1)
-        val firstBirthplace = firstPerson?.foedested
-        val secondBirthplace = secondPerson?.foedested
+        val barn1 = p2100.nav?.barn?.getOrNull(0)
+        val barn2 = p2100.nav?.barn?.getOrNull(1)
+        val barn1Person = barn1?.person
+        val barn2Person = barn2?.person
+        val firstChildFirstPin = barn1Person?.pin?.getOrNull(0)
+        val firstChildSecondPin = barn1Person?.pin?.getOrNull(1)
+        val secondChildFirstPin = barn2Person?.pin?.getOrNull(0)
+        val secondChildSecondPin = barn2Person?.pin?.getOrNull(1)
+        val firstBirthplace = barn1Person?.foedested
+        val secondBirthplace = barn2Person?.foedested
 
         // 8.1.1.1 Family name
         // Mapping (ACL v4.4/v4.5): $nav.barn[x].person.etternavn -> P2100.ClaimantChildren.Child[x].PersonIdentification.familyName
-        assertEquals("8.1.1 Test family name", firstPerson?.etternavn, "8.1.1.1 nav.barn.0.person.etternavn")
+        assertEquals("8.1.1 Test family name", barn1Person?.etternavn, "8.1.1.1 nav.barn.0.person.etternavn")
         // 8.1.1.2 Forename
         // Mapping (ACL v4.4/v4.5): $nav.barn[x].person.fornavn -> P2100.ClaimantChildren.Child[x].PersonIdentification.forename
-        assertEquals("8.1.1 Test forename", firstPerson?.fornavn, "8.1.1.2 nav.barn.0.person.fornavn")
+        assertEquals("8.1.1 Test forename", barn1Person?.fornavn, "8.1.1.2 nav.barn.0.person.fornavn")
         // 8.1.1.3 Date of birth
         // Mapping (ACL v4.4/v4.5): $nav.barn[x].person.foedselsdato -> P2100.ClaimantChildren.Child[x].PersonIdentification.dateBirth
-        assertEquals("1970-02-03", firstPerson?.foedselsdato, "8.1.1.3 nav.barn.0.person.foedselsdato")
+        assertEquals("1970-02-03", barn1Person?.foedselsdato, "8.1.1.3 nav.barn.0.person.foedselsdato")
         // 8.1.1.4 Sex
         // Mapping (ACL v4.4/v4.5): $nav.barn[x].person.kjoenn -> P2100.ClaimantChildren.Child[x].PersonIdentification.sex.value[x]
-        assertEquals("K", firstPerson?.kjoenn, "8.1.1.4 nav.barn.0.person.kjoenn")
+        assertEquals("K", barn1Person?.kjoenn, "8.1.1.4 nav.barn.0.person.kjoenn")
         // 8.1.1.5 Family name at birth
         // Mapping (ACL v4.4/v4.5): $nav.barn[x].person.etternavnvedfoedsel -> P2100.ClaimantChildren.Child[x].PersonIdentification.familyNameAtBirth
-        assertEquals("8.1.1 Test birth family name", firstPerson?.etternavnvedfoedsel, "8.1.1.5 nav.barn.0.person.etternavnvedfoedsel")
+        assertEquals("8.1.1 Test birth family name", barn1Person?.etternavnvedfoedsel, "8.1.1.5 nav.barn.0.person.etternavnvedfoedsel")
         // 8.1.1.6 Forename at birth
         // Mapping (ACL v4.4/v4.5): $nav.barn[x].person.fornavnvedfoedsel -> P2100.ClaimantChildren.Child[x].PersonIdentification.forenameAtBirth
-        assertEquals("8.1.1 Test birth forename", firstPerson?.fornavnvedfoedsel, "8.1.1.6 nav.barn.0.person.fornavnvedfoedsel")
+        assertEquals("8.1.1 Test birth forename", barn1Person?.fornavnvedfoedsel, "8.1.1.6 nav.barn.0.person.fornavnvedfoedsel")
         // 8.1.1.7.1.1 PIN country (entry 1)
         // Mapping (ACL v4.4/v4.5): $nav.barn[x].person.pin[x].land -> P2100.ClaimantChildren.Child[x].PersonIdentification.PINPersonInEachInstitution.PersonalIdentificationNumber[x].country.value[x]
         assertEquals("NO", firstChildFirstPin?.land, "8.1.1.7.1.1 nav.barn.0.person.pin.0.land")
@@ -625,46 +623,46 @@ class P2100HelMappetTest {
         assertEquals("DK", firstBirthplace?.land, "8.1.1.8.1.3 nav.barn.0.person.foedested.land")
         // 8.1.1.8.2 Father's family name at birth
         // Mapping (ACL v4.4/v4.5): $nav.barn[x].far.person.etternavnvedfoedsel -> P2100.ClaimantChildren.Child[x].PersonIdentification.IfPINNotProvidedForEveryInstitutionPleaseProvide.fatherFamilyNameAtBirth
-        assertEquals("8.1.1 Father birth name", firstChild?.far?.person?.etternavnvedfoedsel, "8.1.1.8.2 nav.barn.0.far.person.etternavnvedfoedsel")
+        assertEquals("8.1.1 Father birth name", barn1?.far?.person?.etternavnvedfoedsel, "8.1.1.8.2 nav.barn.0.far.person.etternavnvedfoedsel")
         // 8.1.1.8.3 Father's forename
         // Mapping (ACL v4.4/v4.5): $nav.barn[x].far.person.fornavn -> P2100.ClaimantChildren.Child[x].PersonIdentification.IfPINNotProvidedForEveryInstitutionPleaseProvide.forenameFather
-        assertEquals("8.1.1 Father forename", firstChild?.far?.person?.fornavn, "8.1.1.8.3 nav.barn.0.far.person.fornavn")
+        assertEquals("8.1.1 Father forename", barn1?.far?.person?.fornavn, "8.1.1.8.3 nav.barn.0.far.person.fornavn")
         // 8.1.1.8.4 Mother's family name at birth
         // Mapping (ACL v4.4/v4.5): $nav.barn[x].mor.person.etternavnvedfoedsel -> P2100.ClaimantChildren.Child[x].PersonIdentification.IfPINNotProvidedForEveryInstitutionPleaseProvide.motherFamilyNameAtBirth
-        assertEquals("8.1.1 Mother birth name", firstChild?.mor?.person?.etternavnvedfoedsel, "8.1.1.8.4 nav.barn.0.mor.person.etternavnvedfoedsel")
+        assertEquals("8.1.1 Mother birth name", barn1?.mor?.person?.etternavnvedfoedsel, "8.1.1.8.4 nav.barn.0.mor.person.etternavnvedfoedsel")
         // 8.1.1.8.5 Mother's forename
         // Mapping (ACL v4.4/v4.5): $nav.barn[x].mor.person.fornavn -> P2100.ClaimantChildren.Child[x].PersonIdentification.IfPINNotProvidedForEveryInstitutionPleaseProvide.forenameMother
-        assertEquals("8.1.1 Mother forename", firstChild?.mor?.person?.fornavn, "8.1.1.8.5 nav.barn.0.mor.person.fornavn")
+        assertEquals("8.1.1 Mother forename", barn1?.mor?.person?.fornavn, "8.1.1.8.5 nav.barn.0.mor.person.fornavn")
         // 8.1.2.1 Nationality (child 1)
         // Mapping (ACL v4.4/v4.5): $nav.barn[x].person.statsborgerskap[x].land -> P2100.ClaimantChildren.Child[x].AdditionalInformationPerson.nationality.value[x]
-        assertEquals("SE", firstPerson?.statsborgerskap?.getOrNull(0)?.land, "8.1.2.1 nav.barn.0.person.statsborgerskap.0.land")
+        assertEquals("SE", barn1Person?.statsborgerskap?.getOrNull(0)?.land, "8.1.2.1 nav.barn.0.person.statsborgerskap.0.land")
         // 8.1.2.2 Relationship to claimant (child 1)
         // Mapping (ACL v4.4/v4.5): $nav.barn[x].relasjontilbruker -> P2100.ClaimantChildren.Child[x].AdditionalInformationPerson.relationshipClaimant.value[x]
-        assertEquals("99", firstChild?.relasjontilbruker, "8.1.2.2 nav.barn.0.relasjontilbruker")
+        assertEquals("99", barn1?.relasjontilbruker, "8.1.2.2 nav.barn.0.relasjontilbruker")
         // 8.1.2.3.1 Other child details (child 1)
         // Mapping (ACL v4.4/v4.5): $nav.barn[x].opplysningeromannetbarn -> P2100.ClaimantChildren.Child[x].AdditionalInformationPerson.FillInIfRelationshipClaimantOther.specificsOtherChild
-        assertEquals("8.1.2.3.1 Test child 1", firstChild?.opplysningeromannetbarn, "8.1.2.3.1 nav.barn.0.opplysningeromannetbarn")
+        assertEquals("8.1.2.3.1 Test child 1", barn1?.opplysningeromannetbarn, "8.1.2.3.1 nav.barn.0.opplysningeromannetbarn")
         // 8.1.2.4 Date of death (child 1)
         // Mapping (ACL v4.4/v4.5): $nav.barn[x].person.doedsdato -> P2100.ClaimantChildren.Child[x].AdditionalInformationPerson.dateDeath
-        assertEquals("2023-01-02", firstPerson?.doedsdato, "8.1.2.4 nav.barn.0.person.doedsdato")
+        assertEquals("2023-01-02", barn1Person?.doedsdato, "8.1.2.4 nav.barn.0.person.doedsdato")
         // 8.1.1.1 Family name
         // Mapping (ACL v4.4/v4.5): $nav.barn[x].person.etternavn -> P2100.ClaimantChildren.Child[x].PersonIdentification.familyName
-        assertEquals("8.1.1 Test family name", secondPerson?.etternavn, "8.1.1.1 nav.barn.1.person.etternavn")
+        assertEquals("8.1.1 Test family name", barn2Person?.etternavn, "8.1.1.1 nav.barn.1.person.etternavn")
         // 8.1.1.2 Forename
         // Mapping (ACL v4.4/v4.5): $nav.barn[x].person.fornavn -> P2100.ClaimantChildren.Child[x].PersonIdentification.forename
-        assertEquals("8.1.1 Test forename", secondPerson?.fornavn, "8.1.1.2 nav.barn.1.person.fornavn")
+        assertEquals("8.1.1 Test forename", barn2Person?.fornavn, "8.1.1.2 nav.barn.1.person.fornavn")
         // 8.1.1.3 Date of birth
         // Mapping (ACL v4.4/v4.5): $nav.barn[x].person.foedselsdato -> P2100.ClaimantChildren.Child[x].PersonIdentification.dateBirth
-        assertEquals("1970-02-03", secondPerson?.foedselsdato, "8.1.1.3 nav.barn.1.person.foedselsdato")
+        assertEquals("1970-02-03", barn2Person?.foedselsdato, "8.1.1.3 nav.barn.1.person.foedselsdato")
         // 8.1.1.4 Sex
         // Mapping (ACL v4.4/v4.5): $nav.barn[x].person.kjoenn -> P2100.ClaimantChildren.Child[x].PersonIdentification.sex.value[x]
-        assertEquals("K", secondPerson?.kjoenn, "8.1.1.4 nav.barn.1.person.kjoenn")
+        assertEquals("K", barn2Person?.kjoenn, "8.1.1.4 nav.barn.1.person.kjoenn")
         // 8.1.1.5 Family name at birth
         // Mapping (ACL v4.4/v4.5): $nav.barn[x].person.etternavnvedfoedsel -> P2100.ClaimantChildren.Child[x].PersonIdentification.familyNameAtBirth
-        assertEquals("8.1.1 Test birth family name", secondPerson?.etternavnvedfoedsel, "8.1.1.5 nav.barn.1.person.etternavnvedfoedsel")
+        assertEquals("8.1.1 Test birth family name", barn2Person?.etternavnvedfoedsel, "8.1.1.5 nav.barn.1.person.etternavnvedfoedsel")
         // 8.1.1.6 Forename at birth
         // Mapping (ACL v4.4/v4.5): $nav.barn[x].person.fornavnvedfoedsel -> P2100.ClaimantChildren.Child[x].PersonIdentification.forenameAtBirth
-        assertEquals("8.1.1 Test birth forename", secondPerson?.fornavnvedfoedsel, "8.1.1.6 nav.barn.1.person.fornavnvedfoedsel")
+        assertEquals("8.1.1 Test birth forename", barn2Person?.fornavnvedfoedsel, "8.1.1.6 nav.barn.1.person.fornavnvedfoedsel")
         // 8.1.1.7.1.1 PIN country (entry 1)
         // Mapping (ACL v4.4/v4.5): $nav.barn[x].person.pin[x].land -> P2100.ClaimantChildren.Child[x].PersonIdentification.PINPersonInEachInstitution.PersonalIdentificationNumber[x].country.value[x]
         assertEquals("NO", secondChildFirstPin?.land, "8.1.1.7.1.1 nav.barn.1.person.pin.0.land")
@@ -706,28 +704,28 @@ class P2100HelMappetTest {
         assertEquals("DK", secondBirthplace?.land, "8.1.1.8.1.3 nav.barn.1.person.foedested.land")
         // 8.1.1.8.2 Father's family name at birth
         // Mapping (ACL v4.4/v4.5): $nav.barn[x].far.person.etternavnvedfoedsel -> P2100.ClaimantChildren.Child[x].PersonIdentification.IfPINNotProvidedForEveryInstitutionPleaseProvide.fatherFamilyNameAtBirth
-        assertEquals("8.1.1 Father birth name", secondChild?.far?.person?.etternavnvedfoedsel, "8.1.1.8.2 nav.barn.1.far.person.etternavnvedfoedsel")
+        assertEquals("8.1.1 Father birth name", barn2?.far?.person?.etternavnvedfoedsel, "8.1.1.8.2 nav.barn.1.far.person.etternavnvedfoedsel")
         // 8.1.1.8.3 Father's forename
         // Mapping (ACL v4.4/v4.5): $nav.barn[x].far.person.fornavn -> P2100.ClaimantChildren.Child[x].PersonIdentification.IfPINNotProvidedForEveryInstitutionPleaseProvide.forenameFather
-        assertEquals("8.1.1 Father forename", secondChild?.far?.person?.fornavn, "8.1.1.8.3 nav.barn.1.far.person.fornavn")
+        assertEquals("8.1.1 Father forename", barn2?.far?.person?.fornavn, "8.1.1.8.3 nav.barn.1.far.person.fornavn")
         // 8.1.1.8.4 Mother's family name at birth
         // Mapping (ACL v4.4/v4.5): $nav.barn[x].mor.person.etternavnvedfoedsel -> P2100.ClaimantChildren.Child[x].PersonIdentification.IfPINNotProvidedForEveryInstitutionPleaseProvide.motherFamilyNameAtBirth
-        assertEquals("8.1.1 Mother birth name", secondChild?.mor?.person?.etternavnvedfoedsel, "8.1.1.8.4 nav.barn.1.mor.person.etternavnvedfoedsel")
+        assertEquals("8.1.1 Mother birth name", barn2?.mor?.person?.etternavnvedfoedsel, "8.1.1.8.4 nav.barn.1.mor.person.etternavnvedfoedsel")
         // 8.1.1.8.5 Mother's forename
         // Mapping (ACL v4.4/v4.5): $nav.barn[x].mor.person.fornavn -> P2100.ClaimantChildren.Child[x].PersonIdentification.IfPINNotProvidedForEveryInstitutionPleaseProvide.forenameMother
-        assertEquals("8.1.1 Mother forename", secondChild?.mor?.person?.fornavn, "8.1.1.8.5 nav.barn.1.mor.person.fornavn")
+        assertEquals("8.1.1 Mother forename", barn2?.mor?.person?.fornavn, "8.1.1.8.5 nav.barn.1.mor.person.fornavn")
         // 8.1.2.1 Nationality (child 2)
         // Mapping (ACL v4.4/v4.5): $nav.barn[x].person.statsborgerskap[x].land -> P2100.ClaimantChildren.Child[x].AdditionalInformationPerson.nationality.value[x]
-        assertEquals("SE", secondPerson?.statsborgerskap?.getOrNull(0)?.land, "8.1.2.1 nav.barn.1.person.statsborgerskap.0.land")
+        assertEquals("SE", barn2Person?.statsborgerskap?.getOrNull(0)?.land, "8.1.2.1 nav.barn.1.person.statsborgerskap.0.land")
         // 8.1.2.2 Relationship to claimant (child 2)
         // Mapping (ACL v4.4/v4.5): $nav.barn[x].relasjontilbruker -> P2100.ClaimantChildren.Child[x].AdditionalInformationPerson.relationshipClaimant.value[x]
-        assertEquals("99", secondChild?.relasjontilbruker, "8.1.2.2 nav.barn.1.relasjontilbruker")
+        assertEquals("99", barn2?.relasjontilbruker, "8.1.2.2 nav.barn.1.relasjontilbruker")
         // 8.1.2.3.1 Other child details (child 2)
         // Mapping (ACL v4.4/v4.5): $nav.barn[x].opplysningeromannetbarn -> P2100.ClaimantChildren.Child[x].AdditionalInformationPerson.FillInIfRelationshipClaimantOther.specificsOtherChild
-        assertEquals("8.1.2.3.1 Test child 2", secondChild?.opplysningeromannetbarn, "8.1.2.3.1 nav.barn.1.opplysningeromannetbarn")
+        assertEquals("8.1.2.3.1 Test child 2", barn2?.opplysningeromannetbarn, "8.1.2.3.1 nav.barn.1.opplysningeromannetbarn")
         // 8.1.2.4 Date of death (child 2)
         // Mapping (ACL v4.4/v4.5): $nav.barn[x].person.doedsdato -> P2100.ClaimantChildren.Child[x].AdditionalInformationPerson.dateDeath
-        assertEquals("2023-01-02", secondPerson?.doedsdato, "8.1.2.4 nav.barn.1.person.doedsdato")
+        assertEquals("2023-01-02", barn2Person?.doedsdato, "8.1.2.4 nav.barn.1.person.doedsdato")
     }
 
     @Test

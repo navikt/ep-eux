@@ -1,0 +1,511 @@
+{
+  "sed": "P4000",
+  "sedVer": "4",
+  "sedGVer": "4",
+  "pensjon": {
+    "gjenlevende": {
+      "person": {
+        "pin": [
+          {
+            "institusjonsnavn": "3.1.7.1.4.2 Test institution Name 1",
+            "institusjonsid": "3.1.7.1.4.1 Test institution ID 1",
+            "sektor": "pensjoner",
+            "land": "NO",
+            "identifikator": "3.1.7.1.2 Test personal Identification Number 1"
+          },
+          {
+            "institusjonsnavn": "3.1.7.1.4.2 Test institution Name 2",
+            "institusjonsid": "3.1.7.1.4.1 Test institution ID 2",
+            "sektor": "pensjoner",
+            "land": "SE",
+            "identifikator": "3.1.7.1.2 Test personal Identification Number 2"
+          }
+        ],
+        "etternavn": "3.1.1 Test family Name 1",
+        "foedested": {
+          "region": "3.1.8.1.2 Test region 1",
+          "land": "NO",
+          "by": "3.1.8.1.1 Test town 1"
+        },
+        "kjoenn": "K",
+        "foedselsdato": "2020-01-02",
+        "fornavn": "3.1.2 Test forename 1",
+        "etternavnvedfoedsel": "3.1.5 Test family Name At Birth 1",
+        "statsborgerskap": [
+          {
+            "land": "NO"
+          },
+          {
+            "land": "SE"
+          }
+        ],
+        "tidligerefornavn": "3.2.1.3 Test previous Forename 1",
+        "tidligereetternavn": "3.2.1.2 Test previous Family Name 1",
+        "fornavnvedfoedsel": "3.1.6 Test forename At Birth 1"
+      },
+      "mor": {
+        "person": {
+          "fornavn": "3.1.8.5 Test forename Mother 1",
+          "etternavnvedfoedsel": "3.1.8.4 Test mother Family Name At Birth 1"
+        }
+      },
+      "far": {
+        "person": {
+          "fornavn": "3.1.8.3 Test forename Father 1",
+          "etternavnvedfoedsel": "3.1.8.2 Test father Family Name At Birth 1"
+        }
+      },
+      "adresse": {
+        "bygning": "3.2.2.2 Test building Name 1",
+        "land": "NO",
+        "gate": "3.2.2.1 Test street 1",
+        "by": "3.2.2.3 Test town 1",
+        "postnummer": "0123",
+        "region": "3.2.2.5 Test region 1"
+      }
+    }
+  },
+  "trygdetid": {
+    "foedselspermisjonPerioder": [
+      {
+        "periode": {
+          "openPeriode": {
+            "fom": "2020-02-02",
+            "type": "98"
+          },
+          "lukketPeriode": {
+            "fom": "2020-01-02",
+            "tom": "2020-03-02"
+          }
+        },
+        "usikkerDatoIndikator": "0",
+        "annenInformasjon": "4.6.1.4 Test additional Information Concerning Period 1",
+        "land": "NO"
+      },
+      {
+        "periode": {
+          "openPeriode": {
+            "fom": "2021-02-02",
+            "type": "01"
+          },
+          "lukketPeriode": {
+            "fom": "2021-01-02",
+            "tom": "2021-03-02"
+          }
+        },
+        "usikkerDatoIndikator": "1",
+        "annenInformasjon": "4.6.1.4 Test additional Information Concerning Period 2",
+        "land": "SE"
+      }
+    ],
+    "ansattSelvstendigPerioder": [
+      {
+        "usikkerDatoIndikator": "0",
+        "jobbUnderAnsattEllerSelvstendig": "4.1.1.4 Test occupation During Employment Or Self Employment 1",
+        "adresseFirma": {
+          "by": "4.1.1.7.3 Test town 1",
+          "bygning": "4.1.1.7.2 Test building Name 1",
+          "region": "4.1.1.7.5 Test region 1",
+          "postnummer": "0123",
+          "land": "NO",
+          "gate": "4.1.1.7.1 Test street 1"
+        },
+        "forsikkringEllerRegistreringNr": "4.1.1.5 Test insurance Or Registration Number 1",
+        "annenInformasjon": "4.1.1.8 Test additional Information Concerning Period 1",
+        "navnFirma": "4.1.1.6 Test name Employer Company 1",
+        "periode": {
+          "lukketPeriode": {
+            "tom": "2020-03-02",
+            "fom": "2020-01-02"
+          },
+          "openPeriode": {
+            "fom": "2020-02-02",
+            "type": "98"
+          }
+        },
+        "typePeriode": "01"
+      },
+      {
+        "usikkerDatoIndikator": "1",
+        "jobbUnderAnsattEllerSelvstendig": "4.1.1.4 Test occupation During Employment Or Self Employment 2",
+        "adresseFirma": {
+          "by": "4.1.1.7.3 Test town 2",
+          "bygning": "4.1.1.7.2 Test building Name 2",
+          "region": "4.1.1.7.5 Test region 2",
+          "postnummer": "0123",
+          "land": "SE",
+          "gate": "4.1.1.7.1 Test street 2"
+        },
+        "forsikkringEllerRegistreringNr": "4.1.1.5 Test insurance Or Registration Number 2",
+        "annenInformasjon": "4.1.1.8 Test additional Information Concerning Period 2",
+        "navnFirma": "4.1.1.6 Test name Employer Company 2",
+        "periode": {
+          "lukketPeriode": {
+            "tom": "2021-03-02",
+            "fom": "2021-01-02"
+          },
+          "openPeriode": {
+            "fom": "2021-02-02",
+            "type": "01"
+          }
+        },
+        "typePeriode": "02"
+      }
+    ],
+    "frivilligPerioder": [
+      {
+        "periode": {
+          "openPeriode": {
+            "fom": "2020-02-02",
+            "type": "98"
+          },
+          "lukketPeriode": {
+            "tom": "2020-03-02",
+            "fom": "2020-01-02"
+          }
+        },
+        "usikkerDatoIndikator": "0",
+        "land": "NO",
+        "annenInformasjon": "4.4.1.4 Test additional Information Concerning Period 1"
+      },
+      {
+        "periode": {
+          "openPeriode": {
+            "fom": "2021-02-02",
+            "type": "01"
+          },
+          "lukketPeriode": {
+            "tom": "2021-03-02",
+            "fom": "2021-01-02"
+          }
+        },
+        "usikkerDatoIndikator": "1",
+        "land": "SE",
+        "annenInformasjon": "4.4.1.4 Test additional Information Concerning Period 2"
+      }
+    ],
+    "forsvartjenestePerioder": [
+      {
+        "periode": {
+          "lukketPeriode": {
+            "tom": "2020-03-02",
+            "fom": "2020-01-02"
+          },
+          "openPeriode": {
+            "fom": "2020-02-02",
+            "type": "98"
+          }
+        },
+        "land": "NO",
+        "annenInformasjon": "4.5.1.4 Test additional Information Concerning Period 1",
+        "usikkerDatoIndikator": "0"
+      },
+      {
+        "periode": {
+          "lukketPeriode": {
+            "tom": "2021-03-02",
+            "fom": "2021-01-02"
+          },
+          "openPeriode": {
+            "fom": "2021-02-02",
+            "type": "01"
+          }
+        },
+        "land": "SE",
+        "annenInformasjon": "4.5.1.4 Test additional Information Concerning Period 2",
+        "usikkerDatoIndikator": "1"
+      }
+    ],
+    "andrePerioder": [
+      {
+        "periode": {
+          "openPeriode": {
+            "fom": "2020-02-02",
+            "type": "98"
+          },
+          "lukketPeriode": {
+            "fom": "2020-01-02",
+            "tom": "2020-03-02"
+          }
+        },
+        "annenInformasjon": "4.10.1.5 Test additional Information Concerning Period 1",
+        "usikkerDatoIndikator": "0",
+        "typePeriode": "4.10.1.3 Test type Period 1",
+        "land": "NO"
+      },
+      {
+        "periode": {
+          "openPeriode": {
+            "fom": "2021-02-02",
+            "type": "01"
+          },
+          "lukketPeriode": {
+            "fom": "2021-01-02",
+            "tom": "2021-03-02"
+          }
+        },
+        "annenInformasjon": "4.10.1.5 Test additional Information Concerning Period 2",
+        "usikkerDatoIndikator": "1",
+        "typePeriode": "4.10.1.3 Test type Period 2",
+        "land": "SE"
+      }
+    ],
+    "opplaeringPerioder": [
+      {
+        "usikkerDatoIndikator": "0",
+        "annenInformasjon": "4.7.1.5 Test additional Information Concerning Period 1",
+        "periode": {
+          "openPeriode": {
+            "fom": "2020-02-02",
+            "type": "98"
+          },
+          "lukketPeriode": {
+            "tom": "2020-03-02",
+            "fom": "2020-01-02"
+          }
+        },
+        "navnPaaInstitusjon": "4.7.1.3 Test name Training Institution 1",
+        "land": "NO"
+      },
+      {
+        "usikkerDatoIndikator": "1",
+        "annenInformasjon": "4.7.1.5 Test additional Information Concerning Period 2",
+        "periode": {
+          "openPeriode": {
+            "fom": "2021-02-02",
+            "type": "01"
+          },
+          "lukketPeriode": {
+            "tom": "2021-03-02",
+            "fom": "2021-01-02"
+          }
+        },
+        "navnPaaInstitusjon": "4.7.1.3 Test name Training Institution 2",
+        "land": "SE"
+      }
+    ],
+    "barnepassPerioder": [
+      {
+        "usikkerDatoIndikator": "0",
+        "informasjonBarn": {
+          "foedseldato": "2020-01-02",
+          "etternavn": "4.3.1.3.1 Test family Name 1",
+          "land": "NO",
+          "fornavn": "4.3.1.3.2 Test forename 1"
+        },
+        "periode": {
+          "openPeriode": {
+            "fom": "2020-02-02",
+            "type": "98"
+          },
+          "lukketPeriode": {
+            "fom": "2020-01-02",
+            "tom": "2020-03-02"
+          }
+        },
+        "annenInformasjon": "4.3.1.4 Test additional Information Concerning Period 1"
+      },
+      {
+        "usikkerDatoIndikator": "1",
+        "informasjonBarn": {
+          "foedseldato": "2021-01-02",
+          "etternavn": "4.3.1.3.1 Test family Name 2",
+          "land": "SE",
+          "fornavn": "4.3.1.3.2 Test forename 2"
+        },
+        "periode": {
+          "openPeriode": {
+            "fom": "2021-02-02",
+            "type": "01"
+          },
+          "lukketPeriode": {
+            "fom": "2021-01-02",
+            "tom": "2021-03-02"
+          }
+        },
+        "annenInformasjon": "4.3.1.4 Test additional Information Concerning Period 2"
+      }
+    ],
+    "arbeidsledigPerioder": [
+      {
+        "usikkerDatoIndikator": "0",
+        "periode": {
+          "periodebeskrivelse": {
+            "typeDato": "98"
+          },
+          "openPeriode": {
+            "fom": "2020-02-02"
+          },
+          "lukketPeriode": {
+            "fom": "2020-01-02",
+            "tom": "2020-03-02"
+          }
+        },
+        "annenInformasjon": "4.8.1.5 Test additional Information Concerning Period 1",
+        "navnPaaInstitusjon": "4.8.1.3 Test name Paying Institution 1",
+        "land": "NO"
+      },
+      {
+        "usikkerDatoIndikator": "1",
+        "periode": {
+          "periodebeskrivelse": {
+            "typeDato": "01"
+          },
+          "openPeriode": {
+            "fom": "2021-02-02"
+          },
+          "lukketPeriode": {
+            "fom": "2021-01-02",
+            "tom": "2021-03-02"
+          }
+        },
+        "annenInformasjon": "4.8.1.5 Test additional Information Concerning Period 2",
+        "navnPaaInstitusjon": "4.8.1.3 Test name Paying Institution 2",
+        "land": "SE"
+      }
+    ],
+    "sykePerioder": [
+      {
+        "periode": {
+          "openPeriode": {
+            "fom": "2020-02-02",
+            "type": "98"
+          },
+          "lukketPeriode": {
+            "fom": "2020-01-02",
+            "tom": "2020-03-02"
+          }
+        },
+        "usikkerDatoIndikator": "0",
+        "navnPaaInstitusjon": "4.9.1.3 Test name Paying Institution 1",
+        "land": "NO",
+        "annenInformasjon": "4.9.1.5 Test additional Information Concerning Period 1"
+      },
+      {
+        "periode": {
+          "openPeriode": {
+            "fom": "2021-02-02",
+            "type": "01"
+          },
+          "lukketPeriode": {
+            "fom": "2021-01-02",
+            "tom": "2021-03-02"
+          }
+        },
+        "usikkerDatoIndikator": "1",
+        "navnPaaInstitusjon": "4.9.1.3 Test name Paying Institution 2",
+        "land": "SE",
+        "annenInformasjon": "4.9.1.5 Test additional Information Concerning Period 2"
+      }
+    ],
+    "boPerioder": [
+      {
+        "periode": {
+          "lukketPeriode": {
+            "tom": "2020-03-02",
+            "fom": "2020-01-02"
+          },
+          "openPeriode": {
+            "fom": "2020-02-02",
+            "type": "98"
+          }
+        },
+        "annenInformasjon": "4.2.1.4 Test additional Information Concerning Period 1",
+        "land": "NO",
+        "usikkerDatoIndikator": "0"
+      },
+      {
+        "periode": {
+          "lukketPeriode": {
+            "tom": "2021-03-02",
+            "fom": "2021-01-02"
+          },
+          "openPeriode": {
+            "fom": "2021-02-02",
+            "type": "01"
+          }
+        },
+        "annenInformasjon": "4.2.1.4 Test additional Information Concerning Period 2",
+        "land": "SE",
+        "usikkerDatoIndikator": "1"
+      }
+    ]
+  },
+  "nav": {
+    "bruker": {
+      "mor": {
+        "person": {
+          "fornavn": "2.1.8.5 Test forename Mother 1",
+          "etternavnvedfoedsel": "2.1.8.4 Test mother Family Name At Birth 1"
+        }
+      },
+      "person": {
+        "foedested": {
+          "land": "NO",
+          "by": "2.1.8.1.1 Test town 1",
+          "region": "2.1.8.1.2 Test region 1"
+        },
+        "foedselsdato": "2020-01-02",
+        "pin": [
+          {
+            "institusjonsnavn": "2.1.7.1.4.2 Test institution Name 1",
+            "institusjonsid": "2.1.7.1.4.1 Test institution ID 1",
+            "land": "NO",
+            "identifikator": "2.1.7.1.2 Test personal Identification Number 1",
+            "sektor": "pensjoner"
+          },
+          {
+            "institusjonsnavn": "2.1.7.1.4.2 Test institution Name 2",
+            "institusjonsid": "2.1.7.1.4.1 Test institution ID 2",
+            "land": "SE",
+            "identifikator": "2.1.7.1.2 Test personal Identification Number 2",
+            "sektor": "pensjoner"
+          }
+        ],
+        "etternavnvedfoedsel": "2.1.5 Test family Name At Birth 1",
+        "etternavn": "2.1.1 Test family Name 1",
+        "kjoenn": "K",
+        "fornavn": "2.1.2 Test forename 1",
+        "fornavnvedfoedsel": "2.1.6 Test forename At Birth 1",
+        "tidligerefornavn": "2.2.1.3 Test previous Forename 1",
+        "tidligereetternavn": "2.2.1.2 Test previous Family Name 1",
+        "statsborgerskap": [
+          {
+            "land": "NO"
+          },
+          {
+            "land": "SE"
+          }
+        ]
+      },
+      "far": {
+        "person": {
+          "etternavnvedfoedsel": "2.1.8.2 Test father Family Name At Birth 1",
+          "fornavn": "2.1.8.3 Test forename Father 1"
+        }
+      },
+      "adresse": {
+        "bygning": "2.2.2.2 Test building Name 1",
+        "postnummer": "0123",
+        "gate": "2.2.2.1 Test street 1",
+        "by": "2.2.2.3 Test town 1",
+        "land": "NO",
+        "region": "2.2.2.5 Test region 1"
+      }
+    },
+    "eessisak": [
+      {
+        "institusjonsid": "1.1.3.1 Test institution ID 1",
+        "institusjonsnavn": "1.1.3.2 Test institution Name 1",
+        "land": "NO",
+        "saksnummer": "1.1.2 Test case Number 1"
+      },
+      {
+        "institusjonsid": "1.1.3.1 Test institution ID 2",
+        "institusjonsnavn": "1.1.3.2 Test institution Name 2",
+        "land": "SE",
+        "saksnummer": "1.1.2 Test case Number 2"
+      }
+    ]
+  }
+}

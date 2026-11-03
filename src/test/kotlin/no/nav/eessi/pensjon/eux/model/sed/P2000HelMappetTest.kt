@@ -164,7 +164,7 @@ class P2000HelMappetTest {
         //4.1.9.3. Amount effective since
         assertEquals("2021-02-03", pensjon?.ytelser?.firstOrNull()?.beloep?.firstOrNull()?.gjeldendesiden)
         //4.1.9.4. Payment frequency mappingsfelt: (rina enum: 02 Quarterly)
-        assertEquals(Betalingshyppighet.maaned_12_per_aar, pensjon?.ytelser?.firstOrNull()?.beloep?.firstOrNull()?.betalingshyppighetytelse)
+        assertEquals(Betalingshyppighet.maaned_12_per_aar.kode, pensjon?.ytelser?.firstOrNull()?.beloep?.firstOrNull()?.betalingshyppighetytelse)
         //4.1.9.5.1. Other payment frequency
         assertEquals("41951AnnenBetalingshyppighet", pensjon?.ytelser?.firstOrNull()?.beloep?.firstOrNull()?.annenbetalingshyppighetytelse)
         //4.1.10.1. The pension received is based on
