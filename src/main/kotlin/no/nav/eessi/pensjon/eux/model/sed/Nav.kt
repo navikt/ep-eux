@@ -122,6 +122,7 @@ data class Ektefelle(
 data class Verge(
         val person: Person? = null,
         val vergemaal: Vergemaal? = null,
+        val vergenavn: String? = null,
         val adresse: Adresse? = null
 )
 
@@ -169,7 +170,8 @@ data class Person(
         var nyttEkteskapPartnerskapEtterForsikredeDod: NyttEkteskapPartnerskapP2100? = null, //P2000
         var bormednypartner: String? = null, //P2000
         val dodsdetalj: DodsdetaljP2100? = null,
-        val doedsdato: String? = null //P2000
+        val doedsdato: String? = null, //P2000
+        val pinannen: PinItem? = null //P9000 eller P6000
 )
 
 data class DodsdetaljP2100(

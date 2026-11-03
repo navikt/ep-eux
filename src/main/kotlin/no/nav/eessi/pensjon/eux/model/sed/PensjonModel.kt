@@ -1,11 +1,9 @@
 package no.nav.eessi.pensjon.eux.model.sed
 
-import com.fasterxml.jackson.annotation.JsonIgnore
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonValue
 import java.time.LocalDate
-import java.time.LocalDateTime
 
 open class MeldingOmPensjon(
 	open val melding: String?,
@@ -126,7 +124,7 @@ data class YtelserItem(
 @JsonIgnoreProperties(ignoreUnknown = true)
 data class BeloepItem(
 		val annenbetalingshyppighetytelse: String? = null,
-        val betalingshyppighetytelse: Betalingshyppighet? = null,
+        val betalingshyppighetytelse: String? = null,
         val valuta: String? = null,
         val beloep: String? = null,
 		val beloepBrutto: String? = null,
@@ -254,6 +252,7 @@ data class BeloepBrutto(
 data class Periode(
         val fom: String? = null,
         val tom: String? = null,
-		val extra: String? = null
+		val extra: String? = null,
+		val type: String? = null
 )
 
