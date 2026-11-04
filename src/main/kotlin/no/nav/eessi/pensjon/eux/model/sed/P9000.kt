@@ -7,7 +7,5 @@ class P9000(
     @JsonProperty("sed")
     override val type: SedType = SedType.P9000,
     override val nav: Nav? = null,
-    @JsonProperty("pensjon")
-    val p9000Pensjon: P9000Pensjon?
 ) : SED(type, nav = nav)
 

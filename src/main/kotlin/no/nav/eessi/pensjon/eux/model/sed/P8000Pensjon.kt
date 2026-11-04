@@ -8,8 +8,7 @@ class P8000Pensjon(
     val gjenlevende: Bruker? = null,
     val anmodning: AnmodningOmTilleggsInfo? = null,
     val ytterligeinformasjon: String? = null,
-    val vedlegg: List<String> ? = null,
-    val tilleggsinformasjon: Tilleggsinformasjon? = null,
+    val vedlegg: List<String> ? = null
 )
 @JsonIgnoreProperties(ignoreUnknown = true)
 data class AnmodningOmTilleggsInfo(
@@ -31,11 +30,6 @@ class Seder (
     val sendFolgendeSEDer: List<SedNummer>? = null,
     val andreEtterspurteSEDer: String? = null,
     val begrunnelse: String? = null
-)
-
-data class P8000DatoOgHenvisningPerson(
-    val dato: String? = null,
-    val henvisningperson: String? = null
 )
 
 class AnmodningPerson (
