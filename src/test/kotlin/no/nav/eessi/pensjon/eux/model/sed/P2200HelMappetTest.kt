@@ -477,16 +477,16 @@ class P2200HelMappetTest {
         assertEquals("2023-01-02", pensjonYtelserSecondBeloepSecond?.gjeldendesiden, "4.1.9.3 pensjon.ytelser.1.beloep.1.gjeldendesiden")
         // 4.1.9.4 payment Frequency (entry 1)
         // Mapping: $pensjon.ytelser[x].beloep[x].betalingshyppighetytelse -> P2200.InsuredPersonBenefitDetails.BenefitDetails[x].Amount[x].paymentFrequency.value[x]
-        assertEquals(Betalingshyppighet.annet.kode, pensjonYtelserFirstBeloepFirst?.betalingshyppighetytelse, "4.1.9.4 pensjon.ytelser.0.beloep.0.betalingshyppighetytelse")
+        assertEquals(Betalingshyppighet.annet, pensjonYtelserFirstBeloepFirst?.betalingshyppighetytelse, "4.1.9.4 pensjon.ytelser.0.beloep.0.betalingshyppighetytelse")
         // 4.1.9.4 payment Frequency (entry 2)
         // Mapping: $pensjon.ytelser[x].beloep[x].betalingshyppighetytelse -> P2200.InsuredPersonBenefitDetails.BenefitDetails[x].Amount[x].paymentFrequency.value[x]
-        assertEquals(Betalingshyppighet.annet.kode, pensjonYtelserSecondBeloepFirst?.betalingshyppighetytelse, "4.1.9.4 pensjon.ytelser.1.beloep.0.betalingshyppighetytelse")
+        assertEquals(Betalingshyppighet.annet, pensjonYtelserSecondBeloepFirst?.betalingshyppighetytelse, "4.1.9.4 pensjon.ytelser.1.beloep.0.betalingshyppighetytelse")
         // 4.1.9.4 payment Frequency (entry 3)
         // Mapping: $pensjon.ytelser[x].beloep[x].betalingshyppighetytelse -> P2200.InsuredPersonBenefitDetails.BenefitDetails[x].Amount[x].paymentFrequency.value[x]
-        assertEquals(Betalingshyppighet.annet.kode, pensjonYtelserFirstBeloepSecond?.betalingshyppighetytelse, "4.1.9.4 pensjon.ytelser.0.beloep.1.betalingshyppighetytelse")
+        assertEquals(Betalingshyppighet.annet, pensjonYtelserFirstBeloepSecond?.betalingshyppighetytelse, "4.1.9.4 pensjon.ytelser.0.beloep.1.betalingshyppighetytelse")
         // 4.1.9.4 payment Frequency (entry 4)
         // Mapping: $pensjon.ytelser[x].beloep[x].betalingshyppighetytelse -> P2200.InsuredPersonBenefitDetails.BenefitDetails[x].Amount[x].paymentFrequency.value[x]
-        assertEquals(Betalingshyppighet.annet.kode, pensjonYtelserSecondBeloepSecond?.betalingshyppighetytelse, "4.1.9.4 pensjon.ytelser.1.beloep.1.betalingshyppighetytelse")
+        assertEquals(Betalingshyppighet.annet, pensjonYtelserSecondBeloepSecond?.betalingshyppighetytelse, "4.1.9.4 pensjon.ytelser.1.beloep.1.betalingshyppighetytelse")
         // 4.1.9.5.1 other Payment Frequency (entry 1)
         // Mapping: $pensjon.ytelser[x].beloep[x].annenbetalingshyppighetytelse -> P2200.InsuredPersonBenefitDetails.BenefitDetails[x].Amount[x].PleaseFillInFollowingIfPaymentFrequencyOther.otherPaymentFrequency
         assertEquals("4.1.9.5.1 Test other Payment Frequency 1", pensjonYtelserFirstBeloepFirst?.annenbetalingshyppighetytelse, "4.1.9.5.1 pensjon.ytelser.0.beloep.0.annenbetalingshyppighetytelse")

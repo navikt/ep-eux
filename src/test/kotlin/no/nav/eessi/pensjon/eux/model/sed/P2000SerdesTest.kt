@@ -45,7 +45,7 @@ internal class P2000SerdesTest {
             assertThat(ytelse).isEqualTo("10")
             assertThat(startdatoretttilytelse).isEqualTo("2023-01-01")
             with(requireNotNull(beloep).first()) {
-                assertThat(betalingshyppighetytelse).isEqualTo(Betalingshyppighet.maaned_12_per_aar.kode)
+                assertThat(betalingshyppighetytelse).isEqualTo(Betalingshyppighet.maaned_12_per_aar)
                 assertThat(valuta).isEqualTo("EUR")
                 assertThat(beloep).isEqualTo("1000")
                 assertThat(gjeldendesiden).isEqualTo("2020-01-01")
