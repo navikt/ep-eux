@@ -3,7 +3,7 @@ package no.nav.eessi.pensjon.eux.model.sed
 import com.fasterxml.jackson.annotation.JsonProperty
 import no.nav.eessi.pensjon.eux.model.SedType
 
-class P2200(
+open class P2200(
     @JsonProperty("sed")
     override val type: SedType = SedType.P2200,
     @JsonProperty("nav")
